@@ -64,6 +64,11 @@ def main():
     # Set seed before initializing model.
     set_seed(training_args.seed)
 
+
+    # HF login
+    from huggingface_hub import login
+    login("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")
+
     tokenizer = AutoTokenizer.from_pretrained(model_args.model_name_or_path)
     # Load training dataset
     train_dataset = get_training_dataset(data_args.train_files,
