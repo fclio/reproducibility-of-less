@@ -24,7 +24,7 @@ pip install -e .
 
 
 # Set variables for warmup training
-DATA_DIR="../data"
+DATA_DIR="data"
 MODEL_PATH="meta-llama/Llama-2-7b-hf"
 PERCENTAGE=0.05
 DATA_SEED=3
@@ -33,3 +33,5 @@ JOB_NAME="llama2-7b-p${PERCENTAGE}-lora-seed${DATA_SEED}"
 
 # Run warmup training
 bash less/scripts/train/warmup_lora_train.sh "$DATA_DIR" "$MODEL_PATH" "$PERCENTAGE" "$DATA_SEED" "$JOB_NAME"
+
+# ileNotFoundError: Unable to find '/gpfs/home1/scur2847/ir2-less-data/../data/train/processed/flan_v2/flan_v2_data.jsonl'
