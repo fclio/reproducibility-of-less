@@ -41,11 +41,10 @@ def main():
         handlers=[logging.StreamHandler(sys.stdout)],
     )
 
-    if training_args.report_to_wandb:
-        import wandb
-        wandb.login(key='9b2f986839a1d92b8e7bf3baef749b3ef15b2e2e')
 
     if training_args.should_log:
+        import wandb
+        wandb.login(key='9b2f986839a1d92b8e7bf3baef749b3ef15b2e2e')
         # The default of training_args.log_level is passive, so we set log level at info here to have that default.
         transformers.utils.logging.set_verbosity_info()
 
