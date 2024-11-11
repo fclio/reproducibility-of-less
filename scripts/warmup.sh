@@ -11,6 +11,10 @@
 # cd $HOME/path/to/LESS
 # source activate dl2023
 
+module purge
+module load 2023
+module load PyTorch/2.1.2-foss-2023a-CUDA-12.1.1
+
 # Set variables for warmup training
 DATA_DIR="../data"
 MODEL_PATH="meta-llama/Llama-2-7b-hf"
