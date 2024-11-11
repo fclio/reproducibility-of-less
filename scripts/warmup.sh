@@ -19,4 +19,4 @@ DATA_SEED=3
 JOB_NAME="llama2-7b-p${PERCENTAGE}-lora-seed${DATA_SEED}"
 
 # Run warmup training
-bash ../less/scripts/train/warmup_lora_train.sh "$DATA_DIR" "$MODEL_PATH" "$PERCENTAGE" "$DATA_SEED" "$JOB_NAME"
+bash less/scripts/train/warmup_lora_train.sh "$DATA_DIR" "$MODEL_PATH" "$PERCENTAGE" "$DATA_SEED" "$JOB_NAME"
