@@ -9,11 +9,14 @@
 #SBATCH --output=warmup_training_%A.out
 
 module purge
-module load 2022
+module load 2023
 
-module load CUDA/11.7.0 
+module load CUDA/12.1.1 
 # pip3 install torch==2.1.2 torchvision torchaudio 
-Module load PyTorch/1.12.0-foss-2022a-CUDA-11.7.0 
+module load PyTorch/2.1.2-foss-2023a-CUDA-12.1.1
+# Module load PyTorch/1.12.0-foss-2022a-CUDA-11.7.0 
+
+pip install torchvision torchaudio
 
 pip install peft==0.7.1
 pip install transformers==4.36.2
