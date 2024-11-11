@@ -5,3 +5,4 @@ datasets
 torchvision
 torchaudio
 accelerate==0.34.2
+wandb
