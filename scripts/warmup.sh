@@ -22,5 +22,13 @@ PERCENTAGE=0.05
 DATA_SEED=3
 JOB_NAME="llama2-7b-p${PERCENTAGE}-lora-seed${DATA_SEED}"
 
+pip install torchvision torchaudio
+
+pip install peft==0.7.1
+pip install transformers==4.36.2
+pip install traker[fast]==0.1.3
+
+pip install -e .
+
 # Run warmup training
 bash less/scripts/train/warmup_lora_train.sh "$DATA_DIR" "$MODEL_PATH" "$PERCENTAGE" "$DATA_SEED" "$JOB_NAME"
