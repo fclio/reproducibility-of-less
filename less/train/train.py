@@ -163,7 +163,10 @@ def main():
     )
 
     # Training
+    # this is the error rising
+    print("start training!!!!")
     train_result = trainer.train()
+    print("after training done!!!!")
     trainer.save_model()  # Saves the tokenizer too for easy upload
 
     metrics = train_result.metrics
