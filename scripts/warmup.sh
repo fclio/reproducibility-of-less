@@ -7,7 +7,7 @@
 #SBATCH --cpus-per-task=18
 #SBATCH --time=02:00:00
 #SBATCH --output=slurm_output/warmup_training_%A.out
-#SBATCH --mem-per-gpu=16G
+
 
 # cd $HOME/path/to/LESS
 # source activate dl2023
