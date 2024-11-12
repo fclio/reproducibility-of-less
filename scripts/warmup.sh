@@ -26,8 +26,9 @@ pip install -e .
 
 # Set variables for warmup training
 DATA_DIR="data"
-MODEL_PATH="meta-llama/Llama-2-7b-hf"
-PERCENTAGE=0.05
+# MODEL_PATH="meta-llama/Llama-2-7b-hf"
+MODEL_PATH="winglian/Llama-2-3b-hf"
+PERCENTAGE=0.001
 DATA_SEED=3
 JOB_NAME="llama2-7b-p${PERCENTAGE}-lora-seed${DATA_SEED}"
 
