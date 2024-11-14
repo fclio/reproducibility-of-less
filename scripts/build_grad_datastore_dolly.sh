@@ -16,7 +16,7 @@ module load PyTorch/2.1.2-foss-2023a-CUDA-12.1.1
 pip install -r requirement.txt
 pip install -e .
 
-CKPT=105
+CKPT=1688
 
 TRAINING_DATA_NAME=dolly
 TRAINING_DATA_FILE=../data/train/processed/dolly/dolly_data.jsonl # when changing data name, change the data path accordingly
