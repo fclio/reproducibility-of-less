@@ -125,7 +125,7 @@ if isinstance(model, PeftModel):
 
 adam_optimizer_state = None
 if args.info_type == "grads" and args.gradient_type == "adam":
-    optimizer_path = os.path.join(args.model_path, "optimizer.bin")
+    optimizer_path = os.path.join(args.model_path, "optimizer.pt")
     adam_optimizer_state = torch.load(
         optimizer_path, map_location="cpu")["state"]
 
