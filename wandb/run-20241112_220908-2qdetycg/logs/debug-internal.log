@@ -1,0 +1,18 @@
+{"time":"2024-11-12T22:09:08.048006642+01:00","level":"INFO","msg":"using version","core version":"0.18.6"}
+{"time":"2024-11-12T22:09:08.048066578+01:00","level":"INFO","msg":"created symlink","path":"/gpfs/home1/scur2847/ir2-less-data/wandb/run-20241112_220908-2qdetycg/logs/debug-core.log"}
+{"time":"2024-11-12T22:09:08.159409551+01:00","level":"INFO","msg":"created new stream","id":"2qdetycg"}
+{"time":"2024-11-12T22:09:08.159453804+01:00","level":"INFO","msg":"stream: started","id":"2qdetycg"}
+{"time":"2024-11-12T22:09:08.159487466+01:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"2qdetycg"}}
+{"time":"2024-11-12T22:09:08.159495053+01:00","level":"INFO","msg":"handler: started","stream_id":{"value":"2qdetycg"}}
+{"time":"2024-11-12T22:09:08.159511774+01:00","level":"INFO","msg":"sender: started","stream_id":"2qdetycg"}
+{"time":"2024-11-12T22:09:09.514973917+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-12T22:09:10.184212213+01:00","level":"INFO","msg":"stream: closing","id":"2qdetycg"}
+{"time":"2024-11-12T22:09:10.18426519+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-12T22:09:10.184693943+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-11-12T22:09:10.335310693+01:00","level":"WARN","msg":"No program path found, not creating job artifact. See https://docs.wandb.ai/guides/launch/create-job"}
+{"time":"2024-11-12T22:09:10.335331369+01:00","level":"INFO","msg":"sender: sendDefer: no job artifact to save"}
+{"time":"2024-11-12T22:09:10.729367023+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-11-12T22:09:10.9050634+01:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"2qdetycg"}}
+{"time":"2024-11-12T22:09:10.905085694+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"2qdetycg"}}
+{"time":"2024-11-12T22:09:10.90510593+01:00","level":"INFO","msg":"sender: closed","stream_id":"2qdetycg"}
+{"time":"2024-11-12T22:09:10.905236683+01:00","level":"INFO","msg":"stream: closed","id":"2qdetycg"}

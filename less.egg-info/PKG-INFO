@@ -1,0 +1,8 @@
+Metadata-Version: 2.1
+Name: less
+Version: 0.1
+Summary: LESS
+Home-page: https://github.com/princeton-nlp/LESS
+Author: Mengzhou Xia
+Classifier: Programming Language :: Python :: 3
+License-File: LICENSE

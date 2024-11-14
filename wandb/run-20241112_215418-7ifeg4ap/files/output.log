@@ -1,0 +1,63 @@
+  0%|          | 0/32 [00:00<?, ?it/s][WARNING|logging.py:314] 2024-11-12 21:54:19,338 >> You're using a LlamaTokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
+ 25%|██▌       | 8/32 [00:29<01:23,  3.49s/it][INFO|trainer.py:2889] 2024-11-12 21:54:49,758 >> Saving model checkpoint to ../out/llama2-7b-p0.001-lora-seed3/tmp-checkpoint-8
+{'loss': 7.8421, 'learning_rate': 2e-05, 'epoch': 0.12}
+{'loss': 8.0701, 'learning_rate': 1.935483870967742e-05, 'epoch': 0.24}
+{'loss': 7.444, 'learning_rate': 1.870967741935484e-05, 'epoch': 0.36}
+{'loss': 6.8092, 'learning_rate': 1.806451612903226e-05, 'epoch': 0.47}
+{'loss': 6.5742, 'learning_rate': 1.741935483870968e-05, 'epoch': 0.59}
+{'loss': 6.7421, 'learning_rate': 1.6774193548387098e-05, 'epoch': 0.71}
+{'loss': 6.2442, 'learning_rate': 1.6129032258064517e-05, 'epoch': 0.83}
+{'loss': 6.2269, 'learning_rate': 1.5483870967741936e-05, 'epoch': 0.95}
+[INFO|tokenization_utils_base.py:2432] 2024-11-12 21:54:50,075 >> tokenizer config file saved in ../out/llama2-7b-p0.001-lora-seed3/tmp-checkpoint-8/tokenizer_config.json
+[INFO|tokenization_utils_base.py:2441] 2024-11-12 21:54:50,076 >> Special tokens file saved in ../out/llama2-7b-p0.001-lora-seed3/tmp-checkpoint-8/special_tokens_map.json
+ 50%|█████     | 16/32 [00:58<00:56,  3.51s/it][INFO|trainer.py:2889] 2024-11-12 21:55:20,513 >> Saving model checkpoint to ../out/llama2-7b-p0.001-lora-seed3/tmp-checkpoint-16
+{'loss': 6.2567, 'learning_rate': 1.4838709677419357e-05, 'epoch': 1.07}
+{'loss': 5.9438, 'learning_rate': 1.4193548387096776e-05, 'epoch': 1.19}
+{'loss': 5.7975, 'learning_rate': 1.3548387096774194e-05, 'epoch': 1.3}
+{'loss': 5.8724, 'learning_rate': 1.2903225806451613e-05, 'epoch': 1.42}
+{'loss': 5.6176, 'learning_rate': 1.2258064516129034e-05, 'epoch': 1.54}
+{'loss': 5.4337, 'learning_rate': 1.1612903225806453e-05, 'epoch': 1.66}
+{'loss': 5.6006, 'learning_rate': 1.096774193548387e-05, 'epoch': 1.78}
+{'loss': 5.0831, 'learning_rate': 1.0322580645161291e-05, 'epoch': 1.9}
+[INFO|tokenization_utils_base.py:2432] 2024-11-12 21:55:20,767 >> tokenizer config file saved in ../out/llama2-7b-p0.001-lora-seed3/tmp-checkpoint-16/tokenizer_config.json
+[INFO|tokenization_utils_base.py:2441] 2024-11-12 21:55:20,768 >> Special tokens file saved in ../out/llama2-7b-p0.001-lora-seed3/tmp-checkpoint-16/special_tokens_map.json
+ 78%|███████▊  | 25/32 [01:30<00:24,  3.51s/it][INFO|trainer.py:2889] 2024-11-12 21:55:51,207 >> Saving model checkpoint to ../out/llama2-7b-p0.001-lora-seed3/tmp-checkpoint-25
+{'loss': 5.2159, 'learning_rate': 9.67741935483871e-06, 'epoch': 2.01}
+{'loss': 5.022, 'learning_rate': 9.03225806451613e-06, 'epoch': 2.13}
+{'loss': 4.7962, 'learning_rate': 8.387096774193549e-06, 'epoch': 2.25}
+{'loss': 4.8174, 'learning_rate': 7.741935483870968e-06, 'epoch': 2.37}
+{'loss': 5.2067, 'learning_rate': 7.096774193548388e-06, 'epoch': 2.49}
+{'loss': 4.4329, 'learning_rate': 6.451612903225806e-06, 'epoch': 2.61}
+{'loss': 4.7896, 'learning_rate': 5.806451612903226e-06, 'epoch': 2.73}
+{'loss': 4.6575, 'learning_rate': 5.161290322580646e-06, 'epoch': 2.84}
+{'loss': 4.7644, 'learning_rate': 4.516129032258065e-06, 'epoch': 2.96}
+[INFO|tokenization_utils_base.py:2432] 2024-11-12 21:55:51,464 >> tokenizer config file saved in ../out/llama2-7b-p0.001-lora-seed3/tmp-checkpoint-25/tokenizer_config.json
+[INFO|tokenization_utils_base.py:2441] 2024-11-12 21:55:51,465 >> Special tokens file saved in ../out/llama2-7b-p0.001-lora-seed3/tmp-checkpoint-25/special_tokens_map.json
+100%|██████████| 32/32 [01:56<00:00,  3.61s/it][INFO|trainer.py:2889] 2024-11-12 21:56:15,516 >> Saving model checkpoint to ../out/llama2-7b-p0.001-lora-seed3/tmp-checkpoint-32
+{'loss': 4.7864, 'learning_rate': 3.870967741935484e-06, 'epoch': 3.08}
+{'loss': 4.4162, 'learning_rate': 3.225806451612903e-06, 'epoch': 3.2}
+{'loss': 4.3531, 'learning_rate': 2.580645161290323e-06, 'epoch': 3.32}
+{'loss': 4.162, 'learning_rate': 1.935483870967742e-06, 'epoch': 3.44}
+{'loss': 4.7466, 'learning_rate': 1.2903225806451614e-06, 'epoch': 3.56}
+{'loss': 4.4177, 'learning_rate': 6.451612903225807e-07, 'epoch': 3.67}
+{'loss': 4.4789, 'learning_rate': 0.0, 'epoch': 3.79}
+[INFO|tokenization_utils_base.py:2432] 2024-11-12 21:56:15,765 >> tokenizer config file saved in ../out/llama2-7b-p0.001-lora-seed3/tmp-checkpoint-32/tokenizer_config.json
+[INFO|tokenization_utils_base.py:2441] 2024-11-12 21:56:15,766 >> Special tokens file saved in ../out/llama2-7b-p0.001-lora-seed3/tmp-checkpoint-32/special_tokens_map.json
+[INFO|trainer.py:1947] 2024-11-12 21:56:16,189 >>
+
+Training completed. Do not forget to share your model on huggingface.co/models =)
+
+
+100%|██████████| 32/32 [01:56<00:00,  3.65s/it]
+{'train_runtime': 117.4384, 'train_samples_per_second': 9.196, 'train_steps_per_second': 0.272, 'train_loss': 5.5194283574819565, 'epoch': 3.79}
+after training done!!!!
+[INFO|trainer.py:2889] 2024-11-12 21:56:16,192 >> Saving model checkpoint to ../out/llama2-7b-p0.001-lora-seed3
+[INFO|tokenization_utils_base.py:2432] 2024-11-12 21:56:16,446 >> tokenizer config file saved in ../out/llama2-7b-p0.001-lora-seed3/tokenizer_config.json
+[INFO|tokenization_utils_base.py:2441] 2024-11-12 21:56:16,446 >> Special tokens file saved in ../out/llama2-7b-p0.001-lora-seed3/special_tokens_map.json
+***** train metrics *****
+  epoch                    =       3.79
+  train_loss               =     5.5194
+  train_runtime            = 0:01:57.43
+  train_samples            =        270
+  train_samples_per_second =      9.196
+  train_steps_per_second   =      0.272
