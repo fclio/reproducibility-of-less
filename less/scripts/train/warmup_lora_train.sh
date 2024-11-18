@@ -28,6 +28,8 @@ fi
 training_args="$base_training_args \
 --model_name_or_path $model_path \
 --output_dir $output_dir \
+--fsdp 'full_shard auto_wrap' \
+--fsdp_config llama_finetune \
 --percentage $percentage \
 --data_seed $data_seed \
 --train_files ${train_files[@]} 2>&1 | tee $output_dir/train.log"

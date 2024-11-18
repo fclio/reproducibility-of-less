@@ -174,18 +174,53 @@ Successfully installed less-0.1 requests-2.32.3 sympy-1.13.1 torch-2.5.1
 
 [notice] A new release of pip is available: 23.1.2 -> 24.3.1
 [notice] To update, run: pip install --upgrade pip
-/var/spool/slurm/slurmd/job8516452/slurm_script: line 28: ./less/scripts/get_info/get_train_lora_grads.sh: No such file or directory
+/home/scur2847/.local/lib/python3.11/site-packages/huggingface_hub/file_download.py:797: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:04<00:04,  4.65s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:06<00:00,  2.93s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:06<00:00,  3.19s/it]
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/gpfs/home1/scur2847/ir2-less-data/less/data_selection/get_info.py", line 143, in <module>
+    dataset = get_training_dataset(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/home1/scur2847/ir2-less-data/less/data_selection/get_training_dataset.py", line 24, in get_training_dataset
+    raw_datasets = load_raw_dataset(
+                   ^^^^^^^^^^^^^^^^^
+  File "/gpfs/home1/scur2847/ir2-less-data/less/data_selection/get_training_dataset.py", line 35, in load_raw_dataset
+    processed_datasets = load_dataset(
+                         ^^^^^^^^^^^^^
+  File "/home/scur2847/.local/lib/python3.11/site-packages/datasets/load.py", line 2132, in load_dataset
+    builder_instance = load_dataset_builder(
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/scur2847/.local/lib/python3.11/site-packages/datasets/load.py", line 1853, in load_dataset_builder
+    dataset_module = dataset_module_factory(
+                     ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/scur2847/.local/lib/python3.11/site-packages/datasets/load.py", line 1562, in dataset_module_factory
+    ).get_module()
+      ^^^^^^^^^^^^
+  File "/home/scur2847/.local/lib/python3.11/site-packages/datasets/load.py", line 942, in get_module
+    data_files = DataFilesDict.from_patterns(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/scur2847/.local/lib/python3.11/site-packages/datasets/data_files.py", line 721, in from_patterns
+    else DataFilesList.from_patterns(
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/scur2847/.local/lib/python3.11/site-packages/datasets/data_files.py", line 624, in from_patterns
+    resolve_pattern(
+  File "/home/scur2847/.local/lib/python3.11/site-packages/datasets/data_files.py", line 411, in resolve_pattern
+    raise FileNotFoundError(error_msg)
+FileNotFoundError: Unable to find '/gpfs/home1/scur2847/ir2-less-data/../data/train/processed/dolly/dolly_data.jsonl'
+trainable params: 134,217,728 || all params: 6,872,641,536 || trainable%: 1.9529278123549145
 
 JOB STATISTICS
 ==============
-Job ID: 8516452
+Job ID: 8524107
 Cluster: snellius
 User/Group: scur2847/scur2847
-State: FAILED (exit code 127)
+State: FAILED (exit code 1)
 Nodes: 1
 Cores per node: 32
-CPU Utilized: 00:00:46
-CPU Efficiency: 1.32% of 00:58:08 core-walltime
-Job Wall-clock time: 00:01:49
-Memory Utilized: 118.93 MB
-Memory Efficiency: 0.03% of 360.00 GB
+CPU Utilized: 00:02:19
+CPU Efficiency: 1.45% of 02:39:28 core-walltime
+Job Wall-clock time: 00:04:59
+Memory Utilized: 3.41 GB
+Memory Efficiency: 0.95% of 360.00 GB

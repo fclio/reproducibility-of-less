@@ -19,7 +19,7 @@ pip install -e .
 CKPT=1688
 
 TRAINING_DATA_NAME=dolly
-TRAINING_DATA_FILE=../data/train/processed/dolly/dolly_data.jsonl # when changing data name, change the data path accordingly
+TRAINING_DATA_FILE=data/train/processed/dolly/dolly_data.jsonl # when changing data name, change the data path accordingly
 GRADIENT_TYPE="adam"
 MODEL_PATH=../out/llama2-7b-p0.05-lora-seed3/checkpoint-${CKPT}
 OUTPUT_PATH=../grads/llama2-7b-p0.05-lora-seed3/${TRAINING_DATA_NAME}-ckpt${CKPT}-${GRADIENT_TYPE}

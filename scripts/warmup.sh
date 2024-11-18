@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #SBATCH --partition=gpu_h100
-#SBATCH --gpus=1
+#SBATCH --gpus=2
 #SBATCH --job-name=LESS-warmup
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=18
@@ -20,7 +20,7 @@ pip install -e .
 DATA_DIR="data"
 MODEL_PATH="meta-llama/Llama-2-7b-hf"
 # MODEL_PATH="winglian/Llama-2-3b-hf"
-PERCENTAGE=0.05
+PERCENTAGE=0.001
 DATA_SEED=3
 JOB_NAME="llama2-7b-p${PERCENTAGE}-lora-seed${DATA_SEED}"
 
