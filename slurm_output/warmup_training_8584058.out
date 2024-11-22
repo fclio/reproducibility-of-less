@@ -1,716 +1,0 @@
-Defaulting to user installation because normal site-packages is not writeable
-Requirement already satisfied: peft==0.7.1 in /home/scur2847/.local/lib/python3.11/site-packages (from -r requirement.txt (line 1)) (0.7.1)
-Requirement already satisfied: transformers==4.36.2 in /home/scur2847/.local/lib/python3.11/site-packages (from -r requirement.txt (line 2)) (4.36.2)
-Requirement already satisfied: traker[fast]==0.1.3 in /home/scur2847/.local/lib/python3.11/site-packages (from -r requirement.txt (line 3)) (0.1.3)
-Requirement already satisfied: datasets in /home/scur2847/.local/lib/python3.11/site-packages (from -r requirement.txt (line 4)) (3.1.0)
-Requirement already satisfied: torchvision in /home/scur2847/.local/lib/python3.11/site-packages (from -r requirement.txt (line 5)) (0.20.1)
-Requirement already satisfied: torchaudio in /home/scur2847/.local/lib/python3.11/site-packages (from -r requirement.txt (line 6)) (2.5.1)
-Requirement already satisfied: accelerate==0.34.2 in /home/scur2847/.local/lib/python3.11/site-packages (from -r requirement.txt (line 7)) (0.34.2)
-Requirement already satisfied: wandb in /home/scur2847/.local/lib/python3.11/site-packages (from -r requirement.txt (line 8)) (0.18.6)
-Requirement already satisfied: numpy>=1.17 in /sw/arch/RHEL8/EB_production/2023/software/SciPy-bundle/2023.07-gfbf-2023a/lib/python3.11/site-packages (from peft==0.7.1->-r requirement.txt (line 1)) (1.25.1)
-Requirement already satisfied: packaging>=20.0 in /sw/arch/RHEL8/EB_production/2023/software/Python-bundle-PyPI/2023.06-GCCcore-12.3.0/lib/python3.11/site-packages (from peft==0.7.1->-r requirement.txt (line 1)) (23.1)
-Requirement already satisfied: psutil in /sw/arch/RHEL8/EB_production/2023/software/Python-bundle-PyPI/2023.06-GCCcore-12.3.0/lib/python3.11/site-packages (from peft==0.7.1->-r requirement.txt (line 1)) (5.9.5)
-Requirement already satisfied: pyyaml in /sw/arch/RHEL8/EB_production/2023/software/PyYAML/6.0-GCCcore-12.3.0/lib/python3.11/site-packages (from peft==0.7.1->-r requirement.txt (line 1)) (6.0)
-Requirement already satisfied: torch>=1.13.0 in /sw/arch/RHEL8/EB_production/2023/software/PyTorch/2.1.2-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages (from peft==0.7.1->-r requirement.txt (line 1)) (2.1.2)
-Requirement already satisfied: tqdm in /home/scur2847/.local/lib/python3.11/site-packages (from peft==0.7.1->-r requirement.txt (line 1)) (4.67.0)
-Requirement already satisfied: safetensors in /home/scur2847/.local/lib/python3.11/site-packages (from peft==0.7.1->-r requirement.txt (line 1)) (0.4.5)
-Requirement already satisfied: huggingface-hub>=0.17.0 in /home/scur2847/.local/lib/python3.11/site-packages (from peft==0.7.1->-r requirement.txt (line 1)) (0.26.2)
-Requirement already satisfied: filelock in /sw/arch/RHEL8/EB_production/2023/software/Python-bundle-PyPI/2023.06-GCCcore-12.3.0/lib/python3.11/site-packages (from transformers==4.36.2->-r requirement.txt (line 2)) (3.12.2)
-Requirement already satisfied: regex!=2019.12.17 in /sw/arch/RHEL8/EB_production/2023/software/Python-bundle-PyPI/2023.06-GCCcore-12.3.0/lib/python3.11/site-packages (from transformers==4.36.2->-r requirement.txt (line 2)) (2023.6.3)
-Requirement already satisfied: requests in /sw/arch/RHEL8/EB_production/2023/software/Python-bundle-PyPI/2023.06-GCCcore-12.3.0/lib/python3.11/site-packages (from transformers==4.36.2->-r requirement.txt (line 2)) (2.31.0)
-Requirement already satisfied: tokenizers<0.19,>=0.14 in /home/scur2847/.local/lib/python3.11/site-packages (from transformers==4.36.2->-r requirement.txt (line 2)) (0.15.2)
-Requirement already satisfied: fast-jl in /home/scur2847/.local/lib/python3.11/site-packages (from traker[fast]==0.1.3->-r requirement.txt (line 3)) (0.1.3)
-Requirement already satisfied: pyarrow>=15.0.0 in /home/scur2847/.local/lib/python3.11/site-packages (from datasets->-r requirement.txt (line 4)) (18.0.0)
-Requirement already satisfied: dill<0.3.9,>=0.3.0 in /home/scur2847/.local/lib/python3.11/site-packages (from datasets->-r requirement.txt (line 4)) (0.3.8)
-Requirement already satisfied: pandas in /sw/arch/RHEL8/EB_production/2023/software/SciPy-bundle/2023.07-gfbf-2023a/lib/python3.11/site-packages (from datasets->-r requirement.txt (line 4)) (2.0.3)
-Collecting requests (from transformers==4.36.2->-r requirement.txt (line 2))
-  Using cached requests-2.32.3-py3-none-any.whl (64 kB)
-Requirement already satisfied: xxhash in /home/scur2847/.local/lib/python3.11/site-packages (from datasets->-r requirement.txt (line 4)) (3.5.0)
-Requirement already satisfied: multiprocess<0.70.17 in /home/scur2847/.local/lib/python3.11/site-packages (from datasets->-r requirement.txt (line 4)) (0.70.16)
-Requirement already satisfied: fsspec[http]<=2024.9.0,>=2023.1.0 in /sw/arch/RHEL8/EB_production/2023/software/Python-bundle-PyPI/2023.06-GCCcore-12.3.0/lib/python3.11/site-packages (from datasets->-r requirement.txt (line 4)) (2023.6.0)
-Requirement already satisfied: aiohttp in /home/scur2847/.local/lib/python3.11/site-packages (from datasets->-r requirement.txt (line 4)) (3.10.10)
-Collecting torch>=1.13.0 (from peft==0.7.1->-r requirement.txt (line 1))
-  Using cached torch-2.5.1-cp311-cp311-manylinux1_x86_64.whl (906.5 MB)
-Requirement already satisfied: pillow!=8.3.*,>=5.3.0 in /sw/arch/RHEL8/EB_production/2023/software/Pillow/10.0.0-GCCcore-12.3.0/lib/python3.11/site-packages (from torchvision->-r requirement.txt (line 5)) (10.0.0)
-Requirement already satisfied: typing-extensions>=4.8.0 in /home/scur2847/.local/lib/python3.11/site-packages (from torch>=1.13.0->peft==0.7.1->-r requirement.txt (line 1)) (4.12.2)
-Requirement already satisfied: networkx in /sw/arch/RHEL8/EB_production/2023/software/networkx/3.1-gfbf-2023a/lib/python3.11/site-packages (from torch>=1.13.0->peft==0.7.1->-r requirement.txt (line 1)) (3.1)
-Requirement already satisfied: jinja2 in /sw/arch/RHEL8/EB_production/2023/software/Python-bundle-PyPI/2023.06-GCCcore-12.3.0/lib/python3.11/site-packages (from torch>=1.13.0->peft==0.7.1->-r requirement.txt (line 1)) (3.1.2)
-Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.4.127 in /home/scur2847/.local/lib/python3.11/site-packages (from torch>=1.13.0->peft==0.7.1->-r requirement.txt (line 1)) (12.4.127)
-Requirement already satisfied: nvidia-cuda-runtime-cu12==12.4.127 in /home/scur2847/.local/lib/python3.11/site-packages (from torch>=1.13.0->peft==0.7.1->-r requirement.txt (line 1)) (12.4.127)
-Requirement already satisfied: nvidia-cuda-cupti-cu12==12.4.127 in /home/scur2847/.local/lib/python3.11/site-packages (from torch>=1.13.0->peft==0.7.1->-r requirement.txt (line 1)) (12.4.127)
-Requirement already satisfied: nvidia-cudnn-cu12==9.1.0.70 in /home/scur2847/.local/lib/python3.11/site-packages (from torch>=1.13.0->peft==0.7.1->-r requirement.txt (line 1)) (9.1.0.70)
-Requirement already satisfied: nvidia-cublas-cu12==12.4.5.8 in /home/scur2847/.local/lib/python3.11/site-packages (from torch>=1.13.0->peft==0.7.1->-r requirement.txt (line 1)) (12.4.5.8)
-Requirement already satisfied: nvidia-cufft-cu12==11.2.1.3 in /home/scur2847/.local/lib/python3.11/site-packages (from torch>=1.13.0->peft==0.7.1->-r requirement.txt (line 1)) (11.2.1.3)
-Requirement already satisfied: nvidia-curand-cu12==10.3.5.147 in /home/scur2847/.local/lib/python3.11/site-packages (from torch>=1.13.0->peft==0.7.1->-r requirement.txt (line 1)) (10.3.5.147)
-Requirement already satisfied: nvidia-cusolver-cu12==11.6.1.9 in /home/scur2847/.local/lib/python3.11/site-packages (from torch>=1.13.0->peft==0.7.1->-r requirement.txt (line 1)) (11.6.1.9)
-Requirement already satisfied: nvidia-cusparse-cu12==12.3.1.170 in /home/scur2847/.local/lib/python3.11/site-packages (from torch>=1.13.0->peft==0.7.1->-r requirement.txt (line 1)) (12.3.1.170)
-Requirement already satisfied: nvidia-nccl-cu12==2.21.5 in /home/scur2847/.local/lib/python3.11/site-packages (from torch>=1.13.0->peft==0.7.1->-r requirement.txt (line 1)) (2.21.5)
-Requirement already satisfied: nvidia-nvtx-cu12==12.4.127 in /home/scur2847/.local/lib/python3.11/site-packages (from torch>=1.13.0->peft==0.7.1->-r requirement.txt (line 1)) (12.4.127)
-Requirement already satisfied: nvidia-nvjitlink-cu12==12.4.127 in /home/scur2847/.local/lib/python3.11/site-packages (from torch>=1.13.0->peft==0.7.1->-r requirement.txt (line 1)) (12.4.127)
-Requirement already satisfied: triton==3.1.0 in /home/scur2847/.local/lib/python3.11/site-packages (from torch>=1.13.0->peft==0.7.1->-r requirement.txt (line 1)) (3.1.0)
-Collecting sympy==1.13.1 (from torch>=1.13.0->peft==0.7.1->-r requirement.txt (line 1))
-  Using cached sympy-1.13.1-py3-none-any.whl (6.2 MB)
-Requirement already satisfied: mpmath<1.4,>=1.1.0 in /sw/arch/RHEL8/EB_production/2023/software/SciPy-bundle/2023.07-gfbf-2023a/lib/python3.11/site-packages (from sympy==1.13.1->torch>=1.13.0->peft==0.7.1->-r requirement.txt (line 1)) (1.3.0)
-Requirement already satisfied: click!=8.0.0,>=7.1 in /sw/arch/RHEL8/EB_production/2023/software/Python-bundle-PyPI/2023.06-GCCcore-12.3.0/lib/python3.11/site-packages (from wandb->-r requirement.txt (line 8)) (8.1.3)
-Requirement already satisfied: docker-pycreds>=0.4.0 in /home/scur2847/.local/lib/python3.11/site-packages (from wandb->-r requirement.txt (line 8)) (0.4.0)
-Requirement already satisfied: gitpython!=3.1.29,>=1.0.0 in /home/scur2847/.local/lib/python3.11/site-packages (from wandb->-r requirement.txt (line 8)) (3.1.43)
-Requirement already satisfied: platformdirs in /sw/arch/RHEL8/EB_production/2023/software/Python-bundle-PyPI/2023.06-GCCcore-12.3.0/lib/python3.11/site-packages (from wandb->-r requirement.txt (line 8)) (3.8.0)
-Requirement already satisfied: protobuf!=4.21.0,!=5.28.0,<6,>=3.19.0 in /sw/arch/RHEL8/EB_production/2023/software/protobuf-python/4.24.0-GCCcore-12.3.0/lib/python3.11/site-packages (from wandb->-r requirement.txt (line 8)) (4.24.0)
-Requirement already satisfied: sentry-sdk>=2.0.0 in /home/scur2847/.local/lib/python3.11/site-packages (from wandb->-r requirement.txt (line 8)) (2.18.0)
-Requirement already satisfied: setproctitle in /home/scur2847/.local/lib/python3.11/site-packages (from wandb->-r requirement.txt (line 8)) (1.3.3)
-Requirement already satisfied: setuptools in /sw/arch/RHEL8/EB_production/2023/software/Python/3.11.3-GCCcore-12.3.0/lib/python3.11/site-packages (from wandb->-r requirement.txt (line 8)) (67.7.2)
-Requirement already satisfied: six>=1.4.0 in /sw/arch/RHEL8/EB_production/2023/software/Python-bundle-PyPI/2023.06-GCCcore-12.3.0/lib/python3.11/site-packages (from docker-pycreds>=0.4.0->wandb->-r requirement.txt (line 8)) (1.16.0)
-Requirement already satisfied: aiohappyeyeballs>=2.3.0 in /home/scur2847/.local/lib/python3.11/site-packages (from aiohttp->datasets->-r requirement.txt (line 4)) (2.4.3)
-Requirement already satisfied: aiosignal>=1.1.2 in /home/scur2847/.local/lib/python3.11/site-packages (from aiohttp->datasets->-r requirement.txt (line 4)) (1.3.1)
-Requirement already satisfied: attrs>=17.3.0 in /sw/arch/RHEL8/EB_production/2023/software/Python-bundle-PyPI/2023.06-GCCcore-12.3.0/lib/python3.11/site-packages (from aiohttp->datasets->-r requirement.txt (line 4)) (23.1.0)
-Requirement already satisfied: frozenlist>=1.1.1 in /home/scur2847/.local/lib/python3.11/site-packages (from aiohttp->datasets->-r requirement.txt (line 4)) (1.5.0)
-Requirement already satisfied: multidict<7.0,>=4.5 in /home/scur2847/.local/lib/python3.11/site-packages (from aiohttp->datasets->-r requirement.txt (line 4)) (6.1.0)
-Requirement already satisfied: yarl<2.0,>=1.12.0 in /home/scur2847/.local/lib/python3.11/site-packages (from aiohttp->datasets->-r requirement.txt (line 4)) (1.17.1)
-Requirement already satisfied: gitdb<5,>=4.0.1 in /home/scur2847/.local/lib/python3.11/site-packages (from gitpython!=3.1.29,>=1.0.0->wandb->-r requirement.txt (line 8)) (4.0.11)
-Requirement already satisfied: charset-normalizer<4,>=2 in /sw/arch/RHEL8/EB_production/2023/software/Python-bundle-PyPI/2023.06-GCCcore-12.3.0/lib/python3.11/site-packages (from requests->transformers==4.36.2->-r requirement.txt (line 2)) (3.1.0)
-Requirement already satisfied: idna<4,>=2.5 in /sw/arch/RHEL8/EB_production/2023/software/Python-bundle-PyPI/2023.06-GCCcore-12.3.0/lib/python3.11/site-packages (from requests->transformers==4.36.2->-r requirement.txt (line 2)) (3.4)
-Requirement already satisfied: urllib3<3,>=1.21.1 in /sw/arch/RHEL8/EB_production/2023/software/Python-bundle-PyPI/2023.06-GCCcore-12.3.0/lib/python3.11/site-packages (from requests->transformers==4.36.2->-r requirement.txt (line 2)) (1.26.16)
-Requirement already satisfied: certifi>=2017.4.17 in /sw/arch/RHEL8/EB_production/2023/software/Python-bundle-PyPI/2023.06-GCCcore-12.3.0/lib/python3.11/site-packages (from requests->transformers==4.36.2->-r requirement.txt (line 2)) (2023.5.7)
-Requirement already satisfied: python-dateutil>=2.8.2 in /sw/arch/RHEL8/EB_production/2023/software/Python-bundle-PyPI/2023.06-GCCcore-12.3.0/lib/python3.11/site-packages (from pandas->datasets->-r requirement.txt (line 4)) (2.8.2)
-Requirement already satisfied: pytz>=2020.1 in /sw/arch/RHEL8/EB_production/2023/software/Python-bundle-PyPI/2023.06-GCCcore-12.3.0/lib/python3.11/site-packages (from pandas->datasets->-r requirement.txt (line 4)) (2023.3)
-Requirement already satisfied: tzdata>=2022.1 in /sw/arch/RHEL8/EB_production/2023/software/SciPy-bundle/2023.07-gfbf-2023a/lib/python3.11/site-packages (from pandas->datasets->-r requirement.txt (line 4)) (2023.3)
-Requirement already satisfied: smmap<6,>=3.0.1 in /home/scur2847/.local/lib/python3.11/site-packages (from gitdb<5,>=4.0.1->gitpython!=3.1.29,>=1.0.0->wandb->-r requirement.txt (line 8)) (5.0.1)
-Requirement already satisfied: propcache>=0.2.0 in /home/scur2847/.local/lib/python3.11/site-packages (from yarl<2.0,>=1.12.0->aiohttp->datasets->-r requirement.txt (line 4)) (0.2.0)
-Requirement already satisfied: MarkupSafe>=2.0 in /sw/arch/RHEL8/EB_production/2023/software/Python-bundle-PyPI/2023.06-GCCcore-12.3.0/lib/python3.11/site-packages (from jinja2->torch>=1.13.0->peft==0.7.1->-r requirement.txt (line 1)) (2.1.3)
-Installing collected packages: sympy, requests, torch
-Successfully installed requests-2.32.3 sympy-1.13.1 torch-2.5.1
-
-[notice] A new release of pip is available: 23.1.2 -> 24.3.1
-[notice] To update, run: pip install --upgrade pip
-Defaulting to user installation because normal site-packages is not writeable
-Obtaining file:///gpfs/home1/scur2847/ir2-less-data
-  Preparing metadata (setup.py): started
-  Preparing metadata (setup.py): finished with status 'done'
-Requirement already satisfied: peft==0.7.1 in /home/scur2847/.local/lib/python3.11/site-packages (from less==0.1) (0.7.1)
-Requirement already satisfied: transformers==4.36.2 in /home/scur2847/.local/lib/python3.11/site-packages (from less==0.1) (4.36.2)
-Requirement already satisfied: traker[fast]==0.1.3 in /home/scur2847/.local/lib/python3.11/site-packages (from less==0.1) (0.1.3)
-Requirement already satisfied: datasets in /home/scur2847/.local/lib/python3.11/site-packages (from less==0.1) (3.1.0)
-Requirement already satisfied: torchvision in /home/scur2847/.local/lib/python3.11/site-packages (from less==0.1) (0.20.1)
-Requirement already satisfied: torchaudio in /home/scur2847/.local/lib/python3.11/site-packages (from less==0.1) (2.5.1)
-Requirement already satisfied: accelerate==0.34.2 in /home/scur2847/.local/lib/python3.11/site-packages (from less==0.1) (0.34.2)
-Requirement already satisfied: wandb in /home/scur2847/.local/lib/python3.11/site-packages (from less==0.1) (0.18.6)
-Requirement already satisfied: numpy<3.0.0,>=1.17 in /sw/arch/RHEL8/EB_production/2023/software/SciPy-bundle/2023.07-gfbf-2023a/lib/python3.11/site-packages (from accelerate==0.34.2->less==0.1) (1.25.1)
-Requirement already satisfied: packaging>=20.0 in /sw/arch/RHEL8/EB_production/2023/software/Python-bundle-PyPI/2023.06-GCCcore-12.3.0/lib/python3.11/site-packages (from accelerate==0.34.2->less==0.1) (23.1)
-Requirement already satisfied: psutil in /sw/arch/RHEL8/EB_production/2023/software/Python-bundle-PyPI/2023.06-GCCcore-12.3.0/lib/python3.11/site-packages (from accelerate==0.34.2->less==0.1) (5.9.5)
-Requirement already satisfied: pyyaml in /sw/arch/RHEL8/EB_production/2023/software/PyYAML/6.0-GCCcore-12.3.0/lib/python3.11/site-packages (from accelerate==0.34.2->less==0.1) (6.0)
-Requirement already satisfied: torch>=1.10.0 in /sw/arch/RHEL8/EB_production/2023/software/PyTorch/2.1.2-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages (from accelerate==0.34.2->less==0.1) (2.1.2)
-Requirement already satisfied: huggingface-hub>=0.21.0 in /home/scur2847/.local/lib/python3.11/site-packages (from accelerate==0.34.2->less==0.1) (0.26.2)
-Requirement already satisfied: safetensors>=0.4.3 in /home/scur2847/.local/lib/python3.11/site-packages (from accelerate==0.34.2->less==0.1) (0.4.5)
-Requirement already satisfied: tqdm in /home/scur2847/.local/lib/python3.11/site-packages (from peft==0.7.1->less==0.1) (4.67.0)
-Requirement already satisfied: fast-jl in /home/scur2847/.local/lib/python3.11/site-packages (from traker[fast]==0.1.3->less==0.1) (0.1.3)
-Requirement already satisfied: filelock in /sw/arch/RHEL8/EB_production/2023/software/Python-bundle-PyPI/2023.06-GCCcore-12.3.0/lib/python3.11/site-packages (from transformers==4.36.2->less==0.1) (3.12.2)
-Requirement already satisfied: regex!=2019.12.17 in /sw/arch/RHEL8/EB_production/2023/software/Python-bundle-PyPI/2023.06-GCCcore-12.3.0/lib/python3.11/site-packages (from transformers==4.36.2->less==0.1) (2023.6.3)
-Requirement already satisfied: requests in /sw/arch/RHEL8/EB_production/2023/software/Python-bundle-PyPI/2023.06-GCCcore-12.3.0/lib/python3.11/site-packages (from transformers==4.36.2->less==0.1) (2.31.0)
-Requirement already satisfied: tokenizers<0.19,>=0.14 in /home/scur2847/.local/lib/python3.11/site-packages (from transformers==4.36.2->less==0.1) (0.15.2)
-Requirement already satisfied: pyarrow>=15.0.0 in /home/scur2847/.local/lib/python3.11/site-packages (from datasets->less==0.1) (18.0.0)
-Requirement already satisfied: dill<0.3.9,>=0.3.0 in /home/scur2847/.local/lib/python3.11/site-packages (from datasets->less==0.1) (0.3.8)
-Requirement already satisfied: pandas in /sw/arch/RHEL8/EB_production/2023/software/SciPy-bundle/2023.07-gfbf-2023a/lib/python3.11/site-packages (from datasets->less==0.1) (2.0.3)
-Collecting requests (from transformers==4.36.2->less==0.1)
-  Using cached requests-2.32.3-py3-none-any.whl (64 kB)
-Requirement already satisfied: xxhash in /home/scur2847/.local/lib/python3.11/site-packages (from datasets->less==0.1) (3.5.0)
-Requirement already satisfied: multiprocess<0.70.17 in /home/scur2847/.local/lib/python3.11/site-packages (from datasets->less==0.1) (0.70.16)
-Requirement already satisfied: fsspec[http]<=2024.9.0,>=2023.1.0 in /sw/arch/RHEL8/EB_production/2023/software/Python-bundle-PyPI/2023.06-GCCcore-12.3.0/lib/python3.11/site-packages (from datasets->less==0.1) (2023.6.0)
-Requirement already satisfied: aiohttp in /home/scur2847/.local/lib/python3.11/site-packages (from datasets->less==0.1) (3.10.10)
-Collecting torch>=1.10.0 (from accelerate==0.34.2->less==0.1)
-  Using cached torch-2.5.1-cp311-cp311-manylinux1_x86_64.whl (906.5 MB)
-Requirement already satisfied: typing-extensions>=4.8.0 in /home/scur2847/.local/lib/python3.11/site-packages (from torch>=1.10.0->accelerate==0.34.2->less==0.1) (4.12.2)
-Requirement already satisfied: networkx in /sw/arch/RHEL8/EB_production/2023/software/networkx/3.1-gfbf-2023a/lib/python3.11/site-packages (from torch>=1.10.0->accelerate==0.34.2->less==0.1) (3.1)
-Requirement already satisfied: jinja2 in /sw/arch/RHEL8/EB_production/2023/software/Python-bundle-PyPI/2023.06-GCCcore-12.3.0/lib/python3.11/site-packages (from torch>=1.10.0->accelerate==0.34.2->less==0.1) (3.1.2)
-Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.4.127 in /home/scur2847/.local/lib/python3.11/site-packages (from torch>=1.10.0->accelerate==0.34.2->less==0.1) (12.4.127)
-Requirement already satisfied: nvidia-cuda-runtime-cu12==12.4.127 in /home/scur2847/.local/lib/python3.11/site-packages (from torch>=1.10.0->accelerate==0.34.2->less==0.1) (12.4.127)
-Requirement already satisfied: nvidia-cuda-cupti-cu12==12.4.127 in /home/scur2847/.local/lib/python3.11/site-packages (from torch>=1.10.0->accelerate==0.34.2->less==0.1) (12.4.127)
-Requirement already satisfied: nvidia-cudnn-cu12==9.1.0.70 in /home/scur2847/.local/lib/python3.11/site-packages (from torch>=1.10.0->accelerate==0.34.2->less==0.1) (9.1.0.70)
-Requirement already satisfied: nvidia-cublas-cu12==12.4.5.8 in /home/scur2847/.local/lib/python3.11/site-packages (from torch>=1.10.0->accelerate==0.34.2->less==0.1) (12.4.5.8)
-Requirement already satisfied: nvidia-cufft-cu12==11.2.1.3 in /home/scur2847/.local/lib/python3.11/site-packages (from torch>=1.10.0->accelerate==0.34.2->less==0.1) (11.2.1.3)
-Requirement already satisfied: nvidia-curand-cu12==10.3.5.147 in /home/scur2847/.local/lib/python3.11/site-packages (from torch>=1.10.0->accelerate==0.34.2->less==0.1) (10.3.5.147)
-Requirement already satisfied: nvidia-cusolver-cu12==11.6.1.9 in /home/scur2847/.local/lib/python3.11/site-packages (from torch>=1.10.0->accelerate==0.34.2->less==0.1) (11.6.1.9)
-Requirement already satisfied: nvidia-cusparse-cu12==12.3.1.170 in /home/scur2847/.local/lib/python3.11/site-packages (from torch>=1.10.0->accelerate==0.34.2->less==0.1) (12.3.1.170)
-Requirement already satisfied: nvidia-nccl-cu12==2.21.5 in /home/scur2847/.local/lib/python3.11/site-packages (from torch>=1.10.0->accelerate==0.34.2->less==0.1) (2.21.5)
-Requirement already satisfied: nvidia-nvtx-cu12==12.4.127 in /home/scur2847/.local/lib/python3.11/site-packages (from torch>=1.10.0->accelerate==0.34.2->less==0.1) (12.4.127)
-Requirement already satisfied: nvidia-nvjitlink-cu12==12.4.127 in /home/scur2847/.local/lib/python3.11/site-packages (from torch>=1.10.0->accelerate==0.34.2->less==0.1) (12.4.127)
-Requirement already satisfied: triton==3.1.0 in /home/scur2847/.local/lib/python3.11/site-packages (from torch>=1.10.0->accelerate==0.34.2->less==0.1) (3.1.0)
-Collecting sympy==1.13.1 (from torch>=1.10.0->accelerate==0.34.2->less==0.1)
-  Using cached sympy-1.13.1-py3-none-any.whl (6.2 MB)
-Requirement already satisfied: mpmath<1.4,>=1.1.0 in /sw/arch/RHEL8/EB_production/2023/software/SciPy-bundle/2023.07-gfbf-2023a/lib/python3.11/site-packages (from sympy==1.13.1->torch>=1.10.0->accelerate==0.34.2->less==0.1) (1.3.0)
-Requirement already satisfied: pillow!=8.3.*,>=5.3.0 in /sw/arch/RHEL8/EB_production/2023/software/Pillow/10.0.0-GCCcore-12.3.0/lib/python3.11/site-packages (from torchvision->less==0.1) (10.0.0)
-Requirement already satisfied: click!=8.0.0,>=7.1 in /sw/arch/RHEL8/EB_production/2023/software/Python-bundle-PyPI/2023.06-GCCcore-12.3.0/lib/python3.11/site-packages (from wandb->less==0.1) (8.1.3)
-Requirement already satisfied: docker-pycreds>=0.4.0 in /home/scur2847/.local/lib/python3.11/site-packages (from wandb->less==0.1) (0.4.0)
-Requirement already satisfied: gitpython!=3.1.29,>=1.0.0 in /home/scur2847/.local/lib/python3.11/site-packages (from wandb->less==0.1) (3.1.43)
-Requirement already satisfied: platformdirs in /sw/arch/RHEL8/EB_production/2023/software/Python-bundle-PyPI/2023.06-GCCcore-12.3.0/lib/python3.11/site-packages (from wandb->less==0.1) (3.8.0)
-Requirement already satisfied: protobuf!=4.21.0,!=5.28.0,<6,>=3.19.0 in /sw/arch/RHEL8/EB_production/2023/software/protobuf-python/4.24.0-GCCcore-12.3.0/lib/python3.11/site-packages (from wandb->less==0.1) (4.24.0)
-Requirement already satisfied: sentry-sdk>=2.0.0 in /home/scur2847/.local/lib/python3.11/site-packages (from wandb->less==0.1) (2.18.0)
-Requirement already satisfied: setproctitle in /home/scur2847/.local/lib/python3.11/site-packages (from wandb->less==0.1) (1.3.3)
-Requirement already satisfied: setuptools in /sw/arch/RHEL8/EB_production/2023/software/Python/3.11.3-GCCcore-12.3.0/lib/python3.11/site-packages (from wandb->less==0.1) (67.7.2)
-Requirement already satisfied: six>=1.4.0 in /sw/arch/RHEL8/EB_production/2023/software/Python-bundle-PyPI/2023.06-GCCcore-12.3.0/lib/python3.11/site-packages (from docker-pycreds>=0.4.0->wandb->less==0.1) (1.16.0)
-Requirement already satisfied: aiohappyeyeballs>=2.3.0 in /home/scur2847/.local/lib/python3.11/site-packages (from aiohttp->datasets->less==0.1) (2.4.3)
-Requirement already satisfied: aiosignal>=1.1.2 in /home/scur2847/.local/lib/python3.11/site-packages (from aiohttp->datasets->less==0.1) (1.3.1)
-Requirement already satisfied: attrs>=17.3.0 in /sw/arch/RHEL8/EB_production/2023/software/Python-bundle-PyPI/2023.06-GCCcore-12.3.0/lib/python3.11/site-packages (from aiohttp->datasets->less==0.1) (23.1.0)
-Requirement already satisfied: frozenlist>=1.1.1 in /home/scur2847/.local/lib/python3.11/site-packages (from aiohttp->datasets->less==0.1) (1.5.0)
-Requirement already satisfied: multidict<7.0,>=4.5 in /home/scur2847/.local/lib/python3.11/site-packages (from aiohttp->datasets->less==0.1) (6.1.0)
-Requirement already satisfied: yarl<2.0,>=1.12.0 in /home/scur2847/.local/lib/python3.11/site-packages (from aiohttp->datasets->less==0.1) (1.17.1)
-Requirement already satisfied: gitdb<5,>=4.0.1 in /home/scur2847/.local/lib/python3.11/site-packages (from gitpython!=3.1.29,>=1.0.0->wandb->less==0.1) (4.0.11)
-Requirement already satisfied: charset-normalizer<4,>=2 in /sw/arch/RHEL8/EB_production/2023/software/Python-bundle-PyPI/2023.06-GCCcore-12.3.0/lib/python3.11/site-packages (from requests->transformers==4.36.2->less==0.1) (3.1.0)
-Requirement already satisfied: idna<4,>=2.5 in /sw/arch/RHEL8/EB_production/2023/software/Python-bundle-PyPI/2023.06-GCCcore-12.3.0/lib/python3.11/site-packages (from requests->transformers==4.36.2->less==0.1) (3.4)
-Requirement already satisfied: urllib3<3,>=1.21.1 in /sw/arch/RHEL8/EB_production/2023/software/Python-bundle-PyPI/2023.06-GCCcore-12.3.0/lib/python3.11/site-packages (from requests->transformers==4.36.2->less==0.1) (1.26.16)
-Requirement already satisfied: certifi>=2017.4.17 in /sw/arch/RHEL8/EB_production/2023/software/Python-bundle-PyPI/2023.06-GCCcore-12.3.0/lib/python3.11/site-packages (from requests->transformers==4.36.2->less==0.1) (2023.5.7)
-Requirement already satisfied: python-dateutil>=2.8.2 in /sw/arch/RHEL8/EB_production/2023/software/Python-bundle-PyPI/2023.06-GCCcore-12.3.0/lib/python3.11/site-packages (from pandas->datasets->less==0.1) (2.8.2)
-Requirement already satisfied: pytz>=2020.1 in /sw/arch/RHEL8/EB_production/2023/software/Python-bundle-PyPI/2023.06-GCCcore-12.3.0/lib/python3.11/site-packages (from pandas->datasets->less==0.1) (2023.3)
-Requirement already satisfied: tzdata>=2022.1 in /sw/arch/RHEL8/EB_production/2023/software/SciPy-bundle/2023.07-gfbf-2023a/lib/python3.11/site-packages (from pandas->datasets->less==0.1) (2023.3)
-Requirement already satisfied: smmap<6,>=3.0.1 in /home/scur2847/.local/lib/python3.11/site-packages (from gitdb<5,>=4.0.1->gitpython!=3.1.29,>=1.0.0->wandb->less==0.1) (5.0.1)
-Requirement already satisfied: propcache>=0.2.0 in /home/scur2847/.local/lib/python3.11/site-packages (from yarl<2.0,>=1.12.0->aiohttp->datasets->less==0.1) (0.2.0)
-Requirement already satisfied: MarkupSafe>=2.0 in /sw/arch/RHEL8/EB_production/2023/software/Python-bundle-PyPI/2023.06-GCCcore-12.3.0/lib/python3.11/site-packages (from jinja2->torch>=1.10.0->accelerate==0.34.2->less==0.1) (2.1.3)
-Installing collected packages: sympy, requests, torch, less
-  Attempting uninstall: less
-    Found existing installation: less 0.1
-    Uninstalling less-0.1:
-      Successfully uninstalled less-0.1
-  Running setup.py develop for less
-Successfully installed less-0.1 requests-2.32.3 sympy-1.13.1 torch-2.5.1
-
-[notice] A new release of pip is available: 23.1.2 -> 24.3.1
-[notice] To update, run: pip install --upgrade pip
-[2024-11-18 15:21:50,133] torch.distributed.run: [WARNING] master_addr is only used for static rdzv_backend and when rdzv_endpoint is not specified.
-wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
-wandb: Currently logged in as: colinnyuh (colinnyuh-university-of-amsterdam). Use `wandb login --relogin` to force relogin
-wandb: Appending key for api.wandb.ai to your netrc file: /home/scur2847/.netrc
-11/18/2024 15:21:57 - WARNING - __main__ - Process rank: 0, device: cuda:0, n_gpu: 1distributed training: True, 16-bits training: False
-11/18/2024 15:21:57 - INFO - __main__ - Training parameters TrainingArguments(
-_n_gpu=1,
-adafactor=False,
-adam_beta1=0.9,
-adam_beta2=0.999,
-adam_epsilon=1e-08,
-analysis_dataset=bbh,
-analysis_mode=False,
-auto_find_batch_size=False,
-bf16=True,
-bf16_full_eval=False,
-data_seed=3,
-dataloader_drop_last=False,
-dataloader_num_workers=0,
-dataloader_persistent_workers=False,
-dataloader_pin_memory=True,
-ddp_backend=None,
-ddp_broadcast_buffers=None,
-ddp_bucket_cap_mb=None,
-ddp_find_unused_parameters=None,
-ddp_timeout=1800,
-debug=[],
-deepspeed=None,
-disable_tqdm=False,
-dispatch_batches=None,
-do_eval=False,
-do_predict=False,
-do_train=True,
-eval_accumulation_steps=None,
-eval_delay=0,
-eval_steps=None,
-evaluation_strategy=IntervalStrategy.NO,
-fp16=False,
-fp16_backend=auto,
-fp16_full_eval=False,
-fp16_opt_level=O1,
-fsdp=[<FSDPOption.FULL_SHARD: 'full_shard'>, <FSDPOption.AUTO_WRAP: 'auto_wrap'>],
-fsdp_config={'fsdp_transformer_layer_cls_to_wrap': ['LlamaDecoderLayer'], 'fsdp_backward_prefetch': 'backward_pre', 'limit_all_gathers': 'true', 'use_orig_params': 'true', 'min_num_params': 0, 'xla': False, 'xla_fsdp_grad_ckpt': False},
-fsdp_min_num_params=0,
-fsdp_transformer_layer_cls_to_wrap=None,
-full_determinism=False,
-gradient_accumulation_steps=32,
-gradient_checkpointing=False,
-gradient_checkpointing_kwargs=None,
-greater_is_better=None,
-group_by_length=False,
-half_precision_backend=auto,
-hub_always_push=False,
-hub_model_id=None,
-hub_private_repo=False,
-hub_strategy=HubStrategy.EVERY_SAVE,
-hub_token=<HUB_TOKEN>,
-ignore_data_skip=False,
-include_inputs_for_metrics=False,
-include_num_input_tokens_seen=False,
-include_tokens_per_second=False,
-jit_mode_eval=False,
-label_names=None,
-label_smoothing_factor=0.0,
-learning_rate=2e-05,
-length_column_name=length,
-load_best_model_at_end=False,
-local_rank=0,
-log_level=passive,
-log_level_replica=warning,
-log_on_each_node=True,
-logging_dir=../out/llama2-7b-p0.001-lora-seed3/runs/Nov18_15-21-54_gcn100.local.snellius.surf.nl,
-logging_first_step=False,
-logging_nan_inf_filter=True,
-logging_steps=1.0,
-logging_strategy=IntervalStrategy.STEPS,
-lr_scheduler_kwargs={},
-lr_scheduler_type=SchedulerType.LINEAR,
-max_grad_norm=1.0,
-max_steps=-1,
-metric_for_best_model=None,
-mp_parameters=,
-neftune_noise_alpha=None,
-no_cuda=False,
-num_train_epochs=4.0,
-optim=OptimizerNames.ADAMW_TORCH,
-optim_args=None,
-output_dir=../out/llama2-7b-p0.001-lora-seed3,
-overwrite_output_dir=True,
-past_index=-1,
-per_device_eval_batch_size=8,
-per_device_train_batch_size=1,
-prediction_loss_only=False,
-push_to_hub=False,
-push_to_hub_model_id=None,
-push_to_hub_organization=None,
-push_to_hub_token=<PUSH_TO_HUB_TOKEN>,
-ray_scope=last,
-remove_unused_columns=True,
-report_to=['wandb'],
-resume_from_checkpoint=None,
-run_name=../out/llama2-7b-p0.001-lora-seed3,
-save_on_each_node=False,
-save_only_model=False,
-save_safetensors=True,
-save_steps=500,
-save_strategy=IntervalStrategy.EPOCH,
-save_total_limit=None,
-seed=0,
-skip_memory_metrics=True,
-split_batches=False,
-tf32=False,
-torch_compile=False,
-torch_compile_backend=None,
-torch_compile_mode=None,
-torchdynamo=None,
-tpu_metrics_debug=False,
-tpu_num_cores=None,
-train_dataset_names=None,
-use_cpu=False,
-use_ipex=False,
-use_legacy_prediction_loop=False,
-use_mps_device=False,
-warmup_ratio=0.03,
-warmup_steps=0,
-weight_decay=0.0,
-)
-11/18/2024 15:21:57 - INFO - __main__ - Model parameters ModelArguments(model_name_or_path='meta-llama/Llama-2-7b-hf', config_name=None, tokenizer_name=None, cache_dir=None, use_fast_tokenizer=True, model_revision='main', use_auth_token=False, torch_dtype=None, lora=True, lora_r=128, lora_alpha=512.0, lora_dropout=0.1, lora_target_modules=['q_proj', 'k_proj', 'v_proj', 'o_proj'])
-11/18/2024 15:21:57 - INFO - __main__ - Dataset parameters DataArguments(train_files=['data/train/processed/flan_v2/flan_v2_data.jsonl', 'data/train/processed/cot/cot_data.jsonl', 'data/train/processed/dolly/dolly_data.jsonl', 'data/train/processed/oasst1/oasst1_data.jsonl'], overwrite_cache=False, preprocessing_num_workers=None, max_seq_length=2048, sample_data_seed=42, percentage=0.001)
-/home/scur2847/.local/lib/python3.11/site-packages/huggingface_hub/file_download.py:797: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
-  warnings.warn(
-[INFO|tokenization_utils_base.py:2026] 2024-11-18 15:21:58,093 >> loading file tokenizer.model from cache at /home/scur2847/.cache/huggingface/hub/models--meta-llama--Llama-2-7b-hf/snapshots/01c7f73d771dfac7d292323805ebc428287df4f9/tokenizer.model
-[INFO|tokenization_utils_base.py:2026] 2024-11-18 15:21:58,093 >> loading file tokenizer.json from cache at /home/scur2847/.cache/huggingface/hub/models--meta-llama--Llama-2-7b-hf/snapshots/01c7f73d771dfac7d292323805ebc428287df4f9/tokenizer.json
-[INFO|tokenization_utils_base.py:2026] 2024-11-18 15:21:58,093 >> loading file added_tokens.json from cache at None
-[INFO|tokenization_utils_base.py:2026] 2024-11-18 15:21:58,093 >> loading file special_tokens_map.json from cache at /home/scur2847/.cache/huggingface/hub/models--meta-llama--Llama-2-7b-hf/snapshots/01c7f73d771dfac7d292323805ebc428287df4f9/special_tokens_map.json
-[INFO|tokenization_utils_base.py:2026] 2024-11-18 15:21:58,093 >> loading file tokenizer_config.json from cache at /home/scur2847/.cache/huggingface/hub/models--meta-llama--Llama-2-7b-hf/snapshots/01c7f73d771dfac7d292323805ebc428287df4f9/tokenizer_config.json
-Using custom data configuration default-0338088e5cfdaa1d
-11/18/2024 15:21:58 - INFO - datasets.builder - Using custom data configuration default-0338088e5cfdaa1d
-Loading Dataset Infos from /home/scur2847/.local/lib/python3.11/site-packages/datasets/packaged_modules/json
-11/18/2024 15:21:58 - INFO - datasets.info - Loading Dataset Infos from /home/scur2847/.local/lib/python3.11/site-packages/datasets/packaged_modules/json
-Overwrite dataset info from restored data version if exists.
-11/18/2024 15:21:58 - INFO - datasets.builder - Overwrite dataset info from restored data version if exists.
-Loading Dataset info from /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092
-11/18/2024 15:21:58 - INFO - datasets.info - Loading Dataset info from /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092
-Found cached dataset json (/home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092)
-11/18/2024 15:21:58 - INFO - datasets.builder - Found cached dataset json (/home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092)
-Loading Dataset info from /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092
-11/18/2024 15:21:58 - INFO - datasets.info - Loading Dataset info from /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092
-Process #0 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-9752722a3d87a4d9_00000_of_00010.arrow
-11/18/2024 15:21:59 - INFO - datasets.arrow_dataset - Process #0 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-9752722a3d87a4d9_00000_of_00010.arrow
-Process #1 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-9752722a3d87a4d9_00001_of_00010.arrow
-11/18/2024 15:21:59 - INFO - datasets.arrow_dataset - Process #1 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-9752722a3d87a4d9_00001_of_00010.arrow
-Process #2 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-9752722a3d87a4d9_00002_of_00010.arrow
-11/18/2024 15:21:59 - INFO - datasets.arrow_dataset - Process #2 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-9752722a3d87a4d9_00002_of_00010.arrow
-Process #3 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-9752722a3d87a4d9_00003_of_00010.arrow
-11/18/2024 15:21:59 - INFO - datasets.arrow_dataset - Process #3 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-9752722a3d87a4d9_00003_of_00010.arrow
-Process #4 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-9752722a3d87a4d9_00004_of_00010.arrow
-11/18/2024 15:21:59 - INFO - datasets.arrow_dataset - Process #4 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-9752722a3d87a4d9_00004_of_00010.arrow
-Process #5 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-9752722a3d87a4d9_00005_of_00010.arrow
-11/18/2024 15:21:59 - INFO - datasets.arrow_dataset - Process #5 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-9752722a3d87a4d9_00005_of_00010.arrow
-Process #6 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-9752722a3d87a4d9_00006_of_00010.arrow
-11/18/2024 15:21:59 - INFO - datasets.arrow_dataset - Process #6 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-9752722a3d87a4d9_00006_of_00010.arrow
-Process #7 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-9752722a3d87a4d9_00007_of_00010.arrow
-11/18/2024 15:21:59 - INFO - datasets.arrow_dataset - Process #7 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-9752722a3d87a4d9_00007_of_00010.arrow
-Process #8 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-9752722a3d87a4d9_00008_of_00010.arrow
-11/18/2024 15:21:59 - INFO - datasets.arrow_dataset - Process #8 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-9752722a3d87a4d9_00008_of_00010.arrow
-Process #9 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-9752722a3d87a4d9_00009_of_00010.arrow
-11/18/2024 15:21:59 - INFO - datasets.arrow_dataset - Process #9 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-9752722a3d87a4d9_00009_of_00010.arrow
-Loading cached processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-9752722a3d87a4d9_*_of_00010.arrow
-11/18/2024 15:21:59 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-9752722a3d87a4d9_*_of_00010.arrow
-Concatenating 10 shards
-11/18/2024 15:21:59 - INFO - datasets.arrow_dataset - Concatenating 10 shards
-/home/scur2847/.local/lib/python3.11/site-packages/huggingface_hub/file_download.py:797: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
-  warnings.warn(
-[INFO|configuration_utils.py:739] 2024-11-18 15:21:59,224 >> loading configuration file config.json from cache at /home/scur2847/.cache/huggingface/hub/models--meta-llama--Llama-2-7b-hf/snapshots/01c7f73d771dfac7d292323805ebc428287df4f9/config.json
-[INFO|configuration_utils.py:802] 2024-11-18 15:21:59,235 >> Model config LlamaConfig {
-  "_name_or_path": "meta-llama/Llama-2-7b-hf",
-  "architectures": [
-    "LlamaForCausalLM"
-  ],
-  "attention_bias": false,
-  "attention_dropout": 0.0,
-  "bos_token_id": 1,
-  "eos_token_id": 2,
-  "hidden_act": "silu",
-  "hidden_size": 4096,
-  "initializer_range": 0.02,
-  "intermediate_size": 11008,
-  "max_position_embeddings": 4096,
-  "model_type": "llama",
-  "num_attention_heads": 32,
-  "num_hidden_layers": 32,
-  "num_key_value_heads": 32,
-  "pretraining_tp": 1,
-  "rms_norm_eps": 1e-05,
-  "rope_scaling": null,
-  "rope_theta": 10000.0,
-  "tie_word_embeddings": false,
-  "transformers_version": "4.36.2",
-  "use_cache": true,
-  "vocab_size": 32000
-}
-
-[INFO|modeling_utils.py:3344] 2024-11-18 15:21:59,691 >> loading weights file model.safetensors from cache at /home/scur2847/.cache/huggingface/hub/models--meta-llama--Llama-2-7b-hf/snapshots/01c7f73d771dfac7d292323805ebc428287df4f9/model.safetensors.index.json
-[INFO|configuration_utils.py:826] 2024-11-18 15:21:59,694 >> Generate config GenerationConfig {
-  "bos_token_id": 1,
-  "eos_token_id": 2
-}
-
-Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:04<00:04,  4.51s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:06<00:00,  2.85s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:06<00:00,  3.10s/it]
-[INFO|modeling_utils.py:4185] 2024-11-18 15:22:05,989 >> All model checkpoint weights were used when initializing LlamaForCausalLM.
-
-[INFO|modeling_utils.py:4193] 2024-11-18 15:22:05,989 >> All the weights of LlamaForCausalLM were initialized from the model checkpoint at meta-llama/Llama-2-7b-hf.
-If your task is similar to the task the model of the checkpoint was trained on, you can already use LlamaForCausalLM for predictions without further training.
-[INFO|configuration_utils.py:781] 2024-11-18 15:22:06,102 >> loading configuration file generation_config.json from cache at /home/scur2847/.cache/huggingface/hub/models--meta-llama--Llama-2-7b-hf/snapshots/01c7f73d771dfac7d292323805ebc428287df4f9/generation_config.json
-[INFO|configuration_utils.py:826] 2024-11-18 15:22:06,102 >> Generate config GenerationConfig {
-  "bos_token_id": 1,
-  "do_sample": true,
-  "eos_token_id": 2,
-  "max_length": 4096,
-  "pad_token_id": 0,
-  "temperature": 0.6,
-  "top_p": 0.9
-}
-
-[INFO|modeling_utils.py:1813] 2024-11-18 15:22:06,107 >> You are resizing the embedding layer without providing a `pad_to_multiple_of` parameter. This means that the new embedding dimension will be 32001. This might induce some performance reduction as *Tensor Cores* will not be available. For more details about this, or help on choosing the correct value for resizing, refer to this guide: https://docs.nvidia.com/deeplearning/performance/dl-performance-matrix-multiplication/index.html#requirements-tc
-11/18/2024 15:22:08 - INFO - __main__ - Applied LoRA to model.
-trainable params: 134,217,728 || all params: 6,872,641,536 || trainable%: 1.9529278123549145
-Loading cached processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-2d8d47cf6cdc1a38.arrow
-11/18/2024 15:22:08 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-2d8d47cf6cdc1a38.arrow
-[train set] examples: 270; # avg tokens: 380.3222351074219
-[train set] examples: 270; # avg completion tokens: 88.04074096679688
-11/18/2024 15:22:08 - INFO - __main__ - Sample 197 of the training set: {'input_ids': tensor([    1,   529, 29989,  1792, 29989, 29958,    13, 29930, 16492, 29930,
-           13, 29925,   860,   697,  7663,   363,   278,  1494,  1426, 29889,
-          450,  3987,   526,   448,  5001, 29892, 28976, 12666, 29892,  7664,
-        29892, 17622,  2810, 29892,  8034, 19464, 29892,  2099,   310,  8608,
-          362, 29892,  5214, 29892,  5613,  2058, 29892,  5720, 29892, 13019,
-        29892,  8024, 29892,  3769, 29892,  2706,   470,  3971,   664, 29889,
-        26631, 12030,   292,  6838,   448, 29871,   450, 26631, 12030,   292,
-         6838,   338,  5982,   297, 26631,   512,  1026,  4306,  4815,   472,
-          278, 26631,   512,  1026,  4306,  3599,   276,   362, 18320, 29871,
-        29929, 29955, 29900, 29900,  4275, 22080,   319, 29896, 29909, 22103,
-        17594, 13813, 29889,   739, 12955, 15839, 10371,  1169,   310,   278,
-         1887,  9427,   292, 13661,   322,   967,  9949,   373,   278,  4038,
-        29889,  3112,  3743, 21083,  1304,   297, 12128,  9427,   292,   322,
-          263,  1634, 10123,   310,   263,   325,   524,   482,  9427,   292,
-         3699,   322, 23630, 29889,   450, 19133,   884, 14423,   278,  4955,
-          310,  2211,  1887, 13175,  9701,   297,   278,  9427,   292, 13661,
-         2645,   967,   883,  1230,  2440,   297, 26631, 29889,    13,  1068,
-        22550,  1068,    13,  8893,   292,    13,    13, 29930, 16492, 29930,
-           13, 29925,   860,   697,  7663,   363,   278,  1494,  1426, 29889,
-          450,  3987,   526,   448,  5001, 29892, 28976, 12666, 29892,  7664,
-        29892, 17622,  2810, 29892,  8034, 19464, 29892,  2099,   310,  8608,
-          362, 29892,  5214, 29892,  5613,  2058, 29892,  5720, 29892, 13019,
-        29892,  8024, 29892,  3769, 29892,  2706,   470,  3971,   664, 29889,
-         5915,   261, 29007,   423,   448, 29871,   450,  2117,   261, 29007,
-          423, 16021,  1024,  1260,   326,   423, 13386,   440,  2497,   338,
-          263,  6606,   310,   330, 24455, 10849, 13405,  5807,  2234,   411,
-          385,  1751,  1810,   398, 10592,  2454,   330,   579,  1336,   397,
-          286,  3028,   375,  2039,   297,   278,  3942, 19777,  2192,  2265,
-         3898, 29889,   910,  6606,   338,   427, 24552,   304,   278,  3303,
-         3900, 29889,    13,  1068, 22550,  1068,    13,  2744,  3039,    13,
-           13, 29930, 16492, 29930,    13, 29925,   860,   697,  7663,   363,
-          278,  1494,  1426, 29889,   450,  3987,   526,   448,  5001, 29892,
-        28976, 12666, 29892,  7664, 29892, 17622,  2810, 29892,  8034, 19464,
-        29892,  2099,   310,  8608,   362, 29892,  5214, 29892,  5613,  2058,
-        29892,  5720, 29892, 13019, 29892,  8024, 29892,  3769, 29892,  2706,
-          470,  3971,   664, 29889,  5383,  6718,  2911,  4079,  9874, 29875,
-          448, 29871,  5383,  6718,  2911,  4079,  9874, 29875,   338,   263,
-         6606,   310,  7205,  5807,   737,   263, 23585,   330,   579,  1336,
-          397,   286,  3028, 17400,   297,   278,  3942, 10772,  2572,   333,
-          514,  3898,   278,   282,  4316,  2232,   322,  1009,   394,  3687,
-        29889,    13,  1068, 22550,  1068,    13,  2744,  3039,    13,    13,
-        29930, 16492, 29930,    13, 29925,   860,   697,  7663,   363,   278,
-         1494,  1426, 29889,   450,  3987,   526,   448,  5001, 29892, 28976,
-        12666, 29892,  7664, 29892, 17622,  2810, 29892,  8034, 19464, 29892,
-         2099,   310,  8608,   362, 29892,  5214, 29892,  5613,  2058, 29892,
-         5720, 29892, 13019, 29892,  8024, 29892,  3769, 29892,  2706,   470,
-         3971,   664, 29889,  1126, 13158, 29875,  8892,   708,   448, 29871,
-         1126, 13158, 29875,  8892,   708,   338,   263, 25927,  1387,  5401,
-          708,   297,   278, 24132,  8360,  3028,  7457, 11910,   310,  8344,
-        29874,  8046, 29889,    13,  1068, 22550,  1068,    13, 29966, 29989,
-          465, 22137, 29989, 29958,    13, 21410,     2, 29871,    13]), 'labels': tensor([ -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100, 21410,     2, 29871,    13]), 'attention_mask': tensor([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1])}.
-11/18/2024 15:22:08 - INFO - __main__ - trainable model_params: 134217728
-PeftModelForCausalLM(
-  (base_model): LoraModel(
-    (model): LlamaForCausalLM(
-      (model): LlamaModel(
-        (embed_tokens): Embedding(32001, 4096)
-        (layers): ModuleList(
-          (0-31): 32 x LlamaDecoderLayer(
-            (self_attn): LlamaSdpaAttention(
-              (q_proj): lora.Linear(
-                (base_layer): Linear(in_features=4096, out_features=4096, bias=False)
-                (lora_dropout): ModuleDict(
-                  (default): Dropout(p=0.1, inplace=False)
-                )
-                (lora_A): ModuleDict(
-                  (default): Linear(in_features=4096, out_features=128, bias=False)
-                )
-                (lora_B): ModuleDict(
-                  (default): Linear(in_features=128, out_features=4096, bias=False)
-                )
-                (lora_embedding_A): ParameterDict()
-                (lora_embedding_B): ParameterDict()
-              )
-              (k_proj): lora.Linear(
-                (base_layer): Linear(in_features=4096, out_features=4096, bias=False)
-                (lora_dropout): ModuleDict(
-                  (default): Dropout(p=0.1, inplace=False)
-                )
-                (lora_A): ModuleDict(
-                  (default): Linear(in_features=4096, out_features=128, bias=False)
-                )
-                (lora_B): ModuleDict(
-                  (default): Linear(in_features=128, out_features=4096, bias=False)
-                )
-                (lora_embedding_A): ParameterDict()
-                (lora_embedding_B): ParameterDict()
-              )
-              (v_proj): lora.Linear(
-                (base_layer): Linear(in_features=4096, out_features=4096, bias=False)
-                (lora_dropout): ModuleDict(
-                  (default): Dropout(p=0.1, inplace=False)
-                )
-                (lora_A): ModuleDict(
-                  (default): Linear(in_features=4096, out_features=128, bias=False)
-                )
-                (lora_B): ModuleDict(
-                  (default): Linear(in_features=128, out_features=4096, bias=False)
-                )
-                (lora_embedding_A): ParameterDict()
-                (lora_embedding_B): ParameterDict()
-              )
-              (o_proj): lora.Linear(
-                (base_layer): Linear(in_features=4096, out_features=4096, bias=False)
-                (lora_dropout): ModuleDict(
-                  (default): Dropout(p=0.1, inplace=False)
-                )
-                (lora_A): ModuleDict(
-                  (default): Linear(in_features=4096, out_features=128, bias=False)
-                )
-                (lora_B): ModuleDict(
-                  (default): Linear(in_features=128, out_features=4096, bias=False)
-                )
-                (lora_embedding_A): ParameterDict()
-                (lora_embedding_B): ParameterDict()
-              )
-              (rotary_emb): LlamaRotaryEmbedding()
-            )
-            (mlp): LlamaMLP(
-              (gate_proj): Linear(in_features=4096, out_features=11008, bias=False)
-              (up_proj): Linear(in_features=4096, out_features=11008, bias=False)
-              (down_proj): Linear(in_features=11008, out_features=4096, bias=False)
-              (act_fn): SiLU()
-            )
-            (input_layernorm): LlamaRMSNorm()
-            (post_attention_layernorm): LlamaRMSNorm()
-          )
-        )
-        (norm): LlamaRMSNorm()
-      )
-      (lm_head): Linear(in_features=4096, out_features=32001, bias=False)
-    )
-  )
-)
-/home/scur2847/.local/lib/python3.11/site-packages/accelerate/accelerator.py:457: FutureWarning: Passing the following arguments to `Accelerator` is deprecated and will be removed in version 1.0 of Accelerate: dict_keys(['dispatch_batches', 'split_batches']). Please pass an `accelerate.DataLoaderConfiguration` instead: 
-dataloader_config = DataLoaderConfiguration(dispatch_batches=None, split_batches=False)
-  warnings.warn(
-[INFO|trainer.py:568] 2024-11-18 15:22:09,197 >> Using auto half precision backend
-start training!!!!
-[INFO|trainer.py:1706] 2024-11-18 15:22:11,824 >> ***** Running training *****
-[INFO|trainer.py:1707] 2024-11-18 15:22:11,824 >>   Num examples = 270
-[INFO|trainer.py:1708] 2024-11-18 15:22:11,824 >>   Num Epochs = 4
-[INFO|trainer.py:1709] 2024-11-18 15:22:11,824 >>   Instantaneous batch size per device = 1
-[INFO|trainer.py:1712] 2024-11-18 15:22:11,824 >>   Total train batch size (w. parallel, distributed & accumulation) = 32
-[INFO|trainer.py:1713] 2024-11-18 15:22:11,824 >>   Gradient Accumulation steps = 32
-[INFO|trainer.py:1714] 2024-11-18 15:22:11,824 >>   Total optimization steps = 32
-[INFO|trainer.py:1715] 2024-11-18 15:22:11,827 >>   Number of trainable parameters = 134,217,728
-[INFO|integration_utils.py:722] 2024-11-18 15:22:11,829 >> Automatic Weights & Biases logging enabled, to disable set os.environ["WANDB_DISABLED"] = "true"
-wandb: Tracking run with wandb version 0.18.6
-wandb: Run data is saved locally in /gpfs/home1/scur2847/ir2-less-data/wandb/run-20241118_152211-9hqe6te1
-wandb: Run `wandb offline` to turn off syncing.
-wandb: Syncing run cool-river-11
-wandb: ⭐️ View project at https://wandb.ai/colinnyuh-university-of-amsterdam/huggingface
-wandb: 🚀 View run at https://wandb.ai/colinnyuh-university-of-amsterdam/huggingface/runs/9hqe6te1
-  0%|          | 0/32 [00:00<?, ?it/s][WARNING|logging.py:314] 2024-11-18 15:22:12,418 >> You're using a LlamaTokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
-  3%|▎         | 1/32 [00:09<04:40,  9.06s/it]                                              {'loss': 3.5511, 'learning_rate': 2e-05, 'epoch': 0.12}
-  3%|▎         | 1/32 [00:09<04:40,  9.06s/it]  6%|▋         | 2/32 [00:16<04:11,  8.37s/it]                                              {'loss': 4.621, 'learning_rate': 1.935483870967742e-05, 'epoch': 0.24}
-  6%|▋         | 2/32 [00:16<04:11,  8.37s/it]  9%|▉         | 3/32 [00:24<03:52,  8.00s/it]                                              {'loss': 2.9731, 'learning_rate': 1.870967741935484e-05, 'epoch': 0.36}
-  9%|▉         | 3/32 [00:24<03:52,  8.00s/it] 12%|█▎        | 4/32 [00:32<03:43,  8.00s/it]                                              {'loss': 3.3247, 'learning_rate': 1.806451612903226e-05, 'epoch': 0.47}
- 12%|█▎        | 4/32 [00:32<03:43,  8.00s/it] 16%|█▌        | 5/32 [00:40<03:34,  7.95s/it]                                              {'loss': 2.483, 'learning_rate': 1.741935483870968e-05, 'epoch': 0.59}
- 16%|█▌        | 5/32 [00:40<03:34,  7.95s/it] 19%|█▉        | 6/32 [00:48<03:26,  7.95s/it]                                              {'loss': 3.1775, 'learning_rate': 1.6774193548387098e-05, 'epoch': 0.71}
- 19%|█▉        | 6/32 [00:48<03:26,  7.95s/it] 22%|██▏       | 7/32 [00:56<03:16,  7.87s/it]                                              {'loss': 1.9437, 'learning_rate': 1.6129032258064517e-05, 'epoch': 0.83}
- 22%|██▏       | 7/32 [00:56<03:16,  7.87s/it] 25%|██▌       | 8/32 [01:03<03:07,  7.83s/it]                                              {'loss': 1.6411, 'learning_rate': 1.5483870967741936e-05, 'epoch': 0.95}
- 25%|██▌       | 8/32 [01:03<03:07,  7.83s/it][WARNING|trainer.py:2348] 2024-11-18 15:23:19,449 >> Checkpoint destination directory ../out/llama2-7b-p0.001-lora-seed3/checkpoint-8 already exists and is non-empty.Saving will proceed but saved results may be invalid.
-[INFO|trainer.py:2889] 2024-11-18 15:23:19,580 >> Saving model checkpoint to ../out/llama2-7b-p0.001-lora-seed3/checkpoint-8
-[INFO|tokenization_utils_base.py:2432] 2024-11-18 15:23:19,933 >> tokenizer config file saved in ../out/llama2-7b-p0.001-lora-seed3/checkpoint-8/tokenizer_config.json
-[INFO|tokenization_utils_base.py:2441] 2024-11-18 15:23:19,937 >> Special tokens file saved in ../out/llama2-7b-p0.001-lora-seed3/checkpoint-8/special_tokens_map.json
- 28%|██▊       | 9/32 [01:25<04:43, 12.33s/it]                                              {'loss': 1.5983, 'learning_rate': 1.4838709677419357e-05, 'epoch': 1.07}
- 28%|██▊       | 9/32 [01:25<04:43, 12.33s/it] 31%|███▏      | 10/32 [01:33<04:01, 10.96s/it]                                               {'loss': 1.4594, 'learning_rate': 1.4193548387096776e-05, 'epoch': 1.19}
- 31%|███▏      | 10/32 [01:33<04:01, 10.96s/it] 34%|███▍      | 11/32 [01:41<03:29,  9.99s/it]                                               {'loss': 1.6228, 'learning_rate': 1.3548387096774194e-05, 'epoch': 1.3}
- 34%|███▍      | 11/32 [01:41<03:29,  9.99s/it] 38%|███▊      | 12/32 [01:49<03:08,  9.45s/it]                                               {'loss': 1.2629, 'learning_rate': 1.2903225806451613e-05, 'epoch': 1.42}
- 38%|███▊      | 12/32 [01:49<03:08,  9.45s/it] 41%|████      | 13/32 [01:57<02:50,  8.96s/it]                                               {'loss': 1.2212, 'learning_rate': 1.2258064516129034e-05, 'epoch': 1.54}
- 41%|████      | 13/32 [01:57<02:50,  8.96s/it] 44%|████▍     | 14/32 [02:05<02:35,  8.66s/it]                                               {'loss': 1.274, 'learning_rate': 1.1612903225806453e-05, 'epoch': 1.66}
- 44%|████▍     | 14/32 [02:05<02:35,  8.66s/it] 47%|████▋     | 15/32 [02:13<02:22,  8.40s/it]                                               {'loss': 1.2343, 'learning_rate': 1.096774193548387e-05, 'epoch': 1.78}
- 47%|████▋     | 15/32 [02:13<02:22,  8.40s/it] 50%|█████     | 16/32 [02:21<02:11,  8.20s/it]                                               {'loss': 1.2514, 'learning_rate': 1.0322580645161291e-05, 'epoch': 1.9}
- 50%|█████     | 16/32 [02:21<02:11,  8.20s/it][WARNING|trainer.py:2348] 2024-11-18 15:24:40,277 >> Checkpoint destination directory ../out/llama2-7b-p0.001-lora-seed3/checkpoint-16 already exists and is non-empty.Saving will proceed but saved results may be invalid.
-[INFO|trainer.py:2889] 2024-11-18 15:24:40,432 >> Saving model checkpoint to ../out/llama2-7b-p0.001-lora-seed3/checkpoint-16
-[INFO|tokenization_utils_base.py:2432] 2024-11-18 15:24:40,771 >> tokenizer config file saved in ../out/llama2-7b-p0.001-lora-seed3/checkpoint-16/tokenizer_config.json
-[INFO|tokenization_utils_base.py:2441] 2024-11-18 15:24:40,774 >> Special tokens file saved in ../out/llama2-7b-p0.001-lora-seed3/checkpoint-16/special_tokens_map.json
- 53%|█████▎    | 17/32 [02:42<03:04, 12.28s/it]                                               {'loss': 1.2155, 'learning_rate': 9.67741935483871e-06, 'epoch': 2.01}
- 53%|█████▎    | 17/32 [02:42<03:04, 12.28s/it] 56%|█████▋    | 18/32 [02:51<02:34, 11.01s/it]                                               {'loss': 0.9649, 'learning_rate': 9.03225806451613e-06, 'epoch': 2.13}
- 56%|█████▋    | 18/32 [02:51<02:34, 11.01s/it] 59%|█████▉    | 19/32 [02:58<02:10, 10.06s/it]                                               {'loss': 1.1894, 'learning_rate': 8.387096774193549e-06, 'epoch': 2.25}
- 59%|█████▉    | 19/32 [02:58<02:10, 10.06s/it] 62%|██████▎   | 20/32 [03:06<01:53,  9.46s/it]                                               {'loss': 1.1849, 'learning_rate': 7.741935483870968e-06, 'epoch': 2.37}
- 62%|██████▎   | 20/32 [03:06<01:53,  9.46s/it] 66%|██████▌   | 21/32 [03:14<01:38,  8.98s/it]                                               {'loss': 1.2559, 'learning_rate': 7.096774193548388e-06, 'epoch': 2.49}
- 66%|██████▌   | 21/32 [03:14<01:38,  8.98s/it] 69%|██████▉   | 22/32 [03:22<01:26,  8.63s/it]                                               {'loss': 1.2332, 'learning_rate': 6.451612903225806e-06, 'epoch': 2.61}
- 69%|██████▉   | 22/32 [03:22<01:26,  8.63s/it] 72%|███████▏  | 23/32 [03:30<01:15,  8.43s/it]                                               {'loss': 1.0197, 'learning_rate': 5.806451612903226e-06, 'epoch': 2.73}
- 72%|███████▏  | 23/32 [03:30<01:15,  8.43s/it] 75%|███████▌  | 24/32 [03:38<01:06,  8.26s/it]                                               {'loss': 1.1801, 'learning_rate': 5.161290322580646e-06, 'epoch': 2.84}
- 75%|███████▌  | 24/32 [03:38<01:06,  8.26s/it] 78%|███████▊  | 25/32 [03:46<00:56,  8.12s/it]                                               {'loss': 1.1599, 'learning_rate': 4.516129032258065e-06, 'epoch': 2.96}
- 78%|███████▊  | 25/32 [03:46<00:56,  8.12s/it][WARNING|trainer.py:2348] 2024-11-18 15:26:01,050 >> Checkpoint destination directory ../out/llama2-7b-p0.001-lora-seed3/checkpoint-25 already exists and is non-empty.Saving will proceed but saved results may be invalid.
-[INFO|trainer.py:2889] 2024-11-18 15:26:01,200 >> Saving model checkpoint to ../out/llama2-7b-p0.001-lora-seed3/checkpoint-25
-[INFO|tokenization_utils_base.py:2432] 2024-11-18 15:26:01,534 >> tokenizer config file saved in ../out/llama2-7b-p0.001-lora-seed3/checkpoint-25/tokenizer_config.json
-[INFO|tokenization_utils_base.py:2441] 2024-11-18 15:26:01,537 >> Special tokens file saved in ../out/llama2-7b-p0.001-lora-seed3/checkpoint-25/special_tokens_map.json
- 81%|████████▏ | 26/32 [04:08<01:14, 12.34s/it]                                               {'loss': 1.1986, 'learning_rate': 3.870967741935484e-06, 'epoch': 3.08}
- 81%|████████▏ | 26/32 [04:08<01:14, 12.34s/it] 84%|████████▍ | 27/32 [04:16<00:55, 11.00s/it]                                               {'loss': 0.9487, 'learning_rate': 3.225806451612903e-06, 'epoch': 3.2}
- 84%|████████▍ | 27/32 [04:16<00:55, 11.00s/it] 88%|████████▊ | 28/32 [04:24<00:40, 10.10s/it]                                               {'loss': 0.9426, 'learning_rate': 2.580645161290323e-06, 'epoch': 3.32}
- 88%|████████▊ | 28/32 [04:24<00:40, 10.10s/it] 91%|█████████ | 29/32 [04:31<00:28,  9.34s/it]                                               {'loss': 1.1871, 'learning_rate': 1.935483870967742e-06, 'epoch': 3.44}
- 91%|█████████ | 29/32 [04:31<00:28,  9.34s/it] 94%|█████████▍| 30/32 [04:39<00:17,  8.87s/it]                                               {'loss': 1.1138, 'learning_rate': 1.2903225806451614e-06, 'epoch': 3.56}
- 94%|█████████▍| 30/32 [04:39<00:17,  8.87s/it] 97%|█████████▋| 31/32 [04:47<00:08,  8.58s/it]                                               {'loss': 1.0968, 'learning_rate': 6.451612903225807e-07, 'epoch': 3.67}
- 97%|█████████▋| 31/32 [04:47<00:08,  8.58s/it]100%|██████████| 32/32 [04:55<00:00,  8.45s/it]                                               {'loss': 1.3581, 'learning_rate': 0.0, 'epoch': 3.79}
-100%|██████████| 32/32 [04:55<00:00,  8.45s/it][WARNING|trainer.py:2348] 2024-11-18 15:27:08,106 >> Checkpoint destination directory ../out/llama2-7b-p0.001-lora-seed3/checkpoint-32 already exists and is non-empty.Saving will proceed but saved results may be invalid.
-[INFO|trainer.py:2889] 2024-11-18 15:27:08,250 >> Saving model checkpoint to ../out/llama2-7b-p0.001-lora-seed3/checkpoint-32
-[INFO|tokenization_utils_base.py:2432] 2024-11-18 15:27:08,588 >> tokenizer config file saved in ../out/llama2-7b-p0.001-lora-seed3/checkpoint-32/tokenizer_config.json
-[INFO|tokenization_utils_base.py:2441] 2024-11-18 15:27:08,591 >> Special tokens file saved in ../out/llama2-7b-p0.001-lora-seed3/checkpoint-32/special_tokens_map.json
-[INFO|trainer.py:1947] 2024-11-18 15:27:22,127 >> 
-
-Training completed. Do not forget to share your model on huggingface.co/models =)
-
-
-                                               {'train_runtime': 310.3002, 'train_samples_per_second': 3.481, 'train_steps_per_second': 0.103, 'train_loss': 1.6527687348425388, 'epoch': 3.79}
-100%|██████████| 32/32 [05:09<00:00,  8.45s/it]100%|██████████| 32/32 [05:09<00:00,  9.68s/it]
-after training done!!!!
-[INFO|trainer.py:2889] 2024-11-18 15:27:22,174 >> Saving model checkpoint to ../out/llama2-7b-p0.001-lora-seed3
-[INFO|tokenization_utils_base.py:2432] 2024-11-18 15:27:22,504 >> tokenizer config file saved in ../out/llama2-7b-p0.001-lora-seed3/tokenizer_config.json
-[INFO|tokenization_utils_base.py:2441] 2024-11-18 15:27:22,507 >> Special tokens file saved in ../out/llama2-7b-p0.001-lora-seed3/special_tokens_map.json
-***** train metrics *****
-  epoch                    =       3.79
-  train_loss               =     1.6528
-  train_runtime            = 0:05:10.30
-  train_samples            =        270
-  train_samples_per_second =      3.481
-  train_steps_per_second   =      0.103
-[1;34mwandb[0m: 🚀 View run [33mcool-river-11[0m at: [34mhttps://wandb.ai/colinnyuh-university-of-amsterdam/huggingface/runs/9hqe6te1[0m
-[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20241118_152211-9hqe6te1/logs[0m
-
-JOB STATISTICS
-==============
-Job ID: 8584058
-Cluster: snellius
-User/Group: scur2847/scur2847
-State: COMPLETED (exit code 0)
-Nodes: 1
-Cores per node: 32
-CPU Utilized: 00:07:14
-CPU Efficiency: 3.16% of 03:48:48 core-walltime
-Job Wall-clock time: 00:07:09
-Memory Utilized: 1.70 GB
-Memory Efficiency: 0.47% of 360.00 GB

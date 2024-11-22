@@ -17,7 +17,7 @@ CKPT=32
 
 TASK=mmlu
 MODEL_PATH=../out/llama2-7b-p0.001-lora-seed3/checkpoint-${CKPT}
-OUTPUT_PATH=../grads/llama2-7b-p0.001-lora-seed3/${TRAINING_DATA_NAME}-ckpt${CKPT}-${GRADIENT_TYPE}
+OUTPUT_PATH=../grads/llama2-7b-p0.001-lora-seed3/${TASK}-ckpt${CKPT}-sgd
 DATA_DIR="data"
 DIMS="4096 8192"
 
