@@ -1,0 +1,14 @@
+  0%|          | 0/1688 [00:00<?, ?it/s]/home/scur2847/.local/lib/python3.11/site-packages/transformers/data/data_collator.py:656: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at /gpfs/scratch1/nodespecific/gcn120/jenkins/build/PyTorch/2.1.2/foss-2023a-CUDA-12.1.1/pytorch-v2.1.2/torch/csrc/utils/tensor_new.cpp:261.)
+  batch["labels"] = torch.tensor(batch["labels"], dtype=torch.int64)
+  1%|          | 11/1688 [03:27<8:43:56, 18.75s/it]
+{'loss': 2.7813, 'grad_norm': 2.73905611038208, 'learning_rate': 3.921568627450981e-07, 'epoch': 0.0}
+{'loss': 3.1737, 'grad_norm': 4.687906742095947, 'learning_rate': 7.843137254901962e-07, 'epoch': 0.0}
+{'loss': 2.8918, 'grad_norm': 3.9794442653656006, 'learning_rate': 1.1764705882352942e-06, 'epoch': 0.01}
+{'loss': 2.9372, 'grad_norm': 3.972496509552002, 'learning_rate': 1.5686274509803923e-06, 'epoch': 0.01}
+{'loss': 3.0426, 'grad_norm': 3.3619494438171387, 'learning_rate': 1.96078431372549e-06, 'epoch': 0.01}
+{'loss': 3.2681, 'grad_norm': 3.9176559448242188, 'learning_rate': 2.3529411764705885e-06, 'epoch': 0.01}
+{'loss': 3.5927, 'grad_norm': 4.965301513671875, 'learning_rate': 2.7450980392156867e-06, 'epoch': 0.02}
+{'loss': 3.0826, 'grad_norm': 3.2394447326660156, 'learning_rate': 3.1372549019607846e-06, 'epoch': 0.02}
+{'loss': 2.9422, 'grad_norm': 2.813582420349121, 'learning_rate': 3.529411764705883e-06, 'epoch': 0.02}
+{'loss': 3.0362, 'grad_norm': 2.7653281688690186, 'learning_rate': 3.92156862745098e-06, 'epoch': 0.02}
+{'loss': 2.8702, 'grad_norm': 2.6782164573669434, 'learning_rate': 4.313725490196079e-06, 'epoch': 0.03}

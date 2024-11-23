@@ -14,6 +14,8 @@ module purge
 module load 2023
 module load PyTorch/2.1.2-foss-2023a-CUDA-12.1.1
 
+# MAKE SURE TO INSTALL OPEN INSTRUCT AND ADD THE REQUIRED FUNCTION!!!!!!!!!!!!!!!!!
+
 cd evaluation
 
 # Source the evaluation scripts

@@ -1,0 +1,19 @@
+  0%|          | 0/1688 [00:00<?, ?it/s]/home/scur2847/.local/lib/python3.11/site-packages/transformers/data/data_collator.py:656: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at /gpfs/scratch1/nodespecific/gcn120/jenkins/build/PyTorch/2.1.2/foss-2023a-CUDA-12.1.1/pytorch-v2.1.2/torch/csrc/utils/tensor_new.cpp:261.)
+  batch["labels"] = torch.tensor(batch["labels"], dtype=torch.int64)
+  1%|          | 16/1688 [04:01<6:59:05, 15.04s/it]
+{'loss': 3.3622, 'grad_norm': 6.352492809295654, 'learning_rate': 3.921568627450981e-07, 'epoch': 0.0}
+{'loss': 4.0533, 'grad_norm': 9.394604682922363, 'learning_rate': 7.843137254901962e-07, 'epoch': 0.0}
+{'loss': 3.6729, 'grad_norm': 11.318005561828613, 'learning_rate': 1.1764705882352942e-06, 'epoch': 0.01}
+{'loss': 3.7142, 'grad_norm': 7.18516731262207, 'learning_rate': 1.5686274509803923e-06, 'epoch': 0.01}
+{'loss': 3.8142, 'grad_norm': 8.399785995483398, 'learning_rate': 1.96078431372549e-06, 'epoch': 0.01}
+{'loss': 4.3103, 'grad_norm': 22.318723678588867, 'learning_rate': 2.3529411764705885e-06, 'epoch': 0.01}
+{'loss': 4.7665, 'grad_norm': 16.744247436523438, 'learning_rate': 2.7450980392156867e-06, 'epoch': 0.02}
+{'loss': 3.7465, 'grad_norm': 7.891923427581787, 'learning_rate': 3.1372549019607846e-06, 'epoch': 0.02}
+{'loss': 3.5744, 'grad_norm': 7.109894752502441, 'learning_rate': 3.529411764705883e-06, 'epoch': 0.02}
+{'loss': 3.6901, 'grad_norm': 9.18055534362793, 'learning_rate': 3.92156862745098e-06, 'epoch': 0.02}
+{'loss': 3.2871, 'grad_norm': 7.358247756958008, 'learning_rate': 4.313725490196079e-06, 'epoch': 0.03}
+{'loss': 4.0714, 'grad_norm': 13.661334037780762, 'learning_rate': 4.705882352941177e-06, 'epoch': 0.03}
+{'loss': 2.9636, 'grad_norm': 8.043457984924316, 'learning_rate': 5.098039215686274e-06, 'epoch': 0.03}
+{'loss': 3.05, 'grad_norm': 9.491776466369629, 'learning_rate': 5.4901960784313735e-06, 'epoch': 0.03}
+{'loss': 2.9013, 'grad_norm': 8.414152145385742, 'learning_rate': 5.882352941176471e-06, 'epoch': 0.04}
+{'loss': 2.4031, 'grad_norm': 5.669583797454834, 'learning_rate': 6.274509803921569e-06, 'epoch': 0.04}

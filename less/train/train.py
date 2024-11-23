@@ -73,6 +73,7 @@ def main():
     login("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")
 
     tokenizer = AutoTokenizer.from_pretrained(model_args.model_name_or_path)
+    
     # Load training dataset
     train_dataset = get_training_dataset(data_args.train_files,
                                          tokenizer=tokenizer,
@@ -82,6 +83,14 @@ def main():
 
     model = AutoModelForCausalLM.from_pretrained(
         model_args.model_name_or_path, torch_dtype=model_args.torch_dtype)
+
+    if model_args.model_name_or_path == "mistralai/Mistral-7B-v0.1":
+        model = AutoModelForCausalLM.from_pretrained(
+            model_args.model_name_or_path, torch_dtype=model_args.torch_dtype, low_cpu_mem_usage=True)        
+    else:
+        model = AutoModelForCausalLM.from_pretrained(
+            model_args.model_name_or_path, torch_dtype=model_args.torch_dtype)
+
     add_padding_to_tokenizer(tokenizer)
 
     # resize embeddings if needed (e.g. for LlamaTokenizer)

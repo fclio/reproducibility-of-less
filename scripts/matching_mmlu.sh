@@ -34,6 +34,8 @@ CHECKPOINT_WEIGHTS="1.6877e-05 " # average lr of the epoch
 
 VALIDATION_GRADIENT_PATH=../grads/llama2-7b-p0.001-lora-seed3/{}-ckpt{}-sgd/dim${DIM}
 TARGET_TASK_NAMES="mmlu"
-SELECTED_DATA_OUTPUT_PATH="../selected_data"
+SELECTED_DATA_OUTPUT_PATH="../selected_data/llama2-7b-p0.001-lora-seed3"
 
 bash less/scripts/data_selection/matching.sh "$GRADIENT_PATH" "$TRAIN_FILE_NAMES" "$CKPTS" "$CHECKPOINT_WEIGHTS" "$VALIDATION_GRADIENT_PATH" "$TARGET_TASK_NAMES" "$SELECTED_DATA_OUTPUT_PATH"
+
+python3 -m less.data_selection.write_selected_data --target_task_names ${TARGET_TASK_NAMES} --train_file_names ${TRAIN_FILE_NAMES} --train_files data/train/processed/dolly/dolly_data.jsonl --output_path $SELECTED_DATA_OUTPUT_PATH --percentage 0.001

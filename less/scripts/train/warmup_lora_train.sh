@@ -7,11 +7,12 @@ model_path=$2
 percentage=$3
 data_seed=$4
 job_name=$5
+output_dir=$6
 
-output_dir=../out/${job_name}
-if [[ ! -d $output_dir ]]; then
-    mkdir -p $output_dir
-fi
+# output_dir=../out/${job_name}
+# if [[ ! -d $output_dir ]]; then
+#     mkdir -p $output_dir
+# fi
 
 train_files=("$data_dir/train/processed/flan_v2/flan_v2_data.jsonl"
     "$data_dir/train/processed/cot/cot_data.jsonl"
