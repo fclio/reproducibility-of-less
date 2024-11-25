@@ -1,0 +1,414 @@
+[2024-11-23 22:22:36,593] torch.distributed.run: [WARNING] master_addr is only used for static rdzv_backend and when rdzv_endpoint is not specified.
+wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: Currently logged in as: colinnyuh (colinnyuh-university-of-amsterdam). Use `wandb login --relogin` to force relogin
+wandb: Appending key for api.wandb.ai to your netrc file: /home/scur2847/.netrc
+11/23/2024 22:22:44 - WARNING - __main__ - Process rank: 0, device: cuda:0, n_gpu: 1distributed training: True, 16-bits training: False
+11/23/2024 22:22:44 - INFO - __main__ - Training parameters TrainingArguments(
+_n_gpu=1,
+adafactor=False,
+adam_beta1=0.9,
+adam_beta2=0.999,
+adam_epsilon=1e-08,
+analysis_dataset=bbh,
+analysis_mode=False,
+auto_find_batch_size=False,
+bf16=True,
+bf16_full_eval=False,
+data_seed=3,
+dataloader_drop_last=False,
+dataloader_num_workers=0,
+dataloader_persistent_workers=False,
+dataloader_pin_memory=True,
+ddp_backend=None,
+ddp_broadcast_buffers=None,
+ddp_bucket_cap_mb=None,
+ddp_find_unused_parameters=None,
+ddp_timeout=1800,
+debug=[],
+deepspeed=None,
+disable_tqdm=False,
+dispatch_batches=None,
+do_eval=False,
+do_predict=False,
+do_train=True,
+eval_accumulation_steps=None,
+eval_delay=0,
+eval_steps=None,
+evaluation_strategy=IntervalStrategy.NO,
+fp16=False,
+fp16_backend=auto,
+fp16_full_eval=False,
+fp16_opt_level=O1,
+fsdp=[],
+fsdp_config={'min_num_params': 0, 'xla': False, 'xla_fsdp_grad_ckpt': False},
+fsdp_min_num_params=0,
+fsdp_transformer_layer_cls_to_wrap=None,
+full_determinism=False,
+gradient_accumulation_steps=32,
+gradient_checkpointing=False,
+gradient_checkpointing_kwargs=None,
+greater_is_better=None,
+group_by_length=False,
+half_precision_backend=auto,
+hub_always_push=False,
+hub_model_id=None,
+hub_private_repo=False,
+hub_strategy=HubStrategy.EVERY_SAVE,
+hub_token=<HUB_TOKEN>,
+ignore_data_skip=False,
+include_inputs_for_metrics=False,
+include_num_input_tokens_seen=False,
+include_tokens_per_second=False,
+jit_mode_eval=False,
+label_names=None,
+label_smoothing_factor=0.0,
+learning_rate=2e-05,
+length_column_name=length,
+load_best_model_at_end=False,
+local_rank=0,
+log_level=passive,
+log_level_replica=warning,
+log_on_each_node=True,
+logging_dir=../out/llama2-7b-p0.0001-lora-seed3/runs/Nov23_22-22-41_gcn105.local.snellius.surf.nl,
+logging_first_step=False,
+logging_nan_inf_filter=True,
+logging_steps=1.0,
+logging_strategy=IntervalStrategy.STEPS,
+lr_scheduler_kwargs={},
+lr_scheduler_type=SchedulerType.LINEAR,
+max_grad_norm=1.0,
+max_steps=-1,
+metric_for_best_model=None,
+mp_parameters=,
+neftune_noise_alpha=None,
+no_cuda=False,
+num_train_epochs=4.0,
+optim=OptimizerNames.ADAMW_TORCH,
+optim_args=None,
+output_dir=../out/llama2-7b-p0.0001-lora-seed3,
+overwrite_output_dir=True,
+past_index=-1,
+per_device_eval_batch_size=8,
+per_device_train_batch_size=1,
+prediction_loss_only=False,
+push_to_hub=False,
+push_to_hub_model_id=None,
+push_to_hub_organization=None,
+push_to_hub_token=<PUSH_TO_HUB_TOKEN>,
+ray_scope=last,
+remove_unused_columns=True,
+report_to=['wandb'],
+resume_from_checkpoint=None,
+run_name=../out/llama2-7b-p0.0001-lora-seed3,
+save_on_each_node=False,
+save_only_model=False,
+save_safetensors=True,
+save_steps=500,
+save_strategy=IntervalStrategy.EPOCH,
+save_total_limit=None,
+seed=0,
+skip_memory_metrics=True,
+split_batches=False,
+tf32=False,
+torch_compile=False,
+torch_compile_backend=None,
+torch_compile_mode=None,
+torchdynamo=None,
+tpu_metrics_debug=False,
+tpu_num_cores=None,
+train_dataset_names=None,
+use_cpu=False,
+use_ipex=False,
+use_legacy_prediction_loop=False,
+use_mps_device=False,
+warmup_ratio=0.03,
+warmup_steps=0,
+weight_decay=0.0,
+)
+11/23/2024 22:22:44 - INFO - __main__ - Model parameters ModelArguments(model_name_or_path='meta-llama/Llama-2-7b-hf', config_name=None, tokenizer_name=None, cache_dir=None, use_fast_tokenizer=True, model_revision='main', use_auth_token=False, torch_dtype=None, lora=True, lora_r=128, lora_alpha=512.0, lora_dropout=0.1, lora_target_modules=['q_proj', 'k_proj', 'v_proj', 'o_proj'])
+11/23/2024 22:22:44 - INFO - __main__ - Dataset parameters DataArguments(train_files=['data/train/processed/flan_v2/flan_v2_data.jsonl', 'data/train/processed/cot/cot_data.jsonl', 'data/train/processed/dolly/dolly_data.jsonl', 'data/train/processed/oasst1/oasst1_data.jsonl'], overwrite_cache=False, preprocessing_num_workers=None, max_seq_length=2048, sample_data_seed=42, percentage=0.0001)
+/home/scur2847/.local/lib/python3.11/site-packages/huggingface_hub/file_download.py:797: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+[INFO|tokenization_utils_base.py:2026] 2024-11-23 22:22:44,553 >> loading file tokenizer.model from cache at /home/scur2847/.cache/huggingface/hub/models--meta-llama--Llama-2-7b-hf/snapshots/01c7f73d771dfac7d292323805ebc428287df4f9/tokenizer.model
+[INFO|tokenization_utils_base.py:2026] 2024-11-23 22:22:44,553 >> loading file tokenizer.json from cache at /home/scur2847/.cache/huggingface/hub/models--meta-llama--Llama-2-7b-hf/snapshots/01c7f73d771dfac7d292323805ebc428287df4f9/tokenizer.json
+[INFO|tokenization_utils_base.py:2026] 2024-11-23 22:22:44,553 >> loading file added_tokens.json from cache at None
+[INFO|tokenization_utils_base.py:2026] 2024-11-23 22:22:44,553 >> loading file special_tokens_map.json from cache at /home/scur2847/.cache/huggingface/hub/models--meta-llama--Llama-2-7b-hf/snapshots/01c7f73d771dfac7d292323805ebc428287df4f9/special_tokens_map.json
+[INFO|tokenization_utils_base.py:2026] 2024-11-23 22:22:44,553 >> loading file tokenizer_config.json from cache at /home/scur2847/.cache/huggingface/hub/models--meta-llama--Llama-2-7b-hf/snapshots/01c7f73d771dfac7d292323805ebc428287df4f9/tokenizer_config.json
+Using custom data configuration default-0338088e5cfdaa1d
+11/23/2024 22:22:44 - INFO - datasets.builder - Using custom data configuration default-0338088e5cfdaa1d
+Loading Dataset Infos from /home/scur2847/.local/lib/python3.11/site-packages/datasets/packaged_modules/json
+11/23/2024 22:22:44 - INFO - datasets.info - Loading Dataset Infos from /home/scur2847/.local/lib/python3.11/site-packages/datasets/packaged_modules/json
+Overwrite dataset info from restored data version if exists.
+11/23/2024 22:22:44 - INFO - datasets.builder - Overwrite dataset info from restored data version if exists.
+Loading Dataset info from /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092
+11/23/2024 22:22:44 - INFO - datasets.info - Loading Dataset info from /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092
+Found cached dataset json (/home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092)
+11/23/2024 22:22:45 - INFO - datasets.builder - Found cached dataset json (/home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092)
+Loading Dataset info from /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092
+11/23/2024 22:22:45 - INFO - datasets.info - Loading Dataset info from /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092
+Process #0 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_00000_of_00010.arrow
+11/23/2024 22:22:45 - INFO - datasets.arrow_dataset - Process #0 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_00000_of_00010.arrow
+Process #1 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_00001_of_00010.arrow
+11/23/2024 22:22:45 - INFO - datasets.arrow_dataset - Process #1 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_00001_of_00010.arrow
+Process #2 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_00002_of_00010.arrow
+11/23/2024 22:22:45 - INFO - datasets.arrow_dataset - Process #2 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_00002_of_00010.arrow
+Process #3 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_00003_of_00010.arrow
+11/23/2024 22:22:45 - INFO - datasets.arrow_dataset - Process #3 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_00003_of_00010.arrow
+Process #4 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_00004_of_00010.arrow
+11/23/2024 22:22:45 - INFO - datasets.arrow_dataset - Process #4 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_00004_of_00010.arrow
+Process #5 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_00005_of_00010.arrow
+11/23/2024 22:22:45 - INFO - datasets.arrow_dataset - Process #5 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_00005_of_00010.arrow
+Process #6 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_00006_of_00010.arrow
+11/23/2024 22:22:45 - INFO - datasets.arrow_dataset - Process #6 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_00006_of_00010.arrow
+Process #7 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_00007_of_00010.arrow
+11/23/2024 22:22:45 - INFO - datasets.arrow_dataset - Process #7 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_00007_of_00010.arrow
+Process #8 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_00008_of_00010.arrow
+11/23/2024 22:22:45 - INFO - datasets.arrow_dataset - Process #8 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_00008_of_00010.arrow
+Process #9 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_00009_of_00010.arrow
+11/23/2024 22:22:45 - INFO - datasets.arrow_dataset - Process #9 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_00009_of_00010.arrow
+Loading cached processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_*_of_00010.arrow
+11/23/2024 22:22:45 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_*_of_00010.arrow
+Concatenating 10 shards
+11/23/2024 22:22:45 - INFO - datasets.arrow_dataset - Concatenating 10 shards
+[INFO|configuration_utils.py:739] 2024-11-23 22:22:45,193 >> loading configuration file config.json from cache at /home/scur2847/.cache/huggingface/hub/models--meta-llama--Llama-2-7b-hf/snapshots/01c7f73d771dfac7d292323805ebc428287df4f9/config.json
+[INFO|configuration_utils.py:802] 2024-11-23 22:22:45,194 >> Model config LlamaConfig {
+  "_name_or_path": "meta-llama/Llama-2-7b-hf",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 1,
+  "eos_token_id": 2,
+  "hidden_act": "silu",
+  "hidden_size": 4096,
+  "initializer_range": 0.02,
+  "intermediate_size": 11008,
+  "max_position_embeddings": 4096,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 32,
+  "num_key_value_heads": 32,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": null,
+  "rope_theta": 10000.0,
+  "tie_word_embeddings": false,
+  "transformers_version": "4.36.2",
+  "use_cache": true,
+  "vocab_size": 32000
+}
+
+[INFO|modeling_utils.py:3344] 2024-11-23 22:22:45,275 >> loading weights file model.safetensors from cache at /home/scur2847/.cache/huggingface/hub/models--meta-llama--Llama-2-7b-hf/snapshots/01c7f73d771dfac7d292323805ebc428287df4f9/model.safetensors.index.json
+[INFO|configuration_utils.py:826] 2024-11-23 22:22:45,279 >> Generate config GenerationConfig {
+  "bos_token_id": 1,
+  "eos_token_id": 2
+}
+
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:05<00:05,  5.81s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:07<00:00,  3.58s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:07<00:00,  3.91s/it]
+[INFO|modeling_utils.py:4185] 2024-11-23 22:22:53,180 >> All model checkpoint weights were used when initializing LlamaForCausalLM.
+
+[INFO|modeling_utils.py:4193] 2024-11-23 22:22:53,180 >> All the weights of LlamaForCausalLM were initialized from the model checkpoint at meta-llama/Llama-2-7b-hf.
+If your task is similar to the task the model of the checkpoint was trained on, you can already use LlamaForCausalLM for predictions without further training.
+[INFO|configuration_utils.py:781] 2024-11-23 22:22:53,296 >> loading configuration file generation_config.json from cache at /home/scur2847/.cache/huggingface/hub/models--meta-llama--Llama-2-7b-hf/snapshots/01c7f73d771dfac7d292323805ebc428287df4f9/generation_config.json
+[INFO|configuration_utils.py:826] 2024-11-23 22:22:53,297 >> Generate config GenerationConfig {
+  "bos_token_id": 1,
+  "do_sample": true,
+  "eos_token_id": 2,
+  "max_length": 4096,
+  "pad_token_id": 0,
+  "temperature": 0.6,
+  "top_p": 0.9
+}
+
+[INFO|modeling_utils.py:1813] 2024-11-23 22:22:53,302 >> You are resizing the embedding layer without providing a `pad_to_multiple_of` parameter. This means that the new embedding dimension will be 32001. This might induce some performance reduction as *Tensor Cores* will not be available. For more details about this, or help on choosing the correct value for resizing, refer to this guide: https://docs.nvidia.com/deeplearning/performance/dl-performance-matrix-multiplication/index.html#requirements-tc
+11/23/2024 22:22:56 - INFO - __main__ - Applied LoRA to model.
+trainable params: 134,217,728 || all params: 6,872,641,536 || trainable%: 1.9529278123549145
+Loading cached processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-92b2d17b0420a5cc.arrow
+11/23/2024 22:22:56 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-92b2d17b0420a5cc.arrow
+[train set] examples: 27; # avg tokens: 336.3333435058594
+[train set] examples: 27; # avg completion tokens: 154.1851806640625
+11/23/2024 22:22:56 - INFO - __main__ - Sample 12 of the training set: {'input_ids': tensor([    1,   529, 29989,  1792, 29989, 29958,    13, 13696,  1241,   278,
+         1139, 29889,  6097,   895, 29901,   376, 29903,  1310,   284,  4768,
+          446,  8177,   414,   526, 15661,   304,  4891,   278, 11952,   322,
+          526,   884, 13587,   701, 12469,   411,  1009,   289, 29379,  1213,
+           13, 29933,  1463,   373,   445,  5188,   895, 29892,   508,   591,
+        17668,   393,   278, 20051,   376,  1576,  4768,   446,  8177,   414,
+          526, 13587,   701, 12469,  1213,   338,  1565, 29973,    13,  5856,
+        29901,    13, 29899,  4874,    13, 29899,   372,   338,   451,  1950,
+          304,  2649,    13, 29899,   694,    13,  1724,   338,   278,  4331,
+        29899,  1609, 29899, 10568, 24481,  1889,   304, 18331,   472,   278,
+         1234, 29901,  4874, 29973,    13, 29966, 29989,   465, 22137, 29989,
+        29958,    13, 29933,  4245,   695,  2879,   526, 15661,   304,  4891,
+          278, 11952,   322,   526,   884, 13587,   701, 12469,   297,   278,
+         4218, 29889,     2, 29871,    13]), 'labels': tensor([ -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100, 29933,  4245,   695,  2879,   526, 15661,   304,  4891,
+          278, 11952,   322,   526,   884, 13587,   701, 12469,   297,   278,
+         4218, 29889,     2, 29871,    13]), 'attention_mask': tensor([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])}.
+11/23/2024 22:22:56 - INFO - __main__ - trainable model_params: 134217728
+PeftModelForCausalLM(
+  (base_model): LoraModel(
+    (model): LlamaForCausalLM(
+      (model): LlamaModel(
+        (embed_tokens): Embedding(32001, 4096)
+        (layers): ModuleList(
+          (0-31): 32 x LlamaDecoderLayer(
+            (self_attn): LlamaSdpaAttention(
+              (q_proj): lora.Linear(
+                (base_layer): Linear(in_features=4096, out_features=4096, bias=False)
+                (lora_dropout): ModuleDict(
+                  (default): Dropout(p=0.1, inplace=False)
+                )
+                (lora_A): ModuleDict(
+                  (default): Linear(in_features=4096, out_features=128, bias=False)
+                )
+                (lora_B): ModuleDict(
+                  (default): Linear(in_features=128, out_features=4096, bias=False)
+                )
+                (lora_embedding_A): ParameterDict()
+                (lora_embedding_B): ParameterDict()
+              )
+              (k_proj): lora.Linear(
+                (base_layer): Linear(in_features=4096, out_features=4096, bias=False)
+                (lora_dropout): ModuleDict(
+                  (default): Dropout(p=0.1, inplace=False)
+                )
+                (lora_A): ModuleDict(
+                  (default): Linear(in_features=4096, out_features=128, bias=False)
+                )
+                (lora_B): ModuleDict(
+                  (default): Linear(in_features=128, out_features=4096, bias=False)
+                )
+                (lora_embedding_A): ParameterDict()
+                (lora_embedding_B): ParameterDict()
+              )
+              (v_proj): lora.Linear(
+                (base_layer): Linear(in_features=4096, out_features=4096, bias=False)
+                (lora_dropout): ModuleDict(
+                  (default): Dropout(p=0.1, inplace=False)
+                )
+                (lora_A): ModuleDict(
+                  (default): Linear(in_features=4096, out_features=128, bias=False)
+                )
+                (lora_B): ModuleDict(
+                  (default): Linear(in_features=128, out_features=4096, bias=False)
+                )
+                (lora_embedding_A): ParameterDict()
+                (lora_embedding_B): ParameterDict()
+              )
+              (o_proj): lora.Linear(
+                (base_layer): Linear(in_features=4096, out_features=4096, bias=False)
+                (lora_dropout): ModuleDict(
+                  (default): Dropout(p=0.1, inplace=False)
+                )
+                (lora_A): ModuleDict(
+                  (default): Linear(in_features=4096, out_features=128, bias=False)
+                )
+                (lora_B): ModuleDict(
+                  (default): Linear(in_features=128, out_features=4096, bias=False)
+                )
+                (lora_embedding_A): ParameterDict()
+                (lora_embedding_B): ParameterDict()
+              )
+              (rotary_emb): LlamaRotaryEmbedding()
+            )
+            (mlp): LlamaMLP(
+              (gate_proj): Linear(in_features=4096, out_features=11008, bias=False)
+              (up_proj): Linear(in_features=4096, out_features=11008, bias=False)
+              (down_proj): Linear(in_features=11008, out_features=4096, bias=False)
+              (act_fn): SiLU()
+            )
+            (input_layernorm): LlamaRMSNorm()
+            (post_attention_layernorm): LlamaRMSNorm()
+          )
+        )
+        (norm): LlamaRMSNorm()
+      )
+      (lm_head): Linear(in_features=4096, out_features=32001, bias=False)
+    )
+  )
+)
+/home/scur2847/.local/lib/python3.11/site-packages/accelerate/accelerator.py:457: FutureWarning: Passing the following arguments to `Accelerator` is deprecated and will be removed in version 1.0 of Accelerate: dict_keys(['dispatch_batches', 'split_batches']). Please pass an `accelerate.DataLoaderConfiguration` instead: 
+dataloader_config = DataLoaderConfiguration(dispatch_batches=None, split_batches=False)
+  warnings.warn(
+[INFO|trainer.py:568] 2024-11-23 22:22:58,218 >> Using auto half precision backend
+start training!!!!
+[INFO|trainer.py:1706] 2024-11-23 22:22:59,435 >> ***** Running training *****
+[INFO|trainer.py:1707] 2024-11-23 22:22:59,435 >>   Num examples = 27
+[INFO|trainer.py:1708] 2024-11-23 22:22:59,435 >>   Num Epochs = 4
+[INFO|trainer.py:1709] 2024-11-23 22:22:59,435 >>   Instantaneous batch size per device = 1
+[INFO|trainer.py:1712] 2024-11-23 22:22:59,435 >>   Total train batch size (w. parallel, distributed & accumulation) = 32
+[INFO|trainer.py:1713] 2024-11-23 22:22:59,435 >>   Gradient Accumulation steps = 32
+[INFO|trainer.py:1714] 2024-11-23 22:22:59,435 >>   Total optimization steps = 4
+[INFO|trainer.py:1715] 2024-11-23 22:22:59,438 >>   Number of trainable parameters = 134,217,728
+[INFO|integration_utils.py:722] 2024-11-23 22:22:59,441 >> Automatic Weights & Biases logging enabled, to disable set os.environ["WANDB_DISABLED"] = "true"
+wandb: Tracking run with wandb version 0.18.6
+wandb: Run data is saved locally in /gpfs/home1/scur2847/ir2-less-data/wandb/run-20241123_222259-1a9jutod
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run pious-tree-37
+wandb: ⭐️ View project at https://wandb.ai/colinnyuh-university-of-amsterdam/huggingface
+wandb: 🚀 View run at https://wandb.ai/colinnyuh-university-of-amsterdam/huggingface/runs/1a9jutod
+  0%|          | 0/4 [00:00<?, ?it/s][WARNING|logging.py:314] 2024-11-23 22:23:00,227 >> You're using a LlamaTokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
+[W reducer.cpp:1346] Warning: find_unused_parameters=True was specified in DDP constructor, but did not find any unused parameters in the forward pass. This flag results in an extra traversal of the autograd graph every iteration,  which can adversely affect performance. If your model indeed never has any unused parameters in the forward pass, consider turning this flag off. Note that this warning may be a false positive if your model has flow control causing later iterations to have unused parameters. (function operator())
+ 25%|██▌       | 1/4 [00:04<00:12,  4.12s/it]                                             {'loss': 3.1583, 'learning_rate': 2e-05, 'epoch': 1.0}
+ 25%|██▌       | 1/4 [00:04<00:12,  4.12s/it][INFO|trainer.py:2889] 2024-11-23 22:23:04,350 >> Saving model checkpoint to ../out/llama2-7b-p0.0001-lora-seed3/tmp-checkpoint-1
+[INFO|tokenization_utils_base.py:2432] 2024-11-23 22:23:04,879 >> tokenizer config file saved in ../out/llama2-7b-p0.0001-lora-seed3/tmp-checkpoint-1/tokenizer_config.json
+[INFO|tokenization_utils_base.py:2441] 2024-11-23 22:23:04,880 >> Special tokens file saved in ../out/llama2-7b-p0.0001-lora-seed3/tmp-checkpoint-1/special_tokens_map.json
+ 50%|█████     | 2/4 [00:06<00:05,  2.85s/it]                                             {'loss': 0.3911, 'learning_rate': 1.3333333333333333e-05, 'epoch': 1.19}
+ 50%|█████     | 2/4 [00:06<00:05,  2.85s/it] 75%|███████▌  | 3/4 [00:09<00:02,  2.90s/it]                                             {'loss': 2.516, 'learning_rate': 6.666666666666667e-06, 'epoch': 2.0}
+ 75%|███████▌  | 3/4 [00:09<00:02,  2.90s/it][INFO|trainer.py:2889] 2024-11-23 22:23:09,276 >> Saving model checkpoint to ../out/llama2-7b-p0.0001-lora-seed3/tmp-checkpoint-3
+[INFO|tokenization_utils_base.py:2432] 2024-11-23 22:23:09,728 >> tokenizer config file saved in ../out/llama2-7b-p0.0001-lora-seed3/tmp-checkpoint-3/tokenizer_config.json
+[INFO|tokenization_utils_base.py:2441] 2024-11-23 22:23:09,730 >> Special tokens file saved in ../out/llama2-7b-p0.0001-lora-seed3/tmp-checkpoint-3/special_tokens_map.json
+100%|██████████| 4/4 [00:11<00:00,  2.73s/it]                                             {'loss': 0.9582, 'learning_rate': 0.0, 'epoch': 2.37}
+100%|██████████| 4/4 [00:11<00:00,  2.73s/it][INFO|trainer.py:2889] 2024-11-23 22:23:11,738 >> Saving model checkpoint to ../out/llama2-7b-p0.0001-lora-seed3/tmp-checkpoint-4
+[INFO|tokenization_utils_base.py:2432] 2024-11-23 22:23:12,194 >> tokenizer config file saved in ../out/llama2-7b-p0.0001-lora-seed3/tmp-checkpoint-4/tokenizer_config.json
+[INFO|tokenization_utils_base.py:2441] 2024-11-23 22:23:12,195 >> Special tokens file saved in ../out/llama2-7b-p0.0001-lora-seed3/tmp-checkpoint-4/special_tokens_map.json
+[INFO|trainer.py:1947] 2024-11-23 22:23:12,840 >> 
+
+Training completed. Do not forget to share your model on huggingface.co/models =)
+
+
+                                             {'train_runtime': 13.4021, 'train_samples_per_second': 8.058, 'train_steps_per_second': 0.298, 'train_loss': 1.7558990865945816, 'epoch': 2.37}
+100%|██████████| 4/4 [00:12<00:00,  2.73s/it]100%|██████████| 4/4 [00:12<00:00,  3.15s/it]
+after training done!!!!
+[INFO|trainer.py:2889] 2024-11-23 22:23:12,842 >> Saving model checkpoint to ../out/llama2-7b-p0.0001-lora-seed3
+[INFO|tokenization_utils_base.py:2432] 2024-11-23 22:23:13,296 >> tokenizer config file saved in ../out/llama2-7b-p0.0001-lora-seed3/tokenizer_config.json
+[INFO|tokenization_utils_base.py:2441] 2024-11-23 22:23:13,296 >> Special tokens file saved in ../out/llama2-7b-p0.0001-lora-seed3/special_tokens_map.json
+***** train metrics *****
+  epoch                    =       2.37
+  train_loss               =     1.7559
+  train_runtime            = 0:00:13.40
+  train_samples            =         27
+  train_samples_per_second =      8.058
+  train_steps_per_second   =      0.298
+[1;34mwandb[0m: 🚀 View run [33mpious-tree-37[0m at: [34mhttps://wandb.ai/colinnyuh-university-of-amsterdam/huggingface/runs/1a9jutod[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20241123_222259-1a9jutod/logs[0m
+
+JOB STATISTICS
+==============
+Job ID: 8659077
+Cluster: snellius
+User/Group: scur2847/scur2847
+State: COMPLETED (exit code 0)
+Nodes: 1
+Cores per node: 32
+CPU Utilized: 00:01:52
+CPU Efficiency: 6.14% of 00:30:24 core-walltime
+Job Wall-clock time: 00:00:57
+Memory Utilized: 2.18 GB
+Memory Efficiency: 0.61% of 360.00 GB

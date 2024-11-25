@@ -37,11 +37,18 @@ module load PyTorch/2.1.2-foss-2023a-CUDA-12.1.1
 # SELECTED_DATA_OUTPUT_PATH="../selected_data"
 
 # bash less/scripts/data_selection/matching.sh "$GRADIENT_PATH" "$TRAIN_FILE_NAMES" "$CKPTS" "$CHECKPOINT_WEIGHTS" "$VALIDATION_GRADIENT_PATH" "$TARGET_TASK_NAMES" "$SELECTED_DATA_OUTPUT_PATH"
-
+DATA_SEED=4
+PERCENTAGE=0.05
 TARGET_TASK_NAME="mmlu"
-PERCENTAGE=0.001
-TRAIN_FILES=../selected_data/${TARGET_TASK_NAME}/top_p${PERCENTAGE}.jsonl
+JOB_NAME_TRAIN="llama2-7b-p${PERCENTAGE}-lora-seed${DATA_SEED}"
+TRAIN_FILES=/scratch-shared/ir2-less/selected_data/${JOB_NAME_TRAIN}/${TARGET_TASK_NAME}/top_p${PERCENTAGE}.jsonl
 MODEL_PATH=meta-llama/Llama-2-7b-hf
-JOB_NAME=llama2-7b-less-p${PERCENTAGE}-lora
+JOB_NAME=llama2-7b-less-p${PERCENTAGE}-lora-seed${DATA_SEED}
+
+
+# CKPTS="422" # checkpoing index
+# TARGET_TASK_NAME="mmlu"
+
+
 
 bash less/scripts/train/lora_train.sh "$TRAIN_FILES" "$MODEL_PATH" "$JOB_NAME" 

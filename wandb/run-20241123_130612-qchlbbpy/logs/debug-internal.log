@@ -6,3 +6,13 @@
 {"time":"2024-11-23T13:06:12.720308656+01:00","level":"INFO","msg":"handler: started","stream_id":{"value":"qchlbbpy"}}
 {"time":"2024-11-23T13:06:12.720303926+01:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"qchlbbpy"}}
 {"time":"2024-11-23T13:06:13.081656054+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-23T13:08:30.494163449+01:00","level":"INFO","msg":"stream: closing","id":"qchlbbpy"}
+{"time":"2024-11-23T13:08:30.494274498+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-23T13:08:30.50272657+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-11-23T13:08:30.656139992+01:00","level":"WARN","msg":"No program path found, not creating job artifact. See https://docs.wandb.ai/guides/launch/create-job"}
+{"time":"2024-11-23T13:08:30.656173411+01:00","level":"INFO","msg":"sender: sendDefer: no job artifact to save"}
+{"time":"2024-11-23T13:08:31.065589325+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-11-23T13:08:31.216000454+01:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"qchlbbpy"}}
+{"time":"2024-11-23T13:08:31.216070943+01:00","level":"INFO","msg":"sender: closed","stream_id":"qchlbbpy"}
+{"time":"2024-11-23T13:08:31.216067463+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"qchlbbpy"}}
+{"time":"2024-11-23T13:08:31.216288761+01:00","level":"INFO","msg":"stream: closed","id":"qchlbbpy"}

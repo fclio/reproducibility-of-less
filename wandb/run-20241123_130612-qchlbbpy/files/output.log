@@ -13,3 +13,21 @@
 {'loss': 0.9613, 'learning_rate': 0.0, 'epoch': 2.37}
 [INFO|tokenization_utils_base.py:2432] 2024-11-23 13:07:50,888 >> tokenizer config file saved in /scratch-shared/ir2-less/out/llama2-7b-p0.0001-lora-seed3/tmp-checkpoint-4/tokenizer_config.json
 [INFO|tokenization_utils_base.py:2441] 2024-11-23 13:07:50,889 >> Special tokens file saved in /scratch-shared/ir2-less/out/llama2-7b-p0.0001-lora-seed3/tmp-checkpoint-4/special_tokens_map.json
+[INFO|trainer.py:1947] 2024-11-23 13:08:29,498 >>
+
+Training completed. Do not forget to share your model on huggingface.co/models =)
+
+
+100%|██████████| 4/4 [02:16<00:00, 34.05s/it]
+{'train_runtime': 137.0277, 'train_samples_per_second': 0.788, 'train_steps_per_second': 0.029, 'train_loss': 1.7590190842747688, 'epoch': 2.37}
+after training done!!!!
+[INFO|trainer.py:2889] 2024-11-23 13:08:29,569 >> Saving model checkpoint to /scratch-shared/ir2-less/out/llama2-7b-p0.0001-lora-seed3
+[INFO|tokenization_utils_base.py:2432] 2024-11-23 13:08:30,128 >> tokenizer config file saved in /scratch-shared/ir2-less/out/llama2-7b-p0.0001-lora-seed3/tokenizer_config.json
+[INFO|tokenization_utils_base.py:2441] 2024-11-23 13:08:30,128 >> Special tokens file saved in /scratch-shared/ir2-less/out/llama2-7b-p0.0001-lora-seed3/special_tokens_map.json
+***** train metrics *****
+  epoch                    =       2.37
+  train_loss               =      1.759
+  train_runtime            = 0:02:17.02
+  train_samples            =         27
+  train_samples_per_second =      0.788
+  train_steps_per_second   =      0.029

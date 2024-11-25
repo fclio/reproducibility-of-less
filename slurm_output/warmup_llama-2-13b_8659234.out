@@ -1,0 +1,311 @@
+[2024-11-23 22:32:51,575] torch.distributed.run: [WARNING] master_addr is only used for static rdzv_backend and when rdzv_endpoint is not specified.
+wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: Currently logged in as: colinnyuh (colinnyuh-university-of-amsterdam). Use `wandb login --relogin` to force relogin
+wandb: Appending key for api.wandb.ai to your netrc file: /home/scur2847/.netrc
+11/23/2024 22:32:58 - WARNING - __main__ - Process rank: 0, device: cuda:0, n_gpu: 1distributed training: True, 16-bits training: False
+11/23/2024 22:32:58 - INFO - __main__ - Training parameters TrainingArguments(
+_n_gpu=1,
+adafactor=False,
+adam_beta1=0.9,
+adam_beta2=0.999,
+adam_epsilon=1e-08,
+analysis_dataset=bbh,
+analysis_mode=False,
+auto_find_batch_size=False,
+bf16=True,
+bf16_full_eval=False,
+data_seed=3,
+dataloader_drop_last=False,
+dataloader_num_workers=0,
+dataloader_persistent_workers=False,
+dataloader_pin_memory=True,
+ddp_backend=None,
+ddp_broadcast_buffers=None,
+ddp_bucket_cap_mb=None,
+ddp_find_unused_parameters=None,
+ddp_timeout=1800,
+debug=[],
+deepspeed=None,
+disable_tqdm=False,
+dispatch_batches=None,
+do_eval=False,
+do_predict=False,
+do_train=True,
+eval_accumulation_steps=None,
+eval_delay=0,
+eval_steps=None,
+evaluation_strategy=IntervalStrategy.NO,
+fp16=False,
+fp16_backend=auto,
+fp16_full_eval=False,
+fp16_opt_level=O1,
+fsdp=[<FSDPOption.FULL_SHARD: 'full_shard'>, <FSDPOption.AUTO_WRAP: 'auto_wrap'>],
+fsdp_config={'fsdp_transformer_layer_cls_to_wrap': ['LlamaDecoderLayer'], 'fsdp_backward_prefetch': 'backward_pre', 'limit_all_gathers': 'true', 'use_orig_params': 'true', 'min_num_params': 0, 'xla': False, 'xla_fsdp_grad_ckpt': False},
+fsdp_min_num_params=0,
+fsdp_transformer_layer_cls_to_wrap=None,
+full_determinism=False,
+gradient_accumulation_steps=32,
+gradient_checkpointing=False,
+gradient_checkpointing_kwargs=None,
+greater_is_better=None,
+group_by_length=False,
+half_precision_backend=auto,
+hub_always_push=False,
+hub_model_id=None,
+hub_private_repo=False,
+hub_strategy=HubStrategy.EVERY_SAVE,
+hub_token=<HUB_TOKEN>,
+ignore_data_skip=False,
+include_inputs_for_metrics=False,
+include_num_input_tokens_seen=False,
+include_tokens_per_second=False,
+jit_mode_eval=False,
+label_names=None,
+label_smoothing_factor=0.0,
+learning_rate=2e-05,
+length_column_name=length,
+load_best_model_at_end=False,
+local_rank=0,
+log_level=passive,
+log_level_replica=warning,
+log_on_each_node=True,
+logging_dir=../out/llama2-13b-p0.05-lora-seed3/runs/Nov23_22-32-56_gcn105.local.snellius.surf.nl,
+logging_first_step=False,
+logging_nan_inf_filter=True,
+logging_steps=1.0,
+logging_strategy=IntervalStrategy.STEPS,
+lr_scheduler_kwargs={},
+lr_scheduler_type=SchedulerType.LINEAR,
+max_grad_norm=1.0,
+max_steps=-1,
+metric_for_best_model=None,
+mp_parameters=,
+neftune_noise_alpha=None,
+no_cuda=False,
+num_train_epochs=4.0,
+optim=OptimizerNames.ADAMW_TORCH,
+optim_args=None,
+output_dir=../out/llama2-13b-p0.05-lora-seed3,
+overwrite_output_dir=True,
+past_index=-1,
+per_device_eval_batch_size=8,
+per_device_train_batch_size=1,
+prediction_loss_only=False,
+push_to_hub=False,
+push_to_hub_model_id=None,
+push_to_hub_organization=None,
+push_to_hub_token=<PUSH_TO_HUB_TOKEN>,
+ray_scope=last,
+remove_unused_columns=True,
+report_to=['wandb'],
+resume_from_checkpoint=None,
+run_name=../out/llama2-13b-p0.05-lora-seed3,
+save_on_each_node=False,
+save_only_model=False,
+save_safetensors=True,
+save_steps=500,
+save_strategy=IntervalStrategy.EPOCH,
+save_total_limit=None,
+seed=0,
+skip_memory_metrics=True,
+split_batches=False,
+tf32=False,
+torch_compile=False,
+torch_compile_backend=None,
+torch_compile_mode=None,
+torchdynamo=None,
+tpu_metrics_debug=False,
+tpu_num_cores=None,
+train_dataset_names=None,
+use_cpu=False,
+use_ipex=False,
+use_legacy_prediction_loop=False,
+use_mps_device=False,
+warmup_ratio=0.03,
+warmup_steps=0,
+weight_decay=0.0,
+)
+11/23/2024 22:32:58 - INFO - __main__ - Model parameters ModelArguments(model_name_or_path='meta-llama/Llama-2-13b-hf', config_name=None, tokenizer_name=None, cache_dir=None, use_fast_tokenizer=True, model_revision='main', use_auth_token=False, torch_dtype=None, lora=True, lora_r=128, lora_alpha=512.0, lora_dropout=0.1, lora_target_modules=['q_proj', 'k_proj', 'v_proj', 'o_proj'])
+11/23/2024 22:32:58 - INFO - __main__ - Dataset parameters DataArguments(train_files=['data/train/processed/flan_v2/flan_v2_data.jsonl', 'data/train/processed/cot/cot_data.jsonl', 'data/train/processed/dolly/dolly_data.jsonl', 'data/train/processed/oasst1/oasst1_data.jsonl'], overwrite_cache=False, preprocessing_num_workers=None, max_seq_length=2048, sample_data_seed=42, percentage=0.05)
+/home/scur2847/.local/lib/python3.11/site-packages/huggingface_hub/file_download.py:797: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+[INFO|tokenization_utils_base.py:2026] 2024-11-23 22:33:00,350 >> loading file tokenizer.model from cache at /home/scur2847/.cache/huggingface/hub/models--meta-llama--Llama-2-13b-hf/snapshots/5c31dfb671ce7cfe2d7bb7c04375e44c55e815b1/tokenizer.model
+[INFO|tokenization_utils_base.py:2026] 2024-11-23 22:33:00,350 >> loading file tokenizer.json from cache at /home/scur2847/.cache/huggingface/hub/models--meta-llama--Llama-2-13b-hf/snapshots/5c31dfb671ce7cfe2d7bb7c04375e44c55e815b1/tokenizer.json
+[INFO|tokenization_utils_base.py:2026] 2024-11-23 22:33:00,350 >> loading file added_tokens.json from cache at None
+[INFO|tokenization_utils_base.py:2026] 2024-11-23 22:33:00,350 >> loading file special_tokens_map.json from cache at /home/scur2847/.cache/huggingface/hub/models--meta-llama--Llama-2-13b-hf/snapshots/5c31dfb671ce7cfe2d7bb7c04375e44c55e815b1/special_tokens_map.json
+[INFO|tokenization_utils_base.py:2026] 2024-11-23 22:33:00,350 >> loading file tokenizer_config.json from cache at /home/scur2847/.cache/huggingface/hub/models--meta-llama--Llama-2-13b-hf/snapshots/5c31dfb671ce7cfe2d7bb7c04375e44c55e815b1/tokenizer_config.json
+Using custom data configuration default-0338088e5cfdaa1d
+11/23/2024 22:33:00 - INFO - datasets.builder - Using custom data configuration default-0338088e5cfdaa1d
+Loading Dataset Infos from /home/scur2847/.local/lib/python3.11/site-packages/datasets/packaged_modules/json
+11/23/2024 22:33:00 - INFO - datasets.info - Loading Dataset Infos from /home/scur2847/.local/lib/python3.11/site-packages/datasets/packaged_modules/json
+Generating dataset json (/home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092)
+11/23/2024 22:33:00 - INFO - datasets.builder - Generating dataset json (/home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092)
+Downloading and preparing dataset json/default to /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092...
+11/23/2024 22:33:00 - INFO - datasets.builder - Downloading and preparing dataset json/default to /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092...
+Downloading took 0.0 min
+11/23/2024 22:33:00 - INFO - datasets.download.download_manager - Downloading took 0.0 min
+Checksum Computation took 0.0 min
+11/23/2024 22:33:00 - INFO - datasets.download.download_manager - Checksum Computation took 0.0 min
+Generating train split
+11/23/2024 22:33:00 - INFO - datasets.builder - Generating train split
+Generating train split: 0 examples [00:00, ? examples/s]Generating train split: 54444 examples [00:00, 471096.67 examples/s]Generating train split: 138386 examples [00:00, 622627.17 examples/s]Generating train split: 211139 examples [00:00, 625040.66 examples/s]Generating train split: 270679 examples [00:00, 597002.45 examples/s]
+Unable to verify splits sizes.
+11/23/2024 22:33:01 - INFO - datasets.utils.info_utils - Unable to verify splits sizes.
+Dataset json downloaded and prepared to /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092. Subsequent calls will reuse this data.
+11/23/2024 22:33:01 - INFO - datasets.builder - Dataset json downloaded and prepared to /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092. Subsequent calls will reuse this data.
+Process #0 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00000_of_00010.arrow
+11/23/2024 22:33:01 - INFO - datasets.arrow_dataset - Process #0 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00000_of_00010.arrow
+Process #1 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00001_of_00010.arrow
+11/23/2024 22:33:01 - INFO - datasets.arrow_dataset - Process #1 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00001_of_00010.arrow
+Process #2 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00002_of_00010.arrow
+11/23/2024 22:33:01 - INFO - datasets.arrow_dataset - Process #2 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00002_of_00010.arrow
+Process #3 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00003_of_00010.arrow
+11/23/2024 22:33:01 - INFO - datasets.arrow_dataset - Process #3 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00003_of_00010.arrow
+Process #4 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00004_of_00010.arrow
+11/23/2024 22:33:01 - INFO - datasets.arrow_dataset - Process #4 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00004_of_00010.arrow
+Process #5 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00005_of_00010.arrow
+11/23/2024 22:33:01 - INFO - datasets.arrow_dataset - Process #5 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00005_of_00010.arrow
+Process #6 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00006_of_00010.arrow
+11/23/2024 22:33:01 - INFO - datasets.arrow_dataset - Process #6 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00006_of_00010.arrow
+Process #7 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00007_of_00010.arrow
+11/23/2024 22:33:01 - INFO - datasets.arrow_dataset - Process #7 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00007_of_00010.arrow
+Process #8 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00008_of_00010.arrow
+11/23/2024 22:33:01 - INFO - datasets.arrow_dataset - Process #8 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00008_of_00010.arrow
+Process #9 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00009_of_00010.arrow
+11/23/2024 22:33:01 - INFO - datasets.arrow_dataset - Process #9 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00009_of_00010.arrow
+Spawning 10 processes
+11/23/2024 22:33:01 - INFO - datasets.arrow_dataset - Spawning 10 processes
+Tokenizing and reformatting instruction data (num_proc=10):   0%|          | 0/13533 [00:00<?, ? examples/s]Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00000_of_00010.arrow
+11/23/2024 22:33:01 - INFO - datasets.arrow_dataset - Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00000_of_00010.arrow
+Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00001_of_00010.arrow
+11/23/2024 22:33:01 - INFO - datasets.arrow_dataset - Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00001_of_00010.arrow
+Tokenizing and reformatting instruction data (num_proc=10):   0%|          | 25/13533 [00:00<01:33, 144.78 examples/s]Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00002_of_00010.arrow
+11/23/2024 22:33:01 - INFO - datasets.arrow_dataset - Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00002_of_00010.arrow
+Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00003_of_00010.arrow
+11/23/2024 22:33:01 - INFO - datasets.arrow_dataset - Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00003_of_00010.arrow
+Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00004_of_00010.arrow
+11/23/2024 22:33:01 - INFO - datasets.arrow_dataset - Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00004_of_00010.arrow
+Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00005_of_00010.arrow
+11/23/2024 22:33:01 - INFO - datasets.arrow_dataset - Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00005_of_00010.arrow
+Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00006_of_00010.arrow
+11/23/2024 22:33:01 - INFO - datasets.arrow_dataset - Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00006_of_00010.arrow
+Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00007_of_00010.arrow
+11/23/2024 22:33:01 - INFO - datasets.arrow_dataset - Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00007_of_00010.arrow
+Tokenizing and reformatting instruction data (num_proc=10):   1%|▏         | 199/13533 [00:00<00:15, 843.05 examples/s]Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00008_of_00010.arrow
+11/23/2024 22:33:01 - INFO - datasets.arrow_dataset - Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00008_of_00010.arrow
+Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00009_of_00010.arrow
+11/23/2024 22:33:01 - INFO - datasets.arrow_dataset - Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-d675d2ea3405379e_00009_of_00010.arrow
+Tokenizing and reformatting instruction data (num_proc=10):   5%|▌         | 731/13533 [00:00<00:05, 2540.68 examples/s]Tokenizing and reformatting instruction data (num_proc=10):  10%|█         | 1368/13533 [00:00<00:03, 3863.25 examples/s]Tokenizing and reformatting instruction data (num_proc=10):  15%|█▍        | 1984/13533 [00:00<00:02, 4551.50 examples/s]Tokenizing and reformatting instruction data (num_proc=10):  19%|█▉        | 2612/13533 [00:00<00:02, 5086.99 examples/s]Tokenizing and reformatting instruction data (num_proc=10):  24%|██▍       | 3229/13533 [00:00<00:01, 5331.49 examples/s]Tokenizing and reformatting instruction data (num_proc=10):  28%|██▊       | 3832/13533 [00:00<00:01, 5516.94 examples/s]Tokenizing and reformatting instruction data (num_proc=10):  33%|███▎      | 4490/13533 [00:00<00:01, 5807.45 examples/s]Tokenizing and reformatting instruction data (num_proc=10):  38%|███▊      | 5091/13533 [00:01<00:01, 5665.17 examples/s]Tokenizing and reformatting instruction data (num_proc=10):  42%|████▏     | 5712/13533 [00:01<00:01, 5715.42 examples/s]Tokenizing and reformatting instruction data (num_proc=10):  47%|████▋     | 6302/13533 [00:01<00:01, 5759.91 examples/s]Tokenizing and reformatting instruction data (num_proc=10):  51%|█████     | 6910/13533 [00:01<00:01, 5803.10 examples/s]Tokenizing and reformatting instruction data (num_proc=10):  56%|█████▌    | 7536/13533 [00:01<00:01, 5853.31 examples/s]Tokenizing and reformatting instruction data (num_proc=10):  60%|██████    | 8159/13533 [00:01<00:00, 5922.39 examples/s]Tokenizing and reformatting instruction data (num_proc=10):  65%|██████▌   | 8811/13533 [00:01<00:00, 6061.19 examples/s]Tokenizing and reformatting instruction data (num_proc=10):  70%|██████▉   | 9438/13533 [00:01<00:00, 6085.47 examples/s]Tokenizing and reformatting instruction data (num_proc=10):  74%|███████▍  | 10063/13533 [00:01<00:00, 5322.66 examples/s]Tokenizing and reformatting instruction data (num_proc=10):  78%|███████▊  | 10616/13533 [00:02<00:00, 5231.77 examples/s]Tokenizing and reformatting instruction data (num_proc=10):  83%|████████▎ | 11205/13533 [00:02<00:00, 5398.30 examples/s]Tokenizing and reformatting instruction data (num_proc=10):  88%|████████▊ | 11854/13533 [00:02<00:00, 5646.74 examples/s]Tokenizing and reformatting instruction data (num_proc=10):  92%|█████████▏| 12464/13533 [00:02<00:00, 5738.53 examples/s]Tokenizing and reformatting instruction data (num_proc=10):  97%|█████████▋| 13069/13533 [00:02<00:00, 5639.68 examples/s]Tokenizing and reformatting instruction data (num_proc=10): 100%|██████████| 13533/13533 [00:02<00:00, 4850.82 examples/s]
+Concatenating 10 shards
+11/23/2024 22:33:04 - INFO - datasets.arrow_dataset - Concatenating 10 shards
+[INFO|configuration_utils.py:739] 2024-11-23 22:33:04,708 >> loading configuration file config.json from cache at /home/scur2847/.cache/huggingface/hub/models--meta-llama--Llama-2-13b-hf/snapshots/5c31dfb671ce7cfe2d7bb7c04375e44c55e815b1/config.json
+[INFO|configuration_utils.py:802] 2024-11-23 22:33:04,710 >> Model config LlamaConfig {
+  "_name_or_path": "meta-llama/Llama-2-13b-hf",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 1,
+  "eos_token_id": 2,
+  "hidden_act": "silu",
+  "hidden_size": 5120,
+  "initializer_range": 0.02,
+  "intermediate_size": 13824,
+  "max_position_embeddings": 4096,
+  "model_type": "llama",
+  "num_attention_heads": 40,
+  "num_hidden_layers": 40,
+  "num_key_value_heads": 40,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": null,
+  "rope_theta": 10000.0,
+  "tie_word_embeddings": false,
+  "transformers_version": "4.36.2",
+  "use_cache": true,
+  "vocab_size": 32000
+}
+
+[INFO|modeling_utils.py:3344] 2024-11-23 22:33:05,107 >> loading weights file model.safetensors from cache at /home/scur2847/.cache/huggingface/hub/models--meta-llama--Llama-2-13b-hf/snapshots/5c31dfb671ce7cfe2d7bb7c04375e44c55e815b1/model.safetensors.index.json
+Downloading shards:   0%|          | 0/3 [00:00<?, ?it/s]Downloading shards:   0%|          | 0/3 [00:05<?, ?it/s]
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/gpfs/home1/scur2847/ir2-less-data/less/train/train.py", line 191, in <module>
+    main()
+  File "/gpfs/home1/scur2847/ir2-less-data/less/train/train.py", line 84, in main
+    model = AutoModelForCausalLM.from_pretrained(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/scur2847/.local/lib/python3.11/site-packages/transformers/models/auto/auto_factory.py", line 566, in from_pretrained
+    return model_class.from_pretrained(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/scur2847/.local/lib/python3.11/site-packages/transformers/modeling_utils.py", line 3351, in from_pretrained
+    resolved_archive_file, sharded_metadata = get_checkpoint_shard_files(
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/scur2847/.local/lib/python3.11/site-packages/transformers/utils/hub.py", line 1017, in get_checkpoint_shard_files
+    cached_filename = cached_file(
+                      ^^^^^^^^^^^^
+  File "/home/scur2847/.local/lib/python3.11/site-packages/transformers/utils/hub.py", line 389, in cached_file
+    resolved_file = hf_hub_download(
+                    ^^^^^^^^^^^^^^^^
+  File "/home/scur2847/.local/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/scur2847/.local/lib/python3.11/site-packages/huggingface_hub/file_download.py", line 862, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/scur2847/.local/lib/python3.11/site-packages/huggingface_hub/file_download.py", line 1011, in _hf_hub_download_to_cache_dir
+    _download_to_tmp_and_move(
+  File "/home/scur2847/.local/lib/python3.11/site-packages/huggingface_hub/file_download.py", line 1545, in _download_to_tmp_and_move
+    http_get(
+  File "/home/scur2847/.local/lib/python3.11/site-packages/huggingface_hub/file_download.py", line 457, in http_get
+    temp_file.write(chunk)
+OSError: [Errno 122] Disk quota exceeded
+[2024-11-23 22:33:11,704] torch.distributed.elastic.multiprocessing.api: [ERROR] failed (exitcode: 1) local_rank: 0 (pid: 1955496) of binary: /sw/arch/RHEL8/EB_production/2023/software/Python/3.11.3-GCCcore-12.3.0/bin/python
+Traceback (most recent call last):
+  File "/sw/arch/RHEL8/EB_production/2023/software/PyTorch/2.1.2-foss-2023a-CUDA-12.1.1/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/sw/arch/RHEL8/EB_production/2023/software/PyTorch/2.1.2-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 346, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/sw/arch/RHEL8/EB_production/2023/software/PyTorch/2.1.2-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/torch/distributed/run.py", line 806, in main
+    run(args)
+  File "/sw/arch/RHEL8/EB_production/2023/software/PyTorch/2.1.2-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/torch/distributed/run.py", line 797, in run
+    elastic_launch(
+  File "/sw/arch/RHEL8/EB_production/2023/software/PyTorch/2.1.2-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/torch/distributed/launcher/api.py", line 134, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sw/arch/RHEL8/EB_production/2023/software/PyTorch/2.1.2-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/torch/distributed/launcher/api.py", line 264, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+less.train.train FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2024-11-23_22:33:11
+  host      : gcn105.local.snellius.surf.nl
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 1955496)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+
+JOB STATISTICS
+==============
+Job ID: 8659234
+Cluster: snellius
+User/Group: scur2847/scur2847
+State: COMPLETED (exit code 0)
+Nodes: 1
+Cores per node: 32
+CPU Utilized: 00:00:39
+CPU Efficiency: 3.48% of 00:18:40 core-walltime
+Job Wall-clock time: 00:00:35
+Memory Utilized: 2.46 MB
+Memory Efficiency: 0.00% of 360.00 GB

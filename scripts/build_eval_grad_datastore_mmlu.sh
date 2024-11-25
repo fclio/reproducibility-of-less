@@ -13,12 +13,20 @@ module purge
 module load 2023
 module load PyTorch/2.1.2-foss-2023a-CUDA-12.1.1
 
-CKPT=32
+CKPT=422
+PERCENTAGE=0.05
+DATA_SEED=4
 
 TASK=mmlu
-MODEL_PATH=../out/llama2-7b-p0.001-lora-seed3/checkpoint-${CKPT}
-OUTPUT_PATH=../grads/llama2-7b-p0.001-lora-seed3/${TASK}-ckpt${CKPT}-sgd
+JOB_NAME="llama2-7b-p${PERCENTAGE}-lora-seed${DATA_SEED}"
+MODEL_PATH=/scratch-shared/ir2-less/out/${JOB_NAME}/checkpoint-${CKPT}
+# OUTPUT_PATH=../grads/llama2-7b-p0.001-lora-seed3/${TASK}-ckpt${CKPT}-sgd
+OUTPUT_PATH=/scratch-shared/ir2-less/grads/${JOB_NAME}/${TASK}-ckpt${CKPT}-sgd
 DATA_DIR="data"
-DIMS="4096 8192"
+DIMS="8192"
+
+if [[ ! -d $OUTPUT_PATH ]]; then
+    mkdir -p $OUTPUT_PATH
+fi
 
 bash less/scripts/get_info/grad/get_eval_lora_grads.sh "$TASK" "$DATA_DIR" "$MODEL_PATH" $OUTPUT_PATH "$DIMS"

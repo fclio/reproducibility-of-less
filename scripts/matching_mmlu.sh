@@ -25,17 +25,25 @@ module load PyTorch/2.1.2-foss-2023a-CUDA-12.1.1
 
 
 DIM=8192 # decide which dimension to use
-GRADIENT_PATH=../grads/llama2-7b-p0.001-lora-seed3/{}-ckpt{}-adam/dim${DIM}
 TRAIN_FILE_NAMES="dolly"
-CKPTS="32" # checkpoing index
+DATA_SEED=4
+PERCENTAGE=0.05
+CKPTS="422" # checkpoing index
 CHECKPOINT_WEIGHTS="1.6877e-05 " # average lr of the epoch
+TARGET_TASK_NAMES="mmlu"
+JOB_NAME="llama2-7b-p${PERCENTAGE}-lora-seed${DATA_SEED}"
+
+GRADIENT_PATH=/scratch-shared/ir2-less/grads/${JOB_NAME}/{}-ckpt{}-adam/dim${DIM}
 
 #TODO FIND THE CORRECT CHECKPOINT WEIGHT!
 
-VALIDATION_GRADIENT_PATH=../grads/llama2-7b-p0.001-lora-seed3/{}-ckpt{}-sgd/dim${DIM}
-TARGET_TASK_NAMES="mmlu"
-SELECTED_DATA_OUTPUT_PATH="../selected_data/llama2-7b-p0.001-lora-seed3"
+VALIDATION_GRADIENT_PATH=/scratch-shared/ir2-less/grads/${JOB_NAME}/{}-ckpt{}-sgd/dim${DIM}
+SELECTED_DATA_OUTPUT_PATH="/scratch-shared/ir2-less/selected_data/${JOB_NAME}"
+
+if [[ ! -d $SELECTED_DATA_OUTPUT_PATH ]]; then
+    mkdir -p $SELECTED_DATA_OUTPUT_PATH
+fi
 
 bash less/scripts/data_selection/matching.sh "$GRADIENT_PATH" "$TRAIN_FILE_NAMES" "$CKPTS" "$CHECKPOINT_WEIGHTS" "$VALIDATION_GRADIENT_PATH" "$TARGET_TASK_NAMES" "$SELECTED_DATA_OUTPUT_PATH"
 
-python3 -m less.data_selection.write_selected_data --target_task_names ${TARGET_TASK_NAMES} --train_file_names ${TRAIN_FILE_NAMES} --train_files data/train/processed/dolly/dolly_data.jsonl --output_path $SELECTED_DATA_OUTPUT_PATH --percentage 0.001
+python3 -m less.data_selection.write_selected_data --target_task_names ${TARGET_TASK_NAMES} --train_file_names ${TRAIN_FILE_NAMES} --train_files data/train/processed/dolly/dolly_data.jsonl --output_path $SELECTED_DATA_OUTPUT_PATH --percentage ${PERCENTAGE}

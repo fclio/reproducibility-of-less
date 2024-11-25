@@ -1,0 +1,34 @@
+  0%|          | 0/1688 [00:00<?, ?it/s][WARNING|logging.py:314] 2024-11-23 13:31:14,892 >> You're using a LlamaTokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/gpfs/home1/scur2847/ir2-less-data/less/train/train.py", line 191, in <module>
+    main()
+  File "/gpfs/home1/scur2847/ir2-less-data/less/train/train.py", line 170, in main
+    train_result = trainer.train()
+                   ^^^^^^^^^^^^^^^
+  File "/home/scur2847/.local/lib/python3.11/site-packages/transformers/trainer.py", line 1537, in train
+    return inner_training_loop(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/scur2847/.local/lib/python3.11/site-packages/transformers/trainer.py", line 1854, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/scur2847/.local/lib/python3.11/site-packages/transformers/trainer.py", line 2744, in training_step
+    self.accelerator.backward(loss)
+  File "/home/scur2847/.local/lib/python3.11/site-packages/accelerate/accelerator.py", line 2196, in backward
+    loss.backward(**kwargs)
+  File "/sw/arch/RHEL8/EB_production/2023/software/PyTorch/2.1.2-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/torch/_tensor.py", line 492, in backward
+    torch.autograd.backward(
+  File "/sw/arch/RHEL8/EB_production/2023/software/PyTorch/2.1.2-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/torch/autograd/__init__.py", line 251, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+  File "/sw/arch/RHEL8/EB_production/2023/software/PyTorch/2.1.2-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/sw/arch/RHEL8/EB_production/2023/software/PyTorch/2.1.2-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/torch/distributed/fsdp/_runtime_utils.py", line 784, in _post_backward_hook
+    _reduce_grad_no_shard(state, handle)
+  File "/sw/arch/RHEL8/EB_production/2023/software/PyTorch/2.1.2-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/torch/distributed/fsdp/_runtime_utils.py", line 940, in _reduce_grad_no_shard
+    _cast_grad_to_param_dtype(state, flat_param.grad, flat_param)
+  File "/sw/arch/RHEL8/EB_production/2023/software/PyTorch/2.1.2-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/torch/distributed/fsdp/_runtime_utils.py", line 1041, in _cast_grad_to_param_dtype
+    sharded_grad.data = sharded_grad.data.to(dtype=param.dtype)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.20 GiB. GPU 0 has a total capacty of 93.12 GiB of which 1.12 GiB is free. Including non-PyTorch memory, this process has 91.99 GiB memory in use. Of the allocated memory 90.34 GiB is allocated by PyTorch, and 733.77 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF

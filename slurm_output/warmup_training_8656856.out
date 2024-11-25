@@ -388,11 +388,13 @@ Process #9 will write at /home/scur2847/.cache/huggingface/datasets/json/default
 11/23/2024 13:05:54 - INFO - datasets.arrow_dataset - Process #9 will write at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_00009_of_00010.arrow
 Spawning 10 processes
 11/23/2024 13:05:54 - INFO - datasets.arrow_dataset - Spawning 10 processes
-Tokenizing and reformatting instruction data (num_proc=10):   0%|          | 0/27 [00:00<?, ? examples/s]Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_00000_of_00010.arrow
+
+Tokenizing and reformatting instruction data (num_proc=10):   0%|          | 0/27 [00:00<?, ? examples/s]Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_00000_of_00010.arrow
 11/23/2024 13:05:54 - INFO - datasets.arrow_dataset - Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_00000_of_00010.arrow
 Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_00001_of_00010.arrow
 11/23/2024 13:05:54 - INFO - datasets.arrow_dataset - Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_00001_of_00010.arrow
-Tokenizing and reformatting instruction data (num_proc=10):  11%|█         | 3/27 [00:00<00:01, 17.26 examples/s]Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_00002_of_00010.arrow
+
+Tokenizing and reformatting instruction data (num_proc=10):  11%|█         | 3/27 [00:00<00:01, 17.26 examples/s]Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_00002_of_00010.arrow
 11/23/2024 13:05:54 - INFO - datasets.arrow_dataset - Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_00002_of_00010.arrow
 Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_00003_of_00010.arrow
 11/23/2024 13:05:54 - INFO - datasets.arrow_dataset - Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_00003_of_00010.arrow
@@ -404,11 +406,13 @@ Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/def
 11/23/2024 13:05:54 - INFO - datasets.arrow_dataset - Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_00006_of_00010.arrow
 Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_00007_of_00010.arrow
 11/23/2024 13:05:54 - INFO - datasets.arrow_dataset - Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_00007_of_00010.arrow
-Tokenizing and reformatting instruction data (num_proc=10):  78%|███████▊  | 21/27 [00:00<00:00, 90.31 examples/s]Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_00008_of_00010.arrow
+
+Tokenizing and reformatting instruction data (num_proc=10):  78%|███████▊  | 21/27 [00:00<00:00, 90.31 examples/s]Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_00008_of_00010.arrow
 11/23/2024 13:05:54 - INFO - datasets.arrow_dataset - Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_00008_of_00010.arrow
 Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_00009_of_00010.arrow
 11/23/2024 13:05:54 - INFO - datasets.arrow_dataset - Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-15fea01c70749d5d_00009_of_00010.arrow
-Tokenizing and reformatting instruction data (num_proc=10): 100%|██████████| 27/27 [00:00<00:00, 68.07 examples/s]
+
+Tokenizing and reformatting instruction data (num_proc=10): 100%|██████████| 27/27 [00:00<00:00, 68.07 examples/s]
 Concatenating 10 shards
 11/23/2024 13:05:54 - INFO - datasets.arrow_dataset - Concatenating 10 shards
 [INFO|configuration_utils.py:739] 2024-11-23 13:05:54,789 >> loading configuration file config.json from cache at /home/scur2847/.cache/huggingface/hub/models--meta-llama--Llama-2-7b-hf/snapshots/01c7f73d771dfac7d292323805ebc428287df4f9/config.json
@@ -446,7 +450,11 @@ Concatenating 10 shards
   "eos_token_id": 2
 }
 
-Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:05<00:05,  5.43s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:07<00:00,  3.42s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:07<00:00,  3.72s/it]
+
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]
+Loading checkpoint shards:  50%|█████     | 1/2 [00:05<00:05,  5.43s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:07<00:00,  3.42s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:07<00:00,  3.72s/it]
 [INFO|modeling_utils.py:4185] 2024-11-23 13:06:02,524 >> All model checkpoint weights were used when initializing LlamaForCausalLM.
 
 [INFO|modeling_utils.py:4193] 2024-11-23 13:06:02,524 >> All the weights of LlamaForCausalLM were initialized from the model checkpoint at meta-llama/Llama-2-7b-hf.
@@ -497,7 +505,11 @@ If your task is similar to the task the model of the checkpoint was trained on, 
   "eos_token_id": 2
 }
 
-Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.45s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.04it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.03s/it]
+
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]
+Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.45s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.04it/s]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.03s/it]
 [INFO|modeling_utils.py:4185] 2024-11-23 13:06:04,875 >> All model checkpoint weights were used when initializing LlamaForCausalLM.
 
 [INFO|modeling_utils.py:4193] 2024-11-23 13:06:04,875 >> All the weights of LlamaForCausalLM were initialized from the model checkpoint at meta-llama/Llama-2-7b-hf.
@@ -516,11 +528,13 @@ If your task is similar to the task the model of the checkpoint was trained on, 
 [INFO|modeling_utils.py:1813] 2024-11-23 13:06:05,078 >> You are resizing the embedding layer without providing a `pad_to_multiple_of` parameter. This means that the new embedding dimension will be 32001. This might induce some performance reduction as *Tensor Cores* will not be available. For more details about this, or help on choosing the correct value for resizing, refer to this guide: https://docs.nvidia.com/deeplearning/performance/dl-performance-matrix-multiplication/index.html#requirements-tc
 11/23/2024 13:06:08 - INFO - __main__ - Applied LoRA to model.
 trainable params: 134,217,728 || all params: 6,872,641,536 || trainable%: 1.9529278123549145
-Map:   0%|          | 0/27 [00:00<?, ? examples/s]/gpfs/home1/scur2847/ir2-less-data/less/train/data_arguments.py:50: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+
+Map:   0%|          | 0/27 [00:00<?, ? examples/s]/gpfs/home1/scur2847/ir2-less-data/less/train/data_arguments.py:50: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
   com_len = (torch.tensor(labels) > -1).sum()
 Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-92b2d17b0420a5cc.arrow
 11/23/2024 13:06:08 - INFO - datasets.arrow_dataset - Caching processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-0338088e5cfdaa1d/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-92b2d17b0420a5cc.arrow
-Map: 100%|██████████| 27/27 [00:00<00:00, 959.78 examples/s]
+
+Map: 100%|██████████| 27/27 [00:00<00:00, 959.78 examples/s]
 [train set] examples: 27; # avg tokens: 336.3333435058594
 [train set] examples: 27; # avg completion tokens: 154.1851806640625
 11/23/2024 13:06:08 - INFO - __main__ - Sample 12 of the training set: {'input_ids': tensor([    1,   529, 29989,  1792, 29989, 29958,    13, 13696,  1241,   278,
@@ -658,18 +672,73 @@ wandb: Run `wandb offline` to turn off syncing.
 wandb: Syncing run comfy-mountain-19
 wandb: ⭐️ View project at https://wandb.ai/colinnyuh-university-of-amsterdam/huggingface
 wandb: 🚀 View run at https://wandb.ai/colinnyuh-university-of-amsterdam/huggingface/runs/qchlbbpy
-  0%|          | 0/4 [00:00<?, ?it/s][WARNING|logging.py:314] 2024-11-23 13:06:13,305 >> You're using a LlamaTokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
- 25%|██▌       | 1/4 [00:07<00:23,  7.85s/it]                                             {'loss': 3.1633, 'learning_rate': 2e-05, 'epoch': 1.0}
- 25%|██▌       | 1/4 [00:07<00:23,  7.85s/it][2024-11-23 13:06:21,272] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+
+  0%|          | 0/4 [00:00<?, ?it/s][WARNING|logging.py:314] 2024-11-23 13:06:13,305 >> You're using a LlamaTokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
+
+ 25%|██▌       | 1/4 [00:07<00:23,  7.85s/it]
+                                             
+{'loss': 3.1633, 'learning_rate': 2e-05, 'epoch': 1.0}
+
+ 25%|██▌       | 1/4 [00:07<00:23,  7.85s/it][2024-11-23 13:06:21,272] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
 [INFO|trainer.py:2889] 2024-11-23 13:06:25,416 >> Saving model checkpoint to /scratch-shared/ir2-less/out/llama2-7b-p0.0001-lora-seed3/tmp-checkpoint-1
 [INFO|tokenization_utils_base.py:2432] 2024-11-23 13:06:25,995 >> tokenizer config file saved in /scratch-shared/ir2-less/out/llama2-7b-p0.0001-lora-seed3/tmp-checkpoint-1/tokenizer_config.json
 [INFO|tokenization_utils_base.py:2441] 2024-11-23 13:06:25,996 >> Special tokens file saved in /scratch-shared/ir2-less/out/llama2-7b-p0.0001-lora-seed3/tmp-checkpoint-1/special_tokens_map.json
- 50%|█████     | 2/4 [00:49<00:54, 27.49s/it]                                             {'loss': 0.3919, 'learning_rate': 1.3333333333333333e-05, 'epoch': 1.19}
- 50%|█████     | 2/4 [00:49<00:54, 27.49s/it] 75%|███████▌  | 3/4 [00:54<00:17, 17.54s/it]                                             {'loss': 2.5196, 'learning_rate': 6.666666666666667e-06, 'epoch': 2.0}
- 75%|███████▌  | 3/4 [00:54<00:17, 17.54s/it][INFO|trainer.py:2889] 2024-11-23 13:07:08,151 >> Saving model checkpoint to /scratch-shared/ir2-less/out/llama2-7b-p0.0001-lora-seed3/tmp-checkpoint-3
+
+ 50%|█████     | 2/4 [00:49<00:54, 27.49s/it]
+                                             
+{'loss': 0.3919, 'learning_rate': 1.3333333333333333e-05, 'epoch': 1.19}
+
+ 50%|█████     | 2/4 [00:49<00:54, 27.49s/it]
+ 75%|███████▌  | 3/4 [00:54<00:17, 17.54s/it]
+                                             
+{'loss': 2.5196, 'learning_rate': 6.666666666666667e-06, 'epoch': 2.0}
+
+ 75%|███████▌  | 3/4 [00:54<00:17, 17.54s/it][INFO|trainer.py:2889] 2024-11-23 13:07:08,151 >> Saving model checkpoint to /scratch-shared/ir2-less/out/llama2-7b-p0.0001-lora-seed3/tmp-checkpoint-3
 [INFO|tokenization_utils_base.py:2432] 2024-11-23 13:07:08,721 >> tokenizer config file saved in /scratch-shared/ir2-less/out/llama2-7b-p0.0001-lora-seed3/tmp-checkpoint-3/tokenizer_config.json
 [INFO|tokenization_utils_base.py:2441] 2024-11-23 13:07:08,722 >> Special tokens file saved in /scratch-shared/ir2-less/out/llama2-7b-p0.0001-lora-seed3/tmp-checkpoint-3/special_tokens_map.json
-100%|██████████| 4/4 [01:37<00:00, 27.28s/it]                                             {'loss': 0.9613, 'learning_rate': 0.0, 'epoch': 2.37}
-100%|██████████| 4/4 [01:37<00:00, 27.28s/it][INFO|trainer.py:2889] 2024-11-23 13:07:50,370 >> Saving model checkpoint to /scratch-shared/ir2-less/out/llama2-7b-p0.0001-lora-seed3/tmp-checkpoint-4
+
+100%|██████████| 4/4 [01:37<00:00, 27.28s/it]
+                                             
+{'loss': 0.9613, 'learning_rate': 0.0, 'epoch': 2.37}
+
+100%|██████████| 4/4 [01:37<00:00, 27.28s/it][INFO|trainer.py:2889] 2024-11-23 13:07:50,370 >> Saving model checkpoint to /scratch-shared/ir2-less/out/llama2-7b-p0.0001-lora-seed3/tmp-checkpoint-4
 [INFO|tokenization_utils_base.py:2432] 2024-11-23 13:07:50,888 >> tokenizer config file saved in /scratch-shared/ir2-less/out/llama2-7b-p0.0001-lora-seed3/tmp-checkpoint-4/tokenizer_config.json
 [INFO|tokenization_utils_base.py:2441] 2024-11-23 13:07:50,889 >> Special tokens file saved in /scratch-shared/ir2-less/out/llama2-7b-p0.0001-lora-seed3/tmp-checkpoint-4/special_tokens_map.json
+[INFO|trainer.py:1947] 2024-11-23 13:08:29,498 >> 
+
+Training completed. Do not forget to share your model on huggingface.co/models =)
+
+
+
+                                             
+{'train_runtime': 137.0277, 'train_samples_per_second': 0.788, 'train_steps_per_second': 0.029, 'train_loss': 1.7590190842747688, 'epoch': 2.37}
+
+100%|██████████| 4/4 [02:16<00:00, 27.28s/it]
+100%|██████████| 4/4 [02:16<00:00, 34.05s/it]
+after training done!!!!
+[INFO|trainer.py:2889] 2024-11-23 13:08:29,569 >> Saving model checkpoint to /scratch-shared/ir2-less/out/llama2-7b-p0.0001-lora-seed3
+[INFO|tokenization_utils_base.py:2432] 2024-11-23 13:08:30,128 >> tokenizer config file saved in /scratch-shared/ir2-less/out/llama2-7b-p0.0001-lora-seed3/tokenizer_config.json
+[INFO|tokenization_utils_base.py:2441] 2024-11-23 13:08:30,128 >> Special tokens file saved in /scratch-shared/ir2-less/out/llama2-7b-p0.0001-lora-seed3/special_tokens_map.json
+***** train metrics *****
+  epoch                    =       2.37
+  train_loss               =      1.759
+  train_runtime            = 0:02:17.02
+  train_samples            =         27
+  train_samples_per_second =      0.788
+  train_steps_per_second   =      0.029
+[1;34mwandb[0m: 🚀 View run [33mcomfy-mountain-19[0m at: [34mhttps://wandb.ai/colinnyuh-university-of-amsterdam/huggingface/runs/qchlbbpy[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20241123_130612-qchlbbpy/logs[0m
+
+JOB STATISTICS
+==============
+Job ID: 8656856
+Cluster: snellius
+User/Group: scur2847/scur2847
+State: COMPLETED (exit code 0)
+Nodes: 1
+Cores per node: 32
+CPU Utilized: 00:04:20
+CPU Efficiency: 2.74% of 02:37:52 core-walltime
+Job Wall-clock time: 00:04:56
+Memory Utilized: 2.01 GB
+Memory Efficiency: 0.56% of 360.00 GB

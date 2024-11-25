@@ -1,0 +1,18 @@
+{"time":"2024-11-23T20:34:19.039024528+01:00","level":"INFO","msg":"using version","core version":"0.18.6"}
+{"time":"2024-11-23T20:34:19.039078248+01:00","level":"INFO","msg":"created symlink","path":"/gpfs/home1/scur2847/ir2-less-data/wandb/run-20241123_203419-faeji91y/logs/debug-core.log"}
+{"time":"2024-11-23T20:34:19.251146752+01:00","level":"INFO","msg":"created new stream","id":"faeji91y"}
+{"time":"2024-11-23T20:34:19.251215211+01:00","level":"INFO","msg":"stream: started","id":"faeji91y"}
+{"time":"2024-11-23T20:34:19.251265141+01:00","level":"INFO","msg":"sender: started","stream_id":"faeji91y"}
+{"time":"2024-11-23T20:34:19.251240891+01:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"faeji91y"}}
+{"time":"2024-11-23T20:34:19.251251261+01:00","level":"INFO","msg":"handler: started","stream_id":{"value":"faeji91y"}}
+{"time":"2024-11-23T20:34:19.442655828+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-23T20:34:20.17495117+01:00","level":"INFO","msg":"stream: closing","id":"faeji91y"}
+{"time":"2024-11-23T20:34:20.17501039+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-23T20:34:20.175762242+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-11-23T20:34:20.336086924+01:00","level":"WARN","msg":"No program path found, not creating job artifact. See https://docs.wandb.ai/guides/launch/create-job"}
+{"time":"2024-11-23T20:34:20.336124263+01:00","level":"INFO","msg":"sender: sendDefer: no job artifact to save"}
+{"time":"2024-11-23T20:34:21.170608237+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-11-23T20:34:21.342326896+01:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"faeji91y"}}
+{"time":"2024-11-23T20:34:21.342384446+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"faeji91y"}}
+{"time":"2024-11-23T20:34:21.342389586+01:00","level":"INFO","msg":"sender: closed","stream_id":"faeji91y"}
+{"time":"2024-11-23T20:34:21.342684293+01:00","level":"INFO","msg":"stream: closed","id":"faeji91y"}

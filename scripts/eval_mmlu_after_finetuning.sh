@@ -22,8 +22,14 @@ cd evaluation
 source eval.sh
 source eval_mmlu.sh
 
+
+DATA_SEED=4
+PERCENTAGE=0.05
+JOB_NAME=llama2-7b-less-p${PERCENTAGE}-lora-seed${DATA_SEED}
+
 # Set the model directory relative to the script's location
-MODEL_DIR="../../out/llama2-7b-less-p0.001-lora"
+MODEL_DIR="../../out/${JOB_NAME}"
+
 
 # Run the evaluation on MMLU dataset
 eval_mmlu "$MODEL_DIR"
