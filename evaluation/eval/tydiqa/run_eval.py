@@ -6,7 +6,7 @@ import random
 import evaluate
 import numpy as np
 import torch
-import vllm
+# import vllm
 
 from eval.utils import (dynamic_import_function, generate_completions,
                         load_hf_lm_and_tokenizer, query_openai_chat_model)
@@ -42,7 +42,7 @@ def main(args):
     print("Loading data...")
 
     test_data = []
-    with open(os.path.join(args.data_dir, "tydiqa-goldp-v1.1-dev.json")) as fin:
+    with open(os.path.join(args.data_dir, "test/tydiqa-goldp-v1.1-dev.json")) as fin:
         dev_data = json.load(fin)
         for article in dev_data["data"]:
             for paragraph in article["paragraphs"]:
@@ -72,7 +72,7 @@ def main(args):
 
     if args.n_shot > 0:
         train_data_for_langs = {lang: [] for lang in data_languages}
-        with open(os.path.join(args.data_dir, "tydiqa-goldp-v1.1-train.json")) as fin:
+        with open(os.path.join(args.data_dir, "dev/tydiqa-goldp-v1.1-dev.json")) as fin:
             train_data = json.load(fin)
             for article in train_data["data"]:
                 for paragraph in article["paragraphs"]:
@@ -102,14 +102,15 @@ def main(args):
     if args.model_name_or_path:
         print("Loading model and tokenizer...")
         if args.use_vllm:
-            model = vllm.LLM(
-                model=args.model_name_or_path,
-                tokenizer=args.tokenizer_name_or_path if args.tokenizer_name_or_path else args.model_name_or_path,
-                tokenizer_mode="slow" if args.use_slow_tokenizer else "auto",
-                tensor_parallel_size=torch.cuda.device_count(),
-                max_num_batched_tokens=4096,
-            )
-            tokenizer = model.llm_engine.tokenizer
+            # model = vllm.LLM(
+            #     model=args.model_name_or_path,
+            #     tokenizer=args.tokenizer_name_or_path if args.tokenizer_name_or_path else args.model_name_or_path,
+            #     tokenizer_mode="slow" if args.use_slow_tokenizer else "auto",
+            #     tensor_parallel_size=torch.cuda.device_count(),
+            #     max_num_batched_tokens=4096,
+            # )
+            # tokenizer = model.llm_engine.tokenizer
+            pass
         else:
             model, tokenizer = load_hf_lm_and_tokenizer(
                 model_name_or_path=args.model_name_or_path,
@@ -194,18 +195,19 @@ def main(args):
 
     if args.model_name_or_path:
         if args.use_vllm:
-            sampling_params = vllm.SamplingParams(
-                temperature=0,
-                max_tokens=50,
-                stop=["\n"],
-            )
-            # We need to remap the outputs to the prompts because vllm might not return outputs for some prompts (e.g., if the prompt is too long)
-            generations = model.generate(prompts, sampling_params)
-            prompt_to_output = {
-                g.prompt: g.outputs[0].text for g in generations
-            }
-            outputs = [prompt_to_output[prompt].strip(
-            ) if prompt in prompt_to_output else "" for prompt in prompts]
+            # sampling_params = vllm.SamplingParams(
+            #     temperature=0,
+            #     max_tokens=50,
+            #     stop=["\n"],
+            # )
+            # # We need to remap the outputs to the prompts because vllm might not return outputs for some prompts (e.g., if the prompt is too long)
+            # generations = model.generate(prompts, sampling_params)
+            # prompt_to_output = {
+            #     g.prompt: g.outputs[0].text for g in generations
+            # }
+            # outputs = [prompt_to_output[prompt].strip(
+            # ) if prompt in prompt_to_output else "" for prompt in prompts]
+            pass
         else:
             # get the last token because the tokenizer may add space tokens at the start.
             new_line_token = tokenizer.encode(

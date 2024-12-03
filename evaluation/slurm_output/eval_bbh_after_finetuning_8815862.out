@@ -1,0 +1,221 @@
+[2024-11-28 20:00:43,505] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+Loading tasks:   0%|          | 0/27 [00:00<?, ?it/s]Loading tasks: 100%|██████████| 27/27 [00:00<00:00, 763.70it/s]
+Loading prompts:   0%|          | 0/27 [00:00<?, ?it/s]Loading prompts: 100%|██████████| 27/27 [00:00<00:00, 2278.69it/s]
+/home/scur2847/.local/lib/python3.11/site-packages/huggingface_hub/file_download.py:797: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+{'penguins_in_a_table', 'logical_deduction_three_objects', 'salient_translation_error_detection', 'date_understanding', 'sports_understanding', 'object_counting', 'word_sorting', 'web_of_lies', 'dyck_languages', 'snarks', 'tracking_shuffled_objects_five_objects', 'movie_recommendation', 'formal_fallacies', 'causal_judgement', 'ruin_names', 'tracking_shuffled_objects_three_objects', 'disambiguation_qa', 'hyperbaton', 'logical_deduction_five_objects', 'navigate', 'boolean_expressions', 'logical_deduction_seven_objects', 'reasoning_about_colored_objects', 'geometric_shapes', 'tracking_shuffled_objects_seven_objects', 'temporal_sequences', 'multistep_arithmetic_two'} {'penguins_in_a_table', 'logical_deduction_three_objects', 'salient_translation_error_detection', 'date_understanding', 'sports_understanding', 'object_counting', 'word_sorting', 'web_of_lies', 'dyck_languages', 'snarks', 'tracking_shuffled_objects_five_objects', 'movie_recommendation', 'formal_fallacies', 'causal_judgement', 'ruin_names', 'tracking_shuffled_objects_three_objects', 'disambiguation_qa', 'hyperbaton', 'logical_deduction_five_objects', 'navigate', 'boolean_expressions', 'logical_deduction_seven_objects', 'reasoning_about_colored_objects', 'geometric_shapes', 'tracking_shuffled_objects_seven_objects', 'temporal_sequences', 'multistep_arithmetic_two'}
+Loading model and tokenizer with huggingface...
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:07<00:07,  7.52s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:10<00:00,  4.76s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:10<00:00,  5.17s/it]
+loaded the peft model
+Convert model to bfloat16 precision.
+Evaluating:   0%|          | 0/27 [00:00<?, ?it/s]
+Generating Completions:   0%|          | 0/40 [00:00<?, ?it/s][A/home/scur2847/.local/lib/python3.11/site-packages/transformers/generation/configuration_utils.py:389: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0.6` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`.
+  warnings.warn(
+/home/scur2847/.local/lib/python3.11/site-packages/transformers/generation/configuration_utils.py:394: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.9` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`.
+  warnings.warn(
+
+Generating Completions:  25%|██▌       | 10/40 [00:15<00:47,  1.58s/it][A
+Generating Completions:  50%|█████     | 20/40 [00:28<00:27,  1.37s/it][A
+Generating Completions:  75%|███████▌  | 30/40 [00:43<00:14,  1.45s/it][A
+Generating Completions: 100%|██████████| 40/40 [00:59<00:00,  1.49s/it][AGenerating Completions: 100%|██████████| 40/40 [00:59<00:00,  1.48s/it]
+Evaluating:   4%|▎         | 1/27 [00:59<25:38, 59.18s/it]Task logical_deduction_seven_objects - EM: 0.3
+
+Generating Completions:   0%|          | 0/40 [00:00<?, ?it/s][A
+Generating Completions:  25%|██▌       | 10/40 [00:08<00:26,  1.13it/s][A
+Generating Completions:  50%|█████     | 20/40 [00:16<00:16,  1.23it/s][A
+Generating Completions:  75%|███████▌  | 30/40 [00:24<00:08,  1.21it/s][A
+Generating Completions: 100%|██████████| 40/40 [00:32<00:00,  1.25it/s][AGenerating Completions: 100%|██████████| 40/40 [00:32<00:00,  1.23it/s]
+Evaluating:   7%|▋         | 2/27 [01:31<18:06, 43.47s/it]Task ruin_names - EM: 0.3
+
+Generating Completions:   0%|          | 0/40 [00:00<?, ?it/s][A
+Generating Completions:  25%|██▌       | 10/40 [00:16<00:49,  1.64s/it][A
+Generating Completions:  50%|█████     | 20/40 [00:32<00:32,  1.64s/it][A
+Generating Completions:  75%|███████▌  | 30/40 [00:49<00:16,  1.64s/it][A
+Generating Completions: 100%|██████████| 40/40 [01:05<00:00,  1.63s/it][AGenerating Completions: 100%|██████████| 40/40 [01:05<00:00,  1.64s/it]
+Evaluating:  11%|█         | 3/27 [02:37<21:24, 53.52s/it]Task dyck_languages - EM: 0.075
+
+Generating Completions:   0%|          | 0/40 [00:00<?, ?it/s][A
+Generating Completions:  25%|██▌       | 10/40 [00:04<00:13,  2.16it/s][A
+Generating Completions:  50%|█████     | 20/40 [00:10<00:10,  1.93it/s][A
+Generating Completions:  75%|███████▌  | 30/40 [00:14<00:04,  2.14it/s][A
+Generating Completions: 100%|██████████| 40/40 [00:18<00:00,  2.25it/s][AGenerating Completions: 100%|██████████| 40/40 [00:18<00:00,  2.18it/s]
+Evaluating:  15%|█▍        | 4/27 [02:55<15:11, 39.65s/it]Task causal_judgement - EM: 0.6
+
+Generating Completions:   0%|          | 0/40 [00:00<?, ?it/s][A
+Generating Completions:  25%|██▌       | 10/40 [00:00<00:02, 13.14it/s][A
+Generating Completions:  50%|█████     | 20/40 [00:01<00:01, 12.97it/s][A
+Generating Completions:  75%|███████▌  | 30/40 [00:02<00:00, 13.05it/s][A
+Generating Completions: 100%|██████████| 40/40 [00:03<00:00, 12.75it/s][AGenerating Completions: 100%|██████████| 40/40 [00:03<00:00, 12.85it/s]
+Evaluating:  19%|█▊        | 5/27 [02:58<09:42, 26.48s/it]Task sports_understanding - EM: 0.775
+
+Generating Completions:   0%|          | 0/40 [00:00<?, ?it/s][A
+Generating Completions:  25%|██▌       | 10/40 [00:13<00:41,  1.40s/it][A
+Generating Completions:  50%|█████     | 20/40 [00:29<00:29,  1.46s/it][A
+Generating Completions:  75%|███████▌  | 30/40 [00:43<00:14,  1.48s/it][A
+Generating Completions: 100%|██████████| 40/40 [00:59<00:00,  1.49s/it][AGenerating Completions: 100%|██████████| 40/40 [00:59<00:00,  1.48s/it]
+Evaluating:  22%|██▏       | 6/27 [03:57<13:08, 37.55s/it]Task word_sorting - EM: 0.125
+
+Generating Completions:   0%|          | 0/40 [00:00<?, ?it/s][A
+Generating Completions:  25%|██▌       | 10/40 [00:05<00:16,  1.82it/s][A
+Generating Completions:  50%|█████     | 20/40 [00:10<00:10,  1.92it/s][A
+Generating Completions:  75%|███████▌  | 30/40 [00:15<00:05,  1.89it/s][A
+Generating Completions: 100%|██████████| 40/40 [00:21<00:00,  1.89it/s][AGenerating Completions: 100%|██████████| 40/40 [00:21<00:00,  1.89it/s]
+Evaluating:  26%|██▌       | 7/27 [04:18<10:44, 32.20s/it]Task temporal_sequences - EM: 0.125
+
+Generating Completions:   0%|          | 0/40 [00:00<?, ?it/s][A
+Generating Completions:  25%|██▌       | 10/40 [00:16<00:48,  1.60s/it][A
+Generating Completions:  50%|█████     | 20/40 [00:32<00:32,  1.60s/it][A
+Generating Completions:  75%|███████▌  | 30/40 [00:48<00:16,  1.60s/it][A
+Generating Completions: 100%|██████████| 40/40 [01:04<00:00,  1.60s/it][AGenerating Completions: 100%|██████████| 40/40 [01:04<00:00,  1.60s/it]
+Evaluating:  30%|██▉       | 8/27 [05:22<13:24, 42.36s/it]Task multistep_arithmetic_two - EM: 0.025
+
+Generating Completions:   0%|          | 0/40 [00:00<?, ?it/s][A
+Generating Completions:  25%|██▌       | 10/40 [00:16<00:49,  1.63s/it][A
+Generating Completions:  50%|█████     | 20/40 [00:30<00:30,  1.52s/it][A
+Generating Completions:  75%|███████▌  | 30/40 [00:47<00:15,  1.57s/it][A
+Generating Completions: 100%|██████████| 40/40 [01:03<00:00,  1.60s/it][AGenerating Completions: 100%|██████████| 40/40 [01:03<00:00,  1.59s/it]
+Evaluating:  33%|███▎      | 9/27 [06:26<14:41, 48.95s/it]Task tracking_shuffled_objects_seven_objects - EM: 0.075
+
+Generating Completions:   0%|          | 0/40 [00:00<?, ?it/s][A
+Generating Completions:  25%|██▌       | 10/40 [00:06<00:20,  1.43it/s][A
+Generating Completions:  50%|█████     | 20/40 [00:13<00:13,  1.43it/s][A
+Generating Completions:  75%|███████▌  | 30/40 [00:21<00:07,  1.43it/s][A
+Generating Completions: 100%|██████████| 40/40 [00:27<00:00,  1.44it/s][AGenerating Completions: 100%|██████████| 40/40 [00:27<00:00,  1.43it/s]
+Evaluating:  37%|███▋      | 10/27 [06:54<12:01, 42.45s/it]Task web_of_lies - EM: 0.5
+
+Generating Completions:   0%|          | 0/40 [00:00<?, ?it/s][A
+Generating Completions:  25%|██▌       | 10/40 [00:19<00:59,  1.98s/it][A
+Generating Completions:  50%|█████     | 20/40 [00:39<00:39,  1.98s/it][A
+Generating Completions:  75%|███████▌  | 30/40 [00:57<00:19,  1.90s/it][A
+Generating Completions: 100%|██████████| 40/40 [01:17<00:00,  1.93s/it][AGenerating Completions: 100%|██████████| 40/40 [01:17<00:00,  1.93s/it]
+Evaluating:  41%|████      | 11/27 [08:11<14:10, 53.13s/it]Task formal_fallacies - EM: 0.45
+
+Generating Completions:   0%|          | 0/40 [00:00<?, ?it/s][A
+Generating Completions:  25%|██▌       | 10/40 [00:14<00:44,  1.48s/it][A
+Generating Completions:  50%|█████     | 20/40 [00:28<00:28,  1.43s/it][A
+Generating Completions:  75%|███████▌  | 30/40 [00:38<00:12,  1.21s/it][A
+Generating Completions: 100%|██████████| 40/40 [00:50<00:00,  1.23s/it][AGenerating Completions: 100%|██████████| 40/40 [00:50<00:00,  1.27s/it]
+Evaluating:  44%|████▍     | 12/27 [09:02<13:06, 52.43s/it]Task salient_translation_error_detection - EM: 0.375
+
+Generating Completions:   0%|          | 0/40 [00:00<?, ?it/s][A
+Generating Completions:  25%|██▌       | 10/40 [00:04<00:14,  2.12it/s][A
+Generating Completions:  50%|█████     | 20/40 [00:09<00:09,  2.08it/s][A
+Generating Completions:  75%|███████▌  | 30/40 [00:14<00:04,  2.09it/s][A
+Generating Completions: 100%|██████████| 40/40 [00:18<00:00,  2.15it/s][AGenerating Completions: 100%|██████████| 40/40 [00:18<00:00,  2.13it/s]
+Evaluating:  48%|████▊     | 13/27 [09:21<09:51, 42.24s/it]Task reasoning_about_colored_objects - EM: 0.45
+
+Generating Completions:   0%|          | 0/40 [00:00<?, ?it/s][A
+Generating Completions:  25%|██▌       | 10/40 [00:07<00:21,  1.37it/s][A
+Generating Completions:  50%|█████     | 20/40 [00:14<00:14,  1.39it/s][A
+Generating Completions:  75%|███████▌  | 30/40 [00:21<00:07,  1.39it/s][A
+Generating Completions: 100%|██████████| 40/40 [00:29<00:00,  1.37it/s][AGenerating Completions: 100%|██████████| 40/40 [00:29<00:00,  1.38it/s]
+Evaluating:  52%|█████▏    | 14/27 [09:50<08:17, 38.27s/it]Task disambiguation_qa - EM: 0.525
+
+Generating Completions:   0%|          | 0/40 [00:00<?, ?it/s][A
+Generating Completions:  25%|██▌       | 10/40 [00:04<00:14,  2.04it/s][A
+Generating Completions:  50%|█████     | 20/40 [00:09<00:09,  2.10it/s][A
+Generating Completions:  75%|███████▌  | 30/40 [00:14<00:04,  2.06it/s][A
+Generating Completions: 100%|██████████| 40/40 [00:19<00:00,  2.02it/s][AGenerating Completions: 100%|██████████| 40/40 [00:19<00:00,  2.03it/s]
+Evaluating:  56%|█████▌    | 15/27 [10:10<06:31, 32.66s/it]Task movie_recommendation - EM: 0.625
+
+Generating Completions:   0%|          | 0/40 [00:00<?, ?it/s][A
+Generating Completions:  25%|██▌       | 10/40 [00:15<00:45,  1.51s/it][A
+Generating Completions:  50%|█████     | 20/40 [00:30<00:30,  1.51s/it][A
+Generating Completions:  75%|███████▌  | 30/40 [00:37<00:11,  1.15s/it][A
+Generating Completions: 100%|██████████| 40/40 [00:52<00:00,  1.29s/it][AGenerating Completions: 100%|██████████| 40/40 [00:52<00:00,  1.31s/it]
+Evaluating:  59%|█████▉    | 16/27 [11:02<07:05, 38.66s/it]Task logical_deduction_five_objects - EM: 0.275
+
+Generating Completions:   0%|          | 0/40 [00:00<?, ?it/s][A
+Generating Completions:  25%|██▌       | 10/40 [00:12<00:37,  1.25s/it][A
+Generating Completions:  50%|█████     | 20/40 [00:23<00:23,  1.18s/it][A
+Generating Completions:  75%|███████▌  | 30/40 [00:35<00:11,  1.18s/it][A
+Generating Completions: 100%|██████████| 40/40 [00:46<00:00,  1.12s/it][AGenerating Completions: 100%|██████████| 40/40 [00:46<00:00,  1.15s/it]
+Evaluating:  63%|██████▎   | 17/27 [11:48<06:48, 40.87s/it]Task hyperbaton - EM: 0.575
+
+Generating Completions:   0%|          | 0/40 [00:00<?, ?it/s][A
+Generating Completions:  25%|██▌       | 10/40 [00:27<01:22,  2.75s/it][A
+Generating Completions:  50%|█████     | 20/40 [00:54<00:54,  2.74s/it][A
+Generating Completions:  75%|███████▌  | 30/40 [01:21<00:27,  2.73s/it][A
+Generating Completions: 100%|██████████| 40/40 [01:49<00:00,  2.74s/it][AGenerating Completions: 100%|██████████| 40/40 [01:49<00:00,  2.74s/it]
+Evaluating:  67%|██████▋   | 18/27 [13:38<09:13, 61.50s/it]Task geometric_shapes - EM: 0.275
+
+Generating Completions:   0%|          | 0/40 [00:00<?, ?it/s][A
+Generating Completions:  25%|██▌       | 10/40 [00:07<00:23,  1.30it/s][A
+Generating Completions:  50%|█████     | 20/40 [00:14<00:14,  1.39it/s][A
+Generating Completions:  75%|███████▌  | 30/40 [00:21<00:07,  1.37it/s][A
+Generating Completions: 100%|██████████| 40/40 [00:29<00:00,  1.35it/s][AGenerating Completions: 100%|██████████| 40/40 [00:29<00:00,  1.36it/s]
+Evaluating:  70%|███████   | 19/27 [14:07<06:55, 51.89s/it]Task navigate - EM: 0.65
+
+Generating Completions:   0%|          | 0/40 [00:00<?, ?it/s][A
+Generating Completions:  25%|██▌       | 10/40 [00:03<00:09,  3.07it/s][A
+Generating Completions:  50%|█████     | 20/40 [00:06<00:06,  2.98it/s][A
+Generating Completions:  75%|███████▌  | 30/40 [00:10<00:03,  2.98it/s][A
+Generating Completions: 100%|██████████| 40/40 [00:13<00:00,  2.86it/s][AGenerating Completions: 100%|██████████| 40/40 [00:13<00:00,  2.91it/s]
+Evaluating:  74%|███████▍  | 20/27 [14:21<04:43, 40.44s/it]Task object_counting - EM: 0.675
+
+Generating Completions:   0%|          | 0/40 [00:00<?, ?it/s][A
+Generating Completions:  25%|██▌       | 10/40 [00:04<00:13,  2.19it/s][A
+Generating Completions:  50%|█████     | 20/40 [00:09<00:09,  2.09it/s][A
+Generating Completions:  75%|███████▌  | 30/40 [00:14<00:04,  2.10it/s][A
+Generating Completions: 100%|██████████| 40/40 [00:19<00:00,  2.00it/s][AGenerating Completions: 100%|██████████| 40/40 [00:19<00:00,  2.04it/s]
+Evaluating:  78%|███████▊  | 21/27 [14:41<03:25, 34.19s/it]Task tracking_shuffled_objects_three_objects - EM: 0.35
+
+Generating Completions:   0%|          | 0/40 [00:00<?, ?it/s][A
+Generating Completions:  25%|██▌       | 10/40 [00:06<00:19,  1.52it/s][A
+Generating Completions:  50%|█████     | 20/40 [00:12<00:12,  1.63it/s][A
+Generating Completions:  75%|███████▌  | 30/40 [00:18<00:06,  1.59it/s][A
+Generating Completions: 100%|██████████| 40/40 [00:25<00:00,  1.60it/s][AGenerating Completions: 100%|██████████| 40/40 [00:25<00:00,  1.60it/s]
+Evaluating:  81%|████████▏ | 22/27 [15:06<02:37, 31.45s/it]Task snarks - EM: 0.575
+
+Generating Completions:   0%|          | 0/40 [00:00<?, ?it/s][A
+Generating Completions:  25%|██▌       | 10/40 [00:04<00:12,  2.34it/s][A
+Generating Completions:  50%|█████     | 20/40 [00:08<00:08,  2.48it/s][A
+Generating Completions:  75%|███████▌  | 30/40 [00:12<00:03,  2.51it/s][A
+Generating Completions: 100%|██████████| 40/40 [00:16<00:00,  2.52it/s][AGenerating Completions: 100%|██████████| 40/40 [00:16<00:00,  2.50it/s]
+Evaluating:  85%|████████▌ | 23/27 [15:22<01:47, 26.82s/it]Task penguins_in_a_table - EM: 0.225
+
+Generating Completions:   0%|          | 0/40 [00:00<?, ?it/s][A
+Generating Completions:  25%|██▌       | 10/40 [00:03<00:09,  3.03it/s][A
+Generating Completions:  50%|█████     | 20/40 [00:07<00:07,  2.79it/s][A
+Generating Completions:  75%|███████▌  | 30/40 [00:10<00:03,  2.97it/s][A
+Generating Completions: 100%|██████████| 40/40 [00:13<00:00,  3.06it/s][AGenerating Completions: 100%|██████████| 40/40 [00:13<00:00,  3.00it/s]
+Evaluating:  89%|████████▉ | 24/27 [15:35<01:08, 22.77s/it]Task date_understanding - EM: 0.6
+
+Generating Completions:   0%|          | 0/40 [00:00<?, ?it/s][A
+Generating Completions:  25%|██▌       | 10/40 [00:04<00:13,  2.31it/s][A
+Generating Completions:  50%|█████     | 20/40 [00:08<00:08,  2.46it/s][A
+Generating Completions:  75%|███████▌  | 30/40 [00:12<00:04,  2.31it/s][A
+Generating Completions: 100%|██████████| 40/40 [00:17<00:00,  2.21it/s][AGenerating Completions: 100%|██████████| 40/40 [00:17<00:00,  2.26it/s]
+Evaluating:  93%|█████████▎| 25/27 [15:53<00:42, 21.25s/it]Task boolean_expressions - EM: 0.75
+
+Generating Completions:   0%|          | 0/40 [00:00<?, ?it/s][A
+Generating Completions:  25%|██▌       | 10/40 [00:04<00:12,  2.39it/s][A
+Generating Completions:  50%|█████     | 20/40 [00:08<00:07,  2.51it/s][A
+Generating Completions:  75%|███████▌  | 30/40 [00:11<00:03,  2.52it/s][A
+Generating Completions: 100%|██████████| 40/40 [00:15<00:00,  2.56it/s][AGenerating Completions: 100%|██████████| 40/40 [00:15<00:00,  2.54it/s]
+Evaluating:  96%|█████████▋| 26/27 [16:08<00:19, 19.61s/it]Task logical_deduction_three_objects - EM: 0.55
+
+Generating Completions:   0%|          | 0/40 [00:00<?, ?it/s][A
+Generating Completions:  25%|██▌       | 10/40 [00:10<00:30,  1.01s/it][A
+Generating Completions:  50%|█████     | 20/40 [00:18<00:17,  1.13it/s][A
+Generating Completions:  75%|███████▌  | 30/40 [00:27<00:09,  1.10it/s][A
+Generating Completions: 100%|██████████| 40/40 [00:36<00:00,  1.09it/s][AGenerating Completions: 100%|██████████| 40/40 [00:36<00:00,  1.09it/s]
+Evaluating: 100%|██████████| 27/27 [16:45<00:00, 24.76s/it]Evaluating: 100%|██████████| 27/27 [16:45<00:00, 37.25s/it]
+Task tracking_shuffled_objects_five_objects - EM: 0.15
+Average EM: 0.40648148148148155
+bbh Evaluation Result: 40.64814814814815500%
+
+JOB STATISTICS
+==============
+Job ID: 8815862
+Cluster: snellius
+User/Group: scur2847/scur2847
+State: COMPLETED (exit code 0)
+Nodes: 1
+Cores per node: 16
+CPU Utilized: 00:18:33
+CPU Efficiency: 6.66% of 04:38:24 core-walltime
+Job Wall-clock time: 00:17:24
+Memory Utilized: 1.68 GB
+Memory Efficiency: 0.93% of 180.00 GB

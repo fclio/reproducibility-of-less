@@ -1,0 +1,44 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/gpfs/home1/scur2847/ir2-less-data/evaluation/eval/bbh/run_eval.py", line 11, in <module>
+    import vllm
+  File "/home/scur2847/.local/lib/python3.11/site-packages/vllm/__init__.py", line 3, in <module>
+    from vllm.engine.arg_utils import AsyncEngineArgs, EngineArgs
+  File "/home/scur2847/.local/lib/python3.11/site-packages/vllm/engine/arg_utils.py", line 11, in <module>
+    from vllm.config import (CacheConfig, ConfigFormat, DecodingConfig,
+  File "/home/scur2847/.local/lib/python3.11/site-packages/vllm/config.py", line 14, in <module>
+    from vllm.model_executor.layers.quantization import QUANTIZATION_METHODS
+  File "/home/scur2847/.local/lib/python3.11/site-packages/vllm/model_executor/__init__.py", line 1, in <module>
+    from vllm.model_executor.parameter import (BasevLLMParameter,
+  File "/home/scur2847/.local/lib/python3.11/site-packages/vllm/model_executor/parameter.py", line 7, in <module>
+    from vllm.distributed import get_tensor_model_parallel_rank
+  File "/home/scur2847/.local/lib/python3.11/site-packages/vllm/distributed/__init__.py", line 1, in <module>
+    from .communication_op import *
+  File "/home/scur2847/.local/lib/python3.11/site-packages/vllm/distributed/communication_op.py", line 6, in <module>
+    from .parallel_state import get_tp_group
+  File "/home/scur2847/.local/lib/python3.11/site-packages/vllm/distributed/parallel_state.py", line 39, in <module>
+    from vllm.platforms import current_platform
+  File "/home/scur2847/.local/lib/python3.11/site-packages/vllm/platforms/__init__.py", line 91, in <module>
+    from .cuda import CudaPlatform
+  File "/home/scur2847/.local/lib/python3.11/site-packages/vllm/platforms/cuda.py", line 32, in <module>
+    torch.backends.cuda.enable_cudnn_sdp(False)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'torch.backends.cuda' has no attribute 'enable_cudnn_sdp'. Did you mean: 'enable_flash_sdp'?
+jq: error: Could not open file /scratch-shared/ir2-less/out/llama2-7b-less-p0.05-lora-seed4/eval/bbh/metrics.json: No such file or directory
+(standard_in) 1: syntax error
+bbh Evaluation Result: %
+
+JOB STATISTICS
+==============
+Job ID: 8810950
+Cluster: snellius
+User/Group: scur2847/scur2847
+State: COMPLETED (exit code 0)
+Nodes: 1
+Cores per node: 16
+CPU Utilized: 00:00:07
+CPU Efficiency: 1.68% of 00:06:56 core-walltime
+Job Wall-clock time: 00:00:26
+Memory Utilized: 2.20 MB
+Memory Efficiency: 0.00% of 180.00 GB

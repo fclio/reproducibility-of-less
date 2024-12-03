@@ -1,0 +1,766 @@
+torchrun --nproc_per_node 2 --nnodes 1 --rdzv-id=14440 --rdzv_backend c10d -m less.train.train --do_train True --max_seq_length 2048 --use_fast_tokenizer True --lr_scheduler_type linear --warmup_ratio 0.03 --weight_decay 0.0 --evaluation_strategy no --logging_steps 1 --save_strategy no --num_train_epochs 4 --bf16 True --tf32 False --fp16 False --overwrite_output_dir True --report_to wandb --optim adamw_torch --seed 0 --percentage 1.0 --save_strategy epoch --lora True --lora_r 128 --lora_alpha 512 --lora_dropout 0.1 --lora_target_modules q_proj k_proj v_proj o_proj --learning_rate 2e-05 --per_device_train_batch_size 1 --gradient_accumulation_steps 32 --fsdp 'full_shard auto_wrap' --fsdp_config llama2_13b_finetune --model_name_or_path meta-llama/Llama-2-13b-hf --output_dir /scratch-shared/ir2-less/out/llama2-13b-less-p0.05-lora-seed4 --train_files /scratch-shared/ir2-less/selected_data/llama2-13b-p0.05-lora-seed4/mmlu/top_p0.05.jsonl 2>&1 | tee /scratch-shared/ir2-less/out/llama2-13b-less-p0.05-lora-seed4/train.log
+[2024-11-30 15:39:50,648] torch.distributed.run: [WARNING] master_addr is only used for static rdzv_backend and when rdzv_endpoint is not specified.
+11/30/2024 15:39:57 - WARNING - __main__ - Process rank: 1, device: cuda:1, n_gpu: 1distributed training: True, 16-bits training: False
+/home/scur2847/.local/lib/python3.11/site-packages/huggingface_hub/file_download.py:797: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: Currently logged in as: colinnyuh (colinnyuh-university-of-amsterdam). Use `wandb login --relogin` to force relogin
+wandb: Appending key for api.wandb.ai to your netrc file: /home/scur2847/.netrc
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]11/30/2024 15:39:59 - WARNING - __main__ - Process rank: 0, device: cuda:0, n_gpu: 1distributed training: True, 16-bits training: False
+11/30/2024 15:39:59 - INFO - __main__ - Training parameters TrainingArguments(
+_n_gpu=1,
+adafactor=False,
+adam_beta1=0.9,
+adam_beta2=0.999,
+adam_epsilon=1e-08,
+analysis_dataset=bbh,
+analysis_mode=False,
+auto_find_batch_size=False,
+bf16=True,
+bf16_full_eval=False,
+data_seed=None,
+dataloader_drop_last=False,
+dataloader_num_workers=0,
+dataloader_persistent_workers=False,
+dataloader_pin_memory=True,
+ddp_backend=None,
+ddp_broadcast_buffers=None,
+ddp_bucket_cap_mb=None,
+ddp_find_unused_parameters=None,
+ddp_timeout=1800,
+debug=[],
+deepspeed=None,
+disable_tqdm=False,
+dispatch_batches=None,
+do_eval=False,
+do_predict=False,
+do_train=True,
+eval_accumulation_steps=None,
+eval_delay=0,
+eval_steps=None,
+evaluation_strategy=IntervalStrategy.NO,
+fp16=False,
+fp16_backend=auto,
+fp16_full_eval=False,
+fp16_opt_level=O1,
+fsdp=[<FSDPOption.FULL_SHARD: 'full_shard'>, <FSDPOption.AUTO_WRAP: 'auto_wrap'>],
+fsdp_config={'fsdp_transformer_layer_cls_to_wrap': ['LlamaDecoderLayer'], 'fsdp_backward_prefetch': 'backward_pre', 'limit_all_gathers': 'true', 'use_orig_params': 'true', 'min_num_params': 0, 'xla': False, 'xla_fsdp_grad_ckpt': False},
+fsdp_min_num_params=0,
+fsdp_transformer_layer_cls_to_wrap=None,
+full_determinism=False,
+gradient_accumulation_steps=32,
+gradient_checkpointing=False,
+gradient_checkpointing_kwargs=None,
+greater_is_better=None,
+group_by_length=False,
+half_precision_backend=auto,
+hub_always_push=False,
+hub_model_id=None,
+hub_private_repo=False,
+hub_strategy=HubStrategy.EVERY_SAVE,
+hub_token=<HUB_TOKEN>,
+ignore_data_skip=False,
+include_inputs_for_metrics=False,
+include_num_input_tokens_seen=False,
+include_tokens_per_second=False,
+jit_mode_eval=False,
+label_names=None,
+label_smoothing_factor=0.0,
+learning_rate=2e-05,
+length_column_name=length,
+load_best_model_at_end=False,
+local_rank=0,
+log_level=passive,
+log_level_replica=warning,
+log_on_each_node=True,
+logging_dir=/scratch-shared/ir2-less/out/llama2-13b-less-p0.05-lora-seed4/runs/Nov30_15-39-54_gcn97.local.snellius.surf.nl,
+logging_first_step=False,
+logging_nan_inf_filter=True,
+logging_steps=1.0,
+logging_strategy=IntervalStrategy.STEPS,
+lr_scheduler_kwargs={},
+lr_scheduler_type=SchedulerType.LINEAR,
+max_grad_norm=1.0,
+max_steps=-1,
+metric_for_best_model=None,
+mp_parameters=,
+neftune_noise_alpha=None,
+no_cuda=False,
+num_train_epochs=4.0,
+optim=OptimizerNames.ADAMW_TORCH,
+optim_args=None,
+output_dir=/scratch-shared/ir2-less/out/llama2-13b-less-p0.05-lora-seed4,
+overwrite_output_dir=True,
+past_index=-1,
+per_device_eval_batch_size=8,
+per_device_train_batch_size=1,
+prediction_loss_only=False,
+push_to_hub=False,
+push_to_hub_model_id=None,
+push_to_hub_organization=None,
+push_to_hub_token=<PUSH_TO_HUB_TOKEN>,
+ray_scope=last,
+remove_unused_columns=True,
+report_to=['wandb'],
+resume_from_checkpoint=None,
+run_name=/scratch-shared/ir2-less/out/llama2-13b-less-p0.05-lora-seed4,
+save_on_each_node=False,
+save_only_model=False,
+save_safetensors=True,
+save_steps=500,
+save_strategy=IntervalStrategy.EPOCH,
+save_total_limit=None,
+seed=0,
+skip_memory_metrics=True,
+split_batches=False,
+tf32=False,
+torch_compile=False,
+torch_compile_backend=None,
+torch_compile_mode=None,
+torchdynamo=None,
+tpu_metrics_debug=False,
+tpu_num_cores=None,
+train_dataset_names=None,
+use_cpu=False,
+use_ipex=False,
+use_legacy_prediction_loop=False,
+use_mps_device=False,
+warmup_ratio=0.03,
+warmup_steps=0,
+weight_decay=0.0,
+)
+11/30/2024 15:39:59 - INFO - __main__ - Model parameters ModelArguments(model_name_or_path='meta-llama/Llama-2-13b-hf', config_name=None, tokenizer_name=None, cache_dir=None, use_fast_tokenizer=True, model_revision='main', use_auth_token=False, torch_dtype=None, lora=True, lora_r=128, lora_alpha=512.0, lora_dropout=0.1, lora_target_modules=['q_proj', 'k_proj', 'v_proj', 'o_proj'])
+11/30/2024 15:39:59 - INFO - __main__ - Dataset parameters DataArguments(train_files=['/scratch-shared/ir2-less/selected_data/llama2-13b-p0.05-lora-seed4/mmlu/top_p0.05.jsonl'], overwrite_cache=False, preprocessing_num_workers=None, max_seq_length=2048, sample_data_seed=42, percentage=1.0)
+/home/scur2847/.local/lib/python3.11/site-packages/huggingface_hub/file_download.py:797: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+[INFO|tokenization_utils_base.py:2026] 2024-11-30 15:39:59,272 >> loading file tokenizer.model from cache at /home/scur2847/.cache/huggingface/hub/models--meta-llama--Llama-2-13b-hf/snapshots/5c31dfb671ce7cfe2d7bb7c04375e44c55e815b1/tokenizer.model
+[INFO|tokenization_utils_base.py:2026] 2024-11-30 15:39:59,273 >> loading file tokenizer.json from cache at /home/scur2847/.cache/huggingface/hub/models--meta-llama--Llama-2-13b-hf/snapshots/5c31dfb671ce7cfe2d7bb7c04375e44c55e815b1/tokenizer.json
+[INFO|tokenization_utils_base.py:2026] 2024-11-30 15:39:59,273 >> loading file added_tokens.json from cache at None
+[INFO|tokenization_utils_base.py:2026] 2024-11-30 15:39:59,273 >> loading file special_tokens_map.json from cache at /home/scur2847/.cache/huggingface/hub/models--meta-llama--Llama-2-13b-hf/snapshots/5c31dfb671ce7cfe2d7bb7c04375e44c55e815b1/special_tokens_map.json
+[INFO|tokenization_utils_base.py:2026] 2024-11-30 15:39:59,273 >> loading file tokenizer_config.json from cache at /home/scur2847/.cache/huggingface/hub/models--meta-llama--Llama-2-13b-hf/snapshots/5c31dfb671ce7cfe2d7bb7c04375e44c55e815b1/tokenizer_config.json
+Using custom data configuration default-6c364345ce1a3fb9
+11/30/2024 15:39:59 - INFO - datasets.builder - Using custom data configuration default-6c364345ce1a3fb9
+Loading Dataset Infos from /home/scur2847/.local/lib/python3.11/site-packages/datasets/packaged_modules/json
+11/30/2024 15:39:59 - INFO - datasets.info - Loading Dataset Infos from /home/scur2847/.local/lib/python3.11/site-packages/datasets/packaged_modules/json
+Overwrite dataset info from restored data version if exists.
+11/30/2024 15:39:59 - INFO - datasets.builder - Overwrite dataset info from restored data version if exists.
+Loading Dataset info from /home/scur2847/.cache/huggingface/datasets/json/default-6c364345ce1a3fb9/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092
+11/30/2024 15:39:59 - INFO - datasets.info - Loading Dataset info from /home/scur2847/.cache/huggingface/datasets/json/default-6c364345ce1a3fb9/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092
+Found cached dataset json (/home/scur2847/.cache/huggingface/datasets/json/default-6c364345ce1a3fb9/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092)
+11/30/2024 15:39:59 - INFO - datasets.builder - Found cached dataset json (/home/scur2847/.cache/huggingface/datasets/json/default-6c364345ce1a3fb9/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092)
+Loading Dataset info from /home/scur2847/.cache/huggingface/datasets/json/default-6c364345ce1a3fb9/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092
+11/30/2024 15:39:59 - INFO - datasets.info - Loading Dataset info from /home/scur2847/.cache/huggingface/datasets/json/default-6c364345ce1a3fb9/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092
+Process #0 will write at /home/scur2847/.cache/huggingface/datasets/json/default-6c364345ce1a3fb9/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-120245165850e546_00000_of_00010.arrow
+11/30/2024 15:39:59 - INFO - datasets.arrow_dataset - Process #0 will write at /home/scur2847/.cache/huggingface/datasets/json/default-6c364345ce1a3fb9/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-120245165850e546_00000_of_00010.arrow
+Process #1 will write at /home/scur2847/.cache/huggingface/datasets/json/default-6c364345ce1a3fb9/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-120245165850e546_00001_of_00010.arrow
+11/30/2024 15:39:59 - INFO - datasets.arrow_dataset - Process #1 will write at /home/scur2847/.cache/huggingface/datasets/json/default-6c364345ce1a3fb9/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-120245165850e546_00001_of_00010.arrow
+Process #2 will write at /home/scur2847/.cache/huggingface/datasets/json/default-6c364345ce1a3fb9/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-120245165850e546_00002_of_00010.arrow
+11/30/2024 15:39:59 - INFO - datasets.arrow_dataset - Process #2 will write at /home/scur2847/.cache/huggingface/datasets/json/default-6c364345ce1a3fb9/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-120245165850e546_00002_of_00010.arrow
+Process #3 will write at /home/scur2847/.cache/huggingface/datasets/json/default-6c364345ce1a3fb9/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-120245165850e546_00003_of_00010.arrow
+11/30/2024 15:39:59 - INFO - datasets.arrow_dataset - Process #3 will write at /home/scur2847/.cache/huggingface/datasets/json/default-6c364345ce1a3fb9/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-120245165850e546_00003_of_00010.arrow
+Process #4 will write at /home/scur2847/.cache/huggingface/datasets/json/default-6c364345ce1a3fb9/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-120245165850e546_00004_of_00010.arrow
+11/30/2024 15:39:59 - INFO - datasets.arrow_dataset - Process #4 will write at /home/scur2847/.cache/huggingface/datasets/json/default-6c364345ce1a3fb9/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-120245165850e546_00004_of_00010.arrow
+Process #5 will write at /home/scur2847/.cache/huggingface/datasets/json/default-6c364345ce1a3fb9/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-120245165850e546_00005_of_00010.arrow
+11/30/2024 15:39:59 - INFO - datasets.arrow_dataset - Process #5 will write at /home/scur2847/.cache/huggingface/datasets/json/default-6c364345ce1a3fb9/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-120245165850e546_00005_of_00010.arrow
+Process #6 will write at /home/scur2847/.cache/huggingface/datasets/json/default-6c364345ce1a3fb9/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-120245165850e546_00006_of_00010.arrow
+11/30/2024 15:39:59 - INFO - datasets.arrow_dataset - Process #6 will write at /home/scur2847/.cache/huggingface/datasets/json/default-6c364345ce1a3fb9/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-120245165850e546_00006_of_00010.arrow
+Process #7 will write at /home/scur2847/.cache/huggingface/datasets/json/default-6c364345ce1a3fb9/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-120245165850e546_00007_of_00010.arrow
+11/30/2024 15:39:59 - INFO - datasets.arrow_dataset - Process #7 will write at /home/scur2847/.cache/huggingface/datasets/json/default-6c364345ce1a3fb9/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-120245165850e546_00007_of_00010.arrow
+Process #8 will write at /home/scur2847/.cache/huggingface/datasets/json/default-6c364345ce1a3fb9/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-120245165850e546_00008_of_00010.arrow
+11/30/2024 15:39:59 - INFO - datasets.arrow_dataset - Process #8 will write at /home/scur2847/.cache/huggingface/datasets/json/default-6c364345ce1a3fb9/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-120245165850e546_00008_of_00010.arrow
+Process #9 will write at /home/scur2847/.cache/huggingface/datasets/json/default-6c364345ce1a3fb9/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-120245165850e546_00009_of_00010.arrow
+11/30/2024 15:39:59 - INFO - datasets.arrow_dataset - Process #9 will write at /home/scur2847/.cache/huggingface/datasets/json/default-6c364345ce1a3fb9/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-120245165850e546_00009_of_00010.arrow
+Loading cached processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-6c364345ce1a3fb9/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-120245165850e546_*_of_00010.arrow
+11/30/2024 15:39:59 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-6c364345ce1a3fb9/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-120245165850e546_*_of_00010.arrow
+Concatenating 10 shards
+11/30/2024 15:39:59 - INFO - datasets.arrow_dataset - Concatenating 10 shards
+[INFO|configuration_utils.py:739] 2024-11-30 15:39:59,818 >> loading configuration file config.json from cache at /home/scur2847/.cache/huggingface/hub/models--meta-llama--Llama-2-13b-hf/snapshots/5c31dfb671ce7cfe2d7bb7c04375e44c55e815b1/config.json
+[INFO|configuration_utils.py:802] 2024-11-30 15:39:59,819 >> Model config LlamaConfig {
+  "_name_or_path": "meta-llama/Llama-2-13b-hf",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 1,
+  "eos_token_id": 2,
+  "hidden_act": "silu",
+  "hidden_size": 5120,
+  "initializer_range": 0.02,
+  "intermediate_size": 13824,
+  "max_position_embeddings": 4096,
+  "model_type": "llama",
+  "num_attention_heads": 40,
+  "num_hidden_layers": 40,
+  "num_key_value_heads": 40,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": null,
+  "rope_theta": 10000.0,
+  "tie_word_embeddings": false,
+  "transformers_version": "4.36.2",
+  "use_cache": true,
+  "vocab_size": 32000
+}
+
+Loading checkpoint shards:  33%|███▎      | 1/3 [00:00<00:01,  1.00it/s][INFO|modeling_utils.py:3344] 2024-11-30 15:39:59,887 >> loading weights file model.safetensors from cache at /home/scur2847/.cache/huggingface/hub/models--meta-llama--Llama-2-13b-hf/snapshots/5c31dfb671ce7cfe2d7bb7c04375e44c55e815b1/model.safetensors.index.json
+[INFO|configuration_utils.py:826] 2024-11-30 15:39:59,897 >> Generate config GenerationConfig {
+  "bos_token_id": 1,
+  "eos_token_id": 2
+}
+
+Loading checkpoint shards:  67%|██████▋   | 2/3 [00:03<00:01,  1.80s/it]Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:05<00:00,  1.76s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:05<00:00,  1.69s/it]
+Loading checkpoint shards:  33%|███▎      | 1/3 [00:02<00:04,  2.34s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:04<00:02,  2.09s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:05<00:00,  1.84s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:05<00:00,  1.93s/it]
+[INFO|modeling_utils.py:4185] 2024-11-30 15:40:08,056 >> All model checkpoint weights were used when initializing LlamaForCausalLM.
+
+[INFO|modeling_utils.py:4193] 2024-11-30 15:40:08,056 >> All the weights of LlamaForCausalLM were initialized from the model checkpoint at meta-llama/Llama-2-13b-hf.
+If your task is similar to the task the model of the checkpoint was trained on, you can already use LlamaForCausalLM for predictions without further training.
+[INFO|configuration_utils.py:781] 2024-11-30 15:40:08,173 >> loading configuration file generation_config.json from cache at /home/scur2847/.cache/huggingface/hub/models--meta-llama--Llama-2-13b-hf/snapshots/5c31dfb671ce7cfe2d7bb7c04375e44c55e815b1/generation_config.json
+[INFO|configuration_utils.py:826] 2024-11-30 15:40:08,173 >> Generate config GenerationConfig {
+  "bos_token_id": 1,
+  "do_sample": true,
+  "eos_token_id": 2,
+  "max_length": 4096,
+  "pad_token_id": 0,
+  "temperature": 0.6,
+  "top_p": 0.9
+}
+
+[INFO|modeling_utils.py:1813] 2024-11-30 15:40:08,178 >> You are resizing the embedding layer without providing a `pad_to_multiple_of` parameter. This means that the new embedding dimension will be 32001. This might induce some performance reduction as *Tensor Cores* will not be available. For more details about this, or help on choosing the correct value for resizing, refer to this guide: https://docs.nvidia.com/deeplearning/performance/dl-performance-matrix-multiplication/index.html#requirements-tc
+trainable params: 209,715,200 || all params: 13,225,589,760 || trainable%: 1.5856774919351497
+[train set] examples: 13533; # avg tokens: 347.7224426269531
+[train set] examples: 13533; # avg completion tokens: 21.347225189208984
+/home/scur2847/.local/lib/python3.11/site-packages/accelerate/accelerator.py:457: FutureWarning: Passing the following arguments to `Accelerator` is deprecated and will be removed in version 1.0 of Accelerate: dict_keys(['dispatch_batches', 'split_batches']). Please pass an `accelerate.DataLoaderConfiguration` instead: 
+dataloader_config = DataLoaderConfiguration(dispatch_batches=None, split_batches=False)
+  warnings.warn(
+start training!!!!
+11/30/2024 15:40:11 - INFO - __main__ - Applied LoRA to model.
+trainable params: 209,715,200 || all params: 13,225,589,760 || trainable%: 1.5856774919351497
+Loading cached processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-6c364345ce1a3fb9/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-dd9d1a13e374eb1f.arrow
+11/30/2024 15:40:11 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-6c364345ce1a3fb9/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-dd9d1a13e374eb1f.arrow
+[train set] examples: 13533; # avg tokens: 347.7224426269531
+[train set] examples: 13533; # avg completion tokens: 21.347225189208984
+11/30/2024 15:40:11 - INFO - __main__ - Sample 6311 of the training set: {'input_ids': tensor([    1,   529, 29989,  1792, 29989, 29958,    13, 29937,   660,  4462,
+         1254,  2725,    13, 22966,  3055,   399, 15168,   313,  4939,  3786,
+        29871, 29896, 29945, 29892, 29871, 29896, 29929, 29947, 29955, 29897,
+          338,   385,  3082, 20993,   322,  1904, 29889,  2296,   338,  1900,
+         2998,   363,  8743,   349,   681,  7759,  7660,   297,   278, 12670,
+        20157, 29916,  3652, 26048,  1317,   278,  1570,  6054,   322,   363,
+         8743,  4546,  3055,   297,   278,   379, 21528,  3652,   450,  5166,
+          655,   333, 29915, 29879,   323,   744, 29889,  2296,   471, 28442,
+          363,   278,  9724,  5410,  2812,  1357,  7526,   363,  4451, 11235,
+        18601,   292,  3185,  1253,   297,   263,   360, 20556, 10488,   363,
+          278,  7480,  6297, 29889,    13,    13, 22110, 13582,   282,   681,
+         7759,   515, 24841,   338,   278,   716,  4628, 29973,    13, 29937,
+          319,  3059, 29956,  1001,    13,  1762,  1234,   278,  1139, 29892,
+         2050,   278,  1494, 29901,  2296,   338,  1900,  2998,   363,  8743,
+          349,   681,  7759,  7660,   297,   278, 12670, 20157, 29916,  3652,
+        26048,  1317,   278,  1570,  6054,   322,   363,  8743,  4546,  3055,
+          297,   278,   379, 21528,  3652,   450,  5166,   655,   333, 29915,
+        29879,   323,   744, 29889,    13, 29943,  1177,  1964,   319,  3059,
+        29956,  1001, 29901,  3685,  3055,   399, 15168,    13,    13,    13,
+        29937,   660,  4462,  1254,  2725,    13,  7675,  1717,  5465,   338,
+         3971,   297,   278,   883,   310,   263,  3515,  5828,   393,  8665,
+          411, 10842,  4755,  5260,   880,  5007,  8721,   304,   670,  9883,
+        29889,   739,  4893,  2058,   472,   385,   443,  6550,  2164,   931,
+          297,   278, 29871, 29896, 29947,   386,  6462, 29892,   408,   278,
+         8721, 29915, 10116,   526,  2183,   408,   376, 29896, 29955,  1192,
+         1642,    13,    13, 22550,   445,  1139,  2729,   373,   278, 13382,
+        29901,   304,  6029,   947,   278, 15474,  1061,  2436,   297,  2524,
+         1717,  5465, 29973,    13, 29937,   319,  3059, 29956,  1001,    13,
+         4013,   338,   278,  8018,  2472, 29901,  1352,  1717,  5465,   338,
+         3971,   297,   278,   883,   310,   263,  3515,  5828,   393,  8665,
+          411, 10842,  4755,  5260,   880,  5007,  8721,   304,   670,  9883,
+        29889,    13, 29943,  1177,  1964,   319,  3059, 29956,  1001, 29901,
+          670,  9883,    13,    13,    13, 29937,   660,  4462,  1254,  2725,
+           13,  1576,  6033,   550, 13319, 12727, 10592,   287,  5313, 29879,
+        10106,   278, 13378,   304,  6963,  4094,   964, 14368,   322, 20248,
+         1192,  4049,   515, 21188,  8974, 29889,   450,  4094, 19056,   970,
+        27683, 29879, 29892,  3405, 29878,  1475, 29892,   285,   792,  2708,
+        29892,   322,  2024, 26850, 29889, 16020,   287,  5313, 29879,   884,
+         4944,  4094,   363,  1375,   292,  6931, 29892,  3533,   292, 29892,
+         2215,  1516, 29892,   322, 17161,   575, 29889,    13,    13, 29933,
+         1463,   373,   445, 13382, 29892,   825,  1258,   278, 12297,  6017,
+          550,  2048,   304,  7344,   278, 11421,   310,  4094,   297,  1009,
+        14368, 29973,    13, 29937,   319,  3059, 29956,  1001,    13, 29966,
+        29989,   465, 22137, 29989, 29958,    13,  1576,  8018, 10541,   297,
+          278, 13382,   338, 29901,   450,  6033,   550, 13319, 12727, 10592,
+          287,  5313, 29879, 10106,   278, 13378,   304,  6963,  4094,   964,
+        14368,   322, 20248,  1192,  4049,   515, 21188,  8974, 29889,    13,
+        29943,  1177,  1964,   319,  3059, 29956,  1001, 29901, 10592,   287,
+         5313, 29879,     2, 29871,    13]), 'labels': tensor([ -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
+         -100,  -100,  -100,  -100,  -100,  -100,  1576,  8018, 10541,   297,
+          278, 13382,   338, 29901,   450,  6033,   550, 13319, 12727, 10592,
+          287,  5313, 29879, 10106,   278, 13378,   304,  6963,  4094,   964,
+        14368,   322, 20248,  1192,  4049,   515, 21188,  8974, 29889,    13,
+        29943,  1177,  1964,   319,  3059, 29956,  1001, 29901, 10592,   287,
+         5313, 29879,     2, 29871,    13]), 'attention_mask': tensor([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1])}.
+11/30/2024 15:40:11 - INFO - __main__ - trainable model_params: 209715200
+PeftModelForCausalLM(
+  (base_model): LoraModel(
+    (model): LlamaForCausalLM(
+      (model): LlamaModel(
+        (embed_tokens): Embedding(32001, 5120)
+        (layers): ModuleList(
+          (0-39): 40 x LlamaDecoderLayer(
+            (self_attn): LlamaSdpaAttention(
+              (q_proj): lora.Linear(
+                (base_layer): Linear(in_features=5120, out_features=5120, bias=False)
+                (lora_dropout): ModuleDict(
+                  (default): Dropout(p=0.1, inplace=False)
+                )
+                (lora_A): ModuleDict(
+                  (default): Linear(in_features=5120, out_features=128, bias=False)
+                )
+                (lora_B): ModuleDict(
+                  (default): Linear(in_features=128, out_features=5120, bias=False)
+                )
+                (lora_embedding_A): ParameterDict()
+                (lora_embedding_B): ParameterDict()
+              )
+              (k_proj): lora.Linear(
+                (base_layer): Linear(in_features=5120, out_features=5120, bias=False)
+                (lora_dropout): ModuleDict(
+                  (default): Dropout(p=0.1, inplace=False)
+                )
+                (lora_A): ModuleDict(
+                  (default): Linear(in_features=5120, out_features=128, bias=False)
+                )
+                (lora_B): ModuleDict(
+                  (default): Linear(in_features=128, out_features=5120, bias=False)
+                )
+                (lora_embedding_A): ParameterDict()
+                (lora_embedding_B): ParameterDict()
+              )
+              (v_proj): lora.Linear(
+                (base_layer): Linear(in_features=5120, out_features=5120, bias=False)
+                (lora_dropout): ModuleDict(
+                  (default): Dropout(p=0.1, inplace=False)
+                )
+                (lora_A): ModuleDict(
+                  (default): Linear(in_features=5120, out_features=128, bias=False)
+                )
+                (lora_B): ModuleDict(
+                  (default): Linear(in_features=128, out_features=5120, bias=False)
+                )
+                (lora_embedding_A): ParameterDict()
+                (lora_embedding_B): ParameterDict()
+              )
+              (o_proj): lora.Linear(
+                (base_layer): Linear(in_features=5120, out_features=5120, bias=False)
+                (lora_dropout): ModuleDict(
+                  (default): Dropout(p=0.1, inplace=False)
+                )
+                (lora_A): ModuleDict(
+                  (default): Linear(in_features=5120, out_features=128, bias=False)
+                )
+                (lora_B): ModuleDict(
+                  (default): Linear(in_features=128, out_features=5120, bias=False)
+                )
+                (lora_embedding_A): ParameterDict()
+                (lora_embedding_B): ParameterDict()
+              )
+              (rotary_emb): LlamaRotaryEmbedding()
+            )
+            (mlp): LlamaMLP(
+              (gate_proj): Linear(in_features=5120, out_features=13824, bias=False)
+              (up_proj): Linear(in_features=5120, out_features=13824, bias=False)
+              (down_proj): Linear(in_features=13824, out_features=5120, bias=False)
+              (act_fn): SiLU()
+            )
+            (input_layernorm): LlamaRMSNorm()
+            (post_attention_layernorm): LlamaRMSNorm()
+          )
+        )
+        (norm): LlamaRMSNorm()
+      )
+      (lm_head): Linear(in_features=5120, out_features=32001, bias=False)
+    )
+  )
+)
+/home/scur2847/.local/lib/python3.11/site-packages/accelerate/accelerator.py:457: FutureWarning: Passing the following arguments to `Accelerator` is deprecated and will be removed in version 1.0 of Accelerate: dict_keys(['dispatch_batches', 'split_batches']). Please pass an `accelerate.DataLoaderConfiguration` instead: 
+dataloader_config = DataLoaderConfiguration(dispatch_batches=None, split_batches=False)
+  warnings.warn(
+[INFO|trainer.py:568] 2024-11-30 15:40:11,499 >> Using auto half precision backend
+start training!!!!
+[INFO|trainer.py:1706] 2024-11-30 15:40:16,313 >> ***** Running training *****
+[INFO|trainer.py:1707] 2024-11-30 15:40:16,313 >>   Num examples = 13,533
+[INFO|trainer.py:1708] 2024-11-30 15:40:16,313 >>   Num Epochs = 4
+[INFO|trainer.py:1709] 2024-11-30 15:40:16,313 >>   Instantaneous batch size per device = 1
+[INFO|trainer.py:1712] 2024-11-30 15:40:16,313 >>   Total train batch size (w. parallel, distributed & accumulation) = 64
+[INFO|trainer.py:1713] 2024-11-30 15:40:16,313 >>   Gradient Accumulation steps = 32
+[INFO|trainer.py:1714] 2024-11-30 15:40:16,313 >>   Total optimization steps = 844
+[INFO|trainer.py:1715] 2024-11-30 15:40:16,315 >>   Number of trainable parameters = 209,715,200
+[INFO|integration_utils.py:722] 2024-11-30 15:40:16,319 >> Automatic Weights & Biases logging enabled, to disable set os.environ["WANDB_DISABLED"] = "true"
+wandb: Tracking run with wandb version 0.18.6
+wandb: Run data is saved locally in /gpfs/home1/scur2847/ir2-less-data/wandb/run-20241130_154016-xzb80uyb
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run worldly-silence-92
+wandb: ⭐️ View project at https://wandb.ai/colinnyuh-university-of-amsterdam/huggingface
+wandb: 🚀 View run at https://wandb.ai/colinnyuh-university-of-amsterdam/huggingface/runs/xzb80uyb
+  0%|          | 0/844 [00:00<?, ?it/s][WARNING|logging.py:314] 2024-11-30 15:40:16,807 >> You're using a LlamaTokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
+[WARNING|logging.py:314] 2024-11-30 15:40:16,807 >> You're using a LlamaTokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
+  0%|          | 1/844 [00:14<3:17:22, 14.05s/it]                                                 {'loss': 5.9153, 'learning_rate': 7.692307692307694e-07, 'epoch': 0.0}
+  0%|          | 1/844 [00:14<3:17:22, 14.05s/it]  0%|          | 2/844 [00:28<3:18:21, 14.13s/it]                                                 {'loss': 5.9756, 'learning_rate': 1.5384615384615387e-06, 'epoch': 0.01}
+  0%|          | 2/844 [00:28<3:18:21, 14.13s/it]  0%|          | 3/844 [00:42<3:17:42, 14.10s/it]                                                 {'loss': 5.4615, 'learning_rate': 2.307692307692308e-06, 'epoch': 0.01}
+  0%|          | 3/844 [00:42<3:17:42, 14.10s/it]  0%|          | 4/844 [00:56<3:16:04, 14.01s/it]                                                 {'loss': 5.9353, 'learning_rate': 3.0769230769230774e-06, 'epoch': 0.02}
+  0%|          | 4/844 [00:56<3:16:04, 14.01s/it]  1%|          | 5/844 [01:09<3:13:53, 13.87s/it]                                                 {'loss': 5.9105, 'learning_rate': 3.846153846153847e-06, 'epoch': 0.02}
+  1%|          | 5/844 [01:09<3:13:53, 13.87s/it]  1%|          | 6/844 [01:24<3:16:00, 14.03s/it]                                                 {'loss': 5.4194, 'learning_rate': 4.615384615384616e-06, 'epoch': 0.03}
+  1%|          | 6/844 [01:24<3:16:00, 14.03s/it]  1%|          | 7/844 [01:38<3:16:17, 14.07s/it]                                                 {'loss': 5.6458, 'learning_rate': 5.384615384615385e-06, 'epoch': 0.03}
+  1%|          | 7/844 [01:38<3:16:17, 14.07s/it]  1%|          | 8/844 [01:52<3:15:54, 14.06s/it]                                                 {'loss': 4.5465, 'learning_rate': 6.153846153846155e-06, 'epoch': 0.04}
+  1%|          | 8/844 [01:52<3:15:54, 14.06s/it]  1%|          | 9/844 [02:06<3:14:36, 13.98s/it]                                                 {'loss': 5.8917, 'learning_rate': 6.923076923076923e-06, 'epoch': 0.04}
+  1%|          | 9/844 [02:06<3:14:36, 13.98s/it]  1%|          | 10/844 [02:19<3:12:18, 13.84s/it]                                                  {'loss': 3.9881, 'learning_rate': 7.692307692307694e-06, 'epoch': 0.05}
+  1%|          | 10/844 [02:19<3:12:18, 13.84s/it]  1%|▏         | 11/844 [02:33<3:10:47, 13.74s/it]                                                  {'loss': 4.8502, 'learning_rate': 8.461538461538462e-06, 'epoch': 0.05}
+  1%|▏         | 11/844 [02:33<3:10:47, 13.74s/it]  1%|▏         | 12/844 [02:46<3:10:50, 13.76s/it]                                                  {'loss': 4.5869, 'learning_rate': 9.230769230769232e-06, 'epoch': 0.06}
+  1%|▏         | 12/844 [02:46<3:10:50, 13.76s/it]  2%|▏         | 13/844 [03:01<3:13:44, 13.99s/it]                                                  {'loss': 5.0171, 'learning_rate': 1e-05, 'epoch': 0.06}
+  2%|▏         | 13/844 [03:01<3:13:44, 13.99s/it]  2%|▏         | 14/844 [03:15<3:14:58, 14.09s/it]                                                  {'loss': 4.5625, 'learning_rate': 1.076923076923077e-05, 'epoch': 0.07}
+  2%|▏         | 14/844 [03:15<3:14:58, 14.09s/it]  2%|▏         | 15/844 [03:29<3:14:51, 14.10s/it]                                                  {'loss': 4.6451, 'learning_rate': 1.1538461538461538e-05, 'epoch': 0.07}
+  2%|▏         | 15/844 [03:29<3:14:51, 14.10s/it]  2%|▏         | 16/844 [03:43<3:13:20, 14.01s/it]                                                  {'loss': 4.3353, 'learning_rate': 1.230769230769231e-05, 'epoch': 0.08}
+  2%|▏         | 16/844 [03:43<3:13:20, 14.01s/it]  2%|▏         | 17/844 [03:57<3:13:34, 14.04s/it]                                                  {'loss': 4.279, 'learning_rate': 1.3076923076923078e-05, 'epoch': 0.08}
+  2%|▏         | 17/844 [03:57<3:13:34, 14.04s/it]  2%|▏         | 18/844 [04:12<3:14:03, 14.10s/it]                                                  {'loss': 4.563, 'learning_rate': 1.3846153846153847e-05, 'epoch': 0.09}
+  2%|▏         | 18/844 [04:12<3:14:03, 14.10s/it]  2%|▏         | 19/844 [04:25<3:12:53, 14.03s/it]                                                  {'loss': 4.7931, 'learning_rate': 1.4615384615384615e-05, 'epoch': 0.09}
+  2%|▏         | 19/844 [04:25<3:12:53, 14.03s/it]  2%|▏         | 20/844 [04:40<3:12:48, 14.04s/it]                                                  {'loss': 4.5299, 'learning_rate': 1.5384615384615387e-05, 'epoch': 0.09}
+  2%|▏         | 20/844 [04:40<3:12:48, 14.04s/it]  2%|▏         | 21/844 [04:53<3:11:50, 13.99s/it]                                                  {'loss': 4.2231, 'learning_rate': 1.6153846153846154e-05, 'epoch': 0.1}
+  2%|▏         | 21/844 [04:53<3:11:50, 13.99s/it]  3%|▎         | 22/844 [05:07<3:11:38, 13.99s/it]                                                  {'loss': 4.1672, 'learning_rate': 1.6923076923076924e-05, 'epoch': 0.1}
+  3%|▎         | 22/844 [05:07<3:11:38, 13.99s/it]  3%|▎         | 23/844 [05:21<3:11:16, 13.98s/it]                                                  {'loss': 4.4241, 'learning_rate': 1.7692307692307694e-05, 'epoch': 0.11}
+  3%|▎         | 23/844 [05:21<3:11:16, 13.98s/it]  3%|▎         | 24/844 [05:36<3:13:05, 14.13s/it]                                                  {'loss': 3.6485, 'learning_rate': 1.8461538461538465e-05, 'epoch': 0.11}
+  3%|▎         | 24/844 [05:36<3:13:05, 14.13s/it]  3%|▎         | 25/844 [05:50<3:12:43, 14.12s/it]                                                  {'loss': 4.3963, 'learning_rate': 1.923076923076923e-05, 'epoch': 0.12}
+  3%|▎         | 25/844 [05:50<3:12:43, 14.12s/it]  3%|▎         | 26/844 [06:04<3:10:46, 13.99s/it]                                                  {'loss': 4.6643, 'learning_rate': 2e-05, 'epoch': 0.12}
+  3%|▎         | 26/844 [06:04<3:10:46, 13.99s/it]  3%|▎         | 27/844 [06:17<3:09:13, 13.90s/it]                                                  {'loss': 4.3204, 'learning_rate': 1.997555012224939e-05, 'epoch': 0.13}
+  3%|▎         | 27/844 [06:17<3:09:13, 13.90s/it]  3%|▎         | 28/844 [06:31<3:06:51, 13.74s/it]                                                  {'loss': 4.2978, 'learning_rate': 1.995110024449878e-05, 'epoch': 0.13}
+  3%|▎         | 28/844 [06:31<3:06:51, 13.74s/it]  3%|▎         | 29/844 [06:45<3:10:07, 14.00s/it]                                                  {'loss': 4.6909, 'learning_rate': 1.992665036674817e-05, 'epoch': 0.14}
+  3%|▎         | 29/844 [06:45<3:10:07, 14.00s/it]  4%|▎         | 30/844 [06:59<3:10:12, 14.02s/it]                                                  {'loss': 4.2881, 'learning_rate': 1.9902200488997556e-05, 'epoch': 0.14}
+  4%|▎         | 30/844 [06:59<3:10:12, 14.02s/it]  4%|▎         | 31/844 [07:13<3:08:53, 13.94s/it]                                                  {'loss': 4.4961, 'learning_rate': 1.9877750611246945e-05, 'epoch': 0.15}
+  4%|▎         | 31/844 [07:13<3:08:53, 13.94s/it]  4%|▍         | 32/844 [07:27<3:08:25, 13.92s/it]                                                  {'loss': 4.1894, 'learning_rate': 1.9853300733496334e-05, 'epoch': 0.15}
+  4%|▍         | 32/844 [07:27<3:08:25, 13.92s/it]  4%|▍         | 33/844 [07:41<3:09:33, 14.02s/it]                                                  {'loss': 3.7461, 'learning_rate': 1.9828850855745724e-05, 'epoch': 0.16}
+  4%|▍         | 33/844 [07:41<3:09:33, 14.02s/it]  4%|▍         | 34/844 [07:55<3:09:07, 14.01s/it]                                                  {'loss': 4.0539, 'learning_rate': 1.980440097799511e-05, 'epoch': 0.16}
+  4%|▍         | 34/844 [07:55<3:09:07, 14.01s/it]  4%|▍         | 35/844 [08:09<3:08:33, 13.99s/it]                                                  {'loss': 4.1208, 'learning_rate': 1.9779951100244502e-05, 'epoch': 0.17}
+  4%|▍         | 35/844 [08:09<3:08:33, 13.99s/it]  4%|▍         | 36/844 [08:23<3:07:48, 13.95s/it]                                                  {'loss': 4.4578, 'learning_rate': 1.975550122249389e-05, 'epoch': 0.17}
+  4%|▍         | 36/844 [08:23<3:07:48, 13.95s/it]  4%|▍         | 37/844 [08:36<3:04:18, 13.70s/it]                                                  {'loss': 4.0447, 'learning_rate': 1.9731051344743278e-05, 'epoch': 0.17}
+  4%|▍         | 37/844 [08:36<3:04:18, 13.70s/it]  5%|▍         | 38/844 [08:50<3:06:38, 13.89s/it]                                                  {'loss': 4.0435, 'learning_rate': 1.9706601466992667e-05, 'epoch': 0.18}
+  5%|▍         | 38/844 [08:50<3:06:38, 13.89s/it]  5%|▍         | 39/844 [09:04<3:05:11, 13.80s/it]                                                  {'loss': 4.0241, 'learning_rate': 1.9682151589242056e-05, 'epoch': 0.18}
+  5%|▍         | 39/844 [09:04<3:05:11, 13.80s/it]  5%|▍         | 40/844 [09:19<3:08:40, 14.08s/it]                                                  {'loss': 3.7372, 'learning_rate': 1.9657701711491442e-05, 'epoch': 0.19}
+  5%|▍         | 40/844 [09:19<3:08:40, 14.08s/it]  5%|▍         | 41/844 [09:33<3:07:46, 14.03s/it]                                                  {'loss': 3.9626, 'learning_rate': 1.9633251833740835e-05, 'epoch': 0.19}
+  5%|▍         | 41/844 [09:33<3:07:46, 14.03s/it]  5%|▍         | 42/844 [09:46<3:05:09, 13.85s/it]                                                  {'loss': 3.3928, 'learning_rate': 1.960880195599022e-05, 'epoch': 0.2}
+  5%|▍         | 42/844 [09:46<3:05:09, 13.85s/it]  5%|▌         | 43/844 [10:00<3:05:04, 13.86s/it]                                                  {'loss': 3.9112, 'learning_rate': 1.958435207823961e-05, 'epoch': 0.2}
+  5%|▌         | 43/844 [10:00<3:05:04, 13.86s/it]  5%|▌         | 44/844 [10:13<3:03:10, 13.74s/it]                                                  {'loss': 3.9291, 'learning_rate': 1.9559902200489e-05, 'epoch': 0.21}
+  5%|▌         | 44/844 [10:13<3:03:10, 13.74s/it]  5%|▌         | 45/844 [10:27<3:03:38, 13.79s/it]                                                  {'loss': 3.9865, 'learning_rate': 1.953545232273839e-05, 'epoch': 0.21}
+  5%|▌         | 45/844 [10:27<3:03:38, 13.79s/it]  5%|▌         | 46/844 [10:41<3:04:31, 13.87s/it]                                                  {'loss': 4.1952, 'learning_rate': 1.9511002444987775e-05, 'epoch': 0.22}
+  5%|▌         | 46/844 [10:41<3:04:31, 13.87s/it]  6%|▌         | 47/844 [10:55<3:03:48, 13.84s/it]                                                  {'loss': 3.0839, 'learning_rate': 1.9486552567237164e-05, 'epoch': 0.22}
+  6%|▌         | 47/844 [10:55<3:03:48, 13.84s/it]  6%|▌         | 48/844 [11:09<3:05:02, 13.95s/it]                                                  {'loss': 3.4439, 'learning_rate': 1.9462102689486554e-05, 'epoch': 0.23}
+  6%|▌         | 48/844 [11:09<3:05:02, 13.95s/it]  6%|▌         | 49/844 [11:23<3:03:42, 13.86s/it]                                                  {'loss': 3.504, 'learning_rate': 1.9437652811735943e-05, 'epoch': 0.23}
+  6%|▌         | 49/844 [11:23<3:03:42, 13.86s/it]  6%|▌         | 50/844 [11:37<3:03:28, 13.86s/it]                                                  {'loss': 3.3439, 'learning_rate': 1.9413202933985333e-05, 'epoch': 0.24}
+  6%|▌         | 50/844 [11:37<3:03:28, 13.86s/it]  6%|▌         | 51/844 [11:51<3:02:16, 13.79s/it]                                                  {'loss': 3.3772, 'learning_rate': 1.9388753056234722e-05, 'epoch': 0.24}
+  6%|▌         | 51/844 [11:51<3:02:16, 13.79s/it]  6%|▌         | 52/844 [12:05<3:03:14, 13.88s/it]                                                  {'loss': 3.4297, 'learning_rate': 1.936430317848411e-05, 'epoch': 0.25}
+  6%|▌         | 52/844 [12:05<3:03:14, 13.88s/it]  6%|▋         | 53/844 [12:19<3:05:25, 14.06s/it]                                                  {'loss': 3.1423, 'learning_rate': 1.9339853300733497e-05, 'epoch': 0.25}
+  6%|▋         | 53/844 [12:19<3:05:25, 14.06s/it]  6%|▋         | 54/844 [12:33<3:04:30, 14.01s/it]                                                  {'loss': 3.0341, 'learning_rate': 1.9315403422982887e-05, 'epoch': 0.26}
+  6%|▋         | 54/844 [12:33<3:04:30, 14.01s/it]  7%|▋         | 55/844 [12:48<3:06:31, 14.18s/it]                                                  {'loss': 2.8551, 'learning_rate': 1.9290953545232276e-05, 'epoch': 0.26}
+  7%|▋         | 55/844 [12:48<3:06:31, 14.18s/it]  7%|▋         | 56/844 [13:01<3:04:15, 14.03s/it]                                                  {'loss': 2.3469, 'learning_rate': 1.9266503667481665e-05, 'epoch': 0.26}
+  7%|▋         | 56/844 [13:01<3:04:15, 14.03s/it]  7%|▋         | 57/844 [13:15<3:01:58, 13.87s/it]                                                  {'loss': 2.2271, 'learning_rate': 1.924205378973105e-05, 'epoch': 0.27}
+  7%|▋         | 57/844 [13:15<3:01:58, 13.87s/it]  7%|▋         | 58/844 [13:29<3:03:28, 14.01s/it]                                                  {'loss': 1.9851, 'learning_rate': 1.9217603911980444e-05, 'epoch': 0.27}
+  7%|▋         | 58/844 [13:29<3:03:28, 14.01s/it]  7%|▋         | 59/844 [13:42<3:00:18, 13.78s/it]                                                  {'loss': 1.2275, 'learning_rate': 1.919315403422983e-05, 'epoch': 0.28}
+  7%|▋         | 59/844 [13:42<3:00:18, 13.78s/it]  7%|▋         | 60/844 [13:57<3:01:34, 13.90s/it]                                                  {'loss': 1.5594, 'learning_rate': 1.916870415647922e-05, 'epoch': 0.28}
+  7%|▋         | 60/844 [13:57<3:01:34, 13.90s/it]  7%|▋         | 61/844 [14:10<3:00:50, 13.86s/it]                                                  {'loss': 0.8849, 'learning_rate': 1.914425427872861e-05, 'epoch': 0.29}
+  7%|▋         | 61/844 [14:10<3:00:50, 13.86s/it]  7%|▋         | 62/844 [14:24<2:59:36, 13.78s/it]                                                  {'loss': 0.8296, 'learning_rate': 1.9119804400977998e-05, 'epoch': 0.29}
+  7%|▋         | 62/844 [14:24<2:59:36, 13.78s/it]  7%|▋         | 63/844 [14:38<3:00:29, 13.87s/it]                                                  {'loss': 0.8545, 'learning_rate': 1.9095354523227384e-05, 'epoch': 0.3}
+  7%|▋         | 63/844 [14:38<3:00:29, 13.87s/it]  8%|▊         | 64/844 [14:52<3:01:15, 13.94s/it]                                                  {'loss': 0.7225, 'learning_rate': 1.9070904645476773e-05, 'epoch': 0.3}
+  8%|▊         | 64/844 [14:52<3:01:15, 13.94s/it]  8%|▊         | 65/844 [15:06<3:02:10, 14.03s/it]                                                  {'loss': 0.5407, 'learning_rate': 1.9046454767726163e-05, 'epoch': 0.31}
+  8%|▊         | 65/844 [15:06<3:02:10, 14.03s/it]  8%|▊         | 66/844 [15:20<3:01:58, 14.03s/it]                                                  {'loss': 0.5563, 'learning_rate': 1.9022004889975552e-05, 'epoch': 0.31}
+  8%|▊         | 66/844 [15:20<3:01:58, 14.03s/it]  8%|▊         | 67/844 [15:34<2:59:16, 13.84s/it]                                                  {'loss': 0.5262, 'learning_rate': 1.899755501222494e-05, 'epoch': 0.32}
+  8%|▊         | 67/844 [15:34<2:59:16, 13.84s/it]  8%|▊         | 68/844 [15:48<3:00:44, 13.97s/it]                                                  {'loss': 0.5092, 'learning_rate': 1.897310513447433e-05, 'epoch': 0.32}
+  8%|▊         | 68/844 [15:48<3:00:44, 13.97s/it]  8%|▊         | 69/844 [16:02<2:59:20, 13.88s/it]                                                  {'loss': 0.5999, 'learning_rate': 1.8948655256723717e-05, 'epoch': 0.33}
+  8%|▊         | 69/844 [16:02<2:59:20, 13.88s/it]  8%|▊         | 70/844 [16:16<2:59:16, 13.90s/it]                                                  {'loss': 0.579, 'learning_rate': 1.8924205378973106e-05, 'epoch': 0.33}
+  8%|▊         | 70/844 [16:16<2:59:16, 13.90s/it]  8%|▊         | 71/844 [16:29<2:58:05, 13.82s/it]                                                  {'loss': 0.3912, 'learning_rate': 1.8899755501222495e-05, 'epoch': 0.34}
+  8%|▊         | 71/844 [16:29<2:58:05, 13.82s/it]  9%|▊         | 72/844 [16:44<3:00:27, 14.02s/it]                                                  {'loss': 0.411, 'learning_rate': 1.8875305623471885e-05, 'epoch': 0.34}
+  9%|▊         | 72/844 [16:44<3:00:27, 14.02s/it]  9%|▊         | 73/844 [16:58<3:01:17, 14.11s/it]                                                  {'loss': 0.4689, 'learning_rate': 1.8850855745721274e-05, 'epoch': 0.35}
+  9%|▊         | 73/844 [16:58<3:01:17, 14.11s/it]  9%|▉         | 74/844 [17:12<3:01:34, 14.15s/it]                                                  {'loss': 0.4389, 'learning_rate': 1.882640586797066e-05, 'epoch': 0.35}
+  9%|▉         | 74/844 [17:12<3:01:34, 14.15s/it]  9%|▉         | 75/844 [17:27<3:03:22, 14.31s/it]                                                  {'loss': 0.481, 'learning_rate': 1.880195599022005e-05, 'epoch': 0.35}
+  9%|▉         | 75/844 [17:27<3:03:22, 14.31s/it]  9%|▉         | 76/844 [17:41<3:02:37, 14.27s/it]                                                  {'loss': 0.3555, 'learning_rate': 1.877750611246944e-05, 'epoch': 0.36}
+  9%|▉         | 76/844 [17:41<3:02:37, 14.27s/it]  9%|▉         | 77/844 [17:55<3:02:11, 14.25s/it]                                                  {'loss': 0.3624, 'learning_rate': 1.8753056234718828e-05, 'epoch': 0.36}
+  9%|▉         | 77/844 [17:55<3:02:11, 14.25s/it]  9%|▉         | 78/844 [18:10<3:01:32, 14.22s/it]                                                  {'loss': 0.3804, 'learning_rate': 1.8728606356968217e-05, 'epoch': 0.37}
+  9%|▉         | 78/844 [18:10<3:01:32, 14.22s/it]  9%|▉         | 79/844 [18:23<2:59:57, 14.11s/it]                                                  {'loss': 0.4158, 'learning_rate': 1.8704156479217607e-05, 'epoch': 0.37}
+  9%|▉         | 79/844 [18:23<2:59:57, 14.11s/it]  9%|▉         | 80/844 [18:37<2:59:20, 14.08s/it]                                                  {'loss': 0.329, 'learning_rate': 1.8679706601466993e-05, 'epoch': 0.38}
+  9%|▉         | 80/844 [18:37<2:59:20, 14.08s/it] 10%|▉         | 81/844 [18:52<2:59:49, 14.14s/it]                                                  {'loss': 0.3986, 'learning_rate': 1.8655256723716385e-05, 'epoch': 0.38}
+ 10%|▉         | 81/844 [18:52<2:59:49, 14.14s/it] 10%|▉         | 82/844 [19:05<2:58:10, 14.03s/it]                                                  {'loss': 0.4125, 'learning_rate': 1.863080684596577e-05, 'epoch': 0.39}
+ 10%|▉         | 82/844 [19:05<2:58:10, 14.03s/it] 10%|▉         | 83/844 [19:19<2:56:56, 13.95s/it]                                                  {'loss': 0.3372, 'learning_rate': 1.860635696821516e-05, 'epoch': 0.39}
+ 10%|▉         | 83/844 [19:19<2:56:56, 13.95s/it] 10%|▉         | 84/844 [19:34<2:57:53, 14.04s/it]                                                  {'loss': 0.3414, 'learning_rate': 1.8581907090464547e-05, 'epoch': 0.4}
+ 10%|▉         | 84/844 [19:34<2:57:53, 14.04s/it] 10%|█         | 85/844 [19:48<2:58:20, 14.10s/it]                                                  {'loss': 0.3715, 'learning_rate': 1.855745721271394e-05, 'epoch': 0.4}
+ 10%|█         | 85/844 [19:48<2:58:20, 14.10s/it] 10%|█         | 86/844 [20:02<2:57:30, 14.05s/it]                                                  {'loss': 0.2751, 'learning_rate': 1.8533007334963325e-05, 'epoch': 0.41}
+ 10%|█         | 86/844 [20:02<2:57:30, 14.05s/it] 10%|█         | 87/844 [20:15<2:54:42, 13.85s/it]                                                  {'loss': 0.4153, 'learning_rate': 1.8508557457212715e-05, 'epoch': 0.41}
+ 10%|█         | 87/844 [20:15<2:54:42, 13.85s/it] 10%|█         | 88/844 [20:29<2:55:38, 13.94s/it]                                                  {'loss': 0.2942, 'learning_rate': 1.8484107579462104e-05, 'epoch': 0.42}
+ 10%|█         | 88/844 [20:29<2:55:38, 13.94s/it] 11%|█         | 89/844 [20:43<2:55:11, 13.92s/it]                                                  {'loss': 0.3893, 'learning_rate': 1.8459657701711494e-05, 'epoch': 0.42}
+ 11%|█         | 89/844 [20:43<2:55:11, 13.92s/it] 11%|█         | 90/844 [20:57<2:53:34, 13.81s/it]                                                  {'loss': 0.3008, 'learning_rate': 1.843520782396088e-05, 'epoch': 0.43}
+ 11%|█         | 90/844 [20:57<2:53:34, 13.81s/it] 11%|█         | 91/844 [21:11<2:53:46, 13.85s/it]                                                  {'loss': 0.3649, 'learning_rate': 1.8410757946210272e-05, 'epoch': 0.43}
+ 11%|█         | 91/844 [21:11<2:53:46, 13.85s/it] 11%|█         | 92/844 [21:24<2:52:11, 13.74s/it]                                                  {'loss': 0.3136, 'learning_rate': 1.8386308068459658e-05, 'epoch': 0.44}
+ 11%|█         | 92/844 [21:24<2:52:11, 13.74s/it] 11%|█         | 93/844 [21:38<2:53:16, 13.84s/it]                                                  {'loss': 0.3723, 'learning_rate': 1.8361858190709048e-05, 'epoch': 0.44}
+ 11%|█         | 93/844 [21:38<2:53:16, 13.84s/it] 11%|█         | 94/844 [21:52<2:53:22, 13.87s/it]                                                  {'loss': 0.4238, 'learning_rate': 1.8337408312958437e-05, 'epoch': 0.44}
+ 11%|█         | 94/844 [21:52<2:53:22, 13.87s/it] 11%|█▏        | 95/844 [22:06<2:53:59, 13.94s/it]                                                  {'loss': 0.3373, 'learning_rate': 1.8312958435207826e-05, 'epoch': 0.45}
+ 11%|█▏        | 95/844 [22:06<2:53:59, 13.94s/it] 11%|█▏        | 96/844 [22:20<2:53:10, 13.89s/it]                                                  {'loss': 0.3296, 'learning_rate': 1.8288508557457216e-05, 'epoch': 0.45}
+ 11%|█▏        | 96/844 [22:20<2:53:10, 13.89s/it] 11%|█▏        | 97/844 [22:34<2:52:13, 13.83s/it]                                                  {'loss': 0.2803, 'learning_rate': 1.82640586797066e-05, 'epoch': 0.46}
+ 11%|█▏        | 97/844 [22:34<2:52:13, 13.83s/it] 12%|█▏        | 98/844 [22:48<2:52:27, 13.87s/it]                                                  {'loss': 0.334, 'learning_rate': 1.823960880195599e-05, 'epoch': 0.46}
+ 12%|█▏        | 98/844 [22:48<2:52:27, 13.87s/it] 12%|█▏        | 99/844 [23:02<2:53:14, 13.95s/it]                                                  {'loss': 0.3452, 'learning_rate': 1.821515892420538e-05, 'epoch': 0.47}
+ 12%|█▏        | 99/844 [23:02<2:53:14, 13.95s/it] 12%|█▏        | 100/844 [23:16<2:53:43, 14.01s/it]                                                   {'loss': 0.3583, 'learning_rate': 1.819070904645477e-05, 'epoch': 0.47}
+ 12%|█▏        | 100/844 [23:16<2:53:43, 14.01s/it] 12%|█▏        | 101/844 [23:30<2:53:45, 14.03s/it]                                                   {'loss': 0.3676, 'learning_rate': 1.816625916870416e-05, 'epoch': 0.48}
+ 12%|█▏        | 101/844 [23:30<2:53:45, 14.03s/it] 12%|█▏        | 102/844 [23:44<2:54:04, 14.08s/it]                                                   {'loss': 0.3218, 'learning_rate': 1.814180929095355e-05, 'epoch': 0.48}
+ 12%|█▏        | 102/844 [23:44<2:54:04, 14.08s/it] 12%|█▏        | 103/844 [23:58<2:54:11, 14.10s/it]                                                   {'loss': 0.356, 'learning_rate': 1.8117359413202934e-05, 'epoch': 0.49}
+ 12%|█▏        | 103/844 [23:58<2:54:11, 14.10s/it] 12%|█▏        | 104/844 [24:12<2:52:28, 13.98s/it]                                                   {'loss': 0.4515, 'learning_rate': 1.8092909535452324e-05, 'epoch': 0.49}
+ 12%|█▏        | 104/844 [24:12<2:52:28, 13.98s/it] 12%|█▏        | 105/844 [24:26<2:52:47, 14.03s/it]                                                   {'loss': 0.308, 'learning_rate': 1.8068459657701713e-05, 'epoch': 0.5}
+ 12%|█▏        | 105/844 [24:26<2:52:47, 14.03s/it] 13%|█▎        | 106/844 [24:40<2:52:05, 13.99s/it]                                                   {'loss': 0.3569, 'learning_rate': 1.8044009779951102e-05, 'epoch': 0.5}
+ 13%|█▎        | 106/844 [24:40<2:52:05, 13.99s/it] 13%|█▎        | 107/844 [24:55<2:55:35, 14.29s/it]                                                   {'loss': 0.2679, 'learning_rate': 1.8019559902200488e-05, 'epoch': 0.51}
+ 13%|█▎        | 107/844 [24:55<2:55:35, 14.29s/it] 13%|█▎        | 108/844 [25:09<2:55:44, 14.33s/it]                                                   {'loss': 0.3727, 'learning_rate': 1.799511002444988e-05, 'epoch': 0.51}
+ 13%|█▎        | 108/844 [25:09<2:55:44, 14.33s/it] 13%|█▎        | 109/844 [25:24<2:56:44, 14.43s/it]                                                   {'loss': 0.3461, 'learning_rate': 1.7970660146699267e-05, 'epoch': 0.52}
+ 13%|█▎        | 109/844 [25:24<2:56:44, 14.43s/it] 13%|█▎        | 110/844 [25:38<2:55:14, 14.33s/it]                                                   {'loss': 0.3731, 'learning_rate': 1.7946210268948656e-05, 'epoch': 0.52}
+ 13%|█▎        | 110/844 [25:38<2:55:14, 14.33s/it] 13%|█▎        | 111/844 [25:52<2:54:04, 14.25s/it]                                                   {'loss': 0.2804, 'learning_rate': 1.7921760391198046e-05, 'epoch': 0.52}
+ 13%|█▎        | 111/844 [25:52<2:54:04, 14.25s/it] 13%|█▎        | 112/844 [26:07<2:54:04, 14.27s/it]                                                   {'loss': 0.3697, 'learning_rate': 1.7897310513447435e-05, 'epoch': 0.53}
+ 13%|█▎        | 112/844 [26:07<2:54:04, 14.27s/it] 13%|█▎        | 113/844 [26:21<2:55:57, 14.44s/it]                                                   {'loss': 0.3356, 'learning_rate': 1.787286063569682e-05, 'epoch': 0.53}
+ 13%|█▎        | 113/844 [26:21<2:55:57, 14.44s/it] 14%|█▎        | 114/844 [26:35<2:54:07, 14.31s/it]                                                   {'loss': 0.3411, 'learning_rate': 1.784841075794621e-05, 'epoch': 0.54}
+ 14%|█▎        | 114/844 [26:35<2:54:07, 14.31s/it] 14%|█▎        | 115/844 [26:50<2:53:35, 14.29s/it]                                                   {'loss': 0.2818, 'learning_rate': 1.78239608801956e-05, 'epoch': 0.54}
+ 14%|█▎        | 115/844 [26:50<2:53:35, 14.29s/it] 14%|█▎        | 116/844 [27:05<2:58:03, 14.68s/it]                                                   {'loss': 0.3439, 'learning_rate': 1.779951100244499e-05, 'epoch': 0.55}
+ 14%|█▎        | 116/844 [27:05<2:58:03, 14.68s/it] 14%|█▍        | 117/844 [27:20<2:56:31, 14.57s/it]                                                   {'loss': 0.3742, 'learning_rate': 1.777506112469438e-05, 'epoch': 0.55}
+ 14%|█▍        | 117/844 [27:20<2:56:31, 14.57s/it] 14%|█▍        | 118/844 [27:34<2:56:03, 14.55s/it]                                                   {'loss': 0.2917, 'learning_rate': 1.7750611246943768e-05, 'epoch': 0.56}
+ 14%|█▍        | 118/844 [27:34<2:56:03, 14.55s/it] 14%|█▍        | 119/844 [27:48<2:52:59, 14.32s/it]                                                   {'loss': 0.3203, 'learning_rate': 1.7726161369193157e-05, 'epoch': 0.56}
+ 14%|█▍        | 119/844 [27:48<2:52:59, 14.32s/it] 14%|█▍        | 120/844 [28:01<2:49:47, 14.07s/it]                                                   {'loss': 0.4183, 'learning_rate': 1.7701711491442543e-05, 'epoch': 0.57}
+ 14%|█▍        | 120/844 [28:01<2:49:47, 14.07s/it] 14%|█▍        | 121/844 [28:16<2:51:05, 14.20s/it]                                                   {'loss': 0.3007, 'learning_rate': 1.7677261613691932e-05, 'epoch': 0.57}
+ 14%|█▍        | 121/844 [28:16<2:51:05, 14.20s/it] 14%|█▍        | 122/844 [28:30<2:51:12, 14.23s/it]                                                   {'loss': 0.4589, 'learning_rate': 1.7652811735941322e-05, 'epoch': 0.58}
+ 14%|█▍        | 122/844 [28:30<2:51:12, 14.23s/it] 15%|█▍        | 123/844 [28:44<2:48:56, 14.06s/it]                                                   {'loss': 0.2866, 'learning_rate': 1.762836185819071e-05, 'epoch': 0.58}
+ 15%|█▍        | 123/844 [28:44<2:48:56, 14.06s/it] 15%|█▍        | 124/844 [28:57<2:47:14, 13.94s/it]                                                   {'loss': 0.3175, 'learning_rate': 1.7603911980440097e-05, 'epoch': 0.59}
+ 15%|█▍        | 124/844 [28:57<2:47:14, 13.94s/it] 15%|█▍        | 125/844 [29:11<2:46:34, 13.90s/it]                                                   {'loss': 0.253, 'learning_rate': 1.757946210268949e-05, 'epoch': 0.59}
+ 15%|█▍        | 125/844 [29:11<2:46:34, 13.90s/it] 15%|█▍        | 126/844 [29:24<2:43:44, 13.68s/it]                                                   {'loss': 0.3473, 'learning_rate': 1.7555012224938876e-05, 'epoch': 0.6}
+ 15%|█▍        | 126/844 [29:24<2:43:44, 13.68s/it] 15%|█▌        | 127/844 [29:38<2:43:10, 13.65s/it]                                                   {'loss': 0.3676, 'learning_rate': 1.7530562347188265e-05, 'epoch': 0.6}
+ 15%|█▌        | 127/844 [29:38<2:43:10, 13.65s/it] 15%|█▌        | 128/844 [29:52<2:43:38, 13.71s/it]                                                   {'loss': 0.2942, 'learning_rate': 1.7506112469437655e-05, 'epoch': 0.61}
+ 15%|█▌        | 128/844 [29:52<2:43:38, 13.71s/it] 15%|█▌        | 129/844 [30:06<2:45:08, 13.86s/it]                                                   {'loss': 0.3504, 'learning_rate': 1.7481662591687044e-05, 'epoch': 0.61}
+ 15%|█▌        | 129/844 [30:06<2:45:08, 13.86s/it] 15%|█▌        | 130/844 [30:20<2:46:21, 13.98s/it]                                                   {'loss': 0.3163, 'learning_rate': 1.745721271393643e-05, 'epoch': 0.61}
+ 15%|█▌        | 130/844 [30:20<2:46:21, 13.98s/it] 16%|█▌        | 131/844 [30:34<2:45:26, 13.92s/it]                                                   {'loss': 0.2278, 'learning_rate': 1.7432762836185823e-05, 'epoch': 0.62}
+ 16%|█▌        | 131/844 [30:34<2:45:26, 13.92s/it] 16%|█▌        | 132/844 [30:48<2:45:02, 13.91s/it]                                                   {'loss': 0.2938, 'learning_rate': 1.740831295843521e-05, 'epoch': 0.62}
+ 16%|█▌        | 132/844 [30:48<2:45:02, 13.91s/it] 16%|█▌        | 133/844 [31:02<2:45:44, 13.99s/it]                                                   {'loss': 0.2785, 'learning_rate': 1.7383863080684598e-05, 'epoch': 0.63}
+ 16%|█▌        | 133/844 [31:02<2:45:44, 13.99s/it] 16%|█▌        | 134/844 [31:16<2:43:39, 13.83s/it]                                                   {'loss': 0.34, 'learning_rate': 1.7359413202933987e-05, 'epoch': 0.63}
+ 16%|█▌        | 134/844 [31:16<2:43:39, 13.83s/it] 16%|█▌        | 135/844 [31:30<2:44:54, 13.96s/it]                                                   {'loss': 0.3958, 'learning_rate': 1.7334963325183377e-05, 'epoch': 0.64}
+ 16%|█▌        | 135/844 [31:30<2:44:54, 13.96s/it] 16%|█▌        | 136/844 [31:44<2:44:04, 13.90s/it]                                                   {'loss': 0.333, 'learning_rate': 1.7310513447432763e-05, 'epoch': 0.64}
+ 16%|█▌        | 136/844 [31:44<2:44:04, 13.90s/it] 16%|█▌        | 137/844 [31:57<2:42:09, 13.76s/it]                                                   {'loss': 0.4159, 'learning_rate': 1.7286063569682152e-05, 'epoch': 0.65}
+ 16%|█▌        | 137/844 [31:57<2:42:09, 13.76s/it] 16%|█▋        | 138/844 [32:11<2:42:39, 13.82s/it]                                                   {'loss': 0.4091, 'learning_rate': 1.726161369193154e-05, 'epoch': 0.65}
+ 16%|█▋        | 138/844 [32:11<2:42:39, 13.82s/it] 16%|█▋        | 139/844 [32:25<2:41:51, 13.78s/it]                                                   {'loss': 0.3584, 'learning_rate': 1.723716381418093e-05, 'epoch': 0.66}
+ 16%|█▋        | 139/844 [32:25<2:41:51, 13.78s/it] 17%|█▋        | 140/844 [32:39<2:42:00, 13.81s/it]                                                   {'loss': 0.2672, 'learning_rate': 1.721271393643032e-05, 'epoch': 0.66}
+ 17%|█▋        | 140/844 [32:39<2:42:00, 13.81s/it] 17%|█▋        | 141/844 [32:52<2:41:29, 13.78s/it]                                                   {'loss': 0.2571, 'learning_rate': 1.718826405867971e-05, 'epoch': 0.67}
+ 17%|█▋        | 141/844 [32:52<2:41:29, 13.78s/it] 17%|█▋        | 142/844 [33:06<2:41:56, 13.84s/it]                                                   {'loss': 0.3282, 'learning_rate': 1.71638141809291e-05, 'epoch': 0.67}
+ 17%|█▋        | 142/844 [33:06<2:41:56, 13.84s/it] 17%|█▋        | 143/844 [33:20<2:41:47, 13.85s/it]                                                   {'loss': 0.3536, 'learning_rate': 1.7139364303178485e-05, 'epoch': 0.68}
+ 17%|█▋        | 143/844 [33:20<2:41:47, 13.85s/it] 17%|█▋        | 144/844 [33:34<2:42:30, 13.93s/it]                                                   {'loss': 0.2663, 'learning_rate': 1.7114914425427874e-05, 'epoch': 0.68}
+ 17%|█▋        | 144/844 [33:34<2:42:30, 13.93s/it] 17%|█▋        | 145/844 [33:48<2:42:03, 13.91s/it]                                                   {'loss': 0.3192, 'learning_rate': 1.7090464547677263e-05, 'epoch': 0.69}
+ 17%|█▋        | 145/844 [33:48<2:42:03, 13.91s/it] 17%|█▋        | 146/844 [34:02<2:42:22, 13.96s/it]                                                   {'loss': 0.2311, 'learning_rate': 1.7066014669926653e-05, 'epoch': 0.69}
+ 17%|█▋        | 146/844 [34:02<2:42:22, 13.96s/it] 17%|█▋        | 147/844 [34:17<2:43:24, 14.07s/it]                                                   {'loss': 0.4279, 'learning_rate': 1.704156479217604e-05, 'epoch': 0.7}
+ 17%|█▋        | 147/844 [34:17<2:43:24, 14.07s/it] 18%|█▊        | 148/844 [34:31<2:43:03, 14.06s/it]                                                   {'loss': 0.2862, 'learning_rate': 1.701711491442543e-05, 'epoch': 0.7}
+ 18%|█▊        | 148/844 [34:31<2:43:03, 14.06s/it] 18%|█▊        | 149/844 [34:45<2:42:31, 14.03s/it]                                                   {'loss': 0.3422, 'learning_rate': 1.6992665036674817e-05, 'epoch': 0.7}
+ 18%|█▊        | 149/844 [34:45<2:42:31, 14.03s/it] 18%|█▊        | 150/844 [34:59<2:43:32, 14.14s/it]                                                   {'loss': 0.2884, 'learning_rate': 1.6968215158924207e-05, 'epoch': 0.71}
+ 18%|█▊        | 150/844 [34:59<2:43:32, 14.14s/it] 18%|█▊        | 151/844 [35:13<2:43:29, 14.15s/it]                                                   {'loss': 0.3331, 'learning_rate': 1.6943765281173596e-05, 'epoch': 0.71}
+ 18%|█▊        | 151/844 [35:13<2:43:29, 14.15s/it] 18%|█▊        | 152/844 [35:27<2:40:51, 13.95s/it]                                                   {'loss': 0.2897, 'learning_rate': 1.6919315403422985e-05, 'epoch': 0.72}
+ 18%|█▊        | 152/844 [35:27<2:40:51, 13.95s/it] 18%|█▊        | 153/844 [35:41<2:40:29, 13.94s/it]                                                   {'loss': 0.2352, 'learning_rate': 1.689486552567237e-05, 'epoch': 0.72}
+ 18%|█▊        | 153/844 [35:41<2:40:29, 13.94s/it] 18%|█▊        | 154/844 [35:55<2:40:27, 13.95s/it]                                                   {'loss': 0.3625, 'learning_rate': 1.687041564792176e-05, 'epoch': 0.73}
+ 18%|█▊        | 154/844 [35:55<2:40:27, 13.95s/it] 18%|█▊        | 155/844 [36:08<2:39:13, 13.87s/it]                                                   {'loss': 0.308, 'learning_rate': 1.684596577017115e-05, 'epoch': 0.73}
+ 18%|█▊        | 155/844 [36:08<2:39:13, 13.87s/it] 18%|█▊        | 156/844 [36:23<2:40:55, 14.03s/it]                                                   {'loss': 0.4141, 'learning_rate': 1.682151589242054e-05, 'epoch': 0.74}
+ 18%|█▊        | 156/844 [36:23<2:40:55, 14.03s/it] 19%|█▊        | 157/844 [36:37<2:42:26, 14.19s/it]                                                   {'loss': 0.2598, 'learning_rate': 1.679706601466993e-05, 'epoch': 0.74}
+ 19%|█▊        | 157/844 [36:37<2:42:26, 14.19s/it] 19%|█▊        | 158/844 [36:51<2:40:58, 14.08s/it]                                                   {'loss': 0.2812, 'learning_rate': 1.6772616136919318e-05, 'epoch': 0.75}
+ 19%|█▊        | 158/844 [36:51<2:40:58, 14.08s/it] 19%|█▉        | 159/844 [37:05<2:41:08, 14.11s/it]                                                   {'loss': 0.292, 'learning_rate': 1.6748166259168704e-05, 'epoch': 0.75}
+ 19%|█▉        | 159/844 [37:05<2:41:08, 14.11s/it] 19%|█▉        | 160/844 [37:19<2:39:48, 14.02s/it]                                                   {'loss': 0.3676, 'learning_rate': 1.6723716381418093e-05, 'epoch': 0.76}
+ 19%|█▉        | 160/844 [37:19<2:39:48, 14.02s/it] 19%|█▉        | 161/844 [37:33<2:40:06, 14.07s/it]                                                   {'loss': 0.3112, 'learning_rate': 1.6699266503667483e-05, 'epoch': 0.76}
+ 19%|█▉        | 161/844 [37:33<2:40:06, 14.07s/it] 19%|█▉        | 162/844 [37:47<2:40:46, 14.14s/it]                                                   {'loss': 0.2551, 'learning_rate': 1.6674816625916872e-05, 'epoch': 0.77}
+ 19%|█▉        | 162/844 [37:47<2:40:46, 14.14s/it] 19%|█▉        | 163/844 [38:01<2:39:17, 14.03s/it]                                                   {'loss': 0.2516, 'learning_rate': 1.665036674816626e-05, 'epoch': 0.77}
+ 19%|█▉        | 163/844 [38:01<2:39:17, 14.03s/it] 19%|█▉        | 164/844 [38:15<2:36:58, 13.85s/it]                                                   {'loss': 0.29, 'learning_rate': 1.662591687041565e-05, 'epoch': 0.78}
+ 19%|█▉        | 164/844 [38:15<2:36:58, 13.85s/it] 20%|█▉        | 165/844 [38:29<2:38:55, 14.04s/it]                                                   {'loss': 0.2692, 'learning_rate': 1.6601466992665037e-05, 'epoch': 0.78}
+ 20%|█▉        | 165/844 [38:29<2:38:55, 14.04s/it] 20%|█▉        | 166/844 [38:43<2:37:53, 13.97s/it]                                                   {'loss': 0.3934, 'learning_rate': 1.6577017114914426e-05, 'epoch': 0.78}
+ 20%|█▉        | 166/844 [38:43<2:37:53, 13.97s/it] 20%|█▉        | 167/844 [38:57<2:37:11, 13.93s/it]                                                   {'loss': 0.3186, 'learning_rate': 1.6552567237163816e-05, 'epoch': 0.79}
+ 20%|█▉        | 167/844 [38:57<2:37:11, 13.93s/it] 20%|█▉        | 168/844 [39:11<2:36:52, 13.92s/it]                                                   {'loss': 0.2959, 'learning_rate': 1.6528117359413205e-05, 'epoch': 0.79}
+ 20%|█▉        | 168/844 [39:11<2:36:52, 13.92s/it] 20%|██        | 169/844 [39:24<2:36:01, 13.87s/it]                                                   {'loss': 0.2336, 'learning_rate': 1.6503667481662594e-05, 'epoch': 0.8}
+ 20%|██        | 169/844 [39:24<2:36:01, 13.87s/it] 20%|██        | 170/844 [39:38<2:36:11, 13.90s/it]                                                   {'loss': 0.2747, 'learning_rate': 1.647921760391198e-05, 'epoch': 0.8}
+ 20%|██        | 170/844 [39:38<2:36:11, 13.90s/it] 20%|██        | 171/844 [39:53<2:38:03, 14.09s/it]                                                   {'loss': 0.305, 'learning_rate': 1.6454767726161373e-05, 'epoch': 0.81}
+ 20%|██        | 171/844 [39:53<2:38:03, 14.09s/it] 20%|██        | 172/844 [40:07<2:36:15, 13.95s/it]                                                   {'loss': 0.3091, 'learning_rate': 1.643031784841076e-05, 'epoch': 0.81}
+ 20%|██        | 172/844 [40:07<2:36:15, 13.95s/it] 20%|██        | 173/844 [40:21<2:35:58, 13.95s/it]                                                   {'loss': 0.2765, 'learning_rate': 1.6405867970660148e-05, 'epoch': 0.82}
+ 20%|██        | 173/844 [40:21<2:35:58, 13.95s/it] 21%|██        | 174/844 [40:35<2:35:59, 13.97s/it]                                                   {'loss': 0.3659, 'learning_rate': 1.6381418092909538e-05, 'epoch': 0.82}
+ 21%|██        | 174/844 [40:35<2:35:59, 13.97s/it] 21%|██        | 175/844 [40:48<2:35:33, 13.95s/it]                                                   {'loss': 0.266, 'learning_rate': 1.6356968215158927e-05, 'epoch': 0.83}
+ 21%|██        | 175/844 [40:48<2:35:33, 13.95s/it] 21%|██        | 176/844 [41:02<2:35:22, 13.96s/it]                                                   {'loss': 0.2507, 'learning_rate': 1.6332518337408313e-05, 'epoch': 0.83}
+ 21%|██        | 176/844 [41:02<2:35:22, 13.96s/it] 21%|██        | 177/844 [41:16<2:34:35, 13.91s/it]                                                   {'loss': 0.1831, 'learning_rate': 1.6308068459657702e-05, 'epoch': 0.84}
+ 21%|██        | 177/844 [41:16<2:34:35, 13.91s/it] 21%|██        | 178/844 [41:30<2:34:19, 13.90s/it]                                                   {'loss': 0.3946, 'learning_rate': 1.628361858190709e-05, 'epoch': 0.84}
+ 21%|██        | 178/844 [41:30<2:34:19, 13.90s/it] 21%|██        | 179/844 [41:45<2:36:08, 14.09s/it]                                                   {'loss': 0.1696, 'learning_rate': 1.625916870415648e-05, 'epoch': 0.85}
+ 21%|██        | 179/844 [41:45<2:36:08, 14.09s/it] 21%|██▏       | 180/844 [41:59<2:36:33, 14.15s/it]                                                   {'loss': 0.27, 'learning_rate': 1.6234718826405867e-05, 'epoch': 0.85}
+ 21%|██▏       | 180/844 [41:59<2:36:33, 14.15s/it] 21%|██▏       | 181/844 [42:13<2:35:53, 14.11s/it]                                                   {'loss': 0.3273, 'learning_rate': 1.621026894865526e-05, 'epoch': 0.86}
+ 21%|██▏       | 181/844 [42:13<2:35:53, 14.11s/it] 22%|██▏       | 182/844 [42:27<2:36:34, 14.19s/it]                                                   {'loss': 0.2789, 'learning_rate': 1.6185819070904646e-05, 'epoch': 0.86}
+ 22%|██▏       | 182/844 [42:27<2:36:34, 14.19s/it] 22%|██▏       | 183/844 [42:41<2:35:11, 14.09s/it]                                                   {'loss': 0.3058, 'learning_rate': 1.6161369193154035e-05, 'epoch': 0.87}
+ 22%|██▏       | 183/844 [42:41<2:35:11, 14.09s/it] 22%|██▏       | 184/844 [42:56<2:35:51, 14.17s/it]                                                   {'loss': 0.2297, 'learning_rate': 1.6136919315403424e-05, 'epoch': 0.87}
+ 22%|██▏       | 184/844 [42:56<2:35:51, 14.17s/it] 22%|██▏       | 185/844 [43:10<2:35:25, 14.15s/it]                                                   {'loss': 0.2756, 'learning_rate': 1.6112469437652814e-05, 'epoch': 0.87}
+ 22%|██▏       | 185/844 [43:10<2:35:25, 14.15s/it] 22%|██▏       | 186/844 [43:23<2:33:47, 14.02s/it]                                                   {'loss': 0.3923, 'learning_rate': 1.6088019559902203e-05, 'epoch': 0.88}
+ 22%|██▏       | 186/844 [43:23<2:33:47, 14.02s/it] 22%|██▏       | 187/844 [43:38<2:34:40, 14.13s/it]                                                   {'loss': 0.3501, 'learning_rate': 1.606356968215159e-05, 'epoch': 0.88}
+ 22%|██▏       | 187/844 [43:38<2:34:40, 14.13s/it] 22%|██▏       | 188/844 [43:52<2:33:27, 14.04s/it]                                                   {'loss': 0.2974, 'learning_rate': 1.603911980440098e-05, 'epoch': 0.89}
+ 22%|██▏       | 188/844 [43:52<2:33:27, 14.04s/it] 22%|██▏       | 189/844 [44:05<2:32:37, 13.98s/it]                                                   {'loss': 0.2668, 'learning_rate': 1.6014669926650368e-05, 'epoch': 0.89}
+ 22%|██▏       | 189/844 [44:05<2:32:37, 13.98s/it] 23%|██▎       | 190/844 [44:19<2:31:18, 13.88s/it]                                                   {'loss': 0.3055, 'learning_rate': 1.5990220048899757e-05, 'epoch': 0.9}
+ 23%|██▎       | 190/844 [44:19<2:31:18, 13.88s/it] 23%|██▎       | 191/844 [44:33<2:32:48, 14.04s/it]                                                   {'loss': 0.3209, 'learning_rate': 1.5965770171149146e-05, 'epoch': 0.9}
+ 23%|██▎       | 191/844 [44:33<2:32:48, 14.04s/it] 23%|██▎       | 192/844 [44:48<2:32:52, 14.07s/it]                                                   {'loss': 0.3035, 'learning_rate': 1.5941320293398536e-05, 'epoch': 0.91}
+ 23%|██▎       | 192/844 [44:48<2:32:52, 14.07s/it] 23%|██▎       | 193/844 [45:01<2:31:58, 14.01s/it]                                                   {'loss': 0.216, 'learning_rate': 1.5916870415647922e-05, 'epoch': 0.91}
+ 23%|██▎       | 193/844 [45:01<2:31:58, 14.01s/it] 23%|██▎       | 194/844 [45:15<2:31:38, 14.00s/it]                                                   {'loss': 0.2817, 'learning_rate': 1.5892420537897314e-05, 'epoch': 0.92}
+ 23%|██▎       | 194/844 [45:15<2:31:38, 14.00s/it] 23%|██▎       | 195/844 [45:29<2:31:06, 13.97s/it]                                                   {'loss': 0.3161, 'learning_rate': 1.58679706601467e-05, 'epoch': 0.92}
+ 23%|██▎       | 195/844 [45:29<2:31:06, 13.97s/it] 23%|██▎       | 196/844 [45:44<2:31:38, 14.04s/it]                                                   {'loss': 0.3442, 'learning_rate': 1.584352078239609e-05, 'epoch': 0.93}
+ 23%|██▎       | 196/844 [45:44<2:31:38, 14.04s/it] 23%|██▎       | 197/844 [45:58<2:31:19, 14.03s/it]                                                   {'loss': 0.3399, 'learning_rate': 1.5819070904645476e-05, 'epoch': 0.93}
+ 23%|██▎       | 197/844 [45:58<2:31:19, 14.03s/it] 23%|██▎       | 198/844 [46:12<2:33:54, 14.30s/it]                                                   {'loss': 0.1666, 'learning_rate': 1.579462102689487e-05, 'epoch': 0.94}
+ 23%|██▎       | 198/844 [46:12<2:33:54, 14.30s/it] 24%|██▎       | 199/844 [46:27<2:33:34, 14.29s/it]                                                   {'loss': 0.2184, 'learning_rate': 1.5770171149144254e-05, 'epoch': 0.94}
+ 24%|██▎       | 199/844 [46:27<2:33:34, 14.29s/it] 24%|██▎       | 200/844 [46:40<2:30:36, 14.03s/it]                                                   {'loss': 0.2483, 'learning_rate': 1.5745721271393644e-05, 'epoch': 0.95}
+ 24%|██▎       | 200/844 [46:40<2:30:36, 14.03s/it] 24%|██▍       | 201/844 [46:55<2:31:22, 14.13s/it]                                                   {'loss': 0.2405, 'learning_rate': 1.5721271393643033e-05, 'epoch': 0.95}
+ 24%|██▍       | 201/844 [46:55<2:31:22, 14.13s/it] 24%|██▍       | 202/844 [47:09<2:30:57, 14.11s/it]                                                   {'loss': 0.2577, 'learning_rate': 1.5696821515892422e-05, 'epoch': 0.96}
+ 24%|██▍       | 202/844 [47:09<2:30:57, 14.11s/it] 24%|██▍       | 203/844 [47:22<2:29:10, 13.96s/it]                                                   {'loss': 0.2968, 'learning_rate': 1.567237163814181e-05, 'epoch': 0.96}
+ 24%|██▍       | 203/844 [47:22<2:29:10, 13.96s/it] 24%|██▍       | 204/844 [47:36<2:27:18, 13.81s/it]                                                   {'loss': 0.2221, 'learning_rate': 1.56479217603912e-05, 'epoch': 0.96}
+ 24%|██▍       | 204/844 [47:36<2:27:18, 13.81s/it] 24%|██▍       | 205/844 [47:49<2:27:04, 13.81s/it]                                                   {'loss': 0.3301, 'learning_rate': 1.5623471882640587e-05, 'epoch': 0.97}
+ 24%|██▍       | 205/844 [47:49<2:27:04, 13.81s/it] 24%|██▍       | 206/844 [48:03<2:27:10, 13.84s/it]                                                   {'loss': 0.4016, 'learning_rate': 1.5599022004889977e-05, 'epoch': 0.97}
+ 24%|██▍       | 206/844 [48:03<2:27:10, 13.84s/it] 25%|██▍       | 207/844 [48:17<2:26:39, 13.81s/it]                                                   {'loss': 0.3008, 'learning_rate': 1.5574572127139366e-05, 'epoch': 0.98}
+ 25%|██▍       | 207/844 [48:17<2:26:39, 13.81s/it] 25%|██▍       | 208/844 [48:31<2:26:29, 13.82s/it]                                                   {'loss': 0.2795, 'learning_rate': 1.5550122249388755e-05, 'epoch': 0.98}
+ 25%|██▍       | 208/844 [48:31<2:26:29, 13.82s/it] 25%|██▍       | 209/844 [48:45<2:27:35, 13.95s/it]                                                   {'loss': 0.3081, 'learning_rate': 1.5525672371638145e-05, 'epoch': 0.99}
+ 25%|██▍       | 209/844 [48:45<2:27:35, 13.95s/it] 25%|██▍       | 210/844 [48:59<2:27:39, 13.97s/it]                                                   {'loss': 0.3029, 'learning_rate': 1.550122249388753e-05, 'epoch': 0.99}
+ 25%|██▍       | 210/844 [48:59<2:27:39, 13.97s/it] 25%|██▌       | 211/844 [49:14<2:28:44, 14.10s/it]                                                   {'loss': 0.239, 'learning_rate': 1.547677261613692e-05, 'epoch': 1.0}
+ 25%|██▌       | 211/844 [49:14<2:28:44, 14.10s/it][2024-11-30 16:29:37,123] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-11-30 16:29:37,136] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[INFO|trainer.py:2889] 2024-11-30 16:29:54,817 >> Saving model checkpoint to /scratch-shared/ir2-less/out/llama2-13b-less-p0.05-lora-seed4/tmp-checkpoint-211
+[INFO|tokenization_utils_base.py:2432] 2024-11-30 16:29:55,485 >> tokenizer config file saved in /scratch-shared/ir2-less/out/llama2-13b-less-p0.05-lora-seed4/tmp-checkpoint-211/tokenizer_config.json
+[INFO|tokenization_utils_base.py:2441] 2024-11-30 16:29:55,485 >> Special tokens file saved in /scratch-shared/ir2-less/out/llama2-13b-less-p0.05-lora-seed4/tmp-checkpoint-211/special_tokens_map.json
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/gpfs/home1/scur2847/ir2-less-data/less/train/train.py", line 192, in <module>
+    main()
+  File "/gpfs/home1/scur2847/ir2-less-data/less/train/train.py", line 171, in main
+    train_result = trainer.train()
+                   ^^^^^^^^^^^^^^^
+  File "/home/scur2847/.local/lib/python3.11/site-packages/transformers/trainer.py", line 1537, in train
+    return inner_training_loop(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/scur2847/.local/lib/python3.11/site-packages/transformers/trainer.py", line 1929, in _inner_training_loop
+Traceback (most recent call last):
+    self._maybe_log_save_evaluate(tr_loss, model, trial, epoch, ignore_keys_for_eval)
+  File "/home/scur2847/.local/lib/python3.11/site-packages/transformers/trainer.py", line 2279, in _maybe_log_save_evaluate
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/gpfs/home1/scur2847/ir2-less-data/less/train/train.py", line 192, in <module>
+    main()
+  File "/gpfs/home1/scur2847/ir2-less-data/less/train/train.py", line 171, in main
+    train_result = trainer.train()
+                   ^^^^^^^^^^^^^^^
+  File "/home/scur2847/.local/lib/python3.11/site-packages/transformers/trainer.py", line 1537, in train
+    return inner_training_loop(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/scur2847/.local/lib/python3.11/site-packages/transformers/trainer.py", line 1929, in _inner_training_loop
+    self._maybe_log_save_evaluate(tr_loss, model, trial, epoch, ignore_keys_for_eval)
+      File "/home/scur2847/.local/lib/python3.11/site-packages/transformers/trainer.py", line 2279, in _maybe_log_save_evaluate
+    self._save_checkpoint(model, trial, metrics=metrics)
+self._save_checkpoint(model, trial, metrics=metrics)
+  File "/home/scur2847/.local/lib/python3.11/site-packages/transformers/trainer.py", line 2395, in _save_checkpoint
+  File "/home/scur2847/.local/lib/python3.11/site-packages/transformers/trainer.py", line 2395, in _save_checkpoint
+    os.rename(staging_output_dir, output_dir)
+FileExistsError: [Errno 17] File exists: '/scratch-shared/ir2-less/out/llama2-13b-less-p0.05-lora-seed4/tmp-checkpoint-211' -> '/scratch-shared/ir2-less/out/llama2-13b-less-p0.05-lora-seed4/checkpoint-211'
+    os.rename(staging_output_dir, output_dir)
+FileExistsError: [Errno 17] File exists: '/scratch-shared/ir2-less/out/llama2-13b-less-p0.05-lora-seed4/tmp-checkpoint-211' -> '/scratch-shared/ir2-less/out/llama2-13b-less-p0.05-lora-seed4/checkpoint-211'
+[1;34mwandb[0m: 🚀 View run [33mworldly-silence-92[0m at: [34mhttps://wandb.ai/colinnyuh-university-of-amsterdam/huggingface/runs/xzb80uyb[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20241130_154016-xzb80uyb/logs[0m
+[2024-11-30 16:30:41,067] torch.distributed.elastic.multiprocessing.api: [WARNING] Sending process 3819486 closing signal SIGTERM
+[2024-11-30 16:30:41,382] torch.distributed.elastic.multiprocessing.api: [ERROR] failed (exitcode: 1) local_rank: 1 (pid: 3819487) of binary: /sw/arch/RHEL8/EB_production/2023/software/Python/3.11.3-GCCcore-12.3.0/bin/python
+Traceback (most recent call last):
+  File "/sw/arch/RHEL8/EB_production/2023/software/PyTorch/2.1.2-foss-2023a-CUDA-12.1.1/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/sw/arch/RHEL8/EB_production/2023/software/PyTorch/2.1.2-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 346, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/sw/arch/RHEL8/EB_production/2023/software/PyTorch/2.1.2-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/torch/distributed/run.py", line 806, in main
+    run(args)
+  File "/sw/arch/RHEL8/EB_production/2023/software/PyTorch/2.1.2-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/torch/distributed/run.py", line 797, in run
+    elastic_launch(
+  File "/sw/arch/RHEL8/EB_production/2023/software/PyTorch/2.1.2-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/torch/distributed/launcher/api.py", line 134, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sw/arch/RHEL8/EB_production/2023/software/PyTorch/2.1.2-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/torch/distributed/launcher/api.py", line 264, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+less.train.train FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2024-11-30_16:30:41
+  host      : gcn97.local.snellius.surf.nl
+  rank      : 1 (local_rank: 1)
+  exitcode  : 1 (pid: 3819487)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+
+JOB STATISTICS
+==============
+Job ID: 8863735
+Cluster: snellius
+User/Group: scur2847/scur2847
+State: COMPLETED (exit code 0)
+Nodes: 1
+Cores per node: 16
+CPU Utilized: 01:46:14
+CPU Efficiency: 13.00% of 13:37:04 core-walltime
+Job Wall-clock time: 00:51:04
+Memory Utilized: 52.46 GB
+Memory Efficiency: 14.57% of 360.00 GB

@@ -8,7 +8,7 @@ import re
 import evaluate
 import torch
 import tqdm
-import vllm
+# import vllm
 
 from eval.utils import (dynamic_import_function, generate_completions,
                         load_hf_lm_and_tokenizer, query_openai_chat_model)
@@ -50,7 +50,7 @@ def main(args):
     random.seed(42)
 
     all_tasks = {}
-    task_files = glob.glob(os.path.join(args.data_dir, "bbh", "*.json"))
+    task_files = glob.glob(os.path.join(args.data_dir, "test", "*.json"))
     for task_file in tqdm.tqdm(task_files, desc="Loading tasks"):
         with open(task_file, "r") as f:
             task_name = os.path.basename(task_file).split(".")[0]
@@ -83,6 +83,7 @@ def main(args):
             all_prompts[task_name] = task_prompt
 
     if not args.eval_valid:
+        print(set(all_tasks.keys()), set(all_prompts.keys()))
         assert set(all_tasks.keys()) == set(all_prompts.keys(
         )), "task names in task data and task prompts are not the same."
 
@@ -92,14 +93,15 @@ def main(args):
     # Load model if not using OpenAI API
     if args.model_name_or_path:
         if args.use_vllm:
-            print("Loading vllm model...")
-            model = vllm.LLM(
-                model=args.model_name_or_path,
-                tokenizer=args.tokenizer_name_or_path if args.tokenizer_name_or_path else args.model_name_or_path,
-                tokenizer_mode="slow" if args.use_slow_tokenizer else "auto",
-                tensor_parallel_size=torch.cuda.device_count(),
-                max_num_batched_tokens=4096,
-            )
+            # print("Loading vllm model...")
+            # model = vllm.LLM(
+            #     model=args.model_name_or_path,
+            #     tokenizer=args.tokenizer_name_or_path if args.tokenizer_name_or_path else args.model_name_or_path,
+            #     tokenizer_mode="slow" if args.use_slow_tokenizer else "auto",
+            #     tensor_parallel_size=torch.cuda.device_count(),
+            #     max_num_batched_tokens=4096,
+            # )
+            pass
         else:
             print("Loading model and tokenizer with huggingface...")
             model, tokenizer = load_hf_lm_and_tokenizer(
@@ -143,18 +145,19 @@ def main(args):
             
             # generate with vllm
             if args.use_vllm:
-                sampling_params = vllm.SamplingParams(
-                    temperature=0,
-                    max_tokens=512,
-                    stop=["\n\n"],
-                )
-                # We need to remap the outputs to the prompts because vllm might not return outputs for some prompts (e.g., if the prompt is too long)
-                generations = model.generate(prompts, sampling_params)
-                prompt_to_output = {
-                    g.prompt: g.outputs[0].text for g in generations
-                }
-                outputs = [prompt_to_output[prompt]
-                           if prompt in prompt_to_output else "" for prompt in prompts]
+                # sampling_params = vllm.SamplingParams(
+                #     temperature=0,
+                #     max_tokens=512,
+                #     stop=["\n\n"],
+                # )
+                # # We need to remap the outputs to the prompts because vllm might not return outputs for some prompts (e.g., if the prompt is too long)
+                # generations = model.generate(prompts, sampling_params)
+                # prompt_to_output = {
+                #     g.prompt: g.outputs[0].text for g in generations
+                # }
+                # outputs = [prompt_to_output[prompt]
+                #            if prompt in prompt_to_output else "" for prompt in prompts]
+                pass
             # generate with hf model
             else:
                 # get the last token because the tokenizer may add space tokens at the start.

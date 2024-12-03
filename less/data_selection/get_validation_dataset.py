@@ -180,7 +180,7 @@ def get_tydiqa_dataset(data_dir: str,
                 "根据所给文章中的信息回答以下问题。", "文章:", "问题:", "答案:")
 
     file_name = "tydiqa-one-shot-zh.json" if zh else "tydiqa-one-shot.json"
-    file = os.path.join(f"{data_dir}/eval/tydiqa", file_name)
+    file = os.path.join(f"{data_dir}/eval/tydiqa/dev", file_name)
 
     examples = json.load(open(file, "r"))
     dataset = {"input_ids": [], "attention_mask": [], "labels": []}

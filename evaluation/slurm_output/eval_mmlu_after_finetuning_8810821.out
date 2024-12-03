@@ -1,0 +1,265 @@
+[2024-11-28 18:05:02,061] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+/home/scur2847/.local/lib/python3.11/site-packages/huggingface_hub/file_download.py:797: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+Loading model and tokenizer...
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:05<00:05,  5.78s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:07<00:00,  3.55s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:07<00:00,  3.88s/it]
+loaded the peft model
+Convert model to bfloat16 precision.
+Evaluating subjects:   0%|          | 0/57 [00:00<?, ?it/s]
+Getting Predictions:   0%|          | 0/100 [00:00<?, ?it/s][A
+Getting Predictions:   4%|▍         | 4/100 [00:00<00:07, 13.23it/s][A
+Getting Predictions:  12%|█▏        | 12/100 [00:00<00:02, 31.21it/s][A
+Getting Predictions:  20%|██        | 20/100 [00:00<00:01, 40.98it/s][A
+Getting Predictions:  28%|██▊       | 28/100 [00:00<00:01, 47.31it/s][A
+Getting Predictions:  36%|███▌      | 36/100 [00:00<00:01, 51.21it/s][A
+Getting Predictions:  44%|████▍     | 44/100 [00:00<00:01, 53.98it/s][A
+Getting Predictions:  52%|█████▏    | 52/100 [00:01<00:00, 55.56it/s][A
+Getting Predictions:  60%|██████    | 60/100 [00:01<00:00, 56.88it/s][A
+Getting Predictions:  68%|██████▊   | 68/100 [00:01<00:00, 57.64it/s][A
+Getting Predictions:  76%|███████▌  | 76/100 [00:01<00:00, 58.29it/s][A
+Getting Predictions:  84%|████████▍ | 84/100 [00:01<00:00, 58.65it/s][A
+Getting Predictions:  92%|█████████▏| 92/100 [00:01<00:00, 58.94it/s][A
+Getting Predictions: 100%|██████████| 100/100 [00:01<00:00, 59.79it/s][AGetting Predictions: 100%|██████████| 100/100 [00:01<00:00, 52.30it/s]
+Evaluating subjects:   2%|▏         | 1/57 [00:02<02:00,  2.15s/it]Average accuracy 0.270 - abstract_algebra
+
+Getting Predictions:   0%|          | 0/135 [00:00<?, ?it/s][A
+Getting Predictions:   6%|▌         | 8/135 [00:00<00:02, 57.70it/s][A
+Getting Predictions:  12%|█▏        | 16/135 [00:00<00:02, 54.80it/s][A
+Getting Predictions:  18%|█▊        | 24/135 [00:00<00:01, 57.05it/s][A
+Getting Predictions:  24%|██▎       | 32/135 [00:00<00:01, 56.76it/s][A
+Getting Predictions:  30%|██▉       | 40/135 [00:00<00:01, 57.81it/s][A
+Getting Predictions:  36%|███▌      | 48/135 [00:00<00:01, 57.05it/s][A
+Getting Predictions:  41%|████▏     | 56/135 [00:00<00:01, 56.44it/s][A
+Getting Predictions:  47%|████▋     | 64/135 [00:01<00:01, 56.63it/s][A
+Getting Predictions:  53%|█████▎    | 72/135 [00:01<00:01, 56.34it/s][A
+Getting Predictions:  59%|█████▉    | 80/135 [00:01<00:00, 55.35it/s][A
+Getting Predictions:  65%|██████▌   | 88/135 [00:01<00:00, 55.71it/s][A
+Getting Predictions:  71%|███████   | 96/135 [00:01<00:00, 55.47it/s][A
+Getting Predictions:  77%|███████▋  | 104/135 [00:01<00:00, 56.01it/s][A
+Getting Predictions:  83%|████████▎ | 112/135 [00:01<00:00, 56.54it/s][A
+Getting Predictions:  89%|████████▉ | 120/135 [00:02<00:00, 57.29it/s][A
+Getting Predictions:  95%|█████████▍| 128/135 [00:02<00:00, 57.52it/s][A
+Getting Predictions: 100%|██████████| 135/135 [00:02<00:00, 58.54it/s][AGetting Predictions: 100%|██████████| 135/135 [00:02<00:00, 56.86it/s]
+Evaluating subjects:   4%|▎         | 2/57 [00:04<02:11,  2.38s/it]Average accuracy 0.459 - anatomy
+
+Getting Predictions:   0%|          | 0/152 [00:00<?, ?it/s][A
+Getting Predictions:   3%|▎         | 4/152 [00:00<00:04, 34.43it/s][A
+Getting Predictions:   5%|▌         | 8/152 [00:00<00:04, 32.86it/s][A
+Getting Predictions:   8%|▊         | 12/152 [00:00<00:04, 31.18it/s][A
+Getting Predictions:  11%|█         | 16/152 [00:00<00:04, 32.31it/s][A
+Getting Predictions:  13%|█▎        | 20/152 [00:00<00:04, 32.33it/s][A
+Getting Predictions:  16%|█▌        | 24/152 [00:00<00:03, 32.93it/s][A
+Getting Predictions:  18%|█▊        | 28/152 [00:00<00:03, 33.43it/s][A
+Getting Predictions:  21%|██        | 32/152 [00:00<00:03, 32.53it/s][A
+Getting Predictions:  24%|██▎       | 36/152 [00:01<00:03, 33.12it/s][A
+Getting Predictions:  26%|██▋       | 40/152 [00:01<00:03, 32.86it/s][A
+Getting Predictions:  29%|██▉       | 44/152 [00:01<00:03, 33.60it/s][A
+Getting Predictions:  32%|███▏      | 48/152 [00:01<00:03, 33.72it/s][A
+Getting Predictions:  34%|███▍      | 52/152 [00:01<00:03, 33.24it/s][A
+Getting Predictions:  37%|███▋      | 56/152 [00:01<00:02, 32.98it/s][A
+Getting Predictions:  39%|███▉      | 60/152 [00:01<00:02, 33.36it/s][A
+Getting Predictions:  42%|████▏     | 64/152 [00:01<00:02, 33.54it/s][A
+Getting Predictions:  45%|████▍     | 68/152 [00:02<00:02, 33.77it/s][A
+Getting Predictions:  47%|████▋     | 72/152 [00:02<00:02, 33.92it/s][A
+Getting Predictions:  50%|█████     | 76/152 [00:02<00:02, 34.00it/s][A
+Getting Predictions:  53%|█████▎    | 80/152 [00:02<00:02, 34.01it/s][A
+Getting Predictions:  55%|█████▌    | 84/152 [00:02<00:02, 33.43it/s][A
+Getting Predictions:  58%|█████▊    | 88/152 [00:02<00:01, 33.14it/s][A
+Getting Predictions:  61%|██████    | 92/152 [00:02<00:01, 32.96it/s][A
+Getting Predictions:  63%|██████▎   | 96/152 [00:02<00:01, 33.25it/s][A
+Getting Predictions:  66%|██████▌   | 100/152 [00:03<00:01, 33.82it/s][A
+Getting Predictions:  68%|██████▊   | 104/152 [00:03<00:01, 34.07it/s][A
+Getting Predictions:  71%|███████   | 108/152 [00:03<00:01, 34.10it/s][A
+Getting Predictions:  74%|███████▎  | 112/152 [00:03<00:01, 33.60it/s][A
+Getting Predictions:  76%|███████▋  | 116/152 [00:03<00:01, 33.73it/s][A
+Getting Predictions:  79%|███████▉  | 120/152 [00:03<00:00, 32.40it/s][A
+Getting Predictions:  82%|████████▏ | 124/152 [00:03<00:00, 32.42it/s][A
+Getting Predictions:  84%|████████▍ | 128/152 [00:03<00:00, 32.35it/s][A
+Getting Predictions:  87%|████████▋ | 132/152 [00:03<00:00, 32.14it/s][A
+Getting Predictions:  89%|████████▉ | 136/152 [00:04<00:00, 32.26it/s][A
+Getting Predictions:  92%|█████████▏| 140/152 [00:04<00:00, 33.56it/s][A
+Getting Predictions:  95%|█████████▍| 144/152 [00:04<00:00, 33.76it/s][A
+Getting Predictions:  97%|█████████▋| 148/152 [00:04<00:00, 34.57it/s][A
+Getting Predictions: 100%|██████████| 152/152 [00:04<00:00, 34.60it/s][AGetting Predictions: 100%|██████████| 152/152 [00:04<00:00, 33.35it/s]
+Evaluating subjects:   5%|▌         | 3/57 [00:09<03:09,  3.50s/it]Average accuracy 0.461 - astronomy
+
+Getting Predictions:   0%|          | 0/100 [00:00<?, ?it/s][A
+Getting Predictions:   4%|▍         | 4/100 [00:00<00:02, 34.04it/s][A
+Getting Predictions:   8%|▊         | 8/100 [00:00<00:02, 34.04it/s][A
+Getting Predictions:  12%|█▏        | 12/100 [00:00<00:02, 34.28it/s][A
+Getting Predictions:  16%|█▌        | 16/100 [00:00<00:02, 34.70it/s][A
+Getting Predictions:  20%|██        | 20/100 [00:00<00:02, 34.53it/s][A
+Getting Predictions:  24%|██▍       | 24/100 [00:00<00:02, 33.84it/s][A
+Getting Predictions:  28%|██▊       | 28/100 [00:00<00:02, 33.92it/s][A
+Getting Predictions:  32%|███▏      | 32/100 [00:00<00:02, 33.42it/s][A
+Getting Predictions:  36%|███▌      | 36/100 [00:01<00:01, 33.58it/s][A
+Getting Predictions:  40%|████      | 40/100 [00:01<00:01, 33.78it/s][A
+Getting Predictions:  44%|████▍     | 44/100 [00:01<00:01, 33.86it/s][A
+Getting Predictions:  48%|████▊     | 48/100 [00:01<00:01, 33.94it/s][A
+Getting Predictions:  52%|█████▏    | 52/100 [00:01<00:01, 33.44it/s][A
+Getting Predictions:  56%|█████▌    | 56/100 [00:01<00:01, 33.11it/s][A
+Getting Predictions:  60%|██████    | 60/100 [00:01<00:01, 32.66it/s][A
+Getting Predictions:  64%|██████▍   | 64/100 [00:01<00:01, 33.22it/s][A
+Getting Predictions:  68%|██████▊   | 68/100 [00:02<00:00, 33.00it/s][A
+Getting Predictions:  72%|███████▏  | 72/100 [00:02<00:00, 33.29it/s][A
+Getting Predictions:  76%|███████▌  | 76/100 [00:02<00:00, 33.04it/s][A
+Getting Predictions:  80%|████████  | 80/100 [00:02<00:00, 32.88it/s][A
+Getting Predictions:  84%|████████▍ | 84/100 [00:02<00:00, 33.57it/s][A
+Getting Predictions:  88%|████████▊ | 88/100 [00:02<00:00, 33.03it/s][A
+Getting Predictions:  92%|█████████▏| 92/100 [00:02<00:00, 33.87it/s][A
+Getting Predictions:  96%|█████████▌| 96/100 [00:02<00:00, 34.00it/s][A
+Getting Predictions: 100%|██████████| 100/100 [00:02<00:00, 33.53it/s][AGetting Predictions: 100%|██████████| 100/100 [00:02<00:00, 33.56it/s]
+Evaluating subjects:   7%|▋         | 4/57 [00:12<02:59,  3.39s/it]Average accuracy 0.520 - business_ethics
+
+Getting Predictions:   0%|          | 0/265 [00:00<?, ?it/s][A
+Getting Predictions:   3%|▎         | 8/265 [00:00<00:05, 47.59it/s][A
+Getting Predictions:   6%|▌         | 16/265 [00:00<00:05, 45.74it/s][A
+Getting Predictions:   9%|▉         | 24/265 [00:00<00:05, 46.13it/s][A
+Getting Predictions:  12%|█▏        | 32/265 [00:00<00:04, 47.86it/s][A
+Getting Predictions:  15%|█▌        | 40/265 [00:00<00:04, 48.45it/s][A
+Getting Predictions:  18%|█▊        | 48/265 [00:01<00:04, 47.98it/s][A
+Getting Predictions:  21%|██        | 56/265 [00:01<00:04, 49.29it/s][A
+Getting Predictions:  24%|██▍       | 64/265 [00:01<00:04, 48.36it/s][A
+Getting Predictions:  27%|██▋       | 72/265 [00:01<00:03, 49.17it/s][A
+Getting Predictions:  30%|███       | 80/265 [00:01<00:03, 48.39it/s][A
+Getting Predictions:  33%|███▎      | 88/265 [00:01<00:03, 48.65it/s][A
+Getting Predictions:  36%|███▌      | 96/265 [00:01<00:03, 48.68it/s][A
+Getting Predictions:  39%|███▉      | 104/265 [00:02<00:03, 48.98it/s][A
+Getting Predictions:  42%|████▏     | 112/265 [00:02<00:03, 48.69it/s][A
+Getting Predictions:  45%|████▌     | 120/265 [00:02<00:02, 48.89it/s][A
+Getting Predictions:  48%|████▊     | 128/265 [00:02<00:02, 49.97it/s][A
+Getting Predictions:  51%|█████▏    | 136/265 [00:02<00:02, 49.68it/s][A
+Getting Predictions:  54%|█████▍    | 144/265 [00:02<00:02, 49.39it/s][A
+Getting Predictions:  57%|█████▋    | 152/265 [00:03<00:02, 49.27it/s][A
+Getting Predictions:  60%|██████    | 160/265 [00:03<00:02, 47.72it/s][A
+Getting Predictions:  63%|██████▎   | 168/265 [00:03<00:02, 47.32it/s][A
+Getting Predictions:  66%|██████▋   | 176/265 [00:03<00:01, 46.37it/s][A
+Getting Predictions:  69%|██████▉   | 184/265 [00:03<00:01, 47.79it/s][A
+Getting Predictions:  72%|███████▏  | 192/265 [00:03<00:01, 47.71it/s][A
+Getting Predictions:  75%|███████▌  | 200/265 [00:04<00:01, 48.22it/s][A
+Getting Predictions:  78%|███████▊  | 208/265 [00:04<00:01, 48.41it/s][A
+Getting Predictions:  82%|████████▏ | 216/265 [00:04<00:01, 47.78it/s][A
+Getting Predictions:  85%|████████▍ | 224/265 [00:04<00:00, 48.09it/s][A
+Getting Predictions:  88%|████████▊ | 232/265 [00:04<00:00, 48.51it/s][A
+Getting Predictions:  91%|█████████ | 240/265 [00:04<00:00, 49.21it/s][A
+Getting Predictions:  94%|█████████▎| 248/265 [00:05<00:00, 49.15it/s][A
+Getting Predictions:  97%|█████████▋| 256/265 [00:05<00:00, 49.59it/s][A
+Getting Predictions: 100%|█████████▉| 264/265 [00:05<00:00, 49.91it/s][AGetting Predictions: 100%|██████████| 265/265 [00:05<00:00, 48.52it/s]
+Evaluating subjects:   9%|▉         | 5/57 [00:18<03:41,  4.26s/it]Average accuracy 0.479 - clinical_knowledge
+
+Getting Predictions:   0%|          | 0/144 [00:00<?, ?it/s][A
+Getting Predictions:   6%|▌         | 8/144 [00:00<00:03, 43.19it/s][A
+Getting Predictions:  11%|█         | 16/144 [00:00<00:03, 40.45it/s][A
+Getting Predictions:  17%|█▋        | 24/144 [00:00<00:02, 41.05it/s][A
+Getting Predictions:  22%|██▏       | 32/144 [00:00<00:02, 40.11it/s][A
+Getting Predictions:  28%|██▊       | 40/144 [00:00<00:02, 40.28it/s][A
+Getting Predictions:  33%|███▎      | 48/144 [00:01<00:02, 39.01it/s][A
+Getting Predictions:  39%|███▉      | 56/144 [00:01<00:02, 38.87it/s][A
+Getting Predictions:  42%|████▏     | 60/144 [00:01<00:02, 37.86it/s][A
+Getting Predictions:  47%|████▋     | 68/144 [00:01<00:01, 38.76it/s][A
+Getting Predictions:  50%|█████     | 72/144 [00:01<00:01, 38.57it/s][A
+Getting Predictions:  56%|█████▌    | 80/144 [00:02<00:01, 39.36it/s][A
+Getting Predictions:  61%|██████    | 88/144 [00:02<00:01, 40.91it/s][A
+Getting Predictions:  67%|██████▋   | 96/144 [00:02<00:01, 38.89it/s][A
+Getting Predictions:  72%|███████▏  | 104/144 [00:02<00:01, 39.41it/s][A
+Getting Predictions:  78%|███████▊  | 112/144 [00:02<00:00, 39.61it/s][A
+Getting Predictions:  81%|████████  | 116/144 [00:02<00:00, 39.40it/s][A
+Getting Predictions:  83%|████████▎ | 120/144 [00:03<00:00, 39.43it/s][A
+Getting Predictions:  86%|████████▌ | 124/144 [00:03<00:00, 39.47it/s][A
+Getting Predictions:  92%|█████████▏| 132/144 [00:03<00:00, 40.27it/s][A
+Getting Predictions:  97%|█████████▋| 140/144 [00:03<00:00, 39.78it/s][A
+Getting Predictions: 100%|██████████| 144/144 [00:03<00:00, 39.76it/s][AGetting Predictions: 100%|██████████| 144/144 [00:03<00:00, 39.59it/s]
+Evaluating subjects:  11%|█         | 6/57 [00:22<03:30,  4.13s/it]Average accuracy 0.514 - college_biology
+
+Getting Predictions:   0%|          | 0/100 [00:00<?, ?it/s][A
+Getting Predictions:   4%|▍         | 4/100 [00:00<00:02, 35.97it/s][A
+Getting Predictions:   8%|▊         | 8/100 [00:00<00:02, 37.35it/s][A
+Getting Predictions:  12%|█▏        | 12/100 [00:00<00:02, 36.40it/s][A
+Getting Predictions:  16%|█▌        | 16/100 [00:00<00:02, 35.66it/s][A
+Getting Predictions:  20%|██        | 20/100 [00:00<00:02, 35.75it/s][A
+Getting Predictions:  24%|██▍       | 24/100 [00:00<00:02, 35.79it/s][A
+Getting Predictions:  28%|██▊       | 28/100 [00:00<00:02, 35.76it/s][A
+Getting Predictions:  32%|███▏      | 32/100 [00:00<00:01, 34.67it/s][A
+Getting Predictions:  36%|███▌      | 36/100 [00:01<00:01, 34.54it/s][A
+Getting Predictions:  40%|████      | 40/100 [00:01<00:01, 35.50it/s][A
+Getting Predictions:  44%|████▍     | 44/100 [00:01<00:01, 35.21it/s][A
+Getting Predictions:  48%|████▊     | 48/100 [00:01<00:01, 35.93it/s][A
+Getting Predictions:  52%|█████▏    | 52/100 [00:01<00:01, 35.91it/s][A
+Getting Predictions:  56%|█████▌    | 56/100 [00:01<00:01, 34.42it/s][A
+Getting Predictions:  60%|██████    | 60/100 [00:01<00:01, 34.84it/s][A
+Getting Predictions:  64%|██████▍   | 64/100 [00:01<00:01, 35.85it/s][A
+Getting Predictions:  68%|██████▊   | 68/100 [00:01<00:00, 35.77it/s][A
+Getting Predictions:  72%|███████▏  | 72/100 [00:02<00:00, 36.76it/s][A
+Getting Predictions:  76%|███████▌  | 76/100 [00:02<00:00, 36.24it/s][A
+Getting Predictions:  80%|████████  | 80/100 [00:02<00:00, 35.58it/s][A
+Getting Predictions:  84%|████████▍ | 84/100 [00:02<00:00, 36.27it/s][A
+Getting Predictions:  88%|████████▊ | 88/100 [00:02<00:00, 34.93it/s][A
+Getting Predictions:  92%|█████████▏| 92/100 [00:02<00:00, 34.05it/s][A
+Getting Predictions:  96%|█████████▌| 96/100 [00:02<00:00, 35.11it/s][AGetting Predictions: 100%|██████████| 100/100 [00:02<00:00, 35.65it/s]
+Evaluating subjects:  12%|█▏        | 7/57 [00:25<03:07,  3.76s/it]Average accuracy 0.400 - college_chemistry
+
+Getting Predictions:   0%|          | 0/100 [00:00<?, ?it/s][A
+Getting Predictions:   4%|▍         | 4/100 [00:00<00:04, 22.76it/s][A
+Getting Predictions:   8%|▊         | 8/100 [00:00<00:03, 23.68it/s][A
+Getting Predictions:  12%|█▏        | 12/100 [00:00<00:03, 23.94it/s][A
+Getting Predictions:  16%|█▌        | 16/100 [00:00<00:03, 24.08it/s][A
+Getting Predictions:  20%|██        | 20/100 [00:00<00:03, 25.14it/s][A
+Getting Predictions:  24%|██▍       | 24/100 [00:00<00:02, 25.83it/s][A
+Getting Predictions:  28%|██▊       | 28/100 [00:01<00:02, 25.40it/s][A
+Getting Predictions:  32%|███▏      | 32/100 [00:01<00:02, 24.54it/s][A
+Getting Predictions:  36%|███▌      | 36/100 [00:01<00:02, 25.14it/s][A
+Getting Predictions:  40%|████      | 40/100 [00:01<00:02, 25.71it/s][A
+Getting Predictions:  44%|████▍     | 44/100 [00:01<00:02, 24.96it/s][A
+Getting Predictions:  48%|████▊     | 48/100 [00:01<00:02, 24.23it/s][A
+Getting Predictions:  52%|█████▏    | 52/100 [00:02<00:01, 24.00it/s][A
+Getting Predictions:  56%|█████▌    | 56/100 [00:02<00:01, 24.16it/s][A
+Getting Predictions:  60%|██████    | 60/100 [00:02<00:01, 24.36it/s][A
+Getting Predictions:  64%|██████▍   | 64/100 [00:02<00:01, 23.87it/s][A
+Getting Predictions:  68%|██████▊   | 68/100 [00:02<00:01, 24.55it/s][A
+Getting Predictions:  72%|███████▏  | 72/100 [00:02<00:01, 24.00it/s][A
+Getting Predictions:  76%|███████▌  | 76/100 [00:03<00:00, 24.26it/s][A
+Getting Predictions:  80%|████████  | 80/100 [00:03<00:00, 23.85it/s][A
+Getting Predictions:  84%|████████▍ | 84/100 [00:03<00:00, 24.53it/s][A
+Getting Predictions:  88%|████████▊ | 88/100 [00:03<00:00, 24.52it/s][A
+Getting Predictions:  92%|█████████▏| 92/100 [00:03<00:00, 24.20it/s][A
+Getting Predictions:  96%|█████████▌| 96/100 [00:03<00:00, 24.61it/s][A
+Getting Predictions: 100%|██████████| 100/100 [00:04<00:00, 24.24it/s][AGetting Predictions: 100%|██████████| 100/100 [00:04<00:00, 24.44it/s]
+Evaluating subjects:  14%|█▍        | 8/57 [00:29<03:12,  3.93s/it]Average accuracy 0.430 - college_computer_science
+
+Getting Predictions:   0%|          | 0/100 [00:00<?, ?it/s][A
+Getting Predictions:   4%|▍         | 4/100 [00:00<00:02, 35.52it/s][A
+Getting Predictions:   8%|▊         | 8/100 [00:00<00:02, 34.55it/s][A
+Getting Predictions:  12%|█▏        | 12/100 [00:00<00:02, 34.91it/s][A
+Getting Predictions:  16%|█▌        | 16/100 [00:00<00:02, 35.10it/s][A
+Getting Predictions:  20%|██        | 20/100 [00:00<00:02, 34.20it/s][A
+Getting Predictions:  24%|██▍       | 24/100 [00:00<00:02, 34.20it/s][A
+Getting Predictions:  28%|██▊       | 28/100 [00:00<00:02, 34.18it/s][A
+Getting Predictions:  32%|███▏      | 32/100 [00:00<00:01, 34.25it/s][A
+Getting Predictions:  36%|███▌      | 36/100 [00:01<00:01, 33.64it/s][A
+Getting Predictions:  40%|████      | 40/100 [00:01<00:01, 33.83it/s][A
+Getting Predictions:  44%|████▍     | 44/100 [00:01<00:01, 34.36it/s][A
+Getting Predictions:  48%|████▊     | 48/100 [00:01<00:01, 35.27it/s][A
+Getting Predictions:  52%|█████▏    | 52/100 [00:01<00:01, 35.33it/s][A
+Getting Predictions:  56%|█████▌    | 56/100 [00:01<00:01, 35.53it/s][A
+Getting Predictions:  60%|██████    | 60/100 [00:01<00:01, 35.68it/s][A
+Getting Predictions:  64%|██████▍   | 64/100 [00:01<00:01, 35.19it/s][A
+Getting Predictions:  68%|██████▊   | 68/100 [00:01<00:00, 35.26it/s][A
+Getting Predictions:  72%|███████▏  | 72/100 [00:02<00:00, 34.37it/s][A
+Getting Predictions:  76%|███████▌  | 76/100 [00:02<00:00, 34.40it/s][A
+Getting Predictions:  80%|████████  | 80/100 [00:02<00:00, 35.33it/s][A
+Getting Predictions:  84%|████████▍ | 84/100 [00:02<00:00, 36.02it/s][Aslurmstepd: error: *** JOB 8810821 ON gcn123 CANCELLED AT 2024-11-28T18:05:53 ***
+
+JOB STATISTICS
+==============
+Job ID: 8810821
+Cluster: snellius
+User/Group: scur2847/scur2847
+State: CANCELLED (exit code 0)
+Nodes: 1
+Cores per node: 16
+CPU Utilized: 00:00:01
+CPU Efficiency: 0.08% of 00:19:44 core-walltime
+Job Wall-clock time: 00:01:14
+Memory Utilized: 1.62 GB
+Memory Efficiency: 0.90% of 180.00 GB

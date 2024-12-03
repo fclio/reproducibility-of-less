@@ -1,0 +1,49 @@
+  0%|          | 0/92 [00:00<?, ?it/s][WARNING|logging.py:314] 2024-11-26 15:51:13,834 >> You're using a LlamaTokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
+ 25%|██▌       | 23/92 [01:35<04:45,  4.14s/it][WARNING|trainer.py:2348] 2024-11-26 15:52:51,346 >> Checkpoint destination directory ../out/llama2-7b-less-p0.05-lora-seed4/checkpoint-23 already exists and is non-empty.Saving will proceed but saved results may be invalid.
+{'loss': 3.7751, 'learning_rate': 6.666666666666667e-06, 'epoch': 0.04}
+{'loss': 3.5838, 'learning_rate': 1.3333333333333333e-05, 'epoch': 0.09}
+{'loss': 4.0742, 'learning_rate': 2e-05, 'epoch': 0.13}
+{'loss': 3.4318, 'learning_rate': 1.9775280898876404e-05, 'epoch': 0.17}
+{'loss': 2.534, 'learning_rate': 1.955056179775281e-05, 'epoch': 0.21}
+{'loss': 2.1471, 'learning_rate': 1.9325842696629215e-05, 'epoch': 0.26}
+{'loss': 1.662, 'learning_rate': 1.910112359550562e-05, 'epoch': 0.3}
+{'loss': 1.443, 'learning_rate': 1.8876404494382024e-05, 'epoch': 0.34}
+{'loss': 1.3544, 'learning_rate': 1.8651685393258426e-05, 'epoch': 0.38}
+{'loss': 1.2757, 'learning_rate': 1.8426966292134835e-05, 'epoch': 0.43}
+{'loss': 0.9556, 'learning_rate': 1.8202247191011237e-05, 'epoch': 0.47}
+{'loss': 1.0312, 'learning_rate': 1.7977528089887643e-05, 'epoch': 0.51}
+{'loss': 0.7477, 'learning_rate': 1.7752808988764045e-05, 'epoch': 0.55}
+{'loss': 1.1041, 'learning_rate': 1.752808988764045e-05, 'epoch': 0.6}
+{'loss': 0.862, 'learning_rate': 1.7303370786516857e-05, 'epoch': 0.64}
+{'loss': 0.9514, 'learning_rate': 1.707865168539326e-05, 'epoch': 0.68}
+{'loss': 0.9085, 'learning_rate': 1.6853932584269665e-05, 'epoch': 0.73}
+{'loss': 0.8512, 'learning_rate': 1.662921348314607e-05, 'epoch': 0.77}
+{'loss': 0.9325, 'learning_rate': 1.6404494382022473e-05, 'epoch': 0.81}
+{'loss': 0.9987, 'learning_rate': 1.617977528089888e-05, 'epoch': 0.85}
+{'loss': 0.9083, 'learning_rate': 1.595505617977528e-05, 'epoch': 0.9}
+{'loss': 0.868, 'learning_rate': 1.5730337078651687e-05, 'epoch': 0.94}
+{'loss': 0.8788, 'learning_rate': 1.5505617977528093e-05, 'epoch': 0.98}
+[INFO|trainer.py:2889] 2024-11-26 15:52:51,347 >> Saving model checkpoint to ../out/llama2-7b-less-p0.05-lora-seed4/checkpoint-23
+[INFO|tokenization_utils_base.py:2432] 2024-11-26 15:52:51,769 >> tokenizer config file saved in ../out/llama2-7b-less-p0.05-lora-seed4/checkpoint-23/tokenizer_config.json
+[INFO|tokenization_utils_base.py:2441] 2024-11-26 15:52:51,771 >> Special tokens file saved in ../out/llama2-7b-less-p0.05-lora-seed4/checkpoint-23/special_tokens_map.json
+ 47%|████▋     | 43/92 [02:59<03:22,  4.12s/it]
+{'loss': 0.8495, 'learning_rate': 1.5280898876404495e-05, 'epoch': 1.02}
+{'loss': 0.7133, 'learning_rate': 1.5056179775280899e-05, 'epoch': 1.07}
+{'loss': 0.7397, 'learning_rate': 1.4831460674157305e-05, 'epoch': 1.11}
+{'loss': 0.9359, 'learning_rate': 1.4606741573033709e-05, 'epoch': 1.15}
+{'loss': 0.7916, 'learning_rate': 1.4382022471910113e-05, 'epoch': 1.19}
+{'loss': 1.0644, 'learning_rate': 1.4157303370786517e-05, 'epoch': 1.24}
+{'loss': 0.7039, 'learning_rate': 1.3932584269662923e-05, 'epoch': 1.28}
+{'loss': 0.8599, 'learning_rate': 1.3707865168539327e-05, 'epoch': 1.32}
+{'loss': 0.7495, 'learning_rate': 1.348314606741573e-05, 'epoch': 1.37}
+{'loss': 0.6538, 'learning_rate': 1.3258426966292135e-05, 'epoch': 1.41}
+{'loss': 0.7084, 'learning_rate': 1.303370786516854e-05, 'epoch': 1.45}
+{'loss': 0.6785, 'learning_rate': 1.2808988764044944e-05, 'epoch': 1.49}
+{'loss': 0.9401, 'learning_rate': 1.2584269662921348e-05, 'epoch': 1.54}
+{'loss': 0.8428, 'learning_rate': 1.2359550561797752e-05, 'epoch': 1.58}
+{'loss': 0.9332, 'learning_rate': 1.213483146067416e-05, 'epoch': 1.62}
+{'loss': 0.9823, 'learning_rate': 1.1910112359550562e-05, 'epoch': 1.66}
+{'loss': 0.9832, 'learning_rate': 1.1685393258426966e-05, 'epoch': 1.71}
+{'loss': 1.0225, 'learning_rate': 1.146067415730337e-05, 'epoch': 1.75}
+{'loss': 0.672, 'learning_rate': 1.1235955056179778e-05, 'epoch': 1.79}
+{'loss': 0.7457, 'learning_rate': 1.101123595505618e-05, 'epoch': 1.83}

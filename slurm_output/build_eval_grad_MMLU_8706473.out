@@ -1,0 +1,14 @@
+
+JOB STATISTICS
+==============
+Job ID: 8706473
+Cluster: snellius
+User/Group: scur2847/scur2847
+State: CANCELLED (exit code 0)
+Nodes: 1
+Cores per node: 32
+CPU Utilized: 00:00:00
+CPU Efficiency: 0.00% of 00:02:40 core-walltime
+Job Wall-clock time: 00:00:05
+Memory Utilized: 0.00 MB (estimated maximum)
+Memory Efficiency: 0.00% of 180.00 GB (180.00 GB/node)

@@ -1,0 +1,18 @@
+{"time":"2024-11-30T15:40:16.34520657+01:00","level":"INFO","msg":"using version","core version":"0.18.6"}
+{"time":"2024-11-30T15:40:16.34525634+01:00","level":"INFO","msg":"created symlink","path":"/gpfs/home1/scur2847/ir2-less-data/wandb/run-20241130_154016-xzb80uyb/logs/debug-core.log"}
+{"time":"2024-11-30T15:40:16.454076+01:00","level":"INFO","msg":"created new stream","id":"xzb80uyb"}
+{"time":"2024-11-30T15:40:16.454154049+01:00","level":"INFO","msg":"stream: started","id":"xzb80uyb"}
+{"time":"2024-11-30T15:40:16.454156979+01:00","level":"INFO","msg":"sender: started","stream_id":"xzb80uyb"}
+{"time":"2024-11-30T15:40:16.454203349+01:00","level":"INFO","msg":"handler: started","stream_id":{"value":"xzb80uyb"}}
+{"time":"2024-11-30T15:40:16.454151539+01:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"xzb80uyb"}}
+{"time":"2024-11-30T15:40:16.64396185+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-30T16:30:39.530055251+01:00","level":"INFO","msg":"stream: closing","id":"xzb80uyb"}
+{"time":"2024-11-30T16:30:39.530102171+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-30T16:30:39.530605828+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-11-30T16:30:39.680140409+01:00","level":"WARN","msg":"No program path found, not creating job artifact. See https://docs.wandb.ai/guides/launch/create-job"}
+{"time":"2024-11-30T16:30:39.680169288+01:00","level":"INFO","msg":"sender: sendDefer: no job artifact to save"}
+{"time":"2024-11-30T16:30:40.077455162+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-11-30T16:30:40.235287365+01:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"xzb80uyb"}}
+{"time":"2024-11-30T16:30:40.235346785+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"xzb80uyb"}}
+{"time":"2024-11-30T16:30:40.235361715+01:00","level":"INFO","msg":"sender: closed","stream_id":"xzb80uyb"}
+{"time":"2024-11-30T16:30:40.235560064+01:00","level":"INFO","msg":"stream: closed","id":"xzb80uyb"}

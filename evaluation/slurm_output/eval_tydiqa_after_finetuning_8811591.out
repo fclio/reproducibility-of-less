@@ -1,0 +1,27 @@
+[2024-11-28 18:22:40,153] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/gpfs/home1/scur2847/ir2-less-data/evaluation/eval/tydiqa/run_eval.py", line 374, in <module>
+    main(args)
+  File "/gpfs/home1/scur2847/ir2-less-data/evaluation/eval/tydiqa/run_eval.py", line 45, in main
+    with open(os.path.join(args.data_dir, "tydiqa-goldp-v1.1-dev.json")) as fin:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../data/eval/tydiqa/tydiqa-goldp-v1.1-dev.json'
+Loading data...
+jq: error: Could not open file /scratch-shared/ir2-less/out/llama2-7b-less-p0.05-lora-seed4/eval/tydiqa/metrics.json: No such file or directory
+tydiqa Evaluation Result: %
+
+JOB STATISTICS
+==============
+Job ID: 8811591
+Cluster: snellius
+User/Group: scur2847/scur2847
+State: COMPLETED (exit code 0)
+Nodes: 1
+Cores per node: 16
+CPU Utilized: 00:00:12
+CPU Efficiency: 2.34% of 00:08:32 core-walltime
+Job Wall-clock time: 00:00:32
+Memory Utilized: 2.41 MB
+Memory Efficiency: 0.00% of 180.00 GB

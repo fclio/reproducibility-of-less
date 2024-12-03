@@ -6,7 +6,7 @@ train_files=$1
 model_path=$2
 job_name=$3
 
-output_dir=../out/${job_name}
+output_dir=/scratch-shared/ir2-less/out/${job_name}
 if [[ ! -d $output_dir ]]; then
     mkdir -p $output_dir
 fi

@@ -1,0 +1,41 @@
+Traceback (most recent call last):
+  File "/home/scur2847/.local/lib/python3.11/site-packages/transformers/utils/hub.py", line 389, in cached_file
+    resolved_file = hf_hub_download(
+                    ^^^^^^^^^^^^^^^^
+  File "/home/scur2847/.local/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 106, in _inner_fn
+    validate_repo_id(arg_value)
+  File "/home/scur2847/.local/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 154, in validate_repo_id
+    raise HFValidationError(
+huggingface_hub.errors.HFValidationError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': '/scratch-shared/ir2-less/out/llama2-13b-p0.05-lora-seed4/checkpoint-1688'. Use `repo_type` argument if needed.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/gpfs/home1/scur2847/ir2-less-data/less/data_selection/get_info.py", line 98, in <module>
+    tokenizer = AutoTokenizer.from_pretrained(args.model_path)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/scur2847/.local/lib/python3.11/site-packages/transformers/models/auto/tokenization_auto.py", line 737, in from_pretrained
+    tokenizer_config = get_tokenizer_config(pretrained_model_name_or_path, **kwargs)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/scur2847/.local/lib/python3.11/site-packages/transformers/models/auto/tokenization_auto.py", line 569, in get_tokenizer_config
+    resolved_config_file = cached_file(
+                           ^^^^^^^^^^^^
+  File "/home/scur2847/.local/lib/python3.11/site-packages/transformers/utils/hub.py", line 454, in cached_file
+    raise EnvironmentError(
+OSError: Incorrect path_or_model_id: '/scratch-shared/ir2-less/out/llama2-13b-p0.05-lora-seed4/checkpoint-1688'. Please provide either the path to a local folder or the repo_id of a model on the Hub.
+
+JOB STATISTICS
+==============
+Job ID: 8717325
+Cluster: snellius
+User/Group: scur2847/scur2847
+State: FAILED (exit code 1)
+Nodes: 1
+Cores per node: 16
+CPU Utilized: 00:00:06
+CPU Efficiency: 2.34% of 00:04:16 core-walltime
+Job Wall-clock time: 00:00:16
+Memory Utilized: 2.28 MB
+Memory Efficiency: 0.00% of 180.00 GB

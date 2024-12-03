@@ -4,9 +4,9 @@
 #SBATCH --gpus=1
 #SBATCH --job-name=eval_mmlu_after_finetuning
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=18
+#SBATCH --cpus-per-task=16
 #SBATCH --gpus-per-node=1
-#SBATCH --time=01:00:00
+#SBATCH --time=02:00:00
 #SBATCH --output=slurm_output/eval_mmlu_after_finetuning_%A.out
 
 # Load necessary modules
@@ -19,7 +19,7 @@ source eval.sh
 source eval_mmlu.sh
 
 # Set the model directory relative to the script's location
-MODEL_DIR="../../out/llama2-7b-less-p0.001-lora"
+MODEL_DIR="/scratch-shared/ir2-less/out/llama2-13b-less-p0.05-lora-seed4-mmlu"
 
 # Run the evaluation on MMLU dataset
 eval_mmlu "$MODEL_DIR"

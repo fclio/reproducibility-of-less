@@ -1,0 +1,18 @@
+{"time":"2024-11-28T17:35:25.44343019+01:00","level":"INFO","msg":"using version","core version":"0.18.6"}
+{"time":"2024-11-28T17:35:25.443506999+01:00","level":"INFO","msg":"created symlink","path":"/gpfs/home1/scur2847/ir2-less-data/wandb/run-20241128_173525-em7xwqc5/logs/debug-core.log"}
+{"time":"2024-11-28T17:35:25.559371979+01:00","level":"INFO","msg":"created new stream","id":"em7xwqc5"}
+{"time":"2024-11-28T17:35:25.559465739+01:00","level":"INFO","msg":"stream: started","id":"em7xwqc5"}
+{"time":"2024-11-28T17:35:25.559543409+01:00","level":"INFO","msg":"sender: started","stream_id":"em7xwqc5"}
+{"time":"2024-11-28T17:35:25.559519409+01:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"em7xwqc5"}}
+{"time":"2024-11-28T17:35:25.559741948+01:00","level":"INFO","msg":"handler: started","stream_id":{"value":"em7xwqc5"}}
+{"time":"2024-11-28T17:35:25.867231989+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-28T19:42:58.630197319+01:00","level":"INFO","msg":"stream: closing","id":"em7xwqc5"}
+{"time":"2024-11-28T19:42:58.630287269+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-28T19:42:58.633472801+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-11-28T19:42:58.787070911+01:00","level":"WARN","msg":"No program path found, not creating job artifact. See https://docs.wandb.ai/guides/launch/create-job"}
+{"time":"2024-11-28T19:42:58.787106391+01:00","level":"INFO","msg":"sender: sendDefer: no job artifact to save"}
+{"time":"2024-11-28T19:42:59.438067949+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-11-28T19:42:59.592619947+01:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"em7xwqc5"}}
+{"time":"2024-11-28T19:42:59.592647687+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"em7xwqc5"}}
+{"time":"2024-11-28T19:42:59.592695097+01:00","level":"INFO","msg":"sender: closed","stream_id":"em7xwqc5"}
+{"time":"2024-11-28T19:42:59.592928106+01:00","level":"INFO","msg":"stream: closed","id":"em7xwqc5"}

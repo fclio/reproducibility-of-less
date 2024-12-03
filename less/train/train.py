@@ -23,6 +23,7 @@ from less.train.training_arguments import TrainingArguments
 
 logger = logging.getLogger(__name__)
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
+os.environ["PYTORCH_CUDA_ALLOC_CONF"]="garbage_collection_threshold:0.6,max_split_size_mb:256"
 
 
 def main():

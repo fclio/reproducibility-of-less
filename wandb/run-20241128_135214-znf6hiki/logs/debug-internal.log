@@ -1,0 +1,8 @@
+{"time":"2024-11-28T13:52:14.938053608+01:00","level":"INFO","msg":"using version","core version":"0.18.6"}
+{"time":"2024-11-28T13:52:14.938144058+01:00","level":"INFO","msg":"created symlink","path":"/gpfs/home1/scur2847/ir2-less-data/wandb/run-20241128_135214-znf6hiki/logs/debug-core.log"}
+{"time":"2024-11-28T13:52:15.051162069+01:00","level":"INFO","msg":"created new stream","id":"znf6hiki"}
+{"time":"2024-11-28T13:52:15.051221289+01:00","level":"INFO","msg":"stream: started","id":"znf6hiki"}
+{"time":"2024-11-28T13:52:15.051309749+01:00","level":"INFO","msg":"sender: started","stream_id":"znf6hiki"}
+{"time":"2024-11-28T13:52:15.051297419+01:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"znf6hiki"}}
+{"time":"2024-11-28T13:52:15.051301719+01:00","level":"INFO","msg":"handler: started","stream_id":{"value":"znf6hiki"}}
+{"time":"2024-11-28T13:52:15.270918529+01:00","level":"INFO","msg":"Starting system monitor"}

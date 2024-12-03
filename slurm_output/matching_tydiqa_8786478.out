@@ -1,0 +1,18 @@
+Saved influence score to /scratch-shared/ir2-less/selected_data/llama2-7b-p0.05-lora-seed4/tydiqa/dolly_influence_score.pt
+Saved influence score to /scratch-shared/ir2-less/selected_data/llama2-7b-p0.05-lora-seed4/tydiqa/oasst1_influence_score.pt
+Saved influence score to /scratch-shared/ir2-less/selected_data/llama2-7b-p0.05-lora-seed4/tydiqa/flan_v2_influence_score.pt
+Saved influence score to /scratch-shared/ir2-less/selected_data/llama2-7b-p0.05-lora-seed4/tydiqa/cot_influence_score.pt
+
+JOB STATISTICS
+==============
+Job ID: 8786478
+Cluster: snellius
+User/Group: scur2847/scur2847
+State: COMPLETED (exit code 0)
+Nodes: 1
+Cores per node: 16
+CPU Utilized: 00:00:21
+CPU Efficiency: 3.37% of 00:10:24 core-walltime
+Job Wall-clock time: 00:00:39
+Memory Utilized: 2.24 MB
+Memory Efficiency: 0.00% of 180.00 GB

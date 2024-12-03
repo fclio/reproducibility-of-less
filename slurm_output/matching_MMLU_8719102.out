@@ -1,0 +1,23 @@
+Saved influence score to /scratch-shared/ir2-less/selected_data/llama2-7b-p0.05-lora-seed4/mmlu/dolly_influence_score.pt
+Saved influence score to /scratch-shared/ir2-less/selected_data/llama2-7b-p0.05-lora-seed4/mmlu/oasst1_influence_score.pt
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/gpfs/home1/scur2847/ir2-less-data/less/data_selection/write_selected_data.py", line 38, in <module>
+    assert len(args.train_file_names) == len(args.train_files)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+
+JOB STATISTICS
+==============
+Job ID: 8719102
+Cluster: snellius
+User/Group: scur2847/scur2847
+State: FAILED (exit code 1)
+Nodes: 1
+Cores per node: 16
+CPU Utilized: 00:00:09
+CPU Efficiency: 2.01% of 00:07:28 core-walltime
+Job Wall-clock time: 00:00:28
+Memory Utilized: 2.21 MB
+Memory Efficiency: 0.00% of 180.00 GB

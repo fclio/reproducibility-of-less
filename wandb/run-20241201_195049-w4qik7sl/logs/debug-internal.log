@@ -1,0 +1,18 @@
+{"time":"2024-12-01T19:50:50.030167182+01:00","level":"INFO","msg":"using version","core version":"0.18.6"}
+{"time":"2024-12-01T19:50:50.030226211+01:00","level":"INFO","msg":"created symlink","path":"/gpfs/home1/scur2847/ir2-less-data/wandb/run-20241201_195049-w4qik7sl/logs/debug-core.log"}
+{"time":"2024-12-01T19:50:50.243600532+01:00","level":"INFO","msg":"created new stream","id":"w4qik7sl"}
+{"time":"2024-12-01T19:50:50.243645531+01:00","level":"INFO","msg":"stream: started","id":"w4qik7sl"}
+{"time":"2024-12-01T19:50:50.243694471+01:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"w4qik7sl"}}
+{"time":"2024-12-01T19:50:50.243764641+01:00","level":"INFO","msg":"handler: started","stream_id":{"value":"w4qik7sl"}}
+{"time":"2024-12-01T19:50:50.2439558+01:00","level":"INFO","msg":"sender: started","stream_id":"w4qik7sl"}
+{"time":"2024-12-01T19:50:50.480844833+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-12-01T23:11:59.203817755+01:00","level":"INFO","msg":"stream: closing","id":"w4qik7sl"}
+{"time":"2024-12-01T23:11:59.203884915+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-12-01T23:11:59.207753475+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-12-01T23:11:59.359785917+01:00","level":"WARN","msg":"No program path found, not creating job artifact. See https://docs.wandb.ai/guides/launch/create-job"}
+{"time":"2024-12-01T23:11:59.359821367+01:00","level":"INFO","msg":"sender: sendDefer: no job artifact to save"}
+{"time":"2024-12-01T23:12:00.009977303+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-12-01T23:12:00.169619717+01:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"w4qik7sl"}}
+{"time":"2024-12-01T23:12:00.169649497+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"w4qik7sl"}}
+{"time":"2024-12-01T23:12:00.169704186+01:00","level":"INFO","msg":"sender: closed","stream_id":"w4qik7sl"}
+{"time":"2024-12-01T23:12:00.171175479+01:00","level":"INFO","msg":"stream: closed","id":"w4qik7sl"}

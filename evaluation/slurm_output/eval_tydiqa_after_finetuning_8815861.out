@@ -1,0 +1,71 @@
+[2024-11-28 20:00:36,770] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+/home/scur2847/.local/lib/python3.11/site-packages/huggingface_hub/file_download.py:797: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+Loading data...
+Loaded 1713 examples from 9 languages: {'arabic', 'korean', 'telugu', 'english', 'indonesian', 'russian', 'swahili', 'bengali', 'finnish'}
+Loading model and tokenizer...
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:05<00:05,  5.38s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:07<00:00,  3.74s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:07<00:00,  3.99s/it]
+loaded the peft model
+Convert model to bfloat16 precision.
+Generating Completions:   0%|          | 0/1713 [00:00<?, ?it/s]Generating Completions:   1%|          | 20/1713 [00:03<05:05,  5.54it/s]Generating Completions:   2%|▏         | 40/1713 [00:07<05:18,  5.25it/s]Generating Completions:   4%|▎         | 60/1713 [00:11<05:00,  5.49it/s]Generating Completions:   5%|▍         | 80/1713 [00:14<04:47,  5.68it/s]Generating Completions:   6%|▌         | 100/1713 [00:17<04:41,  5.73it/s]Generating Completions:   7%|▋         | 120/1713 [00:21<04:35,  5.78it/s]Generating Completions:   8%|▊         | 140/1713 [00:24<04:30,  5.82it/s]Generating Completions:   9%|▉         | 160/1713 [00:27<04:26,  5.82it/s]Generating Completions:  11%|█         | 180/1713 [00:31<04:22,  5.84it/s]Generating Completions:  12%|█▏        | 200/1713 [00:34<04:18,  5.86it/s]Generating Completions:  13%|█▎        | 220/1713 [00:37<04:04,  6.10it/s]Generating Completions:  14%|█▍        | 240/1713 [00:40<03:55,  6.27it/s]Generating Completions:  15%|█▌        | 260/1713 [00:43<03:48,  6.35it/s]Generating Completions:  16%|█▋        | 280/1713 [00:46<03:41,  6.47it/s]Generating Completions:  18%|█▊        | 300/1713 [00:49<03:35,  6.55it/s]Generating Completions:  19%|█▊        | 320/1713 [00:52<03:30,  6.61it/s]Generating Completions:  20%|█▉        | 340/1713 [00:55<03:17,  6.96it/s]Generating Completions:  21%|██        | 360/1713 [00:58<03:15,  6.92it/s]Generating Completions:  22%|██▏       | 380/1713 [01:01<03:14,  6.86it/s]Generating Completions:  23%|██▎       | 400/1713 [01:04<03:12,  6.82it/s]Generating Completions:  25%|██▍       | 420/1713 [01:08<03:35,  6.00it/s]Generating Completions:  26%|██▌       | 440/1713 [01:12<03:48,  5.57it/s]Generating Completions:  27%|██▋       | 460/1713 [01:16<03:55,  5.32it/s]Generating Completions:  28%|██▊       | 480/1713 [01:21<04:06,  5.00it/s]Generating Completions:  29%|██▉       | 500/1713 [01:25<04:06,  4.93it/s]Generating Completions:  30%|███       | 520/1713 [01:29<04:05,  4.86it/s]Generating Completions:  32%|███▏      | 540/1713 [01:33<04:02,  4.84it/s]Generating Completions:  33%|███▎      | 560/1713 [01:38<04:01,  4.77it/s]Generating Completions:  34%|███▍      | 580/1713 [01:42<03:57,  4.77it/s]Generating Completions:  35%|███▌      | 600/1713 [01:46<03:56,  4.70it/s]Generating Completions:  36%|███▌      | 620/1713 [01:48<03:11,  5.71it/s]Generating Completions:  37%|███▋      | 640/1713 [01:49<02:33,  6.97it/s]Generating Completions:  39%|███▊      | 660/1713 [01:51<02:15,  7.78it/s]Generating Completions:  40%|███▉      | 680/1713 [01:53<01:58,  8.72it/s]Generating Completions:  41%|████      | 700/1713 [01:54<01:40, 10.10it/s]Generating Completions:  42%|████▏     | 720/1713 [01:56<01:28, 11.16it/s]Generating Completions:  43%|████▎     | 740/1713 [01:57<01:18, 12.46it/s]Generating Completions:  44%|████▍     | 760/1713 [01:58<01:06, 14.30it/s]Generating Completions:  46%|████▌     | 780/1713 [01:58<00:57, 16.26it/s]Generating Completions:  47%|████▋     | 800/1713 [01:59<00:48, 18.69it/s]Generating Completions:  48%|████▊     | 820/1713 [02:02<01:05, 13.59it/s]Generating Completions:  49%|████▉     | 840/1713 [02:04<01:13, 11.84it/s]Generating Completions:  50%|█████     | 860/1713 [02:06<01:18, 10.86it/s]Generating Completions:  51%|█████▏    | 880/1713 [02:08<01:23,  9.93it/s]Generating Completions:  53%|█████▎    | 900/1713 [02:11<01:26,  9.38it/s]Generating Completions:  54%|█████▎    | 920/1713 [02:13<01:26,  9.15it/s]Generating Completions:  55%|█████▍    | 940/1713 [02:16<01:27,  8.87it/s]Generating Completions:  56%|█████▌    | 960/1713 [02:18<01:26,  8.71it/s]Generating Completions:  57%|█████▋    | 980/1713 [02:20<01:25,  8.61it/s]Generating Completions:  58%|█████▊    | 1000/1713 [02:23<01:23,  8.50it/s]Generating Completions:  60%|█████▉    | 1020/1713 [02:25<01:20,  8.56it/s]Generating Completions:  61%|██████    | 1040/1713 [02:27<01:18,  8.63it/s]Generating Completions:  62%|██████▏   | 1060/1713 [02:29<01:13,  8.86it/s]Generating Completions:  63%|██████▎   | 1080/1713 [02:31<01:03, 10.03it/s]Generating Completions:  64%|██████▍   | 1100/1713 [02:33<01:00, 10.20it/s]Generating Completions:  65%|██████▌   | 1120/1713 [02:34<00:56, 10.51it/s]Generating Completions:  67%|██████▋   | 1140/1713 [02:36<00:51, 11.14it/s]Generating Completions:  68%|██████▊   | 1160/1713 [02:38<00:48, 11.40it/s]Generating Completions:  69%|██████▉   | 1180/1713 [02:39<00:45, 11.68it/s]Generating Completions:  70%|███████   | 1200/1713 [02:42<00:48, 10.57it/s]Generating Completions:  71%|███████   | 1220/1713 [02:44<00:49, 10.01it/s]Generating Completions:  72%|███████▏  | 1240/1713 [02:45<00:39, 12.03it/s]Generating Completions:  74%|███████▎  | 1260/1713 [02:47<00:41, 10.87it/s]Generating Completions:  75%|███████▍  | 1280/1713 [02:48<00:36, 12.02it/s]Generating Completions:  76%|███████▌  | 1300/1713 [02:50<00:34, 11.83it/s]Generating Completions:  77%|███████▋  | 1320/1713 [02:52<00:34, 11.25it/s]Generating Completions:  78%|███████▊  | 1340/1713 [02:53<00:31, 11.93it/s]Generating Completions:  79%|███████▉  | 1360/1713 [02:55<00:31, 11.17it/s]Generating Completions:  81%|████████  | 1380/1713 [02:57<00:30, 10.85it/s]Generating Completions:  82%|████████▏ | 1400/1713 [02:59<00:28, 11.14it/s]Generating Completions:  83%|████████▎ | 1420/1713 [03:03<00:35,  8.35it/s]Generating Completions:  84%|████████▍ | 1440/1713 [03:07<00:37,  7.19it/s]Generating Completions:  85%|████████▌ | 1460/1713 [03:10<00:38,  6.59it/s]Generating Completions:  86%|████████▋ | 1480/1713 [03:14<00:37,  6.20it/s]Generating Completions:  88%|████████▊ | 1500/1713 [03:17<00:35,  5.98it/s]Generating Completions:  89%|████████▊ | 1520/1713 [03:21<00:31,  6.13it/s]Generating Completions:  90%|████████▉ | 1540/1713 [03:22<00:23,  7.32it/s]Generating Completions:  91%|█████████ | 1560/1713 [03:23<00:17,  8.78it/s]Generating Completions:  92%|█████████▏| 1580/1713 [03:25<00:14,  9.28it/s]Generating Completions:  93%|█████████▎| 1600/1713 [03:27<00:11,  9.70it/s]Generating Completions:  95%|█████████▍| 1620/1713 [03:29<00:09,  9.59it/s]Generating Completions:  96%|█████████▌| 1640/1713 [03:31<00:07,  9.72it/s]Generating Completions:  97%|█████████▋| 1660/1713 [03:33<00:05, 10.10it/s]Generating Completions:  98%|█████████▊| 1680/1713 [03:35<00:03, 10.35it/s]Generating Completions:  99%|█████████▉| 1700/1713 [03:37<00:01, 10.30it/s]Generating Completions: 100%|██████████| 1713/1713 [03:38<00:00,  9.82it/s]Generating Completions: 100%|██████████| 1713/1713 [03:38<00:00,  7.83it/s]
+Calculating F1, EM ...
+Scores:
+{
+    "arabic": {
+        "exact_match": 22.0,
+        "f1": 52.47329623212417
+    },
+    "korean": {
+        "exact_match": 29.0,
+        "f1": 45.3842420509339
+    },
+    "telugu": {
+        "exact_match": 2.5,
+        "f1": 5.2666666666666675
+    },
+    "english": {
+        "exact_match": 60.5,
+        "f1": 77.78617461246297
+    },
+    "indonesian": {
+        "exact_match": 38.0,
+        "f1": 62.66222507267108
+    },
+    "russian": {
+        "exact_match": 27.0,
+        "f1": 59.659263524032895
+    },
+    "swahili": {
+        "exact_match": 44.5,
+        "f1": 58.76486600569174
+    },
+    "bengali": {
+        "exact_match": 21.238938053097346,
+        "f1": 33.69868086682246
+    },
+    "finnish": {
+        "exact_match": 50.5,
+        "f1": 67.33530033714752
+    },
+    "average": {
+        "f1": 51.4478572631726,
+        "exact_match": 32.80432645034415
+    }
+}
+Done!
+tydiqa Evaluation Result: 51.4478572631726%
+
+JOB STATISTICS
+==============
+Job ID: 8815861
+Cluster: snellius
+User/Group: scur2847/scur2847
+State: COMPLETED (exit code 0)
+Nodes: 1
+Cores per node: 16
+CPU Utilized: 00:04:54
+CPU Efficiency: 7.07% of 01:09:20 core-walltime
+Job Wall-clock time: 00:04:20
+Memory Utilized: 1.72 GB
+Memory Efficiency: 0.95% of 180.00 GB
