@@ -4,7 +4,7 @@
 #SBATCH --gpus=1
 #SBATCH --job-name=LESSWarmup
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=18
+#SBATCH --cpus-per-task=16
 #SBATCH --time=02:00:00
 #SBATCH --output=install_2_%A.out
 

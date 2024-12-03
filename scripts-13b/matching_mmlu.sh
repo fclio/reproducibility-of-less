@@ -16,8 +16,8 @@ module load PyTorch/2.1.2-foss-2023a-CUDA-12.1.1
 # CKPT=32
 
 # TASK=mmlu
-# MODEL_PATH=../out/llama2-7b-p0.001-lora-seed3/checkpoint-${CKPT}
-# OUTPUT_PATH=../grads/llama2-7b-p0.001-lora-seed3/${TRAINING_DATA_NAME}-ckpt${CKPT}-${GRADIENT_TYPE}
+# MODEL_PATH=../out/llama2-13b-p0.001-lora-seed3/checkpoint-${CKPT}
+# OUTPUT_PATH=../grads/llama2-13b-p0.001-lora-seed3/${TRAINING_DATA_NAME}-ckpt${CKPT}-${GRADIENT_TYPE}
 # DATA_DIR="data"
 # DIMS="4096 8192"
 
@@ -29,11 +29,11 @@ TRAIN_FILE_NAMES="dolly oasst1 flan_v2 cot"
 TRAIN_FILES="data/train/processed/dolly/dolly_data.jsonl data/train/processed/oasst1/oasst1_data.jsonl data/train/processed/flan_v2/flan_v2_data.jsonl data/train/processed/cot/cot_data.jsonl"
 DATA_SEED=4
 PERCENTAGE=0.05
-# CKPTS="211 422 634 844" # checkpoing indexTRAIN_FILES
-CKPTS="422 845 1268 1688" # checkpoing index
+CKPTS="211 422 634 844" # checkpoing indexTRAIN_FILES
+# CKPTS="422 845 1268 1688" # checkpoing index
 CHECKPOINT_WEIGHTS="1.724331e-05 1.28895e-05 7.71515e-06 2.56565e-06" # average lr of the epoch
 TARGET_TASK_NAMES="mmlu"
-JOB_NAME="llama2-7b-p${PERCENTAGE}-lora-seed${DATA_SEED}"
+JOB_NAME="llama2-13b-p${PERCENTAGE}-lora-seed${DATA_SEED}"
 
 GRADIENT_PATH=/scratch-shared/ir2-less/grads/${JOB_NAME}/{}-ckpt{}-adam/dim${DIM}
 

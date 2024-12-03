@@ -13,16 +13,15 @@ module purge
 module load 2023
 module load PyTorch/2.1.2-foss-2023a-CUDA-12.1.1
 
-#7b: 422 845 1268 1688 
 #13b: 211 422 634 844
-CKPT=422
+CKPT=211
 PERCENTAGE=0.05
 DATA_SEED=4
 
 TASK=mmlu
 JOB_NAME="llama2-13b-p${PERCENTAGE}-lora-seed${DATA_SEED}"
 MODEL_PATH=/scratch-shared/ir2-less/out/${JOB_NAME}/checkpoint-${CKPT}
-# OUTPUT_PATH=../grads/llama2-7b-p0.001-lora-seed3/${TASK}-ckpt${CKPT}-sgd
+# OUTPUT_PATH=../grads/llama2-13b-p0.001-lora-seed3/${TASK}-ckpt${CKPT}-sgd
 OUTPUT_PATH=/scratch-shared/ir2-less/grads/${JOB_NAME}/${TASK}-ckpt${CKPT}-sgd
 DATA_DIR="data"
 DIMS="8192"

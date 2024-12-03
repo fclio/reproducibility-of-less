@@ -2,12 +2,12 @@
 
 #SBATCH --partition=gpu_h100
 #SBATCH --gpus=1
-#SBATCH --job-name=matching_1
+#SBATCH --job-name=matching_tydiqa
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=16
 #SBATCH --gpus-per-node=1
 #SBATCH --time=02:00:00
-#SBATCH --output=slurm_output/matching_MMLU_%A.out
+#SBATCH --output=slurm_output/matching_tydiqa_%A.out
 
 module purge
 module load 2023
@@ -15,9 +15,9 @@ module load PyTorch/2.1.2-foss-2023a-CUDA-12.1.1
 
 # CKPT=32
 
-# TASK=mmlu
-# MODEL_PATH=../out/llama2-7b-p0.001-lora-seed3/checkpoint-${CKPT}
-# OUTPUT_PATH=../grads/llama2-7b-p0.001-lora-seed3/${TRAINING_DATA_NAME}-ckpt${CKPT}-${GRADIENT_TYPE}
+# TASK=tydiqa
+# MODEL_PATH=../out/llama2-13b-p0.001-lora-seed3/checkpoint-${CKPT}
+# OUTPUT_PATH=../grads/llama2-13b-p0.001-lora-seed3/${TRAINING_DATA_NAME}-ckpt${CKPT}-${GRADIENT_TYPE}
 # DATA_DIR="data"
 # DIMS="4096 8192"
 
@@ -29,11 +29,11 @@ TRAIN_FILE_NAMES="dolly oasst1 flan_v2 cot"
 TRAIN_FILES="data/train/processed/dolly/dolly_data.jsonl data/train/processed/oasst1/oasst1_data.jsonl data/train/processed/flan_v2/flan_v2_data.jsonl data/train/processed/cot/cot_data.jsonl"
 DATA_SEED=4
 PERCENTAGE=0.05
-# CKPTS="211 422 634 844" # checkpoing indexTRAIN_FILES
-CKPTS="422 845 1268 1688" # checkpoing index
+CKPTS="211 422 634 844" # checkpoing indexTRAIN_FILES
+# CKPTS="422 845 1268 1688" # checkpoing index
 CHECKPOINT_WEIGHTS="1.724331e-05 1.28895e-05 7.71515e-06 2.56565e-06" # average lr of the epoch
-TARGET_TASK_NAMES="mmlu"
-JOB_NAME="llama2-7b-p${PERCENTAGE}-lora-seed${DATA_SEED}"
+TARGET_TASK_NAMES="tydiqa"
+JOB_NAME="llama2-13b-p${PERCENTAGE}-lora-seed${DATA_SEED}"
 
 GRADIENT_PATH=/scratch-shared/ir2-less/grads/${JOB_NAME}/{}-ckpt{}-adam/dim${DIM}
 

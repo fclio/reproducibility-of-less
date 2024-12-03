@@ -4,7 +4,7 @@
 #SBATCH --gpus=2
 #SBATCH --job-name=LESS-warmup
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=18
+#SBATCH --cpus-per-task=16
 #SBATCH --gpus-per-node=2
 #SBATCH --time=02:00:00
 #SBATCH --output=slurm_output/warmup_training_%A.out

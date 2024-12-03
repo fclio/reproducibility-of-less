@@ -4,7 +4,7 @@
 #SBATCH --gpus=1
 #SBATCH --job-name=eval_mmlu_after_finetuning
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=18
+#SBATCH --cpus-per-task=16
 #SBATCH --gpus-per-node=1
 #SBATCH --time=01:00:00
 #SBATCH --output=slurm_output/eval_mmlu_after_finetuning_%A.out

@@ -13,6 +13,8 @@ module purge
 module load 2023
 module load PyTorch/2.1.2-foss-2023a-CUDA-12.1.1
 
+#13b: 211 422 634 844
+
 CKPT=211
 PERCENTAGE=0.05
 DATA_SEED=4

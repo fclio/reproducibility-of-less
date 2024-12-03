@@ -4,7 +4,7 @@
 #SBATCH --gpus=2
 #SBATCH --job-name=2-warmup
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=18
+#SBATCH --cpus-per-task=16
 #SBATCH --gpus-per-node=2
 #SBATCH --time=13:00:00
 #SBATCH --output=slurm_output/warmup_llama-2-13b_%A.out
