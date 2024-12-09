@@ -7,17 +7,18 @@ model_path=$2
 percentage=$3
 data_seed=$4
 job_name=$5
-# output_dir=$6
+output_dir=$6
 
-output_dir=../out/${job_name}
-if [[ ! -d $output_dir ]]; then
-    mkdir -p $output_dir
-fi
+# output_dir=../out/${job_name}
+# if [[ ! -d $output_dir ]]; then
+#     mkdir -p $output_dir
+# fi
 
-train_files=("$data_dir/train/processed/flan_v2/flan_v2_data.jsonl"
-    "$data_dir/train/processed/cot/cot_data.jsonl"
-    "$data_dir/train/processed/dolly/dolly_data.jsonl"
-"$data_dir/train/processed/oasst1/oasst1_data.jsonl")
+train_files=(
+"$data_dir/train/processed/first/first_data.jsonl"
+# "$data_dir/train/processed/msmarco/msmarco_data.jsonl"
+)
+
 
 # use fsdp for large models
 if [[ $model_path == "meta-llama/Llama-2-13b-hf" ]]; then

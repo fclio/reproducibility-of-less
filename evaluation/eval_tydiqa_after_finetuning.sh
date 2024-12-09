@@ -21,7 +21,7 @@ source eval.sh
 source eval_tydiqa.sh
 
 # Set the model directory relative to the script's location
-MODEL_DIR="/scratch-shared/ir2-less/out/llama2-13b-less-p0.05-lora-seed4-tydiqa"
+MODEL_DIR="/scratch-shared/ir2-less/out/llama2-13b-less-p0.05-lora-seed4-tydiqa-T"
 
 # Run the evaluation on tydiqa dataset
 eval_tydiqa "$MODEL_DIR"

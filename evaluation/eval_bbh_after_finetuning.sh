@@ -19,7 +19,7 @@ source eval.sh
 source eval_bbh.sh
 
 # Set the model directory relative to the script's location
-MODEL_DIR="/scratch-shared/ir2-less/out/llama2-13b-less-p0.05-lora-seed4-bbh"
+MODEL_DIR="/scratch-shared/ir2-less/out/llama2-13b-less-p0.05-lora-seed4-bbh-T"
 
 # Run the evaluation on bbh dataset
 eval_bbh "$MODEL_DIR"

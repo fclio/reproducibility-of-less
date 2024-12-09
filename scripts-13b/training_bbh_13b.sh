@@ -17,10 +17,10 @@ module load PyTorch/2.1.2-foss-2023a-CUDA-12.1.1
 DATA_SEED=4
 PERCENTAGE=0.05
 TARGET_TASK_NAME="bbh"
-JOB_NAME_TRAIN="llama2-13b-p${PERCENTAGE}-lora-seed${DATA_SEED}"
+JOB_NAME_TRAIN="llama2-7b-p${PERCENTAGE}-lora-seed${DATA_SEED}"
 TRAIN_FILES=/scratch-shared/ir2-less/selected_data/${JOB_NAME_TRAIN}/${TARGET_TASK_NAME}/top_p${PERCENTAGE}.jsonl
 MODEL_PATH=meta-llama/Llama-2-13b-hf
-JOB_NAME=llama2-13b-less-p${PERCENTAGE}-lora-seed${DATA_SEED}-bbh
+JOB_NAME=llama2-13b-less-p${PERCENTAGE}-lora-seed${DATA_SEED}-bbh-T
 
 
 # CKPTS="422" # checkpoing index
