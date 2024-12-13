@@ -7,7 +7,7 @@
 #SBATCH --cpus-per-task=16
 #SBATCH --gpus-per-node=1
 #SBATCH --time=24:00:00
-#SBATCH --output=slurm_output/eval_ranking_base_llama7b_%A.out
+#SBATCH --output=slurm_output/eval_ranking_finetune_llama7b_%A.out
 
 # Load necessary modules
 module purge
@@ -20,7 +20,7 @@ TASK_NAME=scifact
 # TASK_NAME=vihealthqa
 
 # Define paths
-JOB_NAME="llama2-7b-p0.05-lora-seed3-first-${TASK_NAME}"
+JOB_NAME="llama2-7b-less-p0.05-lora-seed3-first-${TASK_NAME}"
 
 MODEL_DIR="/scratch-shared/ir2-less/out/${JOB_NAME}"
 DATASET_PATH="/home/scur2847/ir2-less-data/data/eval/${TASK_NAME}/${TASK_NAME}_data.jsonl"

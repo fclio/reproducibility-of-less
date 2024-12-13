@@ -44,7 +44,7 @@ if __name__ == "__main__":
         output_path = os.path.join(args.output_path, target_task)
 
         score_paths = [os.path.join(
-            output_path, f"{task_name}_influence_score.pt") for task_name in args.train_file_names]
+            output_path, f"{task_name}_bm25_influence_score.pt") for task_name in args.train_file_names]
         num_samples = []
         for score_path in score_paths:
             num_samples.append(
@@ -71,7 +71,7 @@ if __name__ == "__main__":
                               * i for i, line_num in enumerate(num_samples)]).to(device)
         sorted_scores, sorted_index = torch.sort(
             all_scores, dim=0, descending=True)
-        sorted_score_file = os.path.join(output_path, f"sorted.csv")
+        sorted_score_file = os.path.join(output_path, f"bm25_sorted.csv")
 
         data_from = data_from[sorted_index]
         sorted_index = file_specific_index[sorted_index]
@@ -94,7 +94,7 @@ if __name__ == "__main__":
 
         final_index_list = sorted_index[:args.max_samples].tolist()
         final_data_from = data_from[:args.max_samples].tolist()
-        with open(os.path.join(output_path, f"top_{data_amount_name}.jsonl"), 'w', encoding='utf-8', errors='ignore') as file:
+        with open(os.path.join(output_path, f"bm25_top_{data_amount_name}.jsonl"), 'w', encoding='utf-8', errors='ignore') as file:
             for index, data_from in zip(final_index_list, final_data_from):
                 try:
                     file.write(all_lines[data_from][index])

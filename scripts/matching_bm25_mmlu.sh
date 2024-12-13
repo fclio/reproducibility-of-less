@@ -13,15 +13,15 @@ module purge
 module load 2023
 module load PyTorch/2.1.2-foss-2023a-CUDA-12.1.1
 
-# Variables
-TRAIN_FILE_NAMES="dolly oasst1 flan_v2 cot"        # Names of training data files (space-separated if multiple)
+
+TRAIN_FILE_NAMES="dolly oasst1 flan_v2 cot"
 DATA_SEED=4
 PERCENTAGE=0.05
-TARGET_TASK_NAMES="mmlu"         # Names of evaluation tasks
+TARGET_TASK_NAMES="mmlu"
 JOB_NAME="llama2-7b-p${PERCENTAGE}-seed${DATA_SEED}"
 
-TRAIN_DATA_PATH="/home/scur2832/LESS/data/train/processed"  # Base path to training data
-EVAL_DATA_PATH="/home/scur2832/LESS/data/eval"              # Base path to evaluation data
+TRAIN_DATA_PATH="/home/scur2832/LESS/data/train/processed"
+EVAL_DATA_PATH="/home/scur2832/LESS/data/eval"
 # SELECTED_DATA_OUTPUT_PATH="/home/scur2832/LESS/selected_data/${JOB_NAME}"
 
 SELECTED_DATA_OUTPUT_PATH="/scratch-shared/ir2-less/selected_data/${JOB_NAME}"
