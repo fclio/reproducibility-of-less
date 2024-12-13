@@ -17,7 +17,7 @@ module load PyTorch/2.1.2-foss-2023a-CUDA-12.1.1
 # Set variables for warmup training
 DATA_DIR="data"
 MODEL_PATH="meta-llama/Llama-2-7b-hf"
-PERCENTAGE=0.001
+PERCENTAGE=0.05
 DATA_SEED=4
 JOB_NAME="llama2-7b-p${PERCENTAGE}-lora-seed${DATA_SEED}"
 

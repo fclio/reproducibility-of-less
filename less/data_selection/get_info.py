@@ -130,7 +130,11 @@ if args.info_type == "grads" and args.gradient_type == "adam":
         optimizer_path, map_location="cpu")["state"]
 
 if args.task is not None:
-    dataset = get_dataset(args.task,
+    if args.task == "scifact":
+        print('yo!!')
+        dataset = get_training_dataset("data/eval/scifact/scifact_dev.jsonl", tokenizer, args.max_length, sample_percentage=1.0)
+    else:
+        dataset = get_dataset(args.task,
                           data_dir=args.data_dir,
                           tokenizer=tokenizer,
                           chat_format=args.chat_format,

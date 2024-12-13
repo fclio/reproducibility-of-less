@@ -1,0 +1,31 @@
+[2024-12-10 11:15:55,532] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+Traceback (most recent call last):
+  File "/home/scur2847/.local/lib/python3.11/site-packages/transformers/utils/hub.py", line 389, in cached_file
+    resolved_file = hf_hub_download(
+                    ^^^^^^^^^^^^^^^^
+  File "/home/scur2847/.local/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 106, in _inner_fn
+    validate_repo_id(arg_value)
+  File "/home/scur2847/.local/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 154, in validate_repo_id
+    raise HFValidationError(
+huggingface_hub.errors.HFValidationError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': '/scratch-shared/ir2-less/out/llama2-13b-less-p0.05-random-seed4-mmlu'. Use `repo_type` argument if needed.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/gpfs/home1/scur2847/ir2-less-data/evaluation/eval/mmlu/run_eval.py", line 359, in <module>
+    main(args)
+  File "/gpfs/home1/scur2847/ir2-less-data/evaluation/eval/mmlu/run_eval.py", line 161, in main
+    model, tokenizer = load_hf_lm_and_tokenizer(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/home1/scur2847/ir2-less-data/evaluation/eval/utils.py", line 224, in load_hf_lm_and_tokenizer
+    model = AutoModelForCausalLM.from_pretrained(model_name_or_path, device_map=device_map, torch_dtype=None)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/scur2847/.local/lib/python3.11/site-packages/transformers/models/auto/auto_factory.py", line 488, in from_pretrained
+    resolved_config_file = cached_file(
+                           ^^^^^^^^^^^^
+  File "/home/scur2847/.local/lib/python3.11/site-packages/transformers/utils/hub.py", line 454, in cached_file
+    raise EnvironmentError(
+OSError: Incorrect path_or_model_id: '/scratch-shared/ir2-less/out/llama2-13b-less-p0.05-random-seed4-mmlu'. Please provide either the path to a local folder or the repo_id of a model on the Hub.
+Loading model and tokenizer...

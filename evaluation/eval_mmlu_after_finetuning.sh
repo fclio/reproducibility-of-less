@@ -19,7 +19,7 @@ source eval.sh
 source eval_mmlu.sh
 
 # Set the model directory relative to the script's location
-MODEL_DIR="/scratch-shared/ir2-less/out/llama2-13b-less-p0.05-lora-seed4-mmlu-T"
+MODEL_DIR="/scratch-shared/ir2-less/out/llama2-7b-less-p0.05-bm25-seed4-mmlu"
 
 # Run the evaluation on MMLU dataset
 eval_mmlu "$MODEL_DIR"

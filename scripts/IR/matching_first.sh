@@ -6,42 +6,35 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=16
 #SBATCH --gpus-per-node=1
-#SBATCH --time=02:00:00
-#SBATCH --output=slurm_output/matching_MMLU_%A.out
+#SBATCH --time=24:00:00
+#SBATCH --output=slurm_output/matching+training_13b_ir_%A.out
 
 module purge
 module load 2023
 module load PyTorch/2.1.2-foss-2023a-CUDA-12.1.1
 
-# CKPT=32
-
-# TASK=mmlu
-# MODEL_PATH=../out/llama2-7b-p0.001-lora-seed3/checkpoint-${CKPT}
-# OUTPUT_PATH=../grads/llama2-7b-p0.001-lora-seed3/${TRAINING_DATA_NAME}-ckpt${CKPT}-${GRADIENT_TYPE}
-# DATA_DIR="data"
-# DIMS="4096 8192"
-
-# bash less/scripts/get_info/grad/get_eval_lora_grads.sh "$TASK" "$DATA_DIR" "$MODEL_PATH" $OUTPUT_PATH "$DIMS"
 
 
 DIM=8192 # decide which dimension to use
-TRAIN_FILE_NAMES="msmarco"
-TRAIN_FILES="data/train/processed/msmarco/msmarco_data.jsonl"
-DATA_SEED=4
-PERCENTAGE=0.001
+TRAIN_FILE_NAMES="first"
+TRAIN_FILES="data/train/processed/first/first_data.jsonl"
+DATA_SEED=3
+PERCENTAGE=0.05
 
 
 #7b: 11,22,34,44
 #7b: 422 845 1268 1688 
 #13b: 211 422 634 844
-
-CKPTS="11 22 34 44" # checkpoing index
+#first-0.5: 62 124 187 248
+#msmarco-0.5: 573 1146 1720 2292
+#first-13b-0.5: 31 62 93 124
+CKPTS="31 62 93 124" # checkpoing index
 
 # to fill in!!!
 CHECKPOINT_WEIGHTS="1.724331e-05 1.28895e-05 7.71515e-06 2.56565e-06" # average lr of the epoch
-TARGET_TASK_NAMES="first"
+TARGET_TASK_NAMES="qa"
 
-JOB_NAME="llama2-7b-p${PERCENTAGE}-lora-seed${DATA_SEED}-msmarco"
+JOB_NAME="llama2-13b-p${PERCENTAGE}-lora-seed${DATA_SEED}-first"
 
 GRADIENT_PATH=/scratch-shared/ir2-less/grads/${JOB_NAME}/{}-ckpt{}-adam/dim${DIM}
 
@@ -57,3 +50,15 @@ fi
 bash less/scripts/data_selection/matching.sh "$GRADIENT_PATH" "$TRAIN_FILE_NAMES" "$CKPTS" "$CHECKPOINT_WEIGHTS" "$VALIDATION_GRADIENT_PATH" "$TARGET_TASK_NAMES" "$SELECTED_DATA_OUTPUT_PATH"
 
 python3 -m less.data_selection.write_selected_data --target_task_names ${TARGET_TASK_NAMES} --train_file_names ${TRAIN_FILE_NAMES} --train_files ${TRAIN_FILES} --output_path $SELECTED_DATA_OUTPUT_PATH --percentage ${PERCENTAGE}
+
+
+DATA_SEED=3
+PERCENTAGE=0.05
+TARGET_TASK_NAME="qa"
+JOB_NAME_TRAIN="llama2-13b-p${PERCENTAGE}-lora-seed${DATA_SEED}-first"
+TRAIN_FILES=/scratch-shared/ir2-less/selected_data/${JOB_NAME_TRAIN}/${TARGET_TASK_NAME}/top_p${PERCENTAGE}.jsonl
+MODEL_PATH=meta-llama/Llama-2-13b-hf
+JOB_NAME=llama2-13b-less-p${PERCENTAGE}-lora-seed${DATA_SEED}-first-${TARGET_TASK_NAME}
+
+
+bash less/scripts/train/lora_train.sh "$TRAIN_FILES" "$MODEL_PATH" "$JOB_NAME" 

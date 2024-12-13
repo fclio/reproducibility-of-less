@@ -4,7 +4,7 @@
 #SBATCH --gpus=1
 #SBATCH --job-name=random_matching
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=18
+#SBATCH --cpus-per-task=16
 #SBATCH --gpus-per-node=1
 #SBATCH --time=02:00:00
 #SBATCH --output=slurm_output/random_matching_mmlu_%A.out
@@ -18,7 +18,7 @@ TRAIN_FILE_NAMES="dolly oasst1 flan_v2 cot"        # Names of training data file
 DATA_SEED=4
 PERCENTAGE=0.05
 TARGET_TASK_NAMES="mmlu"         # Names of evaluation tasks
-JOB_NAME="llama2-7b-p${PERCENTAGE}-seed${DATA_SEED}"
+JOB_NAME="llama2-7b-p${PERCENTAGE}-bm25-seed${DATA_SEED}"
 
 TRAIN_DATA_PATH="/home/scur2832/LESS/data/train/processed"  # Base path to training data
 EVAL_DATA_PATH="/home/scur2832/LESS/data/eval"              # Base path to evaluation data

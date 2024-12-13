@@ -7,7 +7,7 @@
 #SBATCH --cpus-per-task=36
 #SBATCH --gpus-per-node=4
 #SBATCH --time=10:00:00
-#SBATCH --output=slurm_output/warmup_mistral-7B-v0.1_%A.out
+#SBATCH --output=slurm_output/warmup_mistral-7B-v0.1-first_%A.out
 
 module purge
 module load 2023
@@ -19,7 +19,7 @@ DATA_DIR="data"
 MODEL_PATH="mistralai/Mistral-7B-v0.1"
 PERCENTAGE=0.05
 DATA_SEED=3
-JOB_NAME="mistral-7b-p${PERCENTAGE}-lora-seed${DATA_SEED}"
+JOB_NAME="mistral-7b-p${PERCENTAGE}-lora-seed${DATA_SEED}-first"
 
 # # Save locally in home/scur2847
 # OUTPUT_DIR=../out/${job_name}
