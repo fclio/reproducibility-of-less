@@ -1,546 +1,0 @@
-torchrun --nproc_per_node 2 --nnodes 1 --rdzv-id=31118 --rdzv_backend c10d -m less.train.train --do_train True --max_seq_length 2048 --use_fast_tokenizer True --lr_scheduler_type linear --warmup_ratio 0.03 --weight_decay 0.0 --evaluation_strategy no --logging_steps 1 --save_strategy no --num_train_epochs 4 --bf16 True --tf32 False --fp16 False --overwrite_output_dir True --report_to wandb --optim adamw_torch --seed 0 --percentage 1.0 --save_strategy epoch --lora True --lora_r 128 --lora_alpha 512 --lora_dropout 0.1 --lora_target_modules q_proj k_proj v_proj o_proj --learning_rate 2e-05 --per_device_train_batch_size 1 --gradient_accumulation_steps 32 --fsdp 'full_shard auto_wrap' --fsdp_config llama2_13b_finetune --model_name_or_path meta-llama/Llama-2-13b-hf --output_dir ../out/llama2-13b-less-p0.05-lora-seed4 --train_files /scratch-shared/ir2-less/selected_data/llama2-13b-p0.05-lora-seed4/mmlu/top_p0.05.jsonl 2>&1 | tee ../out/llama2-13b-less-p0.05-lora-seed4/train.log
-[2024-11-27 13:11:54,187] torch.distributed.run: [WARNING] master_addr is only used for static rdzv_backend and when rdzv_endpoint is not specified.
-11/27/2024 13:12:03 - WARNING - __main__ - Process rank: 1, device: cuda:1, n_gpu: 1distributed training: True, 16-bits training: False
-/home/scur2847/.local/lib/python3.11/site-packages/huggingface_hub/file_download.py:797: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
-  warnings.warn(
-wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
-Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]wandb: Currently logged in as: colinnyuh (colinnyuh-university-of-amsterdam). Use `wandb login --relogin` to force relogin
-wandb: Appending key for api.wandb.ai to your netrc file: /home/scur2847/.netrc
-11/27/2024 13:12:04 - WARNING - __main__ - Process rank: 0, device: cuda:0, n_gpu: 1distributed training: True, 16-bits training: False
-11/27/2024 13:12:04 - INFO - __main__ - Training parameters TrainingArguments(
-_n_gpu=1,
-adafactor=False,
-adam_beta1=0.9,
-adam_beta2=0.999,
-adam_epsilon=1e-08,
-analysis_dataset=bbh,
-analysis_mode=False,
-auto_find_batch_size=False,
-bf16=True,
-bf16_full_eval=False,
-data_seed=None,
-dataloader_drop_last=False,
-dataloader_num_workers=0,
-dataloader_persistent_workers=False,
-dataloader_pin_memory=True,
-ddp_backend=None,
-ddp_broadcast_buffers=None,
-ddp_bucket_cap_mb=None,
-ddp_find_unused_parameters=None,
-ddp_timeout=1800,
-debug=[],
-deepspeed=None,
-disable_tqdm=False,
-dispatch_batches=None,
-do_eval=False,
-do_predict=False,
-do_train=True,
-eval_accumulation_steps=None,
-eval_delay=0,
-eval_steps=None,
-evaluation_strategy=IntervalStrategy.NO,
-fp16=False,
-fp16_backend=auto,
-fp16_full_eval=False,
-fp16_opt_level=O1,
-fsdp=[<FSDPOption.FULL_SHARD: 'full_shard'>, <FSDPOption.AUTO_WRAP: 'auto_wrap'>],
-fsdp_config={'fsdp_transformer_layer_cls_to_wrap': ['LlamaDecoderLayer'], 'fsdp_backward_prefetch': 'backward_pre', 'limit_all_gathers': 'true', 'use_orig_params': 'true', 'min_num_params': 0, 'xla': False, 'xla_fsdp_grad_ckpt': False},
-fsdp_min_num_params=0,
-fsdp_transformer_layer_cls_to_wrap=None,
-full_determinism=False,
-gradient_accumulation_steps=32,
-gradient_checkpointing=False,
-gradient_checkpointing_kwargs=None,
-greater_is_better=None,
-group_by_length=False,
-half_precision_backend=auto,
-hub_always_push=False,
-hub_model_id=None,
-hub_private_repo=False,
-hub_strategy=HubStrategy.EVERY_SAVE,
-hub_token=<HUB_TOKEN>,
-ignore_data_skip=False,
-include_inputs_for_metrics=False,
-include_num_input_tokens_seen=False,
-include_tokens_per_second=False,
-jit_mode_eval=False,
-label_names=None,
-label_smoothing_factor=0.0,
-learning_rate=2e-05,
-length_column_name=length,
-load_best_model_at_end=False,
-local_rank=0,
-log_level=passive,
-log_level_replica=warning,
-log_on_each_node=True,
-logging_dir=../out/llama2-13b-less-p0.05-lora-seed4/runs/Nov27_13-12-00_gcn144.local.snellius.surf.nl,
-logging_first_step=False,
-logging_nan_inf_filter=True,
-logging_steps=1.0,
-logging_strategy=IntervalStrategy.STEPS,
-lr_scheduler_kwargs={},
-lr_scheduler_type=SchedulerType.LINEAR,
-max_grad_norm=1.0,
-max_steps=-1,
-metric_for_best_model=None,
-mp_parameters=,
-neftune_noise_alpha=None,
-no_cuda=False,
-num_train_epochs=4.0,
-optim=OptimizerNames.ADAMW_TORCH,
-optim_args=None,
-output_dir=../out/llama2-13b-less-p0.05-lora-seed4,
-overwrite_output_dir=True,
-past_index=-1,
-per_device_eval_batch_size=8,
-per_device_train_batch_size=1,
-prediction_loss_only=False,
-push_to_hub=False,
-push_to_hub_model_id=None,
-push_to_hub_organization=None,
-push_to_hub_token=<PUSH_TO_HUB_TOKEN>,
-ray_scope=last,
-remove_unused_columns=True,
-report_to=['wandb'],
-resume_from_checkpoint=None,
-run_name=../out/llama2-13b-less-p0.05-lora-seed4,
-save_on_each_node=False,
-save_only_model=False,
-save_safetensors=True,
-save_steps=500,
-save_strategy=IntervalStrategy.EPOCH,
-save_total_limit=None,
-seed=0,
-skip_memory_metrics=True,
-split_batches=False,
-tf32=False,
-torch_compile=False,
-torch_compile_backend=None,
-torch_compile_mode=None,
-torchdynamo=None,
-tpu_metrics_debug=False,
-tpu_num_cores=None,
-train_dataset_names=None,
-use_cpu=False,
-use_ipex=False,
-use_legacy_prediction_loop=False,
-use_mps_device=False,
-warmup_ratio=0.03,
-warmup_steps=0,
-weight_decay=0.0,
-)
-11/27/2024 13:12:04 - INFO - __main__ - Model parameters ModelArguments(model_name_or_path='meta-llama/Llama-2-13b-hf', config_name=None, tokenizer_name=None, cache_dir=None, use_fast_tokenizer=True, model_revision='main', use_auth_token=False, torch_dtype=None, lora=True, lora_r=128, lora_alpha=512.0, lora_dropout=0.1, lora_target_modules=['q_proj', 'k_proj', 'v_proj', 'o_proj'])
-11/27/2024 13:12:04 - INFO - __main__ - Dataset parameters DataArguments(train_files=['/scratch-shared/ir2-less/selected_data/llama2-13b-p0.05-lora-seed4/mmlu/top_p0.05.jsonl'], overwrite_cache=False, preprocessing_num_workers=None, max_seq_length=2048, sample_data_seed=42, percentage=1.0)
-/home/scur2847/.local/lib/python3.11/site-packages/huggingface_hub/file_download.py:797: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
-  warnings.warn(
-[INFO|tokenization_utils_base.py:2026] 2024-11-27 13:12:04,828 >> loading file tokenizer.model from cache at /home/scur2847/.cache/huggingface/hub/models--meta-llama--Llama-2-13b-hf/snapshots/5c31dfb671ce7cfe2d7bb7c04375e44c55e815b1/tokenizer.model
-[INFO|tokenization_utils_base.py:2026] 2024-11-27 13:12:04,829 >> loading file tokenizer.json from cache at /home/scur2847/.cache/huggingface/hub/models--meta-llama--Llama-2-13b-hf/snapshots/5c31dfb671ce7cfe2d7bb7c04375e44c55e815b1/tokenizer.json
-[INFO|tokenization_utils_base.py:2026] 2024-11-27 13:12:04,829 >> loading file added_tokens.json from cache at None
-[INFO|tokenization_utils_base.py:2026] 2024-11-27 13:12:04,829 >> loading file special_tokens_map.json from cache at /home/scur2847/.cache/huggingface/hub/models--meta-llama--Llama-2-13b-hf/snapshots/5c31dfb671ce7cfe2d7bb7c04375e44c55e815b1/special_tokens_map.json
-[INFO|tokenization_utils_base.py:2026] 2024-11-27 13:12:04,829 >> loading file tokenizer_config.json from cache at /home/scur2847/.cache/huggingface/hub/models--meta-llama--Llama-2-13b-hf/snapshots/5c31dfb671ce7cfe2d7bb7c04375e44c55e815b1/tokenizer_config.json
-Using custom data configuration default-9130cb3909137a4c
-11/27/2024 13:12:05 - INFO - datasets.builder - Using custom data configuration default-9130cb3909137a4c
-Loading Dataset Infos from /home/scur2847/.local/lib/python3.11/site-packages/datasets/packaged_modules/json
-11/27/2024 13:12:05 - INFO - datasets.info - Loading Dataset Infos from /home/scur2847/.local/lib/python3.11/site-packages/datasets/packaged_modules/json
-Overwrite dataset info from restored data version if exists.
-11/27/2024 13:12:05 - INFO - datasets.builder - Overwrite dataset info from restored data version if exists.
-Loading Dataset info from /home/scur2847/.cache/huggingface/datasets/json/default-9130cb3909137a4c/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092
-11/27/2024 13:12:05 - INFO - datasets.info - Loading Dataset info from /home/scur2847/.cache/huggingface/datasets/json/default-9130cb3909137a4c/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092
-Found cached dataset json (/home/scur2847/.cache/huggingface/datasets/json/default-9130cb3909137a4c/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092)
-11/27/2024 13:12:05 - INFO - datasets.builder - Found cached dataset json (/home/scur2847/.cache/huggingface/datasets/json/default-9130cb3909137a4c/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092)
-Loading Dataset info from /home/scur2847/.cache/huggingface/datasets/json/default-9130cb3909137a4c/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092
-11/27/2024 13:12:05 - INFO - datasets.info - Loading Dataset info from /home/scur2847/.cache/huggingface/datasets/json/default-9130cb3909137a4c/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092
-Process #0 will write at /home/scur2847/.cache/huggingface/datasets/json/default-9130cb3909137a4c/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-49df03e2c6404774_00000_of_00010.arrow
-11/27/2024 13:12:05 - INFO - datasets.arrow_dataset - Process #0 will write at /home/scur2847/.cache/huggingface/datasets/json/default-9130cb3909137a4c/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-49df03e2c6404774_00000_of_00010.arrow
-Process #1 will write at /home/scur2847/.cache/huggingface/datasets/json/default-9130cb3909137a4c/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-49df03e2c6404774_00001_of_00010.arrow
-11/27/2024 13:12:05 - INFO - datasets.arrow_dataset - Process #1 will write at /home/scur2847/.cache/huggingface/datasets/json/default-9130cb3909137a4c/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-49df03e2c6404774_00001_of_00010.arrow
-Process #2 will write at /home/scur2847/.cache/huggingface/datasets/json/default-9130cb3909137a4c/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-49df03e2c6404774_00002_of_00010.arrow
-11/27/2024 13:12:05 - INFO - datasets.arrow_dataset - Process #2 will write at /home/scur2847/.cache/huggingface/datasets/json/default-9130cb3909137a4c/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-49df03e2c6404774_00002_of_00010.arrow
-Process #3 will write at /home/scur2847/.cache/huggingface/datasets/json/default-9130cb3909137a4c/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-49df03e2c6404774_00003_of_00010.arrow
-11/27/2024 13:12:05 - INFO - datasets.arrow_dataset - Process #3 will write at /home/scur2847/.cache/huggingface/datasets/json/default-9130cb3909137a4c/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-49df03e2c6404774_00003_of_00010.arrow
-Process #4 will write at /home/scur2847/.cache/huggingface/datasets/json/default-9130cb3909137a4c/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-49df03e2c6404774_00004_of_00010.arrow
-11/27/2024 13:12:05 - INFO - datasets.arrow_dataset - Process #4 will write at /home/scur2847/.cache/huggingface/datasets/json/default-9130cb3909137a4c/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-49df03e2c6404774_00004_of_00010.arrow
-Process #5 will write at /home/scur2847/.cache/huggingface/datasets/json/default-9130cb3909137a4c/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-49df03e2c6404774_00005_of_00010.arrow
-11/27/2024 13:12:05 - INFO - datasets.arrow_dataset - Process #5 will write at /home/scur2847/.cache/huggingface/datasets/json/default-9130cb3909137a4c/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-49df03e2c6404774_00005_of_00010.arrow
-Process #6 will write at /home/scur2847/.cache/huggingface/datasets/json/default-9130cb3909137a4c/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-49df03e2c6404774_00006_of_00010.arrow
-11/27/2024 13:12:05 - INFO - datasets.arrow_dataset - Process #6 will write at /home/scur2847/.cache/huggingface/datasets/json/default-9130cb3909137a4c/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-49df03e2c6404774_00006_of_00010.arrow
-Process #7 will write at /home/scur2847/.cache/huggingface/datasets/json/default-9130cb3909137a4c/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-49df03e2c6404774_00007_of_00010.arrow
-11/27/2024 13:12:05 - INFO - datasets.arrow_dataset - Process #7 will write at /home/scur2847/.cache/huggingface/datasets/json/default-9130cb3909137a4c/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-49df03e2c6404774_00007_of_00010.arrow
-Process #8 will write at /home/scur2847/.cache/huggingface/datasets/json/default-9130cb3909137a4c/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-49df03e2c6404774_00008_of_00010.arrow
-11/27/2024 13:12:05 - INFO - datasets.arrow_dataset - Process #8 will write at /home/scur2847/.cache/huggingface/datasets/json/default-9130cb3909137a4c/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-49df03e2c6404774_00008_of_00010.arrow
-Process #9 will write at /home/scur2847/.cache/huggingface/datasets/json/default-9130cb3909137a4c/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-49df03e2c6404774_00009_of_00010.arrow
-11/27/2024 13:12:05 - INFO - datasets.arrow_dataset - Process #9 will write at /home/scur2847/.cache/huggingface/datasets/json/default-9130cb3909137a4c/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-49df03e2c6404774_00009_of_00010.arrow
-Loading cached processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-9130cb3909137a4c/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-49df03e2c6404774_*_of_00010.arrow
-11/27/2024 13:12:05 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-9130cb3909137a4c/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-49df03e2c6404774_*_of_00010.arrow
-Concatenating 10 shards
-11/27/2024 13:12:05 - INFO - datasets.arrow_dataset - Concatenating 10 shards
-[INFO|configuration_utils.py:739] 2024-11-27 13:12:05,441 >> loading configuration file config.json from cache at /home/scur2847/.cache/huggingface/hub/models--meta-llama--Llama-2-13b-hf/snapshots/5c31dfb671ce7cfe2d7bb7c04375e44c55e815b1/config.json
-[INFO|configuration_utils.py:802] 2024-11-27 13:12:05,442 >> Model config LlamaConfig {
-  "_name_or_path": "meta-llama/Llama-2-13b-hf",
-  "architectures": [
-    "LlamaForCausalLM"
-  ],
-  "attention_bias": false,
-  "attention_dropout": 0.0,
-  "bos_token_id": 1,
-  "eos_token_id": 2,
-  "hidden_act": "silu",
-  "hidden_size": 5120,
-  "initializer_range": 0.02,
-  "intermediate_size": 13824,
-  "max_position_embeddings": 4096,
-  "model_type": "llama",
-  "num_attention_heads": 40,
-  "num_hidden_layers": 40,
-  "num_key_value_heads": 40,
-  "pretraining_tp": 1,
-  "rms_norm_eps": 1e-05,
-  "rope_scaling": null,
-  "rope_theta": 10000.0,
-  "tie_word_embeddings": false,
-  "transformers_version": "4.36.2",
-  "use_cache": true,
-  "vocab_size": 32000
-}
-
-[INFO|modeling_utils.py:3344] 2024-11-27 13:12:05,524 >> loading weights file model.safetensors from cache at /home/scur2847/.cache/huggingface/hub/models--meta-llama--Llama-2-13b-hf/snapshots/5c31dfb671ce7cfe2d7bb7c04375e44c55e815b1/model.safetensors.index.json
-[INFO|configuration_utils.py:826] 2024-11-27 13:12:05,526 >> Generate config GenerationConfig {
-  "bos_token_id": 1,
-  "eos_token_id": 2
-}
-
-Loading checkpoint shards:  33%|███▎      | 1/3 [00:01<00:02,  1.39s/it]Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:03<00:01,  1.78s/it]Loading checkpoint shards:  33%|███▎      | 1/3 [00:01<00:03,  1.56s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:04<00:00,  1.53s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:04<00:00,  1.56s/it]
-Loading checkpoint shards:  67%|██████▋   | 2/3 [00:03<00:01,  1.57s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:04<00:00,  1.25s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:04<00:00,  1.34s/it]
-[INFO|modeling_utils.py:4185] 2024-11-27 13:12:10,140 >> All model checkpoint weights were used when initializing LlamaForCausalLM.
-
-[INFO|modeling_utils.py:4193] 2024-11-27 13:12:10,140 >> All the weights of LlamaForCausalLM were initialized from the model checkpoint at meta-llama/Llama-2-13b-hf.
-If your task is similar to the task the model of the checkpoint was trained on, you can already use LlamaForCausalLM for predictions without further training.
-[INFO|configuration_utils.py:781] 2024-11-27 13:12:10,253 >> loading configuration file generation_config.json from cache at /home/scur2847/.cache/huggingface/hub/models--meta-llama--Llama-2-13b-hf/snapshots/5c31dfb671ce7cfe2d7bb7c04375e44c55e815b1/generation_config.json
-[INFO|configuration_utils.py:826] 2024-11-27 13:12:10,254 >> Generate config GenerationConfig {
-  "bos_token_id": 1,
-  "do_sample": true,
-  "eos_token_id": 2,
-  "max_length": 4096,
-  "pad_token_id": 0,
-  "temperature": 0.6,
-  "top_p": 0.9
-}
-
-[INFO|modeling_utils.py:1813] 2024-11-27 13:12:10,260 >> You are resizing the embedding layer without providing a `pad_to_multiple_of` parameter. This means that the new embedding dimension will be 32001. This might induce some performance reduction as *Tensor Cores* will not be available. For more details about this, or help on choosing the correct value for resizing, refer to this guide: https://docs.nvidia.com/deeplearning/performance/dl-performance-matrix-multiplication/index.html#requirements-tc
-trainable params: 209,715,200 || all params: 13,225,589,760 || trainable%: 1.5856774919351497
-[train set] examples: 750; # avg tokens: 164.8679962158203
-[train set] examples: 750; # avg completion tokens: 27.143999099731445
-/home/scur2847/.local/lib/python3.11/site-packages/accelerate/accelerator.py:457: FutureWarning: Passing the following arguments to `Accelerator` is deprecated and will be removed in version 1.0 of Accelerate: dict_keys(['dispatch_batches', 'split_batches']). Please pass an `accelerate.DataLoaderConfiguration` instead: 
-dataloader_config = DataLoaderConfiguration(dispatch_batches=None, split_batches=False)
-  warnings.warn(
-start training!!!!
-11/27/2024 13:12:14 - INFO - __main__ - Applied LoRA to model.
-trainable params: 209,715,200 || all params: 13,225,589,760 || trainable%: 1.5856774919351497
-Loading cached processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-9130cb3909137a4c/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-429b5b206f881b8b.arrow
-11/27/2024 13:12:14 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /home/scur2847/.cache/huggingface/datasets/json/default-9130cb3909137a4c/0.0.0/f4e89e8750d5d5ffbef2c078bf0ddfedef29dc2faff52a6255cf513c05eb1092/cache-429b5b206f881b8b.arrow
-[train set] examples: 750; # avg tokens: 164.8679962158203
-[train set] examples: 750; # avg completion tokens: 27.143999099731445
-11/27/2024 13:12:14 - INFO - __main__ - Sample 394 of the training set: {'input_ids': tensor([    1,   529, 29989,  1792, 29989, 29958,    13,  5618,   526,   278,
-         2983,   310,   278,  2498,  6437, 28975,   297,   278,   921, 29947,
-        29953, 29899, 29953, 29946, 11258, 29973,    13,   797,  6124,   304,
-        10231,   278,  2159,   310,   278,  2498, 29899, 15503,  4220, 28975,
-        29892,   278,  1353,   310,  4257,  2498, 29899, 15503,  4220, 28975,
-          338, 11664,   515,  9475,   313, 29875, 29889, 29872, 29889,   321,
-         1165, 29892,   321, 18904, 29892,  1226, 29916, 29892, 18230, 29916,
-        29892,  5152, 29892, 18230, 29886, 29892,   831, 29875, 29892,  1226,
-        29875, 29897,   297,   921, 29947, 29953,   304, 29871, 29896, 29953,
-          313, 29875, 29889, 29872, 29889,  1153, 29916, 29892,   364, 18904,
-        29892,   364,  8235, 29892,   364, 29890, 29916, 29892,   364,  1028,
-        29892,   364, 25288, 29892,   364,  1039, 29892,   364,  6051, 29892,
-          364, 29947, 29892,   364, 29929, 29892,   364, 29896, 29900, 29892,
-          364, 29896, 29896, 29892,   364, 29896, 29906, 29892,   364, 29896,
-        29941, 29892,   364, 29896, 29946, 29892,   364, 29896, 29945,   467,
-          739,   338,  5480,  1950,   304,  3013,   901,  1887,  3651,   297,
-        28975,  3265,  1135,   373,   278,  5096, 29892,   322,   304,  1235,
-        28975,  4808, 13672, 20592, 17727, 29936,  6273,   363,  2319,   322,
-         5172,  1014, 14608,  1475,  1122,   884,   367,  4502,   297, 28975,
-          304,   263,  7621, 15834, 29889,    13, 29966, 29989,   465, 22137,
-        29989, 29958,    13,  1576,   921, 29947, 29953, 29899, 29953, 29946,
-        11258,   756, 29871, 29896, 29953,  2498,  6437, 28975, 29889,  2688,
-          526,  4257,  1153, 29916, 29892,   364, 18904, 29892,   364,  8235,
-        29892,   364, 29890, 29916, 29892,   364,  1028, 29892,   364, 25288,
-        29892,   364,  1039, 29892,   364,  6051, 29892,   364, 29947, 29892,
-          364, 29929, 29892,   364, 29896, 29900, 29892,   364, 29896, 29896,
-        29892,   364, 29896, 29906, 29892,   364, 29896, 29941, 29892,   364,
-        29896, 29946, 29892,   322,   364, 29896, 29945, 29889,     2, 29871,
-           13]), 'labels': tensor([ -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,  -100,
-         -100,  -100,  -100,  1576,   921, 29947, 29953, 29899, 29953, 29946,
-        11258,   756, 29871, 29896, 29953,  2498,  6437, 28975, 29889,  2688,
-          526,  4257,  1153, 29916, 29892,   364, 18904, 29892,   364,  8235,
-        29892,   364, 29890, 29916, 29892,   364,  1028, 29892,   364, 25288,
-        29892,   364,  1039, 29892,   364,  6051, 29892,   364, 29947, 29892,
-          364, 29929, 29892,   364, 29896, 29900, 29892,   364, 29896, 29896,
-        29892,   364, 29896, 29906, 29892,   364, 29896, 29941, 29892,   364,
-        29896, 29946, 29892,   322,   364, 29896, 29945, 29889,     2, 29871,
-           13]), 'attention_mask': tensor([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])}.
-11/27/2024 13:12:14 - INFO - __main__ - trainable model_params: 209715200
-PeftModelForCausalLM(
-  (base_model): LoraModel(
-    (model): LlamaForCausalLM(
-      (model): LlamaModel(
-        (embed_tokens): Embedding(32001, 5120)
-        (layers): ModuleList(
-          (0-39): 40 x LlamaDecoderLayer(
-            (self_attn): LlamaSdpaAttention(
-              (q_proj): lora.Linear(
-                (base_layer): Linear(in_features=5120, out_features=5120, bias=False)
-                (lora_dropout): ModuleDict(
-                  (default): Dropout(p=0.1, inplace=False)
-                )
-                (lora_A): ModuleDict(
-                  (default): Linear(in_features=5120, out_features=128, bias=False)
-                )
-                (lora_B): ModuleDict(
-                  (default): Linear(in_features=128, out_features=5120, bias=False)
-                )
-                (lora_embedding_A): ParameterDict()
-                (lora_embedding_B): ParameterDict()
-              )
-              (k_proj): lora.Linear(
-                (base_layer): Linear(in_features=5120, out_features=5120, bias=False)
-                (lora_dropout): ModuleDict(
-                  (default): Dropout(p=0.1, inplace=False)
-                )
-                (lora_A): ModuleDict(
-                  (default): Linear(in_features=5120, out_features=128, bias=False)
-                )
-                (lora_B): ModuleDict(
-                  (default): Linear(in_features=128, out_features=5120, bias=False)
-                )
-                (lora_embedding_A): ParameterDict()
-                (lora_embedding_B): ParameterDict()
-              )
-              (v_proj): lora.Linear(
-                (base_layer): Linear(in_features=5120, out_features=5120, bias=False)
-                (lora_dropout): ModuleDict(
-                  (default): Dropout(p=0.1, inplace=False)
-                )
-                (lora_A): ModuleDict(
-                  (default): Linear(in_features=5120, out_features=128, bias=False)
-                )
-                (lora_B): ModuleDict(
-                  (default): Linear(in_features=128, out_features=5120, bias=False)
-                )
-                (lora_embedding_A): ParameterDict()
-                (lora_embedding_B): ParameterDict()
-              )
-              (o_proj): lora.Linear(
-                (base_layer): Linear(in_features=5120, out_features=5120, bias=False)
-                (lora_dropout): ModuleDict(
-                  (default): Dropout(p=0.1, inplace=False)
-                )
-                (lora_A): ModuleDict(
-                  (default): Linear(in_features=5120, out_features=128, bias=False)
-                )
-                (lora_B): ModuleDict(
-                  (default): Linear(in_features=128, out_features=5120, bias=False)
-                )
-                (lora_embedding_A): ParameterDict()
-                (lora_embedding_B): ParameterDict()
-              )
-              (rotary_emb): LlamaRotaryEmbedding()
-            )
-            (mlp): LlamaMLP(
-              (gate_proj): Linear(in_features=5120, out_features=13824, bias=False)
-              (up_proj): Linear(in_features=5120, out_features=13824, bias=False)
-              (down_proj): Linear(in_features=13824, out_features=5120, bias=False)
-              (act_fn): SiLU()
-            )
-            (input_layernorm): LlamaRMSNorm()
-            (post_attention_layernorm): LlamaRMSNorm()
-          )
-        )
-        (norm): LlamaRMSNorm()
-      )
-      (lm_head): Linear(in_features=5120, out_features=32001, bias=False)
-    )
-  )
-)
-/home/scur2847/.local/lib/python3.11/site-packages/accelerate/accelerator.py:457: FutureWarning: Passing the following arguments to `Accelerator` is deprecated and will be removed in version 1.0 of Accelerate: dict_keys(['dispatch_batches', 'split_batches']). Please pass an `accelerate.DataLoaderConfiguration` instead: 
-dataloader_config = DataLoaderConfiguration(dispatch_batches=None, split_batches=False)
-  warnings.warn(
-[INFO|trainer.py:568] 2024-11-27 13:12:15,088 >> Using auto half precision backend
-start training!!!!
-[INFO|trainer.py:1706] 2024-11-27 13:12:21,485 >> ***** Running training *****
-[INFO|trainer.py:1707] 2024-11-27 13:12:21,485 >>   Num examples = 750
-[INFO|trainer.py:1708] 2024-11-27 13:12:21,485 >>   Num Epochs = 4
-[INFO|trainer.py:1709] 2024-11-27 13:12:21,485 >>   Instantaneous batch size per device = 1
-[INFO|trainer.py:1712] 2024-11-27 13:12:21,485 >>   Total train batch size (w. parallel, distributed & accumulation) = 64
-[INFO|trainer.py:1713] 2024-11-27 13:12:21,485 >>   Gradient Accumulation steps = 32
-[INFO|trainer.py:1714] 2024-11-27 13:12:21,485 >>   Total optimization steps = 44
-[INFO|trainer.py:1715] 2024-11-27 13:12:21,489 >>   Number of trainable parameters = 209,715,200
-[INFO|integration_utils.py:722] 2024-11-27 13:12:21,492 >> Automatic Weights & Biases logging enabled, to disable set os.environ["WANDB_DISABLED"] = "true"
-wandb: Tracking run with wandb version 0.18.6
-wandb: Run data is saved locally in /gpfs/home1/scur2847/ir2-less-data/wandb/run-20241127_131221-x54hf8v1
-wandb: Run `wandb offline` to turn off syncing.
-wandb: Syncing run driven-plant-77
-wandb: ⭐️ View project at https://wandb.ai/colinnyuh-university-of-amsterdam/huggingface
-wandb: 🚀 View run at https://wandb.ai/colinnyuh-university-of-amsterdam/huggingface/runs/x54hf8v1
-  0%|          | 0/44 [00:00<?, ?it/s][WARNING|logging.py:314] 2024-11-27 13:12:22,303 >> You're using a LlamaTokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
-[WARNING|logging.py:314] 2024-11-27 13:12:22,305 >> You're using a LlamaTokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
-  2%|▏         | 1/44 [00:13<09:42, 13.55s/it]                                              {'loss': 1.8833, 'learning_rate': 1e-05, 'epoch': 0.09}
-  2%|▏         | 1/44 [00:13<09:42, 13.55s/it]  5%|▍         | 2/44 [00:26<09:14, 13.21s/it]                                              {'loss': 2.143, 'learning_rate': 2e-05, 'epoch': 0.17}
-  5%|▍         | 2/44 [00:26<09:14, 13.21s/it]  7%|▋         | 3/44 [00:39<08:55, 13.05s/it]                                              {'loss': 1.904, 'learning_rate': 1.9523809523809524e-05, 'epoch': 0.26}
-  7%|▋         | 3/44 [00:39<08:55, 13.05s/it]  9%|▉         | 4/44 [00:52<08:46, 13.17s/it]                                              {'loss': 1.8979, 'learning_rate': 1.904761904761905e-05, 'epoch': 0.34}
-  9%|▉         | 4/44 [00:52<08:46, 13.17s/it] 11%|█▏        | 5/44 [01:05<08:33, 13.16s/it]                                              {'loss': 1.7965, 'learning_rate': 1.8571428571428575e-05, 'epoch': 0.43}
- 11%|█▏        | 5/44 [01:05<08:33, 13.16s/it] 14%|█▎        | 6/44 [01:19<08:20, 13.18s/it]                                              {'loss': 1.6924, 'learning_rate': 1.8095238095238097e-05, 'epoch': 0.51}
- 14%|█▎        | 6/44 [01:19<08:20, 13.18s/it] 16%|█▌        | 7/44 [01:32<08:06, 13.15s/it]                                              {'loss': 1.6828, 'learning_rate': 1.761904761904762e-05, 'epoch': 0.6}
- 16%|█▌        | 7/44 [01:32<08:06, 13.15s/it] 18%|█▊        | 8/44 [01:45<07:52, 13.12s/it]                                              {'loss': 1.6897, 'learning_rate': 1.7142857142857142e-05, 'epoch': 0.68}
- 18%|█▊        | 8/44 [01:45<07:52, 13.12s/it] 20%|██        | 9/44 [01:58<07:42, 13.22s/it]                                              {'loss': 1.6406, 'learning_rate': 1.6666666666666667e-05, 'epoch': 0.77}
- 20%|██        | 9/44 [01:58<07:42, 13.22s/it] 23%|██▎       | 10/44 [02:11<07:27, 13.15s/it]                                               {'loss': 1.5281, 'learning_rate': 1.6190476190476193e-05, 'epoch': 0.85}
- 23%|██▎       | 10/44 [02:11<07:27, 13.15s/it] 25%|██▌       | 11/44 [02:24<07:12, 13.10s/it]                                               {'loss': 1.5342, 'learning_rate': 1.5714285714285715e-05, 'epoch': 0.94}
- 25%|██▌       | 11/44 [02:24<07:12, 13.10s/it][2024-11-27 13:14:56,275] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
-[2024-11-27 13:14:56,315] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
-[INFO|trainer.py:2889] 2024-11-27 13:15:09,552 >> Saving model checkpoint to ../out/llama2-13b-less-p0.05-lora-seed4/tmp-checkpoint-11
-[INFO|tokenization_utils_base.py:2432] 2024-11-27 13:15:10,104 >> tokenizer config file saved in ../out/llama2-13b-less-p0.05-lora-seed4/tmp-checkpoint-11/tokenizer_config.json
-[INFO|tokenization_utils_base.py:2441] 2024-11-27 13:15:10,105 >> Special tokens file saved in ../out/llama2-13b-less-p0.05-lora-seed4/tmp-checkpoint-11/special_tokens_map.json
- 27%|██▋       | 12/44 [03:32<15:51, 29.73s/it]                                               {'loss': 1.5607, 'learning_rate': 1.523809523809524e-05, 'epoch': 1.02}
- 27%|██▋       | 12/44 [03:32<15:51, 29.73s/it] 30%|██▉       | 13/44 [03:45<12:44, 24.67s/it]                                               {'loss': 1.5541, 'learning_rate': 1.4761904761904763e-05, 'epoch': 1.11}
- 30%|██▉       | 13/44 [03:45<12:44, 24.67s/it] 32%|███▏      | 14/44 [03:58<10:35, 21.19s/it]                                               {'loss': 1.4701, 'learning_rate': 1.4285714285714287e-05, 'epoch': 1.19}
- 32%|███▏      | 14/44 [03:58<10:35, 21.19s/it] 34%|███▍      | 15/44 [04:11<09:03, 18.73s/it]                                               {'loss': 1.5318, 'learning_rate': 1.3809523809523811e-05, 'epoch': 1.28}
- 34%|███▍      | 15/44 [04:11<09:03, 18.73s/it] 36%|███▋      | 16/44 [04:24<07:58, 17.08s/it]                                               {'loss': 1.5551, 'learning_rate': 1.3333333333333333e-05, 'epoch': 1.37}
- 36%|███▋      | 16/44 [04:24<07:58, 17.08s/it] 39%|███▊      | 17/44 [04:37<07:07, 15.84s/it]                                               {'loss': 1.6756, 'learning_rate': 1.2857142857142859e-05, 'epoch': 1.45}
- 39%|███▊      | 17/44 [04:37<07:07, 15.84s/it] 41%|████      | 18/44 [04:50<06:30, 15.00s/it]                                               {'loss': 1.6543, 'learning_rate': 1.2380952380952383e-05, 'epoch': 1.54}
- 41%|████      | 18/44 [04:50<06:30, 15.00s/it] 43%|████▎     | 19/44 [05:03<05:59, 14.37s/it]                                               {'loss': 1.6722, 'learning_rate': 1.1904761904761905e-05, 'epoch': 1.62}
- 43%|████▎     | 19/44 [05:03<05:59, 14.37s/it] 45%|████▌     | 20/44 [05:16<05:34, 13.95s/it]                                               {'loss': 1.4681, 'learning_rate': 1.1428571428571429e-05, 'epoch': 1.71}
- 45%|████▌     | 20/44 [05:16<05:34, 13.95s/it] 48%|████▊     | 21/44 [05:29<05:14, 13.68s/it]                                               {'loss': 1.5626, 'learning_rate': 1.0952380952380955e-05, 'epoch': 1.79}
- 48%|████▊     | 21/44 [05:29<05:14, 13.68s/it] 50%|█████     | 22/44 [05:42<04:55, 13.43s/it]                                               {'loss': 1.5411, 'learning_rate': 1.0476190476190477e-05, 'epoch': 1.88}
- 50%|█████     | 22/44 [05:42<04:55, 13.43s/it] 52%|█████▏    | 23/44 [05:55<04:41, 13.40s/it]                                               {'loss': 1.5545, 'learning_rate': 1e-05, 'epoch': 1.96}
- 52%|█████▏    | 23/44 [05:55<04:41, 13.40s/it][INFO|trainer.py:2889] 2024-11-27 13:18:33,424 >> Saving model checkpoint to ../out/llama2-13b-less-p0.05-lora-seed4/tmp-checkpoint-23
-[INFO|tokenization_utils_base.py:2432] 2024-11-27 13:18:33,938 >> tokenizer config file saved in ../out/llama2-13b-less-p0.05-lora-seed4/tmp-checkpoint-23/tokenizer_config.json
-[INFO|tokenization_utils_base.py:2441] 2024-11-27 13:18:33,939 >> Special tokens file saved in ../out/llama2-13b-less-p0.05-lora-seed4/tmp-checkpoint-23/special_tokens_map.json
- 55%|█████▍    | 24/44 [06:58<09:20, 28.02s/it]                                               {'loss': 1.6043, 'learning_rate': 9.523809523809525e-06, 'epoch': 2.05}
- 55%|█████▍    | 24/44 [06:58<09:20, 28.02s/it] 57%|█████▋    | 25/44 [07:11<07:29, 23.68s/it]                                               {'loss': 1.5484, 'learning_rate': 9.047619047619049e-06, 'epoch': 2.13}
- 57%|█████▋    | 25/44 [07:11<07:29, 23.68s/it] 59%|█████▉    | 26/44 [07:25<06:11, 20.64s/it]                                               {'loss': 1.5838, 'learning_rate': 8.571428571428571e-06, 'epoch': 2.22}
- 59%|█████▉    | 26/44 [07:25<06:11, 20.64s/it] 61%|██████▏   | 27/44 [07:38<05:11, 18.32s/it]                                               {'loss': 1.4264, 'learning_rate': 8.095238095238097e-06, 'epoch': 2.3}
- 61%|██████▏   | 27/44 [07:38<05:11, 18.32s/it] 64%|██████▎   | 28/44 [07:50<04:26, 16.68s/it]                                               {'loss': 1.3812, 'learning_rate': 7.61904761904762e-06, 'epoch': 2.39}
- 64%|██████▎   | 28/44 [07:50<04:26, 16.68s/it] 66%|██████▌   | 29/44 [08:03<03:52, 15.53s/it]                                               {'loss': 1.4637, 'learning_rate': 7.1428571428571436e-06, 'epoch': 2.47}
- 66%|██████▌   | 29/44 [08:03<03:52, 15.53s/it] 68%|██████▊   | 30/44 [08:16<03:26, 14.73s/it]                                               {'loss': 1.5648, 'learning_rate': 6.666666666666667e-06, 'epoch': 2.56}
- 68%|██████▊   | 30/44 [08:16<03:26, 14.73s/it] 70%|███████   | 31/44 [08:29<03:04, 14.16s/it]                                               {'loss': 1.5783, 'learning_rate': 6.1904761904761914e-06, 'epoch': 2.65}
- 70%|███████   | 31/44 [08:29<03:04, 14.16s/it] 73%|███████▎  | 32/44 [08:42<02:46, 13.85s/it]                                               {'loss': 1.5747, 'learning_rate': 5.7142857142857145e-06, 'epoch': 2.73}
- 73%|███████▎  | 32/44 [08:42<02:46, 13.85s/it] 75%|███████▌  | 33/44 [08:55<02:28, 13.54s/it]                                               {'loss': 1.5433, 'learning_rate': 5.2380952380952384e-06, 'epoch': 2.82}
- 75%|███████▌  | 33/44 [08:55<02:28, 13.54s/it] 77%|███████▋  | 34/44 [09:08<02:14, 13.46s/it]                                               {'loss': 1.5285, 'learning_rate': 4.761904761904762e-06, 'epoch': 2.9}
- 77%|███████▋  | 34/44 [09:08<02:14, 13.46s/it] 80%|███████▉  | 35/44 [09:21<01:59, 13.27s/it]                                               {'loss': 1.4027, 'learning_rate': 4.2857142857142855e-06, 'epoch': 2.99}
- 80%|███████▉  | 35/44 [09:21<01:59, 13.27s/it][INFO|trainer.py:2889] 2024-11-27 13:21:55,609 >> Saving model checkpoint to ../out/llama2-13b-less-p0.05-lora-seed4/tmp-checkpoint-35
-[INFO|tokenization_utils_base.py:2432] 2024-11-27 13:21:56,167 >> tokenizer config file saved in ../out/llama2-13b-less-p0.05-lora-seed4/tmp-checkpoint-35/tokenizer_config.json
-[INFO|tokenization_utils_base.py:2441] 2024-11-27 13:21:56,168 >> Special tokens file saved in ../out/llama2-13b-less-p0.05-lora-seed4/tmp-checkpoint-35/special_tokens_map.json
-Traceback (most recent call last):
-  File "/sw/arch/RHEL8/EB_production/2023/software/PyTorch/2.1.2-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/torch/serialization.py", line 619, in save
-    _save(obj, opened_zipfile, pickle_module, pickle_protocol, _disable_byteorder_record)
-  File "/sw/arch/RHEL8/EB_production/2023/software/PyTorch/2.1.2-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/torch/serialization.py", line 853, in _save
-    zip_file.write_record(name, storage.data_ptr(), num_bytes)
-RuntimeError: [enforce fail at inline_container.cc:588] . PytorchStreamWriter failed writing file data/319: file write failed
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "<frozen runpy>", line 198, in _run_module_as_main
-  File "<frozen runpy>", line 88, in _run_code
-  File "/gpfs/home1/scur2847/ir2-less-data/less/train/train.py", line 192, in <module>
-    main()
-  File "/gpfs/home1/scur2847/ir2-less-data/less/train/train.py", line 171, in main
-    train_result = trainer.train()
-                   ^^^^^^^^^^^^^^^
-  File "/home/scur2847/.local/lib/python3.11/site-packages/transformers/trainer.py", line 1537, in train
-    return inner_training_loop(
-           ^^^^^^^^^^^^^^^^^^^^
-  File "/home/scur2847/.local/lib/python3.11/site-packages/transformers/trainer.py", line 1929, in _inner_training_loop
-    self._maybe_log_save_evaluate(tr_loss, model, trial, epoch, ignore_keys_for_eval)
-  File "/home/scur2847/.local/lib/python3.11/site-packages/transformers/trainer.py", line 2279, in _maybe_log_save_evaluate
-    self._save_checkpoint(model, trial, metrics=metrics)
-  File "/home/scur2847/.local/lib/python3.11/site-packages/transformers/trainer.py", line 2359, in _save_checkpoint
-    self._save_optimizer_and_scheduler(staging_output_dir)
-  File "/home/scur2847/.local/lib/python3.11/site-packages/transformers/trainer.py", line 2456, in _save_optimizer_and_scheduler
-    save_fsdp_model(self.accelerator.state.fsdp_plugin, self.accelerator, self.model, output_dir)
-  File "/home/scur2847/.local/lib/python3.11/site-packages/accelerate/utils/fsdp_utils.py", line 89, in save_fsdp_model
-    torch.save(state_dict, output_model_file)
-  File "/sw/arch/RHEL8/EB_production/2023/software/PyTorch/2.1.2-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/torch/serialization.py", line 618, in save
-    with _open_zipfile_writer(f) as opened_zipfile:
-  File "/sw/arch/RHEL8/EB_production/2023/software/PyTorch/2.1.2-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/torch/serialization.py", line 466, in __exit__
-    self.file_like.write_end_of_file()
-RuntimeError: [enforce fail at inline_container.cc:424] . unexpected pos 18933036160 vs 18933036056
-[1;34mwandb[0m: 🚀 View run [33mdriven-plant-77[0m at: [34mhttps://wandb.ai/colinnyuh-university-of-amsterdam/huggingface/runs/x54hf8v1[0m
-[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20241127_131221-x54hf8v1/logs[0m
-[2024-11-27 13:22:19,669] torch.distributed.elastic.multiprocessing.api: [WARNING] Sending process 267791 closing signal SIGTERM
-[2024-11-27 13:22:20,133] torch.distributed.elastic.multiprocessing.api: [ERROR] failed (exitcode: 1) local_rank: 0 (pid: 267790) of binary: /sw/arch/RHEL8/EB_production/2023/software/Python/3.11.3-GCCcore-12.3.0/bin/python
-Traceback (most recent call last):
-  File "/sw/arch/RHEL8/EB_production/2023/software/PyTorch/2.1.2-foss-2023a-CUDA-12.1.1/bin/torchrun", line 8, in <module>
-    sys.exit(main())
-             ^^^^^^
-  File "/sw/arch/RHEL8/EB_production/2023/software/PyTorch/2.1.2-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 346, in wrapper
-    return f(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^
-  File "/sw/arch/RHEL8/EB_production/2023/software/PyTorch/2.1.2-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/torch/distributed/run.py", line 806, in main
-    run(args)
-  File "/sw/arch/RHEL8/EB_production/2023/software/PyTorch/2.1.2-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/torch/distributed/run.py", line 797, in run
-    elastic_launch(
-  File "/sw/arch/RHEL8/EB_production/2023/software/PyTorch/2.1.2-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/torch/distributed/launcher/api.py", line 134, in __call__
-    return launch_agent(self._config, self._entrypoint, list(args))
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/sw/arch/RHEL8/EB_production/2023/software/PyTorch/2.1.2-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/torch/distributed/launcher/api.py", line 264, in launch_agent
-    raise ChildFailedError(
-torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
-============================================================
-less.train.train FAILED
-------------------------------------------------------------
-Failures:
-  <NO_OTHER_FAILURES>
-------------------------------------------------------------
-Root Cause (first observed failure):
-[0]:
-  time      : 2024-11-27_13:22:19
-  host      : gcn144.local.snellius.surf.nl
-  rank      : 0 (local_rank: 0)
-  exitcode  : 1 (pid: 267790)
-  error_file: <N/A>
-  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
-============================================================
-
-JOB STATISTICS
-==============
-Job ID: 8708631
-Cluster: snellius
-User/Group: scur2847/scur2847
-State: COMPLETED (exit code 0)
-Nodes: 1
-Cores per node: 32
-CPU Utilized: 00:24:49
-CPU Efficiency: 7.21% of 05:44:00 core-walltime
-Job Wall-clock time: 00:10:45
-Memory Utilized: 52.67 GB
-Memory Efficiency: 14.63% of 360.00 GB

@@ -1,27 +1,0 @@
-[2024-11-28 18:36:39,960] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
-Downloading builder script:   0%|          | 0.00/5.67k [00:00<?, ?B/s]Downloading builder script: 100%|██████████| 5.67k/5.67k [00:00<00:00, 35.1MB/s]
-Loading tasks: 0it [00:00, ?it/s]Loading tasks: 0it [00:00, ?it/s]
-Loading prompts:   0%|          | 0/27 [00:00<?, ?it/s]Loading prompts: 100%|██████████| 27/27 [00:00<00:00, 721.66it/s]
-Traceback (most recent call last):
-  File "<frozen runpy>", line 198, in _run_module_as_main
-  File "<frozen runpy>", line 88, in _run_code
-  File "/gpfs/home1/scur2847/ir2-less-data/evaluation/eval/bbh/run_eval.py", line 332, in <module>
-    main(args)
-  File "/gpfs/home1/scur2847/ir2-less-data/evaluation/eval/bbh/run_eval.py", line 86, in main
-    assert set(all_tasks.keys()) == set(all_prompts.keys(
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AssertionError: task names in task data and task prompts are not the same.
-
-JOB STATISTICS
-==============
-Job ID: 8812276
-Cluster: snellius
-User/Group: scur2847/scur2847
-State: COMPLETED (exit code 0)
-Nodes: 1
-Cores per node: 16
-CPU Utilized: 00:00:11
-CPU Efficiency: 2.86% of 00:06:24 core-walltime
-Job Wall-clock time: 00:00:24
-Memory Utilized: 2.19 MB
-Memory Efficiency: 0.00% of 180.00 GB

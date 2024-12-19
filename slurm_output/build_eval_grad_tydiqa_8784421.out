@@ -1,31 +1,0 @@
-/home/scur2847/.local/lib/python3.11/site-packages/huggingface_hub/file_download.py:797: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
-  warnings.warn(
-Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:04<00:04,  4.89s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:06<00:00,  2.98s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:06<00:00,  3.26s/it]
-Traceback (most recent call last):
-  File "<frozen runpy>", line 198, in _run_module_as_main
-  File "<frozen runpy>", line 88, in _run_code
-  File "/gpfs/home1/scur2847/ir2-less-data/less/data_selection/get_info.py", line 133, in <module>
-    dataset = get_dataset(args.task,
-              ^^^^^^^^^^^^^^^^^^^^^^
-  File "/gpfs/home1/scur2847/ir2-less-data/less/data_selection/get_validation_dataset.py", line 315, in get_dataset
-    return get_tydiqa_dataset(**kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/gpfs/home1/scur2847/ir2-less-data/less/data_selection/get_validation_dataset.py", line 185, in get_tydiqa_dataset
-    examples = json.load(open(file, "r"))
-                         ^^^^^^^^^^^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: 'data/eval/tydiqa/tydiqa-one-shot.json'
-trainable params: 134,217,728 || all params: 6,872,641,536 || trainable%: 1.9529278123549145
-
-JOB STATISTICS
-==============
-Job ID: 8784421
-Cluster: snellius
-User/Group: scur2847/scur2847
-State: FAILED (exit code 1)
-Nodes: 1
-Cores per node: 16
-CPU Utilized: 00:01:08
-CPU Efficiency: 13.28% of 00:08:32 core-walltime
-Job Wall-clock time: 00:00:32
-Memory Utilized: 2.21 MB
-Memory Efficiency: 0.00% of 180.00 GB

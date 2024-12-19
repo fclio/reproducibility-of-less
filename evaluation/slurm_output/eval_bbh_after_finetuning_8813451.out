@@ -1,67 +1,0 @@
-[2024-11-28 18:53:37,184] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
-Loading tasks:   0%|          | 0/27 [00:00<?, ?it/s]Loading tasks: 100%|██████████| 27/27 [00:00<00:00, 485.56it/s]
-Loading prompts:   0%|          | 0/27 [00:00<?, ?it/s]Loading prompts: 100%|██████████| 27/27 [00:00<00:00, 2258.87it/s]
-/home/scur2847/.local/lib/python3.11/site-packages/huggingface_hub/file_download.py:797: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
-  warnings.warn(
-INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
-{'logical_deduction_seven_objects', 'tracking_shuffled_objects_seven_objects', 'salient_translation_error_detection', 'snarks', 'penguins_in_a_table', 'word_sorting', 'hyperbaton', 'logical_deduction_five_objects', 'web_of_lies', 'causal_judgement', 'boolean_expressions', 'reasoning_about_colored_objects', 'temporal_sequences', 'dyck_languages', 'ruin_names', 'multistep_arithmetic_two', 'disambiguation_qa', 'geometric_shapes', 'navigate', 'date_understanding', 'formal_fallacies', 'object_counting', 'tracking_shuffled_objects_three_objects', 'tracking_shuffled_objects_five_objects', 'movie_recommendation', 'sports_understanding', 'logical_deduction_three_objects'} {'tracking_shuffled_objects_seven_objects', 'logical_deduction_seven_objects', 'salient_translation_error_detection', 'snarks', 'penguins_in_a_table', 'word_sorting', 'hyperbaton', 'logical_deduction_five_objects', 'web_of_lies', 'causal_judgement', 'boolean_expressions', 'reasoning_about_colored_objects', 'temporal_sequences', 'dyck_languages', 'ruin_names', 'multistep_arithmetic_two', 'disambiguation_qa', 'geometric_shapes', 'navigate', 'date_understanding', 'formal_fallacies', 'object_counting', 'tracking_shuffled_objects_three_objects', 'tracking_shuffled_objects_five_objects', 'movie_recommendation', 'sports_understanding', 'logical_deduction_three_objects'}
-Loading model and tokenizer with huggingface...
-Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:04<00:04,  4.42s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:06<00:00,  2.77s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:06<00:00,  3.02s/it]
-loaded the peft model
-Convert model to bfloat16 precision.
-Evaluating:   0%|          | 0/27 [00:00<?, ?it/s]
-Generating Completions:   0%|          | 0/40 [00:00<?, ?it/s][A/home/scur2847/.local/lib/python3.11/site-packages/transformers/generation/configuration_utils.py:389: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0.6` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`.
-  warnings.warn(
-/home/scur2847/.local/lib/python3.11/site-packages/transformers/generation/configuration_utils.py:394: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.9` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`.
-  warnings.warn(
-
-Generating Completions:  25%|██▌       | 10/40 [00:10<00:32,  1.08s/it][A
-Generating Completions:  50%|█████     | 20/40 [00:22<00:22,  1.14s/it][A
-Generating Completions:  75%|███████▌  | 30/40 [00:38<00:13,  1.33s/it][A
-Generating Completions: 100%|██████████| 40/40 [00:46<00:00,  1.14s/it][AGenerating Completions: 100%|██████████| 40/40 [00:46<00:00,  1.17s/it]
-Evaluating:   4%|▎         | 1/27 [00:46<20:17, 46.84s/it]Task logical_deduction_seven_objects - EM: 0.325
-
-Generating Completions:   0%|          | 0/40 [00:00<?, ?it/s][A
-Generating Completions:  25%|██▌       | 10/40 [00:09<00:27,  1.08it/s][A
-Generating Completions:  50%|█████     | 20/40 [00:16<00:16,  1.21it/s][A
-Generating Completions:  75%|███████▌  | 30/40 [00:24<00:07,  1.29it/s][A
-Generating Completions: 100%|██████████| 40/40 [00:31<00:00,  1.27it/s][AGenerating Completions: 100%|██████████| 40/40 [00:31<00:00,  1.25it/s]
-Evaluating:   7%|▋         | 2/27 [01:18<15:53, 38.13s/it]Task ruin_names - EM: 0.3
-
-Generating Completions:   0%|          | 0/40 [00:00<?, ?it/s][A
-Generating Completions:  25%|██▌       | 10/40 [00:16<00:48,  1.63s/it][A
-Generating Completions:  50%|█████     | 20/40 [00:32<00:32,  1.62s/it][A
-Generating Completions:  75%|███████▌  | 30/40 [00:48<00:16,  1.62s/it][A
-Generating Completions: 100%|██████████| 40/40 [01:04<00:00,  1.62s/it][AGenerating Completions: 100%|██████████| 40/40 [01:04<00:00,  1.62s/it]
-Evaluating:  11%|█         | 3/27 [02:23<20:08, 50.35s/it]Task dyck_languages - EM: 0.125
-
-Generating Completions:   0%|          | 0/40 [00:00<?, ?it/s][A
-Generating Completions:  25%|██▌       | 10/40 [00:04<00:12,  2.38it/s][A
-Generating Completions:  50%|█████     | 20/40 [00:09<00:09,  2.01it/s][A
-Generating Completions:  75%|███████▌  | 30/40 [00:15<00:05,  1.80it/s][A
-Generating Completions: 100%|██████████| 40/40 [00:20<00:00,  1.97it/s][AGenerating Completions: 100%|██████████| 40/40 [00:20<00:00,  1.97it/s]
-Evaluating:  15%|█▍        | 4/27 [02:44<14:45, 38.51s/it]Task causal_judgement - EM: 0.425
-
-Generating Completions:   0%|          | 0/40 [00:00<?, ?it/s][A
-Generating Completions:  25%|██▌       | 10/40 [00:00<00:02, 13.35it/s][A
-Generating Completions:  50%|█████     | 20/40 [00:01<00:01, 13.15it/s][A
-Generating Completions:  75%|███████▌  | 30/40 [00:02<00:00, 13.12it/s][A
-Generating Completions: 100%|██████████| 40/40 [00:03<00:00, 12.87it/s][AGenerating Completions: 100%|██████████| 40/40 [00:03<00:00, 12.98it/s]
-Evaluating:  19%|█▊        | 5/27 [02:47<09:26, 25.73s/it]Task sports_understanding - EM: 0.775
-
-Generating Completions:   0%|          | 0/40 [00:00<?, ?it/s][A
-Generating Completions:  25%|██▌       | 10/40 [00:14<00:44,  1.48s/it][Aslurmstepd: error: *** JOB 8813451 ON gcn100 CANCELLED AT 2024-11-28T18:57:03 ***
-
-JOB STATISTICS
-==============
-Job ID: 8813451
-Cluster: snellius
-User/Group: scur2847/scur2847
-State: CANCELLED (exit code 0)
-Nodes: 1
-Cores per node: 16
-CPU Utilized: 00:00:01
-CPU Efficiency: 0.03% of 01:01:20 core-walltime
-Job Wall-clock time: 00:03:50
-Memory Utilized: 1.65 GB
-Memory Efficiency: 0.92% of 180.00 GB

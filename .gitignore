@@ -1,8 +1,8 @@
 /eval
-/data
-*.out
 /wandb
 /evaluation/out
+/data
+*.out
 /slurm_output
 /evaluation/slurm_output
 /old_scripts

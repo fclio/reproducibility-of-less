@@ -1,8 +1,0 @@
-{"time":"2024-11-22T11:55:54.230759662+01:00","level":"INFO","msg":"using version","core version":"0.18.6"}
-{"time":"2024-11-22T11:55:54.230822011+01:00","level":"INFO","msg":"created symlink","path":"/gpfs/home1/scur2847/ir2-less-data/wandb/run-20241122_115554-t9w8zr2d/logs/debug-core.log"}
-{"time":"2024-11-22T11:55:54.342790409+01:00","level":"INFO","msg":"created new stream","id":"t9w8zr2d"}
-{"time":"2024-11-22T11:55:54.342840709+01:00","level":"INFO","msg":"stream: started","id":"t9w8zr2d"}
-{"time":"2024-11-22T11:55:54.342936598+01:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"t9w8zr2d"}}
-{"time":"2024-11-22T11:55:54.342986628+01:00","level":"INFO","msg":"handler: started","stream_id":{"value":"t9w8zr2d"}}
-{"time":"2024-11-22T11:55:54.343130907+01:00","level":"INFO","msg":"sender: started","stream_id":"t9w8zr2d"}
-{"time":"2024-11-22T11:55:54.591619645+01:00","level":"INFO","msg":"Starting system monitor"}
