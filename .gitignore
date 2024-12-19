@@ -4,5 +4,7 @@
 /data
 *.out
 /slurm_output
+/slurm_output2
+/result_slurm_outputs
 /evaluation/slurm_output
 /old_scripts
