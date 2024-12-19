@@ -18,7 +18,7 @@ module load PyTorch/2.1.2-foss-2023a-CUDA-12.1.1
 DATA_DIR="data"
 MODEL_PATH="meta-llama/Llama-2-7b-hf"
 PERCENTAGE=0.05
-DATA_SEED=4
+DATA_SEED=5
 JOB_NAME="llama2-7b-p${PERCENTAGE}-lora-seed${DATA_SEED}"
 
 

@@ -18,8 +18,11 @@ module load PyTorch/2.1.2-foss-2023a-CUDA-12.1.1
 source eval.sh
 source eval_mmlu.sh
 
+JOB_NAME=$1
+# JOB_NAME=${MODEL}-less-p${PERCENTAGE}-lora-seed${DATA_SEED}-${TARGET_TASK_NAME}-${CHECKPOINTS}
+
 # Set the model directory relative to the script's location
-MODEL_DIR="/scratch-shared/ir2-less/out/llama2-7b-less-p0.05-bm25-seed4-mmlu"
+MODEL_DIR="/scratch-shared/ir2-less/out/${JOB_NAME}"
 
 # Run the evaluation on MMLU dataset
 eval_mmlu "$MODEL_DIR"
@@ -27,3 +30,4 @@ eval_mmlu "$MODEL_DIR"
 # Extract and print the evaluation results
 RESULT=$(extract_mmlu "$MODEL_DIR")
 echo "MMLU Evaluation Result: $RESULT%"
+echo -e "${JOB_NAME} ${RESULT}\n" >> ../experiment_results.txt

@@ -18,8 +18,11 @@ module load PyTorch/2.1.2-foss-2023a-CUDA-12.1.1
 source eval.sh
 source eval_bbh.sh
 
+JOB_NAME=$1
+# JOB_NAME=${MODEL}-less-p${PERCENTAGE}-lora-seed${DATA_SEED}-${TARGET_TASK_NAME}-${CHECKPOINTS}
+
 # Set the model directory relative to the script's location
-MODEL_DIR="/scratch-shared/ir2-less/out/llama2-13b-less-p0.05-lora-seed4-bbh-T"
+MODEL_DIR="/scratch-shared/ir2-less/out/${JOB_NAME}"
 
 # Run the evaluation on bbh dataset
 eval_bbh "$MODEL_DIR"
@@ -27,3 +30,4 @@ eval_bbh "$MODEL_DIR"
 # # Extract and print the evaluation results
 RESULT=$(extract_bbh "$MODEL_DIR")
 echo "bbh Evaluation Result: $RESULT%"
+echo -e "${JOB_NAME} ${RESULT}\n" >> ../experiment_results.txt

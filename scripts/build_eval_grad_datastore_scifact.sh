@@ -28,6 +28,7 @@ TRAINING_DATA_NAME=scifact
 TRAINING_DATA_FILE=data/eval/scifact/scifact_dev.jsonl # when changing data name, change the data path accordingly
 GRADIENT_TYPE="sgd"
 JOB_NAME="llama2-7b-p${PERCENTAGE}-lora-seed${DATA_SEED}-first"
+SHOT=5
 
 
 TASK="scifact"

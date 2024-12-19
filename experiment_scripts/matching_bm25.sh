@@ -2,29 +2,40 @@
 
 #SBATCH --partition=gpu_h100
 #SBATCH --gpus=1
-#SBATCH --job-name=bm25_matching
+#SBATCH --job-name=matching_bm25
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=18
+#SBATCH --cpus-per-task=16
 #SBATCH --gpus-per-node=1
 #SBATCH --time=02:00:00
-#SBATCH --output=slurm_output/bm25_matching_bbh_%A.out
+#SBATCH --output=slurm_output/matching_bm25_%A.out
 
 module purge
 module load 2023
 module load PyTorch/2.1.2-foss-2023a-CUDA-12.1.1
 
-
-TRAIN_FILE_NAMES="dolly oasst1 flan_v2 cot"
-DATA_SEED=4
+TARGET_TASK_NAMES=$1
+MODEL=$2
+DATA_SEED=$3
+IR=$4
 PERCENTAGE=0.05
-TARGET_TASK_NAMES="bbh"
-JOB_NAME="llama2-7b-p${PERCENTAGE}-seed${DATA_SEED}"
+
+if [[ "$4" == "IR" ]]; then
+    JOB_NAME="${MODEL}-p${PERCENTAGE}-lora-seed${DATA_SEED}-first"
+    TRAIN_FILE_NAMES="first"
+    TRAIN_FILES="data/train/processed/first/first_data.jsonl"
+else
+    JOB_NAME="${MODEL}-p${PERCENTAGE}-lora-seed${DATA_SEED}"
+    TRAIN_FILE_NAMES="dolly oasst1 flan_v2 cot"
+    TRAIN_FILES="data/train/processed/dolly/dolly_data.jsonl data/train/processed/oasst1/oasst1_data.jsonl data/train/processed/flan_v2/flan_v2_data.jsonl data/train/processed/cot/cot_data.jsonl"
+fi
+
+PERCENTAGE=0.05
 
 TRAIN_DATA_PATH="/home/scur2847/ir2-less-data/data/train/processed"
 EVAL_DATA_PATH="/home/scur2847/ir2-less-data/data/eval"
 # SELECTED_DATA_OUTPUT_PATH="/home/scur2847/ir2-less-data/selected_data/${JOB_NAME}"
 
-SELECTED_DATA_OUTPUT_PATH="/scratch-shared/ir2-less/selected_data/${JOB_NAME}"
+SELECTED_DATA_OUTPUT_PATH="/scratch-shared/ir2-less/selected_data/${JOB_NAME}/baseline"
 
 # Create output directory if it doesn't exist
 if [[ ! -d $SELECTED_DATA_OUTPUT_PATH ]]; then
@@ -39,7 +50,6 @@ python3 -m less.data_selection.matching_bm25 \
     --target_task_names $TARGET_TASK_NAMES \
     --output_path "$SELECTED_DATA_OUTPUT_PATH"
 
-TRAIN_FILES="data/train/processed/dolly/dolly_data.jsonl data/train/processed/oasst1/oasst1_data.jsonl data/train/processed/flan_v2/flan_v2_data.jsonl data/train/processed/cot/cot_data.jsonl"
 
 # Run write_selected_data
 python3 -m less.data_selection.write_selected_data_bm25 \

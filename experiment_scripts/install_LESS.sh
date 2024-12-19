@@ -2,11 +2,11 @@
 
 #SBATCH --partition=gpu
 #SBATCH --gpus=1
-#SBATCH --job-name=LESSWarmup
+#SBATCH --job-name=install
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=16
 #SBATCH --time=02:00:00
-#SBATCH --output=install_2_%A.out
+#SBATCH --output=install_%A.out
 
 module purge
 module load 2023

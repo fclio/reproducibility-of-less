@@ -16,11 +16,14 @@ module load PyTorch/2.1.2-foss-2023a-CUDA-12.1.1
 
 # TASK_NAME=fiqa
 # TASK_NAME=nfcorpus
-TASK_NAME=scifact
+# TASK_NAME=scifact
 # TASK_NAME=vihealthqa
 
-# Define paths
-JOB_NAME="llama2-7b-less-p0.05-lora-seed3-first-${TASK_NAME}"
+# # Define paths
+# JOB_NAME="llama2-7b-less-p0.05-lora-seed3-first-${TASK_NAME}-shot-15"
+
+JOB_NAME=$1
+TASK_NAME=$2
 
 MODEL_DIR="/scratch-shared/ir2-less/out/${JOB_NAME}"
 DATASET_PATH="/home/scur2847/ir2-less-data/data/eval/${TASK_NAME}/${TASK_NAME}_data.jsonl"

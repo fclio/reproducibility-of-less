@@ -20,9 +20,9 @@ PERCENTAGE=0.05
 TARGET_TASK_NAMES="bbh"
 JOB_NAME="llama2-7b-p${PERCENTAGE}-seed${DATA_SEED}"
 
-TRAIN_DATA_PATH="/home/scur2832/LESS/data/train/processed"
-EVAL_DATA_PATH="/home/scur2832/LESS/data/eval"
-# SELECTED_DATA_OUTPUT_PATH="/home/scur2832/LESS/selected_data/${JOB_NAME}"
+TRAIN_DATA_PATH="/home/scur2847/ir2-less-data/data/train/processed"
+EVAL_DATA_PATH="/home/scur2847/ir2-less-data/data/eval"
+# SELECTED_DATA_OUTPUT_PATH="/home/scur2847/ir2-less-data/selected_data/${JOB_NAME}"
 
 SELECTED_DATA_OUTPUT_PATH="/scratch-shared/ir2-less/selected_data/${JOB_NAME}"
 

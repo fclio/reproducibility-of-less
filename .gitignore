@@ -1,4 +1,7 @@
-
+/eval
 /data
 *.out
 /wandb
+/evaluation/out
+/slurm_output
+/evaluation/slurm_output

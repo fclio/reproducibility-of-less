@@ -1,0 +1,28 @@
+llama2-7b-less-p-lora-seed5-mmlu-23 
+
+llama2-7b-less-p-lora-seed5-mmlu-4 
+
+llama2-7b-less-p-lora-seed5-mmlu-12 
+
+llama2-7b-less-p-lora-seed5-mmlu-3 
+
+llama2-7b-less-p-lora-seed5-mmlu-34 
+
+llama2-7b-less-p-lora-seed5-mmlu-1 
+
+llama2-7b-less-p-lora-seed5-mmlu-2 
+
+llama2-7b-less-p0.05-lora-seed5-mmlu-23 49.8362056687081600
+
+llama2-7b-less-p0.05-lora-seed5-mmlu-4 48.155533399800600
+
+llama2-7b-less-p0.05-lora-seed5-mmlu-3 48.725252812989600
+
+llama2-7b-less-p0.05-lora-seed5-mmlu-12 49.32345819683805500
+
+llama2-7b-less-p0.05-lora-seed5-mmlu-2 50.2991026919242200
+
+llama2-7b-less-p0.05-lora-seed5-mmlu-1 50.0783364193134900
+
+llama2-7b-less-p0.05-lora-seed5-mmlu-34 48.8035892323030900
+

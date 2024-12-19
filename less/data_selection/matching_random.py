@@ -162,6 +162,113 @@ def load_training_data(train_file_name):
     training_data = [doc for doc in training_data if doc.strip()]
     return training_data
 
+##################################
+# NEW FUNCTIONS FOR fiqa, nfcorpus, scifact, vihealthqa
+##################################
+
+def load_fiqa_data(fiqa_dir):
+    """
+    Load the FIQA dataset from fiqa_dev.jsonl and extract content.
+    Format is similar to scifact.
+    """
+    file_path = os.path.join(fiqa_dir, 'fiqa_dev.jsonl')
+    if not os.path.exists(file_path):
+        print(f"FIQA data file not found at {file_path}")
+        return []
+
+    data_list = []
+    with open(file_path, 'r', encoding='utf-8') as f:
+        for line in tqdm(f, desc=f"Loading {file_path}"):
+            data = json.loads(line)
+            messages = data.get('messages', [])
+            content_pieces = []
+            for message in messages:
+                message_content = message.get('content', '').strip()
+                if message_content:
+                    content_pieces.append(message_content)
+            content = " ".join(content_pieces)
+            if content.strip():
+                data_list.append(content)
+    return data_list
+
+def load_nfcorpus_data(nfcorpus_dir):
+    """
+    Load the NFCorpus dataset from nfcorpus_dev.jsonl and extract content.
+    Format is similar to scifact.
+    """
+    file_path = os.path.join(nfcorpus_dir, 'nfcorpus_dev.jsonl')
+    if not os.path.exists(file_path):
+        print(f"NFCorpus data file not found at {file_path}")
+        return []
+
+    data_list = []
+    with open(file_path, 'r', encoding='utf-8') as f:
+        for line in tqdm(f, desc=f"Loading {file_path}"):
+            data = json.loads(line)
+            messages = data.get('messages', [])
+            content_pieces = []
+            for message in messages:
+                message_content = message.get('content', '').strip()
+                if message_content:
+                    content_pieces.append(message_content)
+            content = " ".join(content_pieces)
+            if content.strip():
+                data_list.append(content)
+    return data_list
+
+def load_scifact_data(scifact_dir):
+    """
+    Load the SciFact dataset from scifact_dev.jsonl and extract content.
+    Format is similar to the provided scifact example.
+    """
+    file_path = os.path.join(scifact_dir, 'scifact_dev.jsonl')
+    if not os.path.exists(file_path):
+        print(f"SciFact data file not found at {file_path}")
+        return []
+
+    data_list = []
+    with open(file_path, 'r', encoding='utf-8') as f:
+        for line in tqdm(f, desc=f"Loading {file_path}"):
+            data = json.loads(line)
+            messages = data.get('messages', [])
+            content_pieces = []
+            for message in messages:
+                message_content = message.get('content', '').strip()
+                if message_content:
+                    content_pieces.append(message_content)
+            content = " ".join(content_pieces)
+            if content.strip():
+                data_list.append(content)
+    return data_list
+
+def load_vihealthqa_data(vihealthqa_dir):
+    """
+    Load the vihealthqa dataset from vihealthqa_dev.jsonl and extract content.
+    Format is similar to scifact.
+    """
+    file_path = os.path.join(vihealthqa_dir, 'vihealthqa_dev.jsonl')
+    if not os.path.exists(file_path):
+        print(f"ViHealthQA data file not found at {file_path}")
+        return []
+
+    data_list = []
+    with open(file_path, 'r', encoding='utf-8') as f:
+        for line in tqdm(f, desc=f"Loading {file_path}"):
+            data = json.loads(line)
+            messages = data.get('messages', [])
+            content_pieces = []
+            for message in messages:
+                message_content = message.get('content', '').strip()
+                if message_content:
+                    content_pieces.append(message_content)
+            content = " ".join(content_pieces)
+            if content.strip():
+                data_list.append(content)
+    return data_list
+
+##################################
+
+
 # Generate random scores with the same shape and reduction as BM25
 for target_task_name in args.target_task_names:
     for train_file_name in args.train_file_names:
@@ -175,6 +282,14 @@ for target_task_name in args.target_task_names:
             validation_data = load_bbh_data(validation_path)
         elif target_task_name == 'tydiqa':
             validation_data = load_tydiqa_data(validation_path)
+        elif target_task_name == 'fiqa':
+            validation_data = load_fiqa_data(validation_path)
+        elif target_task_name == 'nfcorpus':
+            validation_data = load_nfcorpus_data(validation_path)
+        elif target_task_name == 'scifact':
+            validation_data = load_scifact_data(validation_path)
+        elif target_task_name == 'vihealthqa':
+            validation_data = load_vihealthqa_data(validation_path)
         else:
             if os.path.isdir(validation_path):
                 validation_data = []
