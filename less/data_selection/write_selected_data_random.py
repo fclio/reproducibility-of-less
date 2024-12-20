@@ -78,10 +78,6 @@ if __name__ == "__main__":
                     file.write(
                         f"{args.train_file_names[from_val.item()]}, {idx_val.item()}, {round(score_val.item(), 6)}\n")
 
-        # Select top samples
-        final_index_list = sorted_index[:args.max_samples].tolist()
-        final_data_from_list = data_from[:args.max_samples].tolist()
-
         # Read training data lines
         all_lines = []
         for i, train_file in enumerate(args.train_files):
@@ -90,6 +86,19 @@ if __name__ == "__main__":
                 # Ensure we only take as many lines as we counted before
                 lines = lines[:num_samples[i]]
                 all_lines.append(lines)
+                
+        # Select top samples
+        final_index_list = sorted_index[:args.max_samples].tolist()
+        final_data_from_list = data_from[:args.max_samples].tolist()
+        
+        print(f"Total samples: {total_samples}")
+        print(f"num_samples per file: {num_samples}")
+        print(f"args.max_samples: {args.max_samples}")
+        print(f"Length of final_index_list: {len(final_index_list)}")
+        print(f"Length of final_data_from: {len(final_data_from_list)}")
+        
+        for i, lines in enumerate(all_lines):
+            print(f"File {args.train_files[i]} has {len(lines)} lines.")
 
         # Write top selected samples
         top_file = os.path.join(output_path, f"random_top_{data_amount_name}.jsonl")

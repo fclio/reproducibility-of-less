@@ -7,7 +7,7 @@
 #SBATCH --cpus-per-task=16
 #SBATCH --gpus-per-node=1
 #SBATCH --time=02:00:00
-#SBATCH --output=slurm_output/matching_ir_%A.out
+#SBATCH --output=slurm_output3/matching_ir_%A.out
 
 module purge
 module load 2023
@@ -23,13 +23,13 @@ CKPTS=""
 if [[ "$2" == "llama2-7b" ]]; then
     for (( i=0; i<${#foo}; i++ )); do
         if [[ "${foo:$i:1}" == "1" ]]; then
-            CKPTS+=" 62"
+            CKPTS+=" 31"
         elif [[ "${foo:$i:1}" == "2" ]]; then
-            CKPTS+=" 124"
+            CKPTS+=" 62"
         elif [[ "${foo:$i:1}" == "3" ]]; then
-            CKPTS+=" 187"
+            CKPTS+=" 93"
         elif [[ "${foo:$i:1}" == "4" ]]; then
-            CKPTS+=" 248"
+            CKPTS+=" 124"
         else
             echo "Unknown checkpoint idx."
         fi

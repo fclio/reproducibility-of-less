@@ -72,7 +72,7 @@ elif [[ "$1" == "datastore_ir" ]]; then
     if [[ "$MODEL" == "llama2-7b" ]]; then
         for task in "first" "nfcorpus" "scifact" "vihealthqa" "fiqa"
         do
-            for checkpoint in "62" "124" "187" "248"
+            for checkpoint in "31" "62" "93" "124"
             do 
                 ${CMD} experiment_scripts/build_train_grad_datastore.sh $task $checkpoint ${MODEL} ${SEED} IR
             done
@@ -141,14 +141,14 @@ elif [[ "$1" == "finetune_baseline" ]]; then
     done
 elif [[ "$1" == "finetune_baseline_ir" ]]; then
     #TODO
-    for task in "nfcorpus" "scifact" "vihealthqa" "fiqa"
+    # for task in "nfcorpus" "scifact" "vihealthqa" "fiqa"
+    for task in "scifact"
     do
-        ${CMD} experiment_scripts/training.sh $task ${MODEL} ${SEED} 1234 IR_BM25
+        # ${CMD} experiment_scripts/training.sh $task ${MODEL} ${SEED} 1234 IR_BM25
         ${CMD} experiment_scripts/training.sh $task ${MODEL} ${SEED} 1234 IR_random
     done
 elif [[ "$1" == "finetune_ablation" ]]; then
-    # for task in "mmlu" "tydiqa" "bbh"
-    for task in "mmlu"
+    for task in "mmlu" "tydiqa" "bbh"
     do
         for ckptidxs in "1" "2" "3" "4" "12" "34" "23" "14"
         do
@@ -181,23 +181,21 @@ elif [[ "$1" == "eval_baseline" ]]; then
     ${CMD} eval_tydiqa_after_finetuning.sh ${MODEL}-less-p${PERCENTAGE}-lora-seed${SEED}-tydiqa-random
 elif [[ "$1" == "eval_baseline_ir" ]]; then
     cd evaluation
-    for task in "nfcorpus" "scifact" "vihealthqa" "fiqa"
+    # for task in "nfcorpus" "scifact" "vihealthqa" "fiqa"
+    for task in "scifact"
     do
         ${CMD} eval_ranking_after_finetuning.sh ${MODEL}-less-p${PERCENTAGE}-lora-seed${SEED}-$task-random $task
-        ${CMD} eval_ranking_after_finetuning.sh ${MODEL}-less-p${PERCENTAGE}-lora-seed${SEED}-$task-BM25 $task
+        # ${CMD} eval_ranking_after_finetuning.sh ${MODEL}-less-p${PERCENTAGE}-lora-seed${SEED}-$task-BM25 $task
     done
 elif [[ "$1" == "eval_ablation" ]]; then
     cd evaluation
-    # for ckptidxs in "1" "2" "3" "4" "12" "34" "23" "14"
-    #TODO run 14
-    for ckptidxs in "14"
+    for ckptidxs in "1" "2" "3" "4" "12" "34" "23" "14"
     do
         ${CMD} eval_mmlu_after_finetuning.sh ${MODEL}-less-p${PERCENTAGE}-lora-seed${SEED}-mmlu-$ckptidxs
-        # ${CMD} eval_bbh_after_finetuning.sh ${MODEL}-less-p${PERCENTAGE}-lora-seed${SEED}-bbh-$ckptidxs
-        # ${CMD} eval_tydiqa_after_finetuning.sh ${MODEL}-less-p${PERCENTAGE}-lora-seed${SEED}-tydiqa-$ckptidxs
+        ${CMD} eval_bbh_after_finetuning.sh ${MODEL}-less-p${PERCENTAGE}-lora-seed${SEED}-bbh-$ckptidxs
+        ${CMD} eval_tydiqa_after_finetuning.sh ${MODEL}-less-p${PERCENTAGE}-lora-seed${SEED}-tydiqa-$ckptidxs
     done
 else
     echo "Unknown LESS pipeline section. Check the README for information on how to use the script."
 fi
 
-#FileNotFoundError: Unable to find '/scratch-shared/ir2-less/selected_data/llama2-13b-p0.05-lora-seed3/baseline/nfcorpus/bm25_top_p0.05.jsonl'

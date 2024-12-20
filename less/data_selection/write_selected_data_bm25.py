@@ -94,6 +94,17 @@ if __name__ == "__main__":
 
         final_index_list = sorted_index[:args.max_samples].tolist()
         final_data_from = data_from[:args.max_samples].tolist()
+        
+        print(f"Total samples: {total_samples}")
+        print(f"num_samples per file: {num_samples}")
+        print(f"args.max_samples: {args.max_samples}")
+        print(f"Length of final_index_list: {len(final_index_list)}")
+        print(f"Length of final_data_from: {len(final_data_from)}")
+        
+        for i, lines in enumerate(all_lines):
+            print(f"File {args.train_files[i]} has {len(lines)} lines.")
+
+        
         with open(os.path.join(output_path, f"bm25_top_{data_amount_name}.jsonl"), 'w', encoding='utf-8', errors='ignore') as file:
             for index, data_from in zip(final_index_list, final_data_from):
                 try:
@@ -101,3 +112,5 @@ if __name__ == "__main__":
                 except:
                     import pdb
                     pdb.set_trace()
+                    
+        print(f"Saved top {args.max_samples} random selected data to {os.path.join(output_path, f"bm25_top_{data_amount_name}.jsonl")}")
