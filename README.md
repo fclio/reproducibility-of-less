@@ -72,8 +72,14 @@ The original datasets and their corresponding papers are:
 - TydiQA: [dataset](https://github.com/google-research-datasets/tydiqa), [paper](https://arxiv.org/abs/2003.05002)
 - BBH: [dataset](https://github.com/suzgunmirac/BIG-Bench-Hard), [paper](https://arxiv.org/abs/2210.09261)
 
-For the IR task, TODO 
+For the IR task, the datasets are:
+- FIRST: [dataset](https://huggingface.co/datasets/rryisthebest/rank_zephyr_training_data_alpha)
+- SciFact: [dataset](https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets)
+- FiQA: [dataset](https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets)
+- ViHealthQA: [dataset](https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets)
+- NFCorpus: [dataset](https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets)
 
+To generate the datasets for the IR tasks, you can use the dataset_generation.ipynb notebook.
 ## Bugs or Questions?
 If you have any questions related to the code or the paper, feel free to email one of the original authors: Mengzhou (mengzhou@princeton.edu). If you encounter any problems when using the code, or want to report a bug, you can open an issue on the original repository. Please try to specify the problem with details so they can help you better and quicker!
 
