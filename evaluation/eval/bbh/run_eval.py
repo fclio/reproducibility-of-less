@@ -8,10 +8,15 @@ import re
 import evaluate
 import torch
 import tqdm
+from eval.utils import (
+    dynamic_import_function,
+    generate_completions,
+    load_hf_lm_and_tokenizer,
+    query_openai_chat_model,
+)
+
 # import vllm
 
-from eval.utils import (dynamic_import_function, generate_completions,
-                        load_hf_lm_and_tokenizer, query_openai_chat_model)
 
 exact_match = evaluate.load("exact_match")
 
@@ -42,7 +47,7 @@ task_names = [
     "web_of_lies",
     "snarks",
     "penguins_in_a_table",
-    "logical_deduction_three_objects"
+    "logical_deduction_three_objects",
 ]
 
 
@@ -57,11 +62,11 @@ def main(args):
             all_tasks[task_name] = json.load(f)["examples"]
             if args.max_num_examples_per_task:
                 all_tasks[task_name] = random.sample(
-                    all_tasks[task_name], args.max_num_examples_per_task)
+                    all_tasks[task_name], args.max_num_examples_per_task
+                )
 
     all_prompts = {}
-    cot_prompt_files = glob.glob(os.path.join(
-        args.data_dir, "cot-prompts", "*.txt"))
+    cot_prompt_files = glob.glob(os.path.join(args.data_dir, "cot-prompts", "*.txt"))
     for cot_prompt_file in tqdm.tqdm(cot_prompt_files, desc="Loading prompts"):
         with open(cot_prompt_file, "r") as f:
             task_name = os.path.basename(cot_prompt_file).split(".")[0]
@@ -71,10 +76,13 @@ def main(args):
                 new_prompt_fields = []
                 for prompt_field in prompt_fields:
                     if prompt_field.startswith("Q:"):
-                        assert "So the answer is" in prompt_field, f"`So the answer is` not found in prompt field of {task_name}.txt."
-                        assert "\nA:" in prompt_field, "`\nA:` not found in prompt field."
-                        answer = prompt_field.split(
-                            "So the answer is")[-1].strip()
+                        assert (
+                            "So the answer is" in prompt_field
+                        ), f"`So the answer is` not found in prompt field of {task_name}.txt."
+                        assert (
+                            "\nA:" in prompt_field
+                        ), "`\nA:` not found in prompt field."
+                        answer = prompt_field.split("So the answer is")[-1].strip()
                         question = prompt_field.split("\nA:")[0].strip()
                         new_prompt_fields.append(question + "\nA: " + answer)
                     else:
@@ -84,8 +92,9 @@ def main(args):
 
     if not args.eval_valid:
         print(set(all_tasks.keys()), set(all_prompts.keys()))
-        assert set(all_tasks.keys()) == set(all_prompts.keys(
-        )), "task names in task data and task prompts are not the same."
+        assert set(all_tasks.keys()) == set(
+            all_prompts.keys()
+        ), "task names in task data and task prompts are not the same."
 
     os.makedirs(args.save_dir, exist_ok=True)
     os.makedirs(os.path.join(args.save_dir, "predictions"), exist_ok=True)
@@ -108,7 +117,9 @@ def main(args):
                 model_name_or_path=args.model_name_or_path,
                 tokenizer_name_or_path=args.tokenizer_name_or_path,
                 load_in_8bit=args.load_in_8bit,
-                device_map="balanced_low_0" if torch.cuda.device_count() > 1 else "auto",
+                device_map=(
+                    "balanced_low_0" if torch.cuda.device_count() > 1 else "auto"
+                ),
                 gptq_model=args.gptq,
                 use_fast_tokenizer=not args.use_slow_tokenizer,
                 convert_to_bf16=args.convert_to_bf16,
@@ -128,8 +139,11 @@ def main(args):
         if args.model_name_or_path:
             # prepare prompts
             prompts = []
-            chat_formatting_function = dynamic_import_function(
-                args.chat_formatting_function) if args.use_chat_format else None
+            chat_formatting_function = (
+                dynamic_import_function(args.chat_formatting_function)
+                if args.use_chat_format
+                else None
+            )
             for example in task_examples:
                 prompt = task_prompt.strip() + "\n\nQ: " + example["input"]
                 if args.use_chat_format:
@@ -142,7 +156,7 @@ def main(args):
                 else:
                     prompt += "\nA:"
                 prompts.append(prompt)
-            
+
             # generate with vllm
             if args.use_vllm:
                 # sampling_params = vllm.SamplingParams(
@@ -161,8 +175,7 @@ def main(args):
             # generate with hf model
             else:
                 # get the last token because the tokenizer may add space tokens at the start.
-                stop_sequence = tokenizer.encode(
-                    "\n\n", add_special_tokens=False)[-2:]
+                stop_sequence = tokenizer.encode("\n\n", add_special_tokens=False)[-2:]
                 outputs = generate_completions(
                     model=model,
                     tokenizer=tokenizer,
@@ -171,23 +184,27 @@ def main(args):
                     # temperature=0,
                     do_sample=False,
                     batch_size=args.eval_batch_size if args.eval_batch_size else 1,
-                    stop_id_sequences=[[stop_sequence]]
+                    stop_id_sequences=[[stop_sequence]],
                 )
         else:
             instances = []
             for i, example in enumerate(task_examples):
-                prompt = task_prompt.strip() + "\n\nQ: " + \
-                    example["input"] + "\nA:"
-                instances.append({
-                    "id": example["id"] if "id" in example else i,
-                    "prompt": prompt,
-                })
+                prompt = task_prompt.strip() + "\n\nQ: " + example["input"] + "\nA:"
+                instances.append(
+                    {
+                        "id": example["id"] if "id" in example else i,
+                        "prompt": prompt,
+                    }
+                )
             results = query_openai_chat_model(
                 engine=args.openai_engine,
                 instances=instances,
                 batch_size=args.eval_batch_size if args.eval_batch_size else 10,
                 output_path=os.path.join(
-                    args.save_dir, "predictions", f"{task_name}_openai_prediction_cache.jsonl"),
+                    args.save_dir,
+                    "predictions",
+                    f"{task_name}_openai_prediction_cache.jsonl",
+                ),
             )
             outputs = [result["output"] for result in results]
 
@@ -209,102 +226,99 @@ def main(args):
             example["prediction"] = prediction
             predictions.append(prediction)
 
-        with open(os.path.join(args.save_dir, "predictions", f"{task_name}.jsonl"), "w") as fout:
+        with open(
+            os.path.join(args.save_dir, "predictions", f"{task_name}.jsonl"), "w"
+        ) as fout:
             for example in task_examples:
                 fout.write(json.dumps(example) + "\n")
 
         assert len(predictions) == len(
-            targets), "number of predictions and targets are not the same."
+            targets
+        ), "number of predictions and targets are not the same."
         performance[task_name] = exact_match.compute(
-            predictions=predictions, references=targets, ignore_case=True, ignore_punctuation=True)["exact_match"]
+            predictions=predictions,
+            references=targets,
+            ignore_case=True,
+            ignore_punctuation=True,
+        )["exact_match"]
 
         print(f"Task {task_name} - EM: {performance[task_name]}")
 
     # save the performance
     with open(os.path.join(args.save_dir, "metrics.json"), "w") as fout:
-        performance["average_exact_match"] = sum(
-            performance.values()) / len(performance)
+        performance["average_exact_match"] = sum(performance.values()) / len(
+            performance
+        )
         print(f"Average EM: {performance['average_exact_match']}")
         json.dump(performance, fout, indent=4)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--data_dir",
-        type=str,
-        default="data/bbh"
-    )
-    parser.add_argument(
-        "--save_dir",
-        type=str,
-        default="results/bbh"
-    )
+    parser.add_argument("--data_dir", type=str, default="data/bbh")
+    parser.add_argument("--save_dir", type=str, default="results/bbh")
     parser.add_argument(
         "--model_name_or_path",
         type=str,
         default=None,
-        help="if specified, we will load the model to generate the predictions."
+        help="if specified, we will load the model to generate the predictions.",
     )
     parser.add_argument(
         "--tokenizer_name_or_path",
         type=str,
         default=None,
-        help="if specified, we will load the tokenizer from here."
+        help="if specified, we will load the tokenizer from here.",
     )
     parser.add_argument(
         "--use_slow_tokenizer",
         action="store_true",
-        help="If given, we will use the slow tokenizer."
+        help="If given, we will use the slow tokenizer.",
     )
     parser.add_argument(
         "--openai_engine",
         type=str,
         default=None,
-        help="if specified, we will use the OpenAI API to generate the predictions."
+        help="if specified, we will use the OpenAI API to generate the predictions.",
     )
     parser.add_argument(
         "--no_cot",
         action="store_true",
-        help="if specified, chain of thoughts will be removed from the prompts."
+        help="if specified, chain of thoughts will be removed from the prompts.",
     )
     parser.add_argument(
         "--max_num_examples_per_task",
         type=int,
         default=None,
-        help="maximum number of examples to evaluate per task."
+        help="maximum number of examples to evaluate per task.",
     )
     parser.add_argument(
-        "--eval_batch_size",
-        type=int,
-        default=1,
-        help="batch size for evaluation."
+        "--eval_batch_size", type=int, default=1, help="batch size for evaluation."
     )
     parser.add_argument(
         "--load_in_8bit",
         action="store_true",
-        help="load model in 8bit mode, which will reduce memory and speed up inference."
+        help="load model in 8bit mode, which will reduce memory and speed up inference.",
     )
     parser.add_argument(
         "--gptq",
         action="store_true",
-        help="If given, we're evaluating a 4-bit quantized GPTQ model."
+        help="If given, we're evaluating a 4-bit quantized GPTQ model.",
     )
     parser.add_argument(
         "--use_vllm",
         action="store_true",
-        help="If given, we will use the vllm library, which will likely increase the inference throughput."
+        help="If given, we will use the vllm library, which will likely increase the inference throughput.",
     )
     parser.add_argument(
         "--use_chat_format",
         action="store_true",
-        help="If given, we will use the chat format for the prompts."
+        help="If given, we will use the chat format for the prompts.",
     )
     parser.add_argument(
         "--chat_formatting_function",
         type=str,
         default="eval.templates.create_prompt_with_tulu_chat_format",
-        help="The function to use to create the chat format. This function will be dynamically imported. Please see examples in `eval/templates.py`."
+        help="The function to use to create the chat format. This function will be dynamically imported. Please see examples in `eval/templates.py`.",
     )
     parser.add_argument(
         "--convert_to_half",
@@ -329,5 +343,6 @@ if __name__ == "__main__":
 
     # model_name_or_path and openai_engine cannot be both None or both not None.
     assert (args.model_name_or_path is None) != (
-        args.openai_engine is None), "Either model_name_or_path or openai_engine should be specified."
+        args.openai_engine is None
+    ), "Either model_name_or_path or openai_engine should be specified."
     main(args)

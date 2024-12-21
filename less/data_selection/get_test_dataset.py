@@ -1,39 +1,35 @@
 import json
 import os
-import random
-from glob import glob
-from typing import List, Tuple
 
 import pandas as pd
-import torch
-import tqdm
 from datasets import Dataset
-from torch.utils.data import DataLoader
-from transformers import DataCollatorForSeq2Seq, PreTrainedTokenizerBase
+from transformers import PreTrainedTokenizerBase
 
-from less.data_selection.get_training_dataset import concat_messages
 from less.data_selection.get_validation_dataset import tokenize
 
 # llama-chat model's instruction format
 B_INST, E_INST = "[INST]", "[/INST]"
 
-def get_tydiqa_dataset(data_dir: str,
-                       tokenizer: PreTrainedTokenizerBase,
-                       max_length: int,
-                       use_chat_format: bool = True,
-                       chat_format: str = "tulu",
-                       zh: bool = False,
-                       **kwargs) -> Dataset:
-    """
-    Get the tydiqa dataset in the instruction tuning format. Each example is formatted as follows:  
 
-    Query: 
+def get_tydiqa_dataset(
+    data_dir: str,
+    tokenizer: PreTrainedTokenizerBase,
+    max_length: int,
+    use_chat_format: bool = True,
+    chat_format: str = "tulu",
+    zh: bool = False,
+    **kwargs,
+) -> Dataset:
+    """
+    Get the tydiqa dataset in the instruction tuning format. Each example is formatted as follows:
+
+    Query:
     <|user|>
     <Task Prompt>
     <Passage>
     <Question>
     <|assistant|>
-    Answer: 
+    Answer:
 
     Completion:
     <Answer>
@@ -52,22 +48,71 @@ def get_tydiqa_dataset(data_dir: str,
 
     # Same template as https://github.com/allenai/open-instruct/blob/main/eval/tydiqa/run_eval.py#L17
     encoding_templates_with_context = {
-        "english": ("Answer the following question based on the information in the given passage.", "Passage:", "Question:", "Answer:"),
-        "arabic": ("أجب على السؤال التالي بناءً على المعلومات في المقطع المعطى.", "المقطع:", "السؤال:", "الإجابة:"),
-        "bengali": ("প্রদত্ত অধ্যায়ের তথ্যের উপর ভিত্তি করে নিম্নলিখিত প্রশ্নের উত্তর দিন।", "অধ্যায়:", "প্রশ্ন:", "উত্তর:"),
-        "finnish": ("Vastaa seuraavaan kysymykseen annetun kappaleen tiedon perusteella.", "Kappale:", "Kysymys:", "Vastaus:"),
-        "indonesian": ("Jawab pertanyaan berikut berdasarkan informasi di bagian yang diberikan.", "Bagian:", "Pertanyaan:", "Jawaban:"),
-        "korean": ("주어진 문단의 정보에 기반하여 다음 질문에 답하십시오.", "문단:", "질문:", "답변:"),
-        "russian": ("Ответьте на следующий вопрос на основе информации в данном отрывке.", "Отрывок:", "Вопрос:", "Ответ:"),
-        "swahili": ("Jibu swali lifuatalo kulingana na habari kwenye kifungu kilichotolewa.", "Kifungu:", "Swali:", "Jibu:"),
-        "telugu": ("ఇచ్చిన పేరాలోని సమాచారం ఆధారంగా కింది ప్రశ్నకు సమాధానం ఇవ్వండి.", "పేరా:", "ప్రశ్న:", "సమాధానం:")
+        "english": (
+            "Answer the following question based on the information in the given passage.",
+            "Passage:",
+            "Question:",
+            "Answer:",
+        ),
+        "arabic": (
+            "أجب على السؤال التالي بناءً على المعلومات في المقطع المعطى.",
+            "المقطع:",
+            "السؤال:",
+            "الإجابة:",
+        ),
+        "bengali": (
+            "প্রদত্ত অধ্যায়ের তথ্যের উপর ভিত্তি করে নিম্নলিখিত প্রশ্নের উত্তর দিন।",
+            "অধ্যায়:",
+            "প্রশ্ন:",
+            "উত্তর:",
+        ),
+        "finnish": (
+            "Vastaa seuraavaan kysymykseen annetun kappaleen tiedon perusteella.",
+            "Kappale:",
+            "Kysymys:",
+            "Vastaus:",
+        ),
+        "indonesian": (
+            "Jawab pertanyaan berikut berdasarkan informasi di bagian yang diberikan.",
+            "Bagian:",
+            "Pertanyaan:",
+            "Jawaban:",
+        ),
+        "korean": (
+            "주어진 문단의 정보에 기반하여 다음 질문에 답하십시오.",
+            "문단:",
+            "질문:",
+            "답변:",
+        ),
+        "russian": (
+            "Ответьте на следующий вопрос на основе информации в данном отрывке.",
+            "Отрывок:",
+            "Вопрос:",
+            "Ответ:",
+        ),
+        "swahili": (
+            "Jibu swali lifuatalo kulingana na habari kwenye kifungu kilichotolewa.",
+            "Kifungu:",
+            "Swali:",
+            "Jibu:",
+        ),
+        "telugu": (
+            "ఇచ్చిన పేరాలోని సమాచారం ఆధారంగా కింది ప్రశ్నకు సమాధానం ఇవ్వండి.",
+            "పేరా:",
+            "ప్రశ్న:",
+            "సమాధానం:",
+        ),
     }
 
     # Chinese validation examples
     if zh:
         for lang in encoding_templates_with_context:
             encoding_templates_with_context[lang] = (
-                "根据所给文章中的信息回答以下问题。", "文章:", "问题:", "答案:")
+                "根据所给文章中的信息回答以下问题。",
+                "文章:",
+                "问题:",
+                "答案:",
+            )
 
     file_name = "tydiqa-one-shot-zh.json" if zh else "tydiqa-one-shot.json"
     file = os.path.join(f"{data_dir}/eval/tydiqa", file_name)
@@ -77,10 +122,19 @@ def get_tydiqa_dataset(data_dir: str,
 
     for i, lang in enumerate(examples):
         example = examples[lang][0]
-        prompt, p_template, q_template, a_template = encoding_templates_with_context[lang]
-        prompt += p_template + " " + \
-            format(example["context"]) + "\n" + q_template + \
-            " " + format(example["question"]) + "\n"
+        prompt, p_template, q_template, a_template = encoding_templates_with_context[
+            lang
+        ]
+        prompt += (
+            p_template
+            + " "
+            + format(example["context"])
+            + "\n"
+            + q_template
+            + " "
+            + format(example["question"])
+            + "\n"
+        )
         answer = " " + format(example["answers"][0]["text"])
         if use_chat_format:
             if chat_format == "tulu":
@@ -90,7 +144,8 @@ def get_tydiqa_dataset(data_dir: str,
         else:
             prompt = prompt + a_template
         full_input_ids, labels, attention_mask = tokenize(
-            tokenizer, prompt, answer, max_length, print_ex=True)
+            tokenizer, prompt, answer, max_length, print_ex=True
+        )
         dataset["input_ids"].append(full_input_ids)
         dataset["labels"].append(labels)
         dataset["attention_mask"].append(attention_mask)
@@ -98,12 +153,14 @@ def get_tydiqa_dataset(data_dir: str,
     return dataset
 
 
-def get_mmlu_dataset(data_dir: str,
-                     tokenizer: PreTrainedTokenizerBase,
-                     max_length: int,
-                     use_chat_format=True,
-                     chat_format="tulu",
-                     **kwargs):
+def get_mmlu_dataset(
+    data_dir: str,
+    tokenizer: PreTrainedTokenizerBase,
+    max_length: int,
+    use_chat_format=True,
+    chat_format="tulu",
+    **kwargs,
+):
     """
     Get the MMLU dataset in the instruction tuning format. Each example is formatted as follows:
 
@@ -164,7 +221,7 @@ def get_mmlu_dataset(data_dir: str,
     for subject in subjects:
         dev_df = pd.read_csv(
             os.path.join(data_dir, "dev", subject + "_dev.csv"), header=None
-        )[: k]
+        )[:k]
         for i in range(k):
             prompt = gen_prompt(dev_df, subject, i)
             answer = " " + dev_df.iloc[i, dev_df.shape[1] - 2 + 1]
@@ -178,10 +235,14 @@ def get_mmlu_dataset(data_dir: str,
             else:
                 prompt = prompt
             full_input_ids, labels, attention_mask = tokenize(
-                tokenizer, prompt, answer, max_length, print_ex=True if i == 0 else False)
+                tokenizer,
+                prompt,
+                answer,
+                max_length,
+                print_ex=True if i == 0 else False,
+            )
             dataset["input_ids"].append(full_input_ids)
             dataset["labels"].append(labels)
             dataset["attention_mask"].append(attention_mask)
     dataset = Dataset.from_dict(dataset)
     return dataset
-

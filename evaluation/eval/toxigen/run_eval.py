@@ -7,15 +7,14 @@ from collections import defaultdict
 
 import torch
 import vllm
-from tqdm import tqdm, trange
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
-
 from eval.utils import (
+    dynamic_import_function,
     generate_completions,
     load_hf_lm_and_tokenizer,
     query_openai_chat_model,
 )
-from eval.utils import dynamic_import_function 
+from tqdm import tqdm, trange
+from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
 
 @torch.no_grad()
@@ -36,7 +35,7 @@ def score_generations(
 def main(args):
     random.seed(42)
     os.makedirs(args.save_dir, exist_ok=True)
-    
+
     # Load the testing data
     examples = []
     prompt_files = glob.glob(os.path.join(args.data_dir, "*.txt"))
@@ -47,24 +46,33 @@ def main(args):
             minority_group = "_".join(group_name.split("_")[1:])
             group_prompts = [line.strip() for line in f]
             random.shuffle(group_prompts)
-            group_prompts = group_prompts[:args.max_prompts_per_group]
+            group_prompts = group_prompts[: args.max_prompts_per_group]
             for prompt in group_prompts:
                 # minor cleaning: replace \\ with \
                 prompt = prompt.replace("\\\\", "\\")
                 prompt = prompt.replace("\\n", "\n")
-                examples.append({
-                    "text": prompt,
-                    "label": label,
-                    "target_groups": [minority_group],
-                })
+                examples.append(
+                    {
+                        "text": prompt,
+                        "label": label,
+                        "target_groups": [minority_group],
+                    }
+                )
 
     # Generate the outputs
     if args.model_name_or_path:
         prompts = []
         for example in examples:
             if args.use_chat_format:
-                messages = [{"role": "user", "content": "Complete the following: " + example["text"]}]
-                chat_formatting_function = dynamic_import_function(args.chat_formatting_function)
+                messages = [
+                    {
+                        "role": "user",
+                        "content": "Complete the following: " + example["text"],
+                    }
+                ]
+                chat_formatting_function = dynamic_import_function(
+                    args.chat_formatting_function
+                )
                 prompt = chat_formatting_function(messages, add_bos=False)
             else:
                 # we will use the original text from toxigen as the prompt.
@@ -75,13 +83,17 @@ def main(args):
             print("Loading vLLM model...")
             model = vllm.LLM(
                 model=args.model_name_or_path,
-                tokenizer=args.tokenizer_name_or_path if args.model_name_or_path else args.model_name_or_path,
+                tokenizer=(
+                    args.tokenizer_name_or_path
+                    if args.model_name_or_path
+                    else args.model_name_or_path
+                ),
                 tokenizer_mode="slow" if args.use_slow_tokenizer else "auto",
             )
             sampling_params = vllm.SamplingParams(
                 temperature=0,  # greedy decoding
                 max_tokens=512,  # maximum we can pass to roberta
-                stop=["\n"]
+                stop=["\n"],
             )
             outputs = model.generate(prompts, sampling_params)
             outputs = [it.outputs[0].text for it in outputs]
@@ -89,9 +101,15 @@ def main(args):
             print("Loading model and tokenizer for generations...")
             model, tokenizer = load_hf_lm_and_tokenizer(
                 model_name_or_path=args.model_name_or_path,
-                tokenizer_name_or_path=args.tokenizer_name_or_path if args.model_name_or_path else args.model_name_or_path,
+                tokenizer_name_or_path=(
+                    args.tokenizer_name_or_path
+                    if args.model_name_or_path
+                    else args.model_name_or_path
+                ),
                 load_in_8bit=args.load_in_8bit,
-                device_map="balanced_low_0" if torch.cuda.device_count() > 1 else "auto",
+                device_map=(
+                    "balanced_low_0" if torch.cuda.device_count() > 1 else "auto"
+                ),
                 gptq_model=args.gptq,
                 use_fast_tokenizer=not args.use_slow_tokenizer,
             )
@@ -105,10 +123,10 @@ def main(args):
                 stop_id_sequences=[[new_line_token]],
             )
     else:
-        instances = [{
-            "id": str(i), 
-            "prompt": "Complete the following: " + example["text"]
-        } for i, example in enumerate(examples)]
+        instances = [
+            {"id": str(i), "prompt": "Complete the following: " + example["text"]}
+            for i, example in enumerate(examples)
+        ]
         performance = query_openai_chat_model(
             engine=args.openai_engine,
             instances=instances,
@@ -116,7 +134,6 @@ def main(args):
             output_path=os.path.join(args.save_dir, "openai_query_cache.jsonl"),
         )
         outputs = [result["output"] for result in performance]
-
 
     # Run the toxicity classifier
     toxigen_roberta_tokenizer = AutoTokenizer.from_pretrained("tomh/toxigen_roberta")
@@ -162,16 +179,8 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--data_dir", 
-        type=str, 
-        default="data/eval/toxigen"
-    )
-    parser.add_argument(
-        "--save_dir", 
-        type=str, 
-        default="results/toxigen"
-    )
+    parser.add_argument("--data_dir", type=str, default="data/eval/toxigen")
+    parser.add_argument("--save_dir", type=str, default="results/toxigen")
     parser.add_argument(
         "--model_name_or_path",
         type=str,
@@ -187,7 +196,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--use_slow_tokenizer",
         action="store_true",
-        help="If given, we will use the slow tokenizer."
+        help="If given, we will use the slow tokenizer.",
     )
     parser.add_argument(
         "--openai_engine",
@@ -221,15 +230,15 @@ if __name__ == "__main__":
         help="If given, we're evaluating a 4-bit quantized GPTQ model.",
     )
     parser.add_argument(
-        "--use_chat_format", 
-        action="store_true", 
-        help="If given, we will use the chat format for the prompts."
+        "--use_chat_format",
+        action="store_true",
+        help="If given, we will use the chat format for the prompts.",
     )
     parser.add_argument(
-        "--chat_formatting_function", 
-        type=str, 
-        default="eval.templates.create_prompt_with_tulu_chat_format", 
-        help="The function to use to create the chat format. This function will be dynamically imported. Please see examples in `eval/templates.py`."
+        "--chat_formatting_function",
+        type=str,
+        default="eval.templates.create_prompt_with_tulu_chat_format",
+        help="The function to use to create the chat format. This function will be dynamically imported. Please see examples in `eval/templates.py`.",
     )
     parser.add_argument(
         "--use_vllm",

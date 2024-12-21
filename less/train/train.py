@@ -4,17 +4,21 @@ import logging
 import os
 import random
 import sys
-import time
 
 import datasets
-import torch
 import torch.distributed as dist
 import transformers
+
 # from instruction_tuning.train.lora_trainer import LoRAFSDPTrainer, Trainer
 from peft import LoraConfig, PeftModel, TaskType, get_peft_model
-from transformers import (AutoModelForCausalLM, AutoTokenizer,
-                          DataCollatorForSeq2Seq, HfArgumentParser, Trainer,
-                          set_seed)
+from transformers import (
+    AutoModelForCausalLM,
+    AutoTokenizer,
+    DataCollatorForSeq2Seq,
+    HfArgumentParser,
+    Trainer,
+    set_seed,
+)
 
 from less.data_selection.get_training_dataset import get_training_dataset
 from less.train.data_arguments import DataArguments, get_data_statistics
@@ -23,15 +27,17 @@ from less.train.training_arguments import TrainingArguments
 
 logger = logging.getLogger(__name__)
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
-os.environ["PYTORCH_CUDA_ALLOC_CONF"]="garbage_collection_threshold:0.6,max_split_size_mb:256"
+os.environ["PYTORCH_CUDA_ALLOC_CONF"] = (
+    "garbage_collection_threshold:0.6,max_split_size_mb:256"
+)
 
 
 def main():
-    parser = HfArgumentParser(
-        (ModelArguments, DataArguments, TrainingArguments))
+    parser = HfArgumentParser((ModelArguments, DataArguments, TrainingArguments))
     if len(sys.argv) == 2 and sys.argv[1].endswith(".json"):
         model_args, data_args, training_args = parser.parse_json_file(
-            json_file=os.path.abspath(sys.argv[1]))
+            json_file=os.path.abspath(sys.argv[1])
+        )
     else:
         model_args, data_args, training_args = parser.parse_args_into_dataclasses()
 
@@ -42,10 +48,10 @@ def main():
         handlers=[logging.StreamHandler(sys.stdout)],
     )
 
-
     if training_args.should_log:
         import wandb
-        wandb.login(key='9b2f986839a1d92b8e7bf3baef749b3ef15b2e2e')
+
+        wandb.login(key="9b2f986839a1d92b8e7bf3baef749b3ef15b2e2e")
         # The default of training_args.log_level is passive, so we set log level at info here to have that default.
         transformers.utils.logging.set_verbosity_info()
 
@@ -58,8 +64,10 @@ def main():
 
     # Log on each process the small summary:
     logger.warning(
-        f"Process rank: {training_args.local_rank}, device: {training_args.device}, n_gpu: {training_args.n_gpu}"
-        + f"distributed training: {bool(training_args.local_rank != -1)}, 16-bits training: {training_args.fp16}"
+        f"Process rank: {training_args.local_rank}, device: {
+            training_args.device}, n_gpu: {training_args.n_gpu}"
+        + f"distributed training: {bool(training_args.local_rank != -1)
+                                   }, 16-bits training: {training_args.fp16}"
     )
     logger.info(f"Training parameters {training_args}")
     logger.info(f"Model parameters {model_args}")
@@ -68,22 +76,25 @@ def main():
     # Set seed before initializing model.
     set_seed(training_args.seed)
 
-
     # HF login
     from huggingface_hub import login
+
     login("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")
 
     tokenizer = AutoTokenizer.from_pretrained(model_args.model_name_or_path)
-    
+
     # Load training dataset
-    train_dataset = get_training_dataset(data_args.train_files,
-                                         tokenizer=tokenizer,
-                                         max_seq_length=data_args.max_seq_length,
-                                         sample_percentage=data_args.percentage,
-                                         seed=data_args.sample_data_seed)
+    train_dataset = get_training_dataset(
+        data_args.train_files,
+        tokenizer=tokenizer,
+        max_seq_length=data_args.max_seq_length,
+        sample_percentage=data_args.percentage,
+        seed=data_args.sample_data_seed,
+    )
 
     model = AutoModelForCausalLM.from_pretrained(
-        model_args.model_name_or_path, torch_dtype=model_args.torch_dtype)
+        model_args.model_name_or_path, torch_dtype=model_args.torch_dtype
+    )
 
     add_padding_to_tokenizer(tokenizer)
 
@@ -106,41 +117,43 @@ def main():
             target_modules=model_args.lora_target_modules,
         )
         model = get_peft_model(model, lora_config)
-        logger.info(
-            f"Applied LoRA to model."
-        )
+        logger.info("Applied LoRA to model.")
         model.print_trainable_parameters()
 
         # for checkpointing
         if hasattr(model, "enable_input_require_grads"):
             model.enable_input_require_grads()
         else:
+
             def make_inputs_require_grad(module, input, output):
                 output.requires_grad_(True)
+
             model.get_input_embeddings().register_forward_hook(make_inputs_require_grad)
 
     get_data_statistics(train_dataset)
 
     if "dataset" in train_dataset.features:
-        train_dataset = train_dataset.remove_columns(
-            ["dataset", "id", "messages"])
-            
+        train_dataset = train_dataset.remove_columns(["dataset", "id", "messages"])
 
     for index in random.sample(range(len(train_dataset)), 1):
         logger.info(
-            f"Sample {index} of the training set: {train_dataset[index]}.")
+            f"Sample {index} of the training set: {
+                train_dataset[index]}."
+        )
 
-    model_params = sum(p.numel()
-                       for p in model.parameters() if p.requires_grad)
+    model_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
     logger.info(f"trainable model_params: {model_params}")
 
     analysis_dataset = None
     if training_args.analysis_mode:
         from less.data_selection.get_validation_dataset import get_dataset
-        analysis_dataset = get_dataset(training_args.analysis_dataset,
-                                       data_dir=data_args.data_dir,
-                                       tokenizer=tokenizer,
-                                       max_length=data_args.max_seq_length)
+
+        analysis_dataset = get_dataset(
+            training_args.analysis_dataset,
+            data_dir=data_args.data_dir,
+            tokenizer=tokenizer,
+            max_length=data_args.max_seq_length,
+        )
 
     # for testing if the model can go through full length
     # import torch
@@ -162,7 +175,8 @@ def main():
         eval_dataset=analysis_dataset,
         tokenizer=tokenizer,
         data_collator=DataCollatorForSeq2Seq(
-            tokenizer=tokenizer, model=model, padding="longest")
+            tokenizer=tokenizer, model=model, padding="longest"
+        ),
     )
 
     # Training
@@ -183,9 +197,9 @@ def main():
     # remove the full model in the end to save space, only adapter is needed
     if isinstance(model, PeftModel):
         pytorch_model_path = os.path.join(
-            training_args.output_dir, "pytorch_model_fsdp.bin")
-        os.remove(pytorch_model_path) if os.path.exists(
-            pytorch_model_path) else None
+            training_args.output_dir, "pytorch_model_fsdp.bin"
+        )
+        os.remove(pytorch_model_path) if os.path.exists(pytorch_model_path) else None
 
 
 if __name__ == "__main__":

@@ -5,8 +5,12 @@ import random
 random.seed(42)
 
 data_dir = "/scratch/gpfs/mengzhou/space10/data/eval/tydiqa"
-data = json.load(open(
-    "/scratch/gpfs/mengzhou/space10/data/eval/tydiqa/tydiqa-goldp-v1.1-train.json", "r"))
+data = json.load(
+    open(
+        "/scratch/gpfs/mengzhou/space10/data/eval/tydiqa/tydiqa-goldp-v1.1-train.json",
+        "r",
+    )
+)
 
 test_data = []
 with open(os.path.join(data_dir, "tydiqa-goldp-v1.1-dev.json")) as fin:
@@ -19,7 +23,7 @@ with open(os.path.join(data_dir, "tydiqa-goldp-v1.1-dev.json")) as fin:
                     "lang": qa["id"].split("-")[0],
                     "context": paragraph["context"],
                     "question": qa["question"],
-                    "answers": qa["answers"]
+                    "answers": qa["answers"],
                 }
                 test_data.append(example)
 
@@ -35,13 +39,12 @@ for article in data["data"]:
                     "lang": lang,
                     "context": paragraph["context"],
                     "question": qa["question"],
-                    "answers": qa["answers"]
+                    "answers": qa["answers"],
                 }
                 train_data_for_langs[lang].append(example)
 for lang in data_languages:
     # sample n_shot examples from each language
-    train_data_for_langs[lang] = random.sample(
-        train_data_for_langs[lang], 1)
+    train_data_for_langs[lang] = random.sample(train_data_for_langs[lang], 1)
 
 ids = []
 for lang in data_languages:
@@ -55,7 +58,11 @@ for article in data["data"]:
             if qa["id"] in ids:
                 data_with_ids.append(article)
 
-with open("/scratch/gpfs/mengzhou/space10/data/eval/tydiqa/one-shot-valid/tydiqa-goldp-v1.1-dev.json", "w", encoding="utf-8") as f:
+with open(
+    "/scratch/gpfs/mengzhou/space10/data/eval/tydiqa/one-shot-valid/tydiqa-goldp-v1.1-dev.json",
+    "w",
+    encoding="utf-8",
+) as f:
     f.write(json.dumps({"data": data_with_ids}, ensure_ascii=False, indent=4))
 
 test_data = {}
@@ -68,9 +75,13 @@ for article in data_with_ids:
                 "lang": lang,
                 "context": paragraph["context"],
                 "question": qa["question"],
-                "answers": qa["answers"]
+                "answers": qa["answers"],
             }
             test_data[lang] = [example]
 
-with open("/scratch/gpfs/mengzhou/space10/data/eval/tydiqa/one-shot-valid/tydiqa-goldp-v1.1-dev-examples.json", "w", encoding="utf-8") as f:
+with open(
+    "/scratch/gpfs/mengzhou/space10/data/eval/tydiqa/one-shot-valid/tydiqa-goldp-v1.1-dev-examples.json",
+    "w",
+    encoding="utf-8",
+) as f:
     f.write(json.dumps(test_data, ensure_ascii=False, indent=4))

@@ -1,5 +1,4 @@
-
-'''
+"""
 This script is used to get models' predictions on a set of prompts (put in files with *.jsonl format, 
 with the prompt in a `prompt` field or the conversation history in a `messages` field).
 
@@ -17,103 +16,108 @@ Then you can run this script with the following command:
         --output_file <output_file> \
         --batch_size <batch_size> \
         --use_vllm
-'''
-
+"""
 
 import argparse
 import json
 import os
-import vllm
+
 import torch
-from eval.utils import generate_completions, load_hf_lm_and_tokenizer, query_openai_chat_model, dynamic_import_function
+import vllm
+from eval.utils import (
+    dynamic_import_function,
+    generate_completions,
+    load_hf_lm_and_tokenizer,
+    query_openai_chat_model,
+)
 
 
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "--model_name_or_path",
-        type=str,
-        help="Huggingface model name or path.")
+        "--model_name_or_path", type=str, help="Huggingface model name or path."
+    )
     parser.add_argument(
-        "--tokenizer_name_or_path",
-        type=str,
-        help="Huggingface tokenizer name or path."
+        "--tokenizer_name_or_path", type=str, help="Huggingface tokenizer name or path."
     )
     parser.add_argument(
         "--use_slow_tokenizer",
         action="store_true",
-        help="If given, we will use the slow tokenizer."
+        help="If given, we will use the slow tokenizer.",
     )
     parser.add_argument(
-        "--openai_engine", 
+        "--openai_engine",
         type=str,
-        help="OpenAI engine name. This should be exclusive with `model_name_or_path`.")
+        help="OpenAI engine name. This should be exclusive with `model_name_or_path`.",
+    )
     parser.add_argument(
-        "--input_files", 
-        type=str, 
+        "--input_files",
+        type=str,
         nargs="+",
-        help="Input .jsonl files, with each line containing `id` and `prompt` or `messages`.")
+        help="Input .jsonl files, with each line containing `id` and `prompt` or `messages`.",
+    )
     parser.add_argument(
         "--output_file",
         type=str,
         default="output/model_outputs.jsonl",
-        help="Output .jsonl file, with each line containing `id`, `prompt` or `messages`, and `output`.")
+        help="Output .jsonl file, with each line containing `id`, `prompt` or `messages`, and `output`.",
+    )
     parser.add_argument(
-        "--batch_size",
-        type=int,
-        default=1,
-        help="batch size for prediction.")
+        "--batch_size", type=int, default=1, help="batch size for prediction."
+    )
     parser.add_argument(
         "--load_in_8bit",
         action="store_true",
-        help="load model in 8bit mode, which will reduce memory and speed up inference.")
+        help="load model in 8bit mode, which will reduce memory and speed up inference.",
+    )
     parser.add_argument(
         "--load_in_float16",
         action="store_true",
         help="By default, huggingface model will be loaded in the torch.dtype specificed in its model_config file."
-             "If specified, the model dtype will be converted to float16 using `model.half()`.")
+        "If specified, the model dtype will be converted to float16 using `model.half()`.",
+    )
     parser.add_argument(
         "--gptq",
         action="store_true",
-        help="If given, we're evaluating a 4-bit quantized GPTQ model.")
-    parser.add_argument(
-        "--use_vllm",
-        action="store_true", 
-        help="If given, we will use the vllm library, which will likely increase the inference throughput.")
-    parser.add_argument(
-        "--use_chat_format", 
-        action="store_true", 
-        help="If given, we will use the chat format for the prompts."
+        help="If given, we're evaluating a 4-bit quantized GPTQ model.",
     )
     parser.add_argument(
-        "--chat_formatting_function", 
-        type=str, 
-        default="eval.templates.create_prompt_with_tulu_chat_format", 
-        help="The function to use to create the chat format. This function will be dynamically imported. Please see examples in `eval/templates.py`."
+        "--use_vllm",
+        action="store_true",
+        help="If given, we will use the vllm library, which will likely increase the inference throughput.",
+    )
+    parser.add_argument(
+        "--use_chat_format",
+        action="store_true",
+        help="If given, we will use the chat format for the prompts.",
+    )
+    parser.add_argument(
+        "--chat_formatting_function",
+        type=str,
+        default="eval.templates.create_prompt_with_tulu_chat_format",
+        help="The function to use to create the chat format. This function will be dynamically imported. Please see examples in `eval/templates.py`.",
     )
     parser.add_argument(
         "--max_new_tokens",
         type=int,
         default=2048,
-        help="maximum number of new tokens to generate.")
+        help="maximum number of new tokens to generate.",
+    )
     parser.add_argument(
         "--do_sample",
         action="store_true",
-        help="whether to use sampling ; use greedy decoding otherwise.")
+        help="whether to use sampling ; use greedy decoding otherwise.",
+    )
     parser.add_argument(
-        "--temperature",
-        type=float,
-        default=1.0,
-        help="temperature for sampling.")
-    parser.add_argument(
-        "--top_p",
-        type=float,
-        default=1.0,
-        help="top_p for sampling.")
+        "--temperature", type=float, default=1.0, help="temperature for sampling."
+    )
+    parser.add_argument("--top_p", type=float, default=1.0, help="top_p for sampling.")
     args = parser.parse_args()
 
     # model_name_or_path and openai_engine should be exclusive.
-    assert (args.model_name_or_path is None) != (args.openai_engine is None), "model_name_or_path and openai_engine should be exclusive."
+    assert (args.model_name_or_path is None) != (
+        args.openai_engine is None
+    ), "model_name_or_path and openai_engine should be exclusive."
     return args
 
 
@@ -133,14 +137,24 @@ if __name__ == "__main__":
 
     if args.model_name_or_path is not None:
         prompts = []
-        chat_formatting_function = dynamic_import_function(args.chat_formatting_function) if args.use_chat_format else None
+        chat_formatting_function = (
+            dynamic_import_function(args.chat_formatting_function)
+            if args.use_chat_format
+            else None
+        )
         for instance in instances:
             if "messages" in instance:
                 if not args.use_chat_format:
-                    raise ValueError("If `messages` is in the instance, `use_chat_format` should be True.")
-                assert all("role" in message and "content" in message for message in instance["messages"]), \
-                    "Each message should have a `role` and a `content` field."
-                prompt = eval(args.chat_formatting_function)(instance["messages"], add_bos=False)
+                    raise ValueError(
+                        "If `messages` is in the instance, `use_chat_format` should be True."
+                    )
+                assert all(
+                    "role" in message and "content" in message
+                    for message in instance["messages"]
+                ), "Each message should have a `role` and a `content` field."
+                prompt = eval(args.chat_formatting_function)(
+                    instance["messages"], add_bos=False
+                )
             elif "prompt" in instance:
                 if args.use_chat_format:
                     messages = [{"role": "user", "content": instance["prompt"]}]
@@ -148,16 +162,22 @@ if __name__ == "__main__":
                 else:
                     prompt = instance["prompt"]
             else:
-                raise ValueError("Either `messages` or `prompt` should be in the instance.")
+                raise ValueError(
+                    "Either `messages` or `prompt` should be in the instance."
+                )
             prompts.append(prompt)
         if args.use_vllm:
             model = vllm.LLM(
                 model=args.model_name_or_path,
-                tokenizer=args.tokenizer_name_or_path if args.tokenizer_name_or_path else args.model_name_or_path,
+                tokenizer=(
+                    args.tokenizer_name_or_path
+                    if args.tokenizer_name_or_path
+                    else args.model_name_or_path
+                ),
                 tokenizer_mode="slow" if args.use_slow_tokenizer else "auto",
             )
             sampling_params = vllm.SamplingParams(
-                temperature=args.temperature if args.do_sample else 0, 
+                temperature=args.temperature if args.do_sample else 0,
                 top_p=args.top_p,
                 max_tokens=args.max_new_tokens,
             )
@@ -165,10 +185,12 @@ if __name__ == "__main__":
             outputs = [it.outputs[0].text for it in outputs]
         else:
             model, tokenizer = load_hf_lm_and_tokenizer(
-                model_name_or_path=args.model_name_or_path, 
+                model_name_or_path=args.model_name_or_path,
                 tokenizer_name_or_path=args.tokenizer_name_or_path,
-                load_in_8bit=args.load_in_8bit, 
-                device_map="balanced_low_0" if torch.cuda.device_count() > 1 else "auto",
+                load_in_8bit=args.load_in_8bit,
+                device_map=(
+                    "balanced_low_0" if torch.cuda.device_count() > 1 else "auto"
+                ),
                 gptq_model=args.gptq,
                 use_fast_tokenizer=not args.use_slow_tokenizer,
             )
@@ -186,7 +208,7 @@ if __name__ == "__main__":
             for instance, output in zip(instances, outputs):
                 instance["output"] = output
                 f.write(json.dumps(instance) + "\n")
-                
+
     elif args.openai_engine is not None:
         query_openai_chat_model(
             engine=args.openai_engine,
@@ -198,6 +220,8 @@ if __name__ == "__main__":
             max_tokens=args.max_new_tokens,
         )
     else:
-        raise ValueError("Either model_name_or_path or openai_engine should be provided.")
+        raise ValueError(
+            "Either model_name_or_path or openai_engine should be provided."
+        )
 
     print("Done.")
