@@ -64,7 +64,7 @@ The `[pipeline stage]` argument is used to select the stage of the LESS pipeline
 We follow the [open-instruct](https://github.com/allenai/open-instruct?tab=readme-ov-file#dataset-preparation) repo to prepare four instruction tuning datasets for the reproduction study. We utilized a combination of four training datasets: Flan v2, COT, Dolly, and Open Assistant. For the purposes of evaluation, we employed three additional datasets: MMLU, TydiQA, and BBH. A processed version of these files are available [here](https://huggingface.co/datasets/princeton-nlp/less_data).
 
 The original datasets and their corresponding papers are:
-- Flan v2: [dataset](https://github.com/google-research/FLAN/tree/main/flan/v2#download),[paper](https://arxiv.org/abs/2301.13688), 
+- Flan v2: [dataset](https://github.com/google-research/FLAN/tree/main/flan/v2#download),[paper](https://arxiv.org/abs/2301.13688)
 - COT: [dataset](https://huggingface.co/datasets/kaist-ai/CoT-Collection), [paper](https://arxiv.org/abs/2305.14045)
 - DOLLY: [dataset](https://huggingface.co/datasets/databricks/databricks-dolly-15k), [paper](https://www.databricks.com/blog/2023/04/12/dolly-first-open-commercially-viable-instruction-tuned-llm)
 - Open Assistant: [dataset](https://huggingface.co/datasets/OpenAssistant/oasst1), [paper](https://arxiv.org/abs/2304.07327)
