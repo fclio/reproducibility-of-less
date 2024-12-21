@@ -17,7 +17,7 @@ bash experiment_script.sh install
 To install the code on a local system (that doesn't use sbatch jobs), use the following command:
 
 ```
-bash experiment_script.sh install - - bash
+bash experiment_scripts/install_LESS.sh
 ```
 
 ## Experiment script usage
@@ -60,13 +60,11 @@ The `[pipeline stage]` argument is used to select the stage of the LESS pipeline
   * `eval_baseline_ir`: evaluates the models finetuned on data selected with random selection & BM25 for the IR experiment. Results are saved in the to `eval/result` directory.
   * `eval_baseline`: evaluates the models finetuned on data selected with LESS for the ablation study. Results are appended to `experiment_results.txt`.
 
-# The rest of this README file was written by the creators of the original repository.
-
 ## Bugs or Questions?
-If you have any questions related to the code or the paper, feel free to email Mengzhou (mengzhou@princeton.edu). If you encounter any problems when using the code, or want to report a bug, you can open an issue. Please try to specify the problem with details so we can help you better and quicker!
+If you have any questions related to the code or the paper, feel free to email one of the original authors: Mengzhou (mengzhou@princeton.edu). If you encounter any problems when using the code, or want to report a bug, you can open an issue on the original repository. Please try to specify the problem with details so they can help you better and quicker!
 
 ## Citation
-Please cite our paper if you find the repo helpful in your work:
+Please cite the original paper if you find the repo helpful in your work:
 
 ```bibtex
 @inproceedings{xia2024less,
