@@ -21,10 +21,12 @@ source eval.sh
 source eval_tydiqa.sh
 
 JOB_NAME=$1
+LESS_REPO_DIR=$2
+LESS_OUTPUT_DIR=$3
 # JOB_NAME=${MODEL}-less-p${PERCENTAGE}-lora-seed${DATA_SEED}-${TARGET_TASK_NAME}-${CHECKPOINTS}
 
 # Set the model directory relative to the script's location
-MODEL_DIR="/scratch-shared/ir2-less/out/${JOB_NAME}"
+MODEL_DIR="${LESS_OUTPUT_DIR}/out/${JOB_NAME}"
 
 # Run the evaluation on tydiqa dataset
 eval_tydiqa "$MODEL_DIR"

@@ -16,6 +16,8 @@ module load PyTorch/2.1.2-foss-2023a-CUDA-12.1.1
 MODEL=$1
 DATA_SEED=$2
 IR=$3
+LESS_REPO_DIR=$4
+LESS_OUTPUT_DIR=$5
 
 if [[ "$1" == "llama2-7b" ]]; then
     MODEL_PATH=meta-llama/Llama-2-7b-hf
@@ -36,7 +38,7 @@ else
 fi
 
 # Save in scratch-shared
-OUTPUT_DIR=/scratch-shared/ir2-less/out/${JOB_NAME}
+OUTPUT_DIR=${LESS_OUTPUT_DIR}/out/${JOB_NAME}
 if [[ ! -d $OUTPUT_DIR ]]; then
     mkdir -p $OUTPUT_DIR
 fi

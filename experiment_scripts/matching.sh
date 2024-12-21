@@ -17,6 +17,8 @@ TARGET_TASK_NAMES=$1
 MODEL=$2
 DATA_SEED=$3
 CHECKPOINTS=$4
+LESS_REPO_DIR=$5
+LESS_OUTPUT_DIR=$6
 
 foo=${CHECKPOINTS}
 CKPTS=""
@@ -81,12 +83,12 @@ PERCENTAGE=0.05
 
 JOB_NAME="${MODEL}-p${PERCENTAGE}-lora-seed${DATA_SEED}"
 
-GRADIENT_PATH=/scratch-shared/ir2-less/grads/${JOB_NAME}/{}-ckpt{}-adam/dim${DIM}
+GRADIENT_PATH=${LESS_OUTPUT_DIR}/grads/${JOB_NAME}/{}-ckpt{}-adam/dim${DIM}
 
 #TODO FIND THE CORRECT CHECKPOINT WEIGHT!
 
-VALIDATION_GRADIENT_PATH=/scratch-shared/ir2-less/grads/${JOB_NAME}/{}-ckpt{}-sgd/dim${DIM}
-SELECTED_DATA_OUTPUT_PATH="/scratch-shared/ir2-less/selected_data/${JOB_NAME}/${CHECKPOINTS}"
+VALIDATION_GRADIENT_PATH=${LESS_OUTPUT_DIR}/grads/${JOB_NAME}/{}-ckpt{}-sgd/dim${DIM}
+SELECTED_DATA_OUTPUT_PATH="${LESS_OUTPUT_DIR}/selected_data/${JOB_NAME}/${CHECKPOINTS}"
 
 if [[ ! -d $SELECTED_DATA_OUTPUT_PATH ]]; then
     mkdir -p $SELECTED_DATA_OUTPUT_PATH

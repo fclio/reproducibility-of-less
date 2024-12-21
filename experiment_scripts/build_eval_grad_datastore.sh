@@ -17,12 +17,14 @@ TASK=$1
 CKPT=$2
 MODEL=$3
 DATA_SEED=$4
+LESS_REPO_DIR=$5
+LESS_OUTPUT_DIR=$6
 
 PERCENTAGE=0.05
 
 JOB_NAME="${MODEL}-p${PERCENTAGE}-lora-seed${DATA_SEED}"
-MODEL_PATH=/scratch-shared/ir2-less/out/${JOB_NAME}/checkpoint-${CKPT}
-OUTPUT_PATH=/scratch-shared/ir2-less/grads/${JOB_NAME}/${TASK}-ckpt${CKPT}-sgd
+MODEL_PATH=${LESS_OUTPUT_DIR}/out/${JOB_NAME}/checkpoint-${CKPT}
+OUTPUT_PATH=${LESS_OUTPUT_DIR}/grads/${JOB_NAME}/${TASK}-ckpt${CKPT}-sgd
 DATA_DIR="data"
 DIMS="8192"
 

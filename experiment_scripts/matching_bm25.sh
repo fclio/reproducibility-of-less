@@ -17,6 +17,9 @@ TARGET_TASK_NAMES=$1
 MODEL=$2
 DATA_SEED=$3
 IR=$4
+LESS_REPO_DIR=$5
+LESS_OUTPUT_DIR=$6
+
 PERCENTAGE=0.05
 
 if [[ "$4" == "IR" ]]; then
@@ -31,11 +34,11 @@ fi
 
 PERCENTAGE=0.05
 
-TRAIN_DATA_PATH="/home/scur2847/ir2-less-data/data/train/processed"
-EVAL_DATA_PATH="/home/scur2847/ir2-less-data/data/eval"
-# SELECTED_DATA_OUTPUT_PATH="/home/scur2847/ir2-less-data/selected_data/${JOB_NAME}"
+TRAIN_DATA_PATH="${LESS_REPO_DIR}/data/train/processed"
+EVAL_DATA_PATH="${LESS_REPO_DIR}/data/eval"
+# SELECTED_DATA_OUTPUT_PATH="${LESS_REPO_DIR}/selected_data/${JOB_NAME}"
 
-SELECTED_DATA_OUTPUT_PATH="/scratch-shared/ir2-less/selected_data/${JOB_NAME}/baseline"
+SELECTED_DATA_OUTPUT_PATH="${LESS_OUTPUT_DIR}/selected_data/${JOB_NAME}/baseline"
 
 # Create output directory if it doesn't exist
 if [[ ! -d $SELECTED_DATA_OUTPUT_PATH ]]; then

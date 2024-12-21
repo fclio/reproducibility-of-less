@@ -104,8 +104,9 @@ if __name__ == "__main__":
         for i, lines in enumerate(all_lines):
             print(f"File {args.train_files[i]} has {len(lines)} lines.")
 
+        final_path = os.path.join(output_path, f"bm25_top_{data_amount_name}.jsonl")
         
-        with open(os.path.join(output_path, f"bm25_top_{data_amount_name}.jsonl"), 'w', encoding='utf-8', errors='ignore') as file:
+        with open(final_path, 'w', encoding='utf-8', errors='ignore') as file:
             for index, data_from in zip(final_index_list, final_data_from):
                 try:
                     file.write(all_lines[data_from][index])
@@ -113,4 +114,5 @@ if __name__ == "__main__":
                     import pdb
                     pdb.set_trace()
                     
-        print(f"Saved top {args.max_samples} random selected data to {os.path.join(output_path, f"bm25_top_{data_amount_name}.jsonl")}")
+        print(f"Saved top {args.max_samples} random selected data to {final_path}")
+

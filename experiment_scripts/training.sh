@@ -18,6 +18,8 @@ MODEL=$2
 DATA_SEED=$3
 CHECKPOINTS=$4
 MODE=$5
+LESS_REPO_DIR=$6
+LESS_OUTPUT_DIR=$7
 
 if [[ "$2" == "llama2-7b" ]]; then
     MODEL_PATH=meta-llama/Llama-2-7b-hf
@@ -31,31 +33,31 @@ PERCENTAGE=0.05
 if [[ "$5" == "T" ]]; then
     JOB_NAME_TRAIN="llama2-7b-p${PERCENTAGE}-lora-seed${DATA_SEED}"
     JOB_NAME=${MODEL}-less-p${PERCENTAGE}-lora-seed${DATA_SEED}-${TARGET_TASK_NAME}-${CHECKPOINTS}-T
-    TRAIN_FILES=/scratch-shared/ir2-less/selected_data/${JOB_NAME_TRAIN}/${CHECKPOINTS}/${TARGET_TASK_NAME}/top_p${PERCENTAGE}.jsonl
+    TRAIN_FILES=${LESS_OUTPUT_DIR}/selected_data/${JOB_NAME_TRAIN}/${CHECKPOINTS}/${TARGET_TASK_NAME}/top_p${PERCENTAGE}.jsonl
 elif [[ "$5" == "BM25" ]]; then
     JOB_NAME_TRAIN="${MODEL}-p${PERCENTAGE}-lora-seed${DATA_SEED}"
     JOB_NAME=${MODEL}-less-p${PERCENTAGE}-lora-seed${DATA_SEED}-${TARGET_TASK_NAME}-BM25
-    TRAIN_FILES=/scratch-shared/ir2-less/selected_data/${JOB_NAME_TRAIN}/baseline/${TARGET_TASK_NAME}/bm25_top_p${PERCENTAGE}.jsonl
+    TRAIN_FILES=${LESS_OUTPUT_DIR}/selected_data/${JOB_NAME_TRAIN}/baseline/${TARGET_TASK_NAME}/bm25_top_p${PERCENTAGE}.jsonl
 elif [[ "$5" == "random" ]]; then
     JOB_NAME_TRAIN="${MODEL}-p${PERCENTAGE}-lora-seed${DATA_SEED}"
     JOB_NAME=${MODEL}-less-p${PERCENTAGE}-lora-seed${DATA_SEED}-${TARGET_TASK_NAME}-random
-    TRAIN_FILES=/scratch-shared/ir2-less/selected_data/${JOB_NAME_TRAIN}/baseline/${TARGET_TASK_NAME}/random_top_p${PERCENTAGE}.jsonl
+    TRAIN_FILES=${LESS_OUTPUT_DIR}/selected_data/${JOB_NAME_TRAIN}/baseline/${TARGET_TASK_NAME}/random_top_p${PERCENTAGE}.jsonl
 elif [[ "$5" == "IR" ]]; then
     JOB_NAME_TRAIN="${MODEL}-p${PERCENTAGE}-lora-seed${DATA_SEED}-first"
     JOB_NAME=${MODEL}-less-p${PERCENTAGE}-lora-seed${DATA_SEED}-${TARGET_TASK_NAME}-${CHECKPOINTS}
-    TRAIN_FILES=/scratch-shared/ir2-less/selected_data/${JOB_NAME_TRAIN}/${CHECKPOINTS}/${TARGET_TASK_NAME}/top_p${PERCENTAGE}.jsonl
+    TRAIN_FILES=${LESS_OUTPUT_DIR}/selected_data/${JOB_NAME_TRAIN}/${CHECKPOINTS}/${TARGET_TASK_NAME}/top_p${PERCENTAGE}.jsonl
 elif [[ "$5" == "IR_BM25" ]]; then
     JOB_NAME_TRAIN="${MODEL}-p${PERCENTAGE}-lora-seed${DATA_SEED}-first"
     JOB_NAME=${MODEL}-less-p${PERCENTAGE}-lora-seed${DATA_SEED}-${TARGET_TASK_NAME}-BM25
-    TRAIN_FILES=/scratch-shared/ir2-less/selected_data/${JOB_NAME_TRAIN}/baseline/${TARGET_TASK_NAME}/bm25_top_p${PERCENTAGE}.jsonl
+    TRAIN_FILES=${LESS_OUTPUT_DIR}/selected_data/${JOB_NAME_TRAIN}/baseline/${TARGET_TASK_NAME}/bm25_top_p${PERCENTAGE}.jsonl
 elif [[ "$5" == "IR_random" ]]; then
     JOB_NAME_TRAIN="${MODEL}-p${PERCENTAGE}-lora-seed${DATA_SEED}-first"
     JOB_NAME=${MODEL}-less-p${PERCENTAGE}-lora-seed${DATA_SEED}-${TARGET_TASK_NAME}-random
-    TRAIN_FILES=/scratch-shared/ir2-less/selected_data/${JOB_NAME_TRAIN}/baseline/${TARGET_TASK_NAME}/random_top_p${PERCENTAGE}.jsonl
+    TRAIN_FILES=${LESS_OUTPUT_DIR}/selected_data/${JOB_NAME_TRAIN}/baseline/${TARGET_TASK_NAME}/random_top_p${PERCENTAGE}.jsonl
 else
     JOB_NAME_TRAIN="${MODEL}-p${PERCENTAGE}-lora-seed${DATA_SEED}"
     JOB_NAME=${MODEL}-less-p${PERCENTAGE}-lora-seed${DATA_SEED}-${TARGET_TASK_NAME}-${CHECKPOINTS}
-    TRAIN_FILES=/scratch-shared/ir2-less/selected_data/${JOB_NAME_TRAIN}/${CHECKPOINTS}/${TARGET_TASK_NAME}/top_p${PERCENTAGE}.jsonl
+    TRAIN_FILES=${LESS_OUTPUT_DIR}/selected_data/${JOB_NAME_TRAIN}/${CHECKPOINTS}/${TARGET_TASK_NAME}/top_p${PERCENTAGE}.jsonl
 fi
 
 bash less/scripts/train/lora_train.sh "$TRAIN_FILES" "$MODEL_PATH" "$JOB_NAME" 

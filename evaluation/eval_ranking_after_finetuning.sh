@@ -24,10 +24,12 @@ module load PyTorch/2.1.2-foss-2023a-CUDA-12.1.1
 
 JOB_NAME=$1
 TASK_NAME=$2
+LESS_REPO_DIR=$3
+LESS_OUTPUT_DIR=$4
 
-MODEL_DIR="/scratch-shared/ir2-less/out/${JOB_NAME}"
-DATASET_PATH="/home/scur2847/ir2-less-data/data/eval/${TASK_NAME}/${TASK_NAME}_data.jsonl"
-OUTPUT_PATH="/home/scur2847/ir2-less-data/eval/result/${JOB_NAME}/ranking_results_finetune_${TASK_NAME}.json"
+MODEL_DIR="${LESS_OUTPUT_DIR}/out/${JOB_NAME}"
+DATASET_PATH="${LESS_REPO_DIR}/data/eval/${TASK_NAME}/${TASK_NAME}_data.jsonl"
+OUTPUT_PATH="${LESS_REPO_DIR}/eval/result/${JOB_NAME}/ranking_results_finetune_${TASK_NAME}.json"
 
 # Run the ranking evaluation script
 python eval/ir/ranking_relevant.py --model_path "$MODEL_DIR" --dataset_path "$DATASET_PATH" --output_path "$OUTPUT_PATH"

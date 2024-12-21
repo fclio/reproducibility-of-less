@@ -18,6 +18,8 @@ CKPT=$2
 MODEL=$3
 DATA_SEED=$4
 IR=$5
+LESS_REPO_DIR=$6
+LESS_OUTPUT_DIR=$7
 
 if [[ "$1" == "cot" ]]; then
     TRAINING_DATA_FILE="data/train/processed/cot/cot_data.jsonl"
@@ -57,8 +59,8 @@ if [[ "$5" == "IR" ]]; then
 else
     JOB_NAME="${MODEL}-p${PERCENTAGE}-lora-seed${DATA_SEED}"
 fi
-MODEL_PATH=/scratch-shared/ir2-less/out/${JOB_NAME}/checkpoint-${CKPT}
-OUTPUT_PATH=/scratch-shared/ir2-less/grads/${JOB_NAME}/${TRAINING_DATA_NAME}-ckpt${CKPT}-${GRADIENT_TYPE}
+MODEL_PATH=${LESS_OUTPUT_DIR}/out/${JOB_NAME}/checkpoint-${CKPT}
+OUTPUT_PATH=${LESS_OUTPUT_DIR}/grads/${JOB_NAME}/${TRAINING_DATA_NAME}-ckpt${CKPT}-${GRADIENT_TYPE}
 DIMS="8192"
 
 if [[ ! -d $OUTPUT_PATH ]]; then
