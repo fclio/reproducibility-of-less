@@ -60,6 +60,20 @@ The `[pipeline stage]` argument is used to select the stage of the LESS pipeline
   * `eval_baseline_ir`: evaluates the models finetuned on data selected with random selection & BM25 for the IR experiment. Results are saved in the to `eval/result` directory.
   * `eval_baseline`: evaluates the models finetuned on data selected with LESS for the ablation study. Results are appended to `experiment_results.txt`.
 
+## Datasets
+We follow the [open-instruct](https://github.com/allenai/open-instruct?tab=readme-ov-file#dataset-preparation) repo to prepare four instruction tuning datasets for the reproduction study. We utilized a combination of four training datasets: Flan v2, COT, Dolly, and Open Assistant. For the purposes of evaluation, we employed three additional datasets: MMLU, TydiQA, and BBH. A processed version of these files are available [here](https://huggingface.co/datasets/princeton-nlp/less_data).
+
+The original datasets and their corresponding papers are:
+- Flan v2: [dataset](https://github.com/google-research/FLAN/tree/main/flan/v2#download),[paper](https://arxiv.org/abs/2301.13688), 
+- COT: [dataset](https://huggingface.co/datasets/kaist-ai/CoT-Collection), [paper](https://arxiv.org/abs/2305.14045)
+- DOLLY: [dataset](https://huggingface.co/datasets/databricks/databricks-dolly-15k), [paper](https://www.databricks.com/blog/2023/04/12/dolly-first-open-commercially-viable-instruction-tuned-llm)
+- Open Assistant: [dataset](https://huggingface.co/datasets/OpenAssistant/oasst1), [paper](https://arxiv.org/abs/2304.07327)
+- MMLU: [dataset](https://huggingface.co/datasets/cais/mmlu), [paper](https://arxiv.org/abs/2009.03300v3)
+- TydiQA: [dataset](https://github.com/google-research-datasets/tydiqa), [paper](https://arxiv.org/abs/2003.05002)
+- BBH: [dataset](https://github.com/suzgunmirac/BIG-Bench-Hard), [paper](https://arxiv.org/abs/2210.09261)
+
+For the IR task, TODO 
+
 ## Bugs or Questions?
 If you have any questions related to the code or the paper, feel free to email one of the original authors: Mengzhou (mengzhou@princeton.edu). If you encounter any problems when using the code, or want to report a bug, you can open an issue on the original repository. Please try to specify the problem with details so they can help you better and quicker!
 
