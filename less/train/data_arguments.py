@@ -17,10 +17,15 @@ def none_or_str(value):
 
 @dataclass
 class DataArguments:
-    train_files: List[str] = field(default_factory=list, metadata={
-                                   "help": "The input training data files (multiple files in glob format)."})
+    train_files: List[str] = field(
+        default_factory=list,
+        metadata={
+            "help": "The input training data files (multiple files in glob format)."
+        },
+    )
     overwrite_cache: bool = field(
-        default=False, metadata={"help": "Overwrite the cached training and evaluation sets"}
+        default=False,
+        metadata={"help": "Overwrite the cached training and evaluation sets"},
     )
     preprocessing_num_workers: Optional[int] = field(
         default=None,
@@ -29,19 +34,24 @@ class DataArguments:
     max_seq_length: Optional[int] = field(
         default=None,
         metadata={
-            "help": ("The maximum total input sequence length after tokenization. Sequences longer than this will be truncated,")
+            "help": (
+                "The maximum total input sequence length after tokenization. Sequences longer than this will be truncated,"
+            )
         },
     )
     sample_data_seed: int = field(
-        default=42, metadata={"help": ("The seed used for data sampling.")},
+        default=42,
+        metadata={"help": ("The seed used for data sampling.")},
     )
     percentage: float = field(
-        default=1.0, metadata={"help": ("Sampling percentage for each dataset")},
+        default=1.0,
+        metadata={"help": ("Sampling percentage for each dataset")},
     )
 
 
 def get_data_statistics(lm_datasets):
-    """ Get the data statistics of the dataset. """
+    """Get the data statistics of the dataset."""
+
     def get_length(examples):
         lengths = [len(ids) for ids in examples["input_ids"]]
 
@@ -62,7 +72,8 @@ def get_data_statistics(lm_datasets):
         length = sum(lengths) / len(lengths)
         c_lengths = dataset["c_length"]
         c_length = sum(c_lengths) / len(c_lengths)
+        print(f"[{key} set] examples: {data_size}; # avg tokens: {length}")
         print(
-            f"[{key} set] examples: {data_size}; # avg tokens: {length}")
-        print(
-            f"[{key} set] examples: {data_size}; # avg completion tokens: {c_length}")
+            f"[{key} set] examples: {
+                data_size}; # avg completion tokens: {c_length}"
+        )

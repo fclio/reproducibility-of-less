@@ -1,4 +1,4 @@
-from dataclasses import asdict, dataclass, field, fields
+from dataclasses import dataclass, field
 
 from transformers import TrainingArguments as TA
 from transformers.utils import logging
@@ -55,27 +55,15 @@ fsdp_config = {
 class TrainingArguments(TA):
     analysis_mode: float = field(
         default=False,
-        metadata={
-            "help": (
-                "Whether to run in analysis mode. "
-            )
-        },
+        metadata={"help": ("Whether to run in analysis mode. ")},
     )
     analysis_dataset: str = field(
         default="bbh",
-        metadata={
-            "help": (
-                "The dataset to use for analysis mode. "
-            )
-        },
+        metadata={"help": ("The dataset to use for analysis mode. ")},
     )
     train_dataset_names: str = field(
         default=None,
-        metadata={
-            "help": (
-                "The dataset to use for training. "
-            )
-        },
+        metadata={"help": ("The dataset to use for training. ")},
     )
 
     def __post_init__(self):

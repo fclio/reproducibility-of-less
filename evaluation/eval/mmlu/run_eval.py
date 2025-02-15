@@ -1,16 +1,18 @@
 import argparse
 import json
 import os
-import time
 
 import numpy as np
 import pandas as pd
 import torch
-from tqdm import tqdm
-
 from eval.mmlu.categories import categories, subcategories
-from eval.utils import (dynamic_import_function, get_next_word_predictions,
-                        load_hf_lm_and_tokenizer, query_openai_chat_model)
+from eval.utils import (
+    dynamic_import_function,
+    get_next_word_predictions,
+    load_hf_lm_and_tokenizer,
+    query_openai_chat_model,
+)
+from tqdm import tqdm
 
 choices = ["A", "B", "C", "D"]
 
@@ -48,8 +50,11 @@ def gen_prompt(train_df, subject, k=-1):
 @torch.no_grad()
 def eval_hf_model(args, subject, model, tokenizer, dev_df, test_df, batch_size=1, k=5):
     prompts = []
-    chat_formatting_function = dynamic_import_function(
-        args.chat_formatting_function) if args.use_chat_format else None
+    chat_formatting_function = (
+        dynamic_import_function(args.chat_formatting_function)
+        if args.use_chat_format
+        else None
+    )
     for i in range(0, test_df.shape[0]):
         prompt_end = format_example(test_df, i, include_answer=False)
         train_prompt = gen_prompt(dev_df, subject, k)
@@ -62,9 +67,10 @@ def eval_hf_model(args, subject, model, tokenizer, dev_df, test_df, batch_size=1
                 prompt += "The answer is:"
             else:
                 prompt += " The answer is:"
-        
+
         tokenized_prompt = tokenizer(
-            prompt, truncation=False, add_special_tokens=False).input_ids
+            prompt, truncation=False, add_special_tokens=False
+        ).input_ids
         # make sure every prompt is less than 2048 tokens
         while len(tokenized_prompt) > 2048:
             k -= 1
@@ -80,16 +86,24 @@ def eval_hf_model(args, subject, model, tokenizer, dev_df, test_df, batch_size=1
                     prompt += " The answer is:"
 
             tokenized_prompt = tokenizer(
-                prompt, truncation=False, add_special_tokens=False).input_ids
+                prompt, truncation=False, add_special_tokens=False
+            ).input_ids
         prompts.append(prompt)
 
     # get the answer for all examples
     # adding a prefix space here, as that's expected from the prompt
     # TODO: should raise a warning if this returns more than one token
-    answer_choice_ids = [tokenizer.encode(
-        " " + answer_choice, add_special_tokens=False)[-1] for answer_choice in choices]
+    answer_choice_ids = [
+        tokenizer.encode(" " + answer_choice, add_special_tokens=False)[-1]
+        for answer_choice in choices
+    ]
     pred_indices, all_probs = get_next_word_predictions(
-        model, tokenizer, prompts, candidate_token_ids=answer_choice_ids, return_token_predictions=False, batch_size=batch_size
+        model,
+        tokenizer,
+        prompts,
+        candidate_token_ids=answer_choice_ids,
+        return_token_predictions=False,
+        batch_size=batch_size,
     )
 
     # get the metrics
@@ -111,6 +125,7 @@ def eval_hf_model(args, subject, model, tokenizer, dev_df, test_df, batch_size=1
 def eval_openai_chat_engine(args, subject, engine, dev_df, test_df, batch_size=1):
 
     import tiktoken
+
     gpt_tokenizer = tiktoken.get_encoding("cl100k_base")
     # be careful, the tokenizer will tokenize " A" and "A" differently.
     answer_choice_ids = [gpt_tokenizer.encode(" " + x)[0] for x in choices]
@@ -123,14 +138,12 @@ def eval_openai_chat_engine(args, subject, engine, dev_df, test_df, batch_size=1
         prompt = train_prompt + prompt_end
         prompts.append(prompt)
 
-    instances = [{"id": prompt, "prompt": prompt}
-                 for _, prompt in enumerate(prompts)]
+    instances = [{"id": prompt, "prompt": prompt} for _, prompt in enumerate(prompts)]
     results = query_openai_chat_model(
         engine=args.openai_engine,
         instances=instances,
         batch_size=args.eval_batch_size if args.eval_batch_size else 10,
-        output_path=os.path.join(
-            args.save_dir, f"{subject}_openai_results.jsonl"),
+        output_path=os.path.join(args.save_dir, f"{subject}_openai_results.jsonl"),
         logit_bias={token_id: 100 for token_id in answer_choice_ids},
         max_tokens=1,
     )
@@ -147,8 +160,7 @@ def eval_openai_chat_engine(args, subject, engine, dev_df, test_df, batch_size=1
     cors = np.array(cors)
 
     # dummy probs, just don't want to dig into the openai probs
-    all_probs = np.array([[0.25, 0.25, 0.25, 0.25]
-                         for _ in range(len(test_df))])
+    all_probs = np.array([[0.25, 0.25, 0.25, 0.25] for _ in range(len(test_df))])
 
     print("Average accuracy {:.3f} - {}".format(acc, subject))
     return cors, acc, all_probs
@@ -179,7 +191,8 @@ def main(args):
 
     if args.subjects:
         assert all(
-            subj in subjects for subj in args.subjects), f"Some of the subjects you specified are not valid: {args.subjects}"
+            subj in subjects for subj in args.subjects
+        ), f"Some of the subjects you specified are not valid: {args.subjects}"
         subjects = args.subjects
 
     if not os.path.exists(args.save_dir):
@@ -191,7 +204,7 @@ def main(args):
     }
     cat_cors = {cat: [] for cat in categories}
 
-    for subject in tqdm(subjects, desc=f"Evaluating subjects: "):
+    for subject in tqdm(subjects, desc="Evaluating subjects: "):
 
         dev_df = pd.read_csv(
             os.path.join(args.data_dir, "dev", subject + "_dev.csv"), header=None
@@ -205,12 +218,21 @@ def main(args):
         if args.model_name_or_path:
             if args.eval_valid:
                 test_df = dev_df
-            
+
             cors, acc, probs = eval_hf_model(
-                args, subject, model, tokenizer, dev_df, test_df, args.eval_batch_size, k=args.ntrain if not args.eval_valid else 0)
+                args,
+                subject,
+                model,
+                tokenizer,
+                dev_df,
+                test_df,
+                args.eval_batch_size,
+                k=args.ntrain if not args.eval_valid else 0,
+            )
         else:
             cors, acc, probs = eval_openai_chat_engine(
-                args, subject, args.openai_engine, dev_df, test_df, args.eval_batch_size)
+                args, subject, args.openai_engine, dev_df, test_df, args.eval_batch_size
+            )
 
         subcats = subcategories[subject]
         for subcat in subcats:
@@ -225,9 +247,7 @@ def main(args):
             choice = choices[j]
             test_df["choice{}_probs".format(choice)] = probs[:, j]
         test_df.to_csv(
-            os.path.join(
-                args.save_dir, "{}.csv".format(subject)
-            ),
+            os.path.join(args.save_dir, "{}.csv".format(subject)),
             index=None,
         )
 
@@ -251,8 +271,7 @@ def main(args):
                     for subcat in subcat_cors
                 },
                 "cat_acc": {
-                    cat: np.mean(np.concatenate(cat_cors[cat]))
-                    for cat in cat_cors
+                    cat: np.mean(np.concatenate(cat_cors[cat])) for cat in cat_cors
                 },
             },
             f,
@@ -261,80 +280,65 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--ntrain",
-        type=int,
-        default=5
-    )
-    parser.add_argument(
-        "--data_dir",
-        type=str,
-        default="data/mmlu"
-    )
-    parser.add_argument(
-        "--save_dir",
-        type=str,
-        default="results/mmlu/llama-7B/"
-    )
+    parser.add_argument("--ntrain", type=int, default=5)
+    parser.add_argument("--data_dir", type=str, default="data/mmlu")
+    parser.add_argument("--save_dir", type=str, default="results/mmlu/llama-7B/")
     parser.add_argument(
         "--model_name_or_path",
         type=str,
         default=None,
-        help="if specified, we will load the model to generate the predictions."
+        help="if specified, we will load the model to generate the predictions.",
     )
     parser.add_argument(
         "--tokenizer_name_or_path",
         type=str,
         default=None,
-        help="if specified, we will load the tokenizer from here."
+        help="if specified, we will load the tokenizer from here.",
     )
     parser.add_argument(
         "--use_slow_tokenizer",
         action="store_true",
-        help="If given, we will use the slow tokenizer."
+        help="If given, we will use the slow tokenizer.",
     )
     parser.add_argument(
         "--openai_engine",
         type=str,
         default=None,
-        help="if specified, we will use the OpenAI API to generate the predictions."
+        help="if specified, we will use the OpenAI API to generate the predictions.",
     )
     parser.add_argument(
         "--subjects",
         nargs="*",
-        help="which subjects to evaluate. If not specified, all the 57 subjects will be evaluated."
+        help="which subjects to evaluate. If not specified, all the 57 subjects will be evaluated.",
     )
     parser.add_argument(
         "--n_instances",
         type=int,
-        help="if specified, a maximum of n_instances per subject will be used for the evaluation."
+        help="if specified, a maximum of n_instances per subject will be used for the evaluation.",
     )
     parser.add_argument(
-        "--eval_batch_size",
-        type=int,
-        default=1,
-        help="batch size for evaluation."
+        "--eval_batch_size", type=int, default=1, help="batch size for evaluation."
     )
     parser.add_argument(
         "--load_in_8bit",
         action="store_true",
-        help="load model in 8bit mode, which will reduce memory and speed up inference."
+        help="load model in 8bit mode, which will reduce memory and speed up inference.",
     )
     parser.add_argument(
         "--gptq",
         action="store_true",
-        help="If given, we're evaluating a 4-bit quantized GPTQ model."
+        help="If given, we're evaluating a 4-bit quantized GPTQ model.",
     )
     parser.add_argument(
         "--use_chat_format",
         action="store_true",
-        help="If given, we will use the chat format for the prompts."
+        help="If given, we will use the chat format for the prompts.",
     )
     parser.add_argument(
         "--chat_formatting_function",
         type=str,
         default="eval.templates.create_prompt_with_tulu_chat_format",
-        help="The function to use to create the chat format. This function will be dynamically imported. Please see examples in `eval/templates.py`."
+        help="The function to use to create the chat format. This function will be dynamically imported. Please see examples in `eval/templates.py`.",
     )
     parser.add_argument(
         "--convert_to_half",
@@ -349,11 +353,13 @@ if __name__ == "__main__":
     parser.add_argument(
         "--eval_valid",
         action="store_true",
-        help="If given, we will use gpu for inference.")
+        help="If given, we will use gpu for inference.",
+    )
 
     args = parser.parse_args()
 
     # model_name_or_path and openai_engine cannot be both None or both not None.
     assert (args.model_name_or_path is None) != (
-        args.openai_engine is None), "Either model_name_or_path or openai_engine should be specified."
+        args.openai_engine is None
+    ), "Either model_name_or_path or openai_engine should be specified."
     main(args)

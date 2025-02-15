@@ -4,7 +4,6 @@
 
 import argparse
 import os
-import pdb
 from copy import deepcopy
 from typing import Any
 
@@ -12,15 +11,12 @@ import torch
 from peft import LoraConfig, PeftModel, TaskType, get_peft_model
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-from less.data_selection.collect_grad_reps import (collect_grads, collect_reps,
-                                                   get_loss)
+from less.data_selection.collect_grad_reps import collect_grads, collect_reps, get_loss
 from less.data_selection.get_training_dataset import get_training_dataset
-from less.data_selection.get_validation_dataset import (get_dataloader,
-                                                        get_dataset)
+from less.data_selection.get_validation_dataset import get_dataloader, get_dataset
 
 
-def load_model(model_name_or_path: str,
-               torch_dtype: Any = torch.bfloat16) -> Any:
+def load_model(model_name_or_path: str, torch_dtype: Any = torch.bfloat16) -> Any:
     """
     Load a model from a given model name or path.
 
@@ -32,65 +28,112 @@ def load_model(model_name_or_path: str,
         Any: The loaded model.
     """
 
-    is_peft = os.path.exists(os.path.join(
-        model_name_or_path, "adapter_config.json"))
+    is_peft = os.path.exists(os.path.join(model_name_or_path, "adapter_config.json"))
     if is_peft:
         # load this way to make sure that optimizer states match the model structure
         config = LoraConfig.from_pretrained(model_name_or_path)
         base_model = AutoModelForCausalLM.from_pretrained(
-            config.base_model_name_or_path, torch_dtype=torch_dtype, device_map="auto")
+            config.base_model_name_or_path, torch_dtype=torch_dtype, device_map="auto"
+        )
         model = PeftModel.from_pretrained(
-            base_model, model_name_or_path, device_map="auto")
+            base_model, model_name_or_path, device_map="auto"
+        )
     else:
         model = AutoModelForCausalLM.from_pretrained(
-            model_name_or_path, torch_dtype=torch_dtype, device_map="auto")
+            model_name_or_path, torch_dtype=torch_dtype, device_map="auto"
+        )
 
     for name, param in model.named_parameters():
-        if 'lora' in name or 'Lora' in name:
+        if "lora" in name or "Lora" in name:
             param.requires_grad = True
     return model
 
 
-parser = argparse.ArgumentParser(
-    description='Script for getting validation gradients')
-parser.add_argument('--task', type=str, default=None,
-                    help='Specify the task from bbh, tydiqa or mmlu. One of variables of task and train_file must be specified')
-parser.add_argument("--train_file", type=str,
-                    default=None, help="The path to the training data file we'd like to obtain the gradients/representations for. One of variables of task and train_file must be specified")
+parser = argparse.ArgumentParser(description="Script for getting validation gradients")
 parser.add_argument(
-    "--info_type", choices=["grads", "reps", "loss"], help="The type of information")
-parser.add_argument("--model_path", type=str,
-                    default=None, help="The path to the model")
-parser.add_argument("--max_samples", type=int,
-                    default=None, help="The maximum number of samples")
-parser.add_argument("--torch_dtype", type=str, default="bfloat16",
-                    choices=["float32", "bfloat16"], help="The torch data type")
-parser.add_argument("--output_path", type=str,
-                    default=None, help="The path to the output")
-parser.add_argument("--data_dir", type=str,
-                    default=None, help="The path to the data")
-parser.add_argument("--gradient_projection_dimension", nargs='+',
-                    help="The dimension of the projection, can be a list", type=int, default=[8192])
-parser.add_argument("--gradient_type", type=str, default="adam",
-                    choices=["adam", "sign", "sgd"], help="The type of gradient")
-parser.add_argument("--chat_format", type=str,
-                    default="tulu", help="The chat format")
-parser.add_argument("--use_chat_format", type=bool,
-                    default=True, help="Whether to use chat format")
-parser.add_argument("--max_length", type=int, default=2048,
-                    help="The maximum length")
-parser.add_argument("--zh", default=False, action="store_true",
-                    help="Whether we are loading a translated chinese version of tydiqa dev data (Only applicable to tydiqa)")
-parser.add_argument("--initialize_lora", default=False, action="store_true",
-                    help="Whether to initialize the base model with lora, only works when is_peft is False")
-parser.add_argument("--lora_r", type=int, default=8,
-                    help="The value of lora_r hyperparameter")
-parser.add_argument("--lora_alpha", type=float, default=32,
-                    help="The value of lora_alpha hyperparameter")
-parser.add_argument("--lora_dropout", type=float, default=0.1,
-                    help="The value of lora_dropout hyperparameter")
-parser.add_argument("--lora_target_modules", nargs='+', default=[
-                    "q_proj", "k_proj", "v_proj", "o_proj"],  help="The list of lora_target_modules")
+    "--task",
+    type=str,
+    default=None,
+    help="Specify the task from bbh, tydiqa or mmlu. One of variables of task and train_file must be specified",
+)
+parser.add_argument(
+    "--train_file",
+    type=str,
+    default=None,
+    help="The path to the training data file we'd like to obtain the gradients/representations for. One of variables of task and train_file must be specified",
+)
+parser.add_argument(
+    "--info_type", choices=["grads", "reps", "loss"], help="The type of information"
+)
+parser.add_argument(
+    "--model_path", type=str, default=None, help="The path to the model"
+)
+parser.add_argument(
+    "--max_samples", type=int, default=None, help="The maximum number of samples"
+)
+parser.add_argument(
+    "--torch_dtype",
+    type=str,
+    default="bfloat16",
+    choices=["float32", "bfloat16"],
+    help="The torch data type",
+)
+parser.add_argument(
+    "--output_path", type=str, default=None, help="The path to the output"
+)
+parser.add_argument("--data_dir", type=str, default=None, help="The path to the data")
+parser.add_argument(
+    "--gradient_projection_dimension",
+    nargs="+",
+    help="The dimension of the projection, can be a list",
+    type=int,
+    default=[8192],
+)
+parser.add_argument(
+    "--gradient_type",
+    type=str,
+    default="adam",
+    choices=["adam", "sign", "sgd"],
+    help="The type of gradient",
+)
+parser.add_argument("--chat_format", type=str, default="tulu", help="The chat format")
+parser.add_argument(
+    "--use_chat_format", type=bool, default=True, help="Whether to use chat format"
+)
+parser.add_argument("--max_length", type=int, default=2048, help="The maximum length")
+parser.add_argument(
+    "--zh",
+    default=False,
+    action="store_true",
+    help="Whether we are loading a translated chinese version of tydiqa dev data (Only applicable to tydiqa)",
+)
+parser.add_argument(
+    "--initialize_lora",
+    default=False,
+    action="store_true",
+    help="Whether to initialize the base model with lora, only works when is_peft is False",
+)
+parser.add_argument(
+    "--lora_r", type=int, default=8, help="The value of lora_r hyperparameter"
+)
+parser.add_argument(
+    "--lora_alpha",
+    type=float,
+    default=32,
+    help="The value of lora_alpha hyperparameter",
+)
+parser.add_argument(
+    "--lora_dropout",
+    type=float,
+    default=0.1,
+    help="The value of lora_dropout hyperparameter",
+)
+parser.add_argument(
+    "--lora_target_modules",
+    nargs="+",
+    default=["q_proj", "k_proj", "v_proj", "o_proj"],
+    help="The list of lora_target_modules",
+)
 
 args = parser.parse_args()
 assert args.task is not None or args.train_file is not None
@@ -126,26 +169,33 @@ if isinstance(model, PeftModel):
 adam_optimizer_state = None
 if args.info_type == "grads" and args.gradient_type == "adam":
     optimizer_path = os.path.join(args.model_path, "optimizer.bin")
-    adam_optimizer_state = torch.load(
-        optimizer_path, map_location="cpu")["state"]
+    adam_optimizer_state = torch.load(optimizer_path, map_location="cpu")["state"]
 
 if args.task is not None:
     if args.task == "scifact":
-        print('yo!!')
-        dataset = get_training_dataset("data/eval/scifact/scifact_dev.jsonl", tokenizer, args.max_length, sample_percentage=1.0)
+        print("yo!!")
+        dataset = get_training_dataset(
+            "data/eval/scifact/scifact_dev.jsonl",
+            tokenizer,
+            args.max_length,
+            sample_percentage=1.0,
+        )
     else:
-        dataset = get_dataset(args.task,
-                          data_dir=args.data_dir,
-                          tokenizer=tokenizer,
-                          chat_format=args.chat_format,
-                          use_chat_format=args.use_chat_format,
-                          max_length=args.max_length,
-                          zh=args.zh)
+        dataset = get_dataset(
+            args.task,
+            data_dir=args.data_dir,
+            tokenizer=tokenizer,
+            chat_format=args.chat_format,
+            use_chat_format=args.use_chat_format,
+            max_length=args.max_length,
+            zh=args.zh,
+        )
     dataloader = get_dataloader(dataset, tokenizer=tokenizer)
 else:
     assert args.train_file is not None
     dataset = get_training_dataset(
-        args.train_file, tokenizer, args.max_length, sample_percentage=1.0)
+        args.train_file, tokenizer, args.max_length, sample_percentage=1.0
+    )
     columns = deepcopy(dataset.column_names)
     columns.remove("input_ids")
     columns.remove("labels")
@@ -154,15 +204,16 @@ else:
     dataloader = get_dataloader(dataset, tokenizer=tokenizer)
 
 if args.info_type == "reps":
-    collect_reps(dataloader, model, args.output_path,
-                 max_samples=args.max_samples)
+    collect_reps(dataloader, model, args.output_path, max_samples=args.max_samples)
 elif args.info_type == "grads":
-    collect_grads(dataloader,
-                  model,
-                  args.output_path,
-                  proj_dim=args.gradient_projection_dimension,
-                  gradient_type=args.gradient_type,
-                  adam_optimizer_state=adam_optimizer_state,
-                  max_samples=args.max_samples)
+    collect_grads(
+        dataloader,
+        model,
+        args.output_path,
+        proj_dim=args.gradient_projection_dimension,
+        gradient_type=args.gradient_type,
+        adam_optimizer_state=adam_optimizer_state,
+        max_samples=args.max_samples,
+    )
 elif args.info_type == "loss":
     get_loss(dataloader, model, args.output_path)
