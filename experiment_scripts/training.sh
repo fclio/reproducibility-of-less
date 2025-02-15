@@ -7,7 +7,7 @@
 #SBATCH --cpus-per-task=16
 #SBATCH --gpus-per-node=2
 #SBATCH --time=10:00:00
-#SBATCH --output=slurm_output/training_%A.out
+#SBATCH --output=slurm_output4/training_%A.out
 
 module purge
 module load 2023

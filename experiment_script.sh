@@ -75,17 +75,17 @@ elif [[ "$1" == "datastore" ]]; then
     fi
 elif [[ "$1" == "datastore_ir" ]]; then
     if [[ "$MODEL" == "llama2-7b" ]]; then
-        for task in "first" "nfcorpus" "scifact" "vihealthqa" "fiqa"
+        for task in "msmarco" "nfcorpus" "scifact" "vihealthqa" "fiqa"
         do
-            for checkpoint in "31" "62" "93" "124"
+            for checkpoint in "1048" "2096" "3144" "4192"
             do 
                 ${CMD} experiment_scripts/build_train_grad_datastore.sh $task $checkpoint ${MODEL} ${SEED} IR $REPODIR $OUTDIR
             done
         done
     elif [[ "$MODEL" == "llama2-13b" ]]; then
-        for task in "first" "nfcorpus" "scifact" "vihealthqa" "fiqa"
+        for task in "msmarco" "nfcorpus" "scifact" "vihealthqa" "fiqa"
         do
-            for checkpoint in "31" "62" "93" "124"
+            for checkpoint in "1048" "2096" "3144"
             do 
                 ${CMD} experiment_scripts/build_train_grad_datastore.sh $task $checkpoint ${MODEL} ${SEED} IR $REPODIR $OUTDIR
             done
@@ -128,7 +128,7 @@ elif [[ "$1" == "finetune" ]]; then
         ${CMD} experiment_scripts/training.sh $task ${MODEL} ${SEED} 1234 - $REPODIR $OUTDIR
     done
 elif [[ "$1" == "finetune_ir" ]]; then
-    for task in "nfcorpus" "scifact" "vihealthqa" "fiqa"
+    for task in "scifact" "vihealthqa" "fiqa" "nfcorpus"
     do
         ${CMD} experiment_scripts/training.sh $task ${MODEL} ${SEED} 1234 IR $REPODIR $OUTDIR
     done
@@ -164,7 +164,8 @@ elif [[ "$1" == "eval" ]]; then
     ${CMD} eval_tydiqa_after_finetuning.sh ${MODEL}-less-p${PERCENTAGE}-lora-seed${SEED}-tydiqa-1234 $REPODIR $OUTDIR
 elif [[ "$1" == "eval_ir" ]]; then
     cd evaluation
-    for task in "nfcorpus" "scifact" "vihealthqa" "fiqa"
+    # for task in "nfcorpus" "scifact" "vihealthqa" "fiqa"
+    for task in "nfcorpus"
     do
         ${CMD} eval_ranking_after_finetuning.sh ${MODEL}-less-p${PERCENTAGE}-lora-seed${SEED}-$task-1234 $task $REPODIR $OUTDIR
     done

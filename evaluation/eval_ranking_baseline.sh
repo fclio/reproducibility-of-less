@@ -2,12 +2,12 @@
 
 #SBATCH --partition=gpu_h100
 #SBATCH --gpus=1
-#SBATCH --job-name=eval_ranking
+#SBATCH --job-name=fiqa_eval_ranking
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=16
 #SBATCH --gpus-per-node=1
 #SBATCH --time=24:00:00
-#SBATCH --output=slurm_output/eval_ranking_baseline_fiqa_llama7b_%A.out
+#SBATCH --output=slurm_output3/eval_ranking_baseline_fiqa_llama7b_%A.out
 
 # Load necessary modules
 module purge

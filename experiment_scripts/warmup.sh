@@ -6,12 +6,15 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=16
 #SBATCH --gpus-per-node=2
-#SBATCH --time=10:00:00
-#SBATCH --output=slurm_output/warmup_%A.out
+#SBATCH --time=24:00:00
+#SBATCH --output=slurm_output_IR/warmup_%A.out
 
 module purge
 module load 2023
 module load PyTorch/2.1.2-foss-2023a-CUDA-12.1.1
+
+export TOKENIZERS_PARALLELISM=false
+export PYTORCH_CUDA_ALLOC_CONF="expandable_segments:True"
 
 MODEL=$1
 DATA_SEED=$2
@@ -32,7 +35,7 @@ DATA_DIR="data"
 PERCENTAGE=0.05
 
 if [[ "$3" == "IR" ]]; then
-    JOB_NAME="${MODEL}-p${PERCENTAGE}-lora-seed${DATA_SEED}-first"
+    JOB_NAME="${MODEL}-p${PERCENTAGE}-lora-seed${DATA_SEED}-msmarco"
 else
     JOB_NAME="${MODEL}-p${PERCENTAGE}-lora-seed${DATA_SEED}"
 fi

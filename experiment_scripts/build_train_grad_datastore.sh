@@ -7,7 +7,7 @@
 #SBATCH --cpus-per-task=16
 #SBATCH --gpus-per-node=1
 #SBATCH --time=10:00:00
-#SBATCH --output=slurm_output/train_grad_%A.out
+#SBATCH --output=slurm_output_IR/train_grad_%A.out
 
 module purge
 module load 2023
@@ -36,6 +36,9 @@ elif [[ "$1" == "oasst1" ]]; then
 elif [[ "$1" == "first" ]]; then
     TRAINING_DATA_FILE=data/train/processed/first/first_data.jsonl
     GRADIENT_TYPE="adam"
+elif [[ "$1" == "msmarco" ]]; then
+    TRAINING_DATA_FILE=data/train/processed/msmarco/msmarco_data.jsonl
+    GRADIENT_TYPE="adam"
 elif [[ "$1" == "nfcorpus" ]]; then
     TRAINING_DATA_FILE=data/eval/nfcorpus/nfcorpus_dev.jsonl
     GRADIENT_TYPE="sgd"
@@ -55,7 +58,7 @@ fi
 PERCENTAGE=0.05
 
 if [[ "$5" == "IR" ]]; then
-    JOB_NAME="${MODEL}-p${PERCENTAGE}-lora-seed${DATA_SEED}-first"
+    JOB_NAME="${MODEL}-p${PERCENTAGE}-lora-seed${DATA_SEED}-msmarco"
 else
     JOB_NAME="${MODEL}-p${PERCENTAGE}-lora-seed${DATA_SEED}"
 fi

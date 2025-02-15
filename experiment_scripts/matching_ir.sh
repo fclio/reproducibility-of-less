@@ -75,11 +75,11 @@ echo ${CHECKPOINT_WEIGHTS}
 
 
 DIM=8192 # decide which dimension to use
-TRAIN_FILE_NAMES=first
-TRAIN_FILES="data/train/processed/first/first_data.jsonl"
+TRAIN_FILE_NAMES=msmarco
+TRAIN_FILES="data/train/processed/msmarco/msmarco_data.jsonl"
 PERCENTAGE=0.05
 
-JOB_NAME="${MODEL}-p${PERCENTAGE}-lora-seed${DATA_SEED}-first"
+JOB_NAME="${MODEL}-p${PERCENTAGE}-lora-seed${DATA_SEED}-msmarco"
 
 GRADIENT_PATH=${LESS_OUTPUT_DIR}/grads/${JOB_NAME}/{}-ckpt{}-adam/dim${DIM}
 

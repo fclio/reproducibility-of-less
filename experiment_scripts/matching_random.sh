@@ -7,7 +7,7 @@
 #SBATCH --cpus-per-task=16
 #SBATCH --gpus-per-node=1
 #SBATCH --time=02:00:00
-#SBATCH --output=slurm_output/matching_random_%A.out
+#SBATCH --output=slurm_output4/matching_random_%A.out
 
 module purge
 module load 2023
@@ -16,8 +16,9 @@ module load PyTorch/2.1.2-foss-2023a-CUDA-12.1.1
 TARGET_TASK_NAMES=$1
 MODEL=$2
 DATA_SEED=$3
-LESS_REPO_DIR=$4
-LESS_OUTPUT_DIR=$5
+IR=$4
+LESS_REPO_DIR=$5
+LESS_OUTPUT_DIR=$6
 
 PERCENTAGE=0.05
 

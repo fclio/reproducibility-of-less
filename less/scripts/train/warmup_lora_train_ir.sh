@@ -15,8 +15,7 @@ output_dir=$6
 # fi
 
 train_files=(
-"$data_dir/train/processed/first/first_data.jsonl"
-# "$data_dir/train/processed/msmarco/msmarco_data.jsonl"
+"$data_dir/train/processed/msmarco/msmarco_data.jsonl"
 )
 
 

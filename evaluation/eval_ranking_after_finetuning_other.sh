@@ -2,7 +2,7 @@
 
 #SBATCH --partition=gpu_h100
 #SBATCH --gpus=1
-#SBATCH --job-name=eval_ranking
+#SBATCH --job-name=scifact_eval_ranking
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=16
 #SBATCH --gpus-per-node=1
@@ -16,8 +16,8 @@ module load PyTorch/2.1.2-foss-2023a-CUDA-12.1.1
 
 # TASK_NAME=fiqa
 # TASK_NAME=nfcorpus
-# TASK_NAME=scifact
-TASK_NAME=vihealthqa
+TASK_NAME=scifact
+# TASK_NAME=vihealthqa
 
 # # Define paths
 JOB_NAME="llama2-7b-less-p0.05-lora-seed3-first-${TASK_NAME}-alpha"

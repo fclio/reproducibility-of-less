@@ -2,9 +2,14 @@
 /wandb
 /evaluation/out
 /data
+/data_old
+/datasets
 *.out
 /slurm_output
 /slurm_output2
+/slurm_output3
+/slurm_output4
+/slurm_output_IR
 /result_slurm_outputs
 /evaluation/slurm_output
 /old_scripts
