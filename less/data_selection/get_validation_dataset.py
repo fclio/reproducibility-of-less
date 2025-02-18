@@ -123,8 +123,7 @@ def get_bbh_dataset(
                         + "\n<|assistant|>\nA:"
                     )
                 else:
-                    question = f"<s> {B_INST} {task_prompt.strip()} {question} {
-                        E_INST} A:"
+                    question = f"<s> {B_INST} {task_prompt.strip()} {question} {E_INST} A:"
             else:
                 question = task_prompt.strip() + "\n\n" + f"{question}" + "\nA:"
             full_input_ids, labels, attention_mask = tokenize(

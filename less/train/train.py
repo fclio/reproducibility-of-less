@@ -64,10 +64,8 @@ def main():
 
     # Log on each process the small summary:
     logger.warning(
-        f"Process rank: {training_args.local_rank}, device: {
-            training_args.device}, n_gpu: {training_args.n_gpu}"
-        + f"distributed training: {bool(training_args.local_rank != -1)
-                                   }, 16-bits training: {training_args.fp16}"
+        f"Process rank: {training_args.local_rank}, device: {training_args.device}, n_gpu: {training_args.n_gpu}"
+        + f"distributed training: {bool(training_args.local_rank != -1)}, 16-bits training: {training_args.fp16}"
     )
     logger.info(f"Training parameters {training_args}")
     logger.info(f"Model parameters {model_args}")
@@ -78,7 +76,6 @@ def main():
 
     # HF login
     from huggingface_hub import login
-
     login("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")
 
     tokenizer = AutoTokenizer.from_pretrained(model_args.model_name_or_path)
@@ -137,8 +134,7 @@ def main():
 
     for index in random.sample(range(len(train_dataset)), 1):
         logger.info(
-            f"Sample {index} of the training set: {
-                train_dataset[index]}."
+            f"Sample {index} of the training set: {train_dataset[index]}."
         )
 
     model_params = sum(p.numel() for p in model.parameters() if p.requires_grad)

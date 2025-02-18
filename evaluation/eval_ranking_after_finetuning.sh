@@ -6,8 +6,8 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=16
 #SBATCH --gpus-per-node=1
-#SBATCH --time=24:00:00
-#SBATCH --output=slurm_output_IR/eval_ranking_%A.out
+#SBATCH --time=06:00:00
+#SBATCH --output=../slurm_output_IR_eval/eval_ranking_%A.out
 
 # Load necessary modules
 module purge
@@ -30,11 +30,12 @@ LESS_OUTPUT_DIR=$4
 MODEL_DIR="${LESS_OUTPUT_DIR}/out/${JOB_NAME}"
 # DATASET_PATH="${LESS_REPO_DIR}/data_old/${TASK_NAME}/${TASK_NAME}_data.jsonl"
 DATASET_PATH="${LESS_REPO_DIR}/data/eval/${TASK_NAME}/${TASK_NAME}_data.jsonl"
-OUTPUT_PATH="${LESS_REPO_DIR}/eval/result/${JOB_NAME}/ranking_results_finetune_${TASK_NAME}.json"
+OUTPUT_PATH="${LESS_REPO_DIR}/eval/result2/${JOB_NAME}/ranking_results_finetune_${TASK_NAME}.json"
 
 # Run the ranking evaluation script
-# python eval/ir/ranking_relevant.py --model_path "$MODEL_DIR" --dataset_path "$DATASET_PATH" --output_path "$OUTPUT_PATH"
-python eval/ir/ranking_new.py --model_path "meta-llama/Llama-2-7b-hf" --dataset_path "$DATASET_PATH" --output_path "$OUTPUT_PATH"
+python eval/ir/ranking_new.py --model_path "$MODEL_DIR" --dataset_path "$DATASET_PATH" --output_path "$OUTPUT_PATH"
+# python eval/ir/ranking_new.py --model_path "meta-llama/Llama-2-7b-hf" --dataset_path "$DATASET_PATH" --output_path "$OUTPUT_PATH"
+# python eval/ir/ranking_new.py --model_path "/scratch-shared/ir2-less/out/llama2-7b-p0.05-lora-seed14-msmarco" --dataset_path "$DATASET_PATH" --output_path "$OUTPUT_PATH"
 
 # Check and print the result if the script generates a summary or result
 if [[ -f "$OUTPUT_PATH" ]]; then

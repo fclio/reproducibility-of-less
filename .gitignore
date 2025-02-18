@@ -13,3 +13,4 @@
 /result_slurm_outputs
 /evaluation/slurm_output
 /old_scripts
+/bm25_output

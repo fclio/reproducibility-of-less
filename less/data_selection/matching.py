@@ -42,6 +42,7 @@ N_SUBTASKS = {
     "qa": 1,
     "hf": 1,
     "scifact": 1,
+    "scidocs": 1,
     "fiqa": 1,
     "vihealthqa": 1,
     "nfcorpus": 1,
@@ -112,8 +113,7 @@ for target_task_name in args.target_task_names:
         output_file = os.path.join(
             args.output_path,
             target_task_name,
-            f"{
-                train_file_name}_influence_score.pt",
+            f"{train_file_name}_influence_score.pt",
         )
         torch.save(influence_score, output_file)
         print("Saved influence score to {}".format(output_file))

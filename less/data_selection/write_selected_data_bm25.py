@@ -102,8 +102,7 @@ if __name__ == "__main__":
                 file.write("file name, index, score\n")
                 for score, index, name in zip(sorted_scores, sorted_index, data_from):
                     file.write(
-                        f"{args.train_file_names[name.item()]}, {index.item()}, {
-                            round(score.item(), 6)}\n"
+                        f"{args.train_file_names[name.item()]}, {index.item()}, {round(score.item(), 6)}\n"
                     )
 
         topk_scores, topk_indices = torch.topk(
@@ -129,8 +128,7 @@ if __name__ == "__main__":
 
         final_path = os.path.join(
             output_path,
-            f"bm25_top_{
-                data_amount_name}.jsonl",
+            f"bm25_top_{data_amount_name}.jsonl",
         )
 
         with open(final_path, "w", encoding="utf-8", errors="ignore") as file:
@@ -143,6 +141,5 @@ if __name__ == "__main__":
                     pdb.set_trace()
 
         print(
-            f"Saved top {
-                args.max_samples} random selected data to {final_path}"
+            f"Saved top {args.max_samples} random selected data to {final_path}"
         )

@@ -74,6 +74,5 @@ def get_data_statistics(lm_datasets):
         c_length = sum(c_lengths) / len(c_lengths)
         print(f"[{key} set] examples: {data_size}; # avg tokens: {length}")
         print(
-            f"[{key} set] examples: {
-                data_size}; # avg completion tokens: {c_length}"
+            f"[{key} set] examples: {data_size}; # avg completion tokens: {c_length}"
         )

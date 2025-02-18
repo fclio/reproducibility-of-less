@@ -42,6 +42,9 @@ elif [[ "$1" == "msmarco" ]]; then
 elif [[ "$1" == "nfcorpus" ]]; then
     TRAINING_DATA_FILE=data/eval/nfcorpus/nfcorpus_dev.jsonl
     GRADIENT_TYPE="sgd"
+elif [[ "$1" == "scidocs" ]]; then
+    TRAINING_DATA_FILE=data/eval/scidocs/scidocs_dev.jsonl
+    GRADIENT_TYPE="sgd"
 elif [[ "$1" == "scifact" ]]; then
     TRAINING_DATA_FILE=data/eval/scifact/scifact_dev.jsonl
     GRADIENT_TYPE="sgd"

@@ -101,10 +101,7 @@ if __name__ == "__main__":
             with open(sorted_score_file, "w", encoding="utf-8") as file:
                 file.write("file name, index, score\n")
                 for score, index, name in zip(sorted_scores, sorted_index, data_from):
-                    file.write(
-                        f"{args.train_file_names[name.item()]}, {index.item()}, {
-                            round(score.item(), 6)}\n"
-                    )
+                    file.write(f"{args.train_file_names[name.item()]}, {index.item()}, {round(score.item(), 6)}\n")
 
         topk_scores, topk_indices = torch.topk(
             all_scores.float(), args.max_samples, dim=0, largest=True

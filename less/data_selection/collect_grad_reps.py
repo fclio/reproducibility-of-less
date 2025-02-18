@@ -189,11 +189,7 @@ def collect_grads(
             output_dir = output_dirs[dim]
             outfile = os.path.join(output_dir, f"grads-{count}.pt")
             torch.save(projected_grads[dim], outfile)
-            print(
-                f"Saving {outfile}, {
-                    projected_grads[dim].shape}",
-                flush=True,
-            )
+            print(f"Saving {outfile}, {projected_grads[dim].shape}", flush=True)
             projected_grads[dim] = []
 
     device = next(model.parameters()).device
@@ -309,10 +305,7 @@ def merge_and_normalize_info(output_dir: str, prefix="reps"):
 
     output_file = os.path.join(output_dir, "all_orig.pt")
     torch.save(merged_data, output_file)
-    print(
-        f"Saving the normalized {prefix} (Shape: {merged_data.shape}) to {
-            output_file}."
-    )
+    print(f"Saving the normalized {prefix} (Shape: {merged_data.shape}) to {output_file}.")
 
 
 def merge_info(output_dir: str, prefix="reps"):
@@ -329,10 +322,7 @@ def merge_info(output_dir: str, prefix="reps"):
 
     output_file = os.path.join(output_dir, "all_unormalized.pt")
     torch.save(merged_data, output_file)
-    print(
-        f"Saving the unnormalized {prefix} (Shape: {merged_data.shape}) to {
-            output_file}."
-    )
+    print(f"Saving the unnormalized {prefix} (Shape: {merged_data.shape}) to {output_file}.")
 
 
 def collect_reps(

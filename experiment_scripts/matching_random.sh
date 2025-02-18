@@ -23,9 +23,9 @@ LESS_OUTPUT_DIR=$6
 PERCENTAGE=0.05
 
 if [[ "$4" == "IR" ]]; then
-    JOB_NAME="${MODEL}-p${PERCENTAGE}-lora-seed${DATA_SEED}-first"
-    TRAIN_FILE_NAMES="first"
-    TRAIN_FILES="data/train/processed/first/first_data.jsonl"
+    JOB_NAME="${MODEL}-p${PERCENTAGE}-lora-seed${DATA_SEED}-msmarco"
+    TRAIN_FILE_NAMES="msmarco"
+    TRAIN_FILES="data/train/processed/msmarco/msmarco_data_formatted.jsonl"
 else
     JOB_NAME="${MODEL}-p${PERCENTAGE}-lora-seed${DATA_SEED}"
     TRAIN_FILE_NAMES="dolly oasst1 flan_v2 cot"

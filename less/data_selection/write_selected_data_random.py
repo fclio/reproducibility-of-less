@@ -113,8 +113,7 @@ if __name__ == "__main__":
                     sorted_scores, sorted_index, data_from
                 ):
                     file.write(
-                        f"{args.train_file_names[from_val.item()]}, {idx_val.item()}, {
-                            round(score_val.item(), 6)}\n"
+                        f"{args.train_file_names[from_val.item()]}, {idx_val.item()}, {round(score_val.item(), 6)}\n"
                     )
 
         # Read training data lines
@@ -142,14 +141,12 @@ if __name__ == "__main__":
         # Write top selected samples
         top_file = os.path.join(
             output_path,
-            f"random_top_{
-                data_amount_name}.jsonl",
+            f"random_top_{data_amount_name}.jsonl",
         )
         with open(top_file, "w", encoding="utf-8", errors="ignore") as file:
             for index, data_from_val in zip(final_index_list, final_data_from_list):
                 file.write(all_lines[data_from_val][index])
 
         print(
-            f"Saved top {
-                args.max_samples} random selected data to {top_file}"
+            f"Saved top {args.max_samples} random selected data to {top_file}"
         )

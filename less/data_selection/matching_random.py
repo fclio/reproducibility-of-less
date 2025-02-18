@@ -94,8 +94,7 @@ def load_tydiqa_data(tydiqa_dir):
         file_name = "tydiqa-one-shot.json"
     else:
         print(
-            f"Error: Neither 'tydiqa-one-shot.json' nor 'tydiqa-one-shot-zh.json' found in {
-                dev_dir}"
+            f"Error: Neither 'tydiqa-one-shot.json' nor 'tydiqa-one-shot-zh.json' found in {dev_dir}"
         )
         return []
 
@@ -277,6 +276,33 @@ def load_scifact_data(scifact_dir):
     return data_list
 
 
+def load_scidocs_data(scidocs_dir):
+    """
+    Load the SciDocs dataset from scidocs_dev.jsonl and extract content.
+    Format is similar to the provided scifact example.
+    """
+    file_path = os.path.join(scidocs_dir, "scidocs_dev.jsonl")
+    if not os.path.exists(file_path):
+        print(f"SciDocs data file not found at {file_path}")
+        return []
+
+    data_list = []
+    with open(file_path, "r", encoding="utf-8") as f:
+        for line in tqdm(f, desc=f"Loading {file_path}"):
+            data = json.loads(line)
+            messages = data.get("messages", [])
+            content_pieces = []
+            for message in messages:
+                message_content = message.get("content", "").strip()
+                if message_content:
+                    content_pieces.append(message_content)
+            content = " ".join(content_pieces)
+            if content.strip():
+                data_list.append(content)
+    return data_list
+
+
+
 def load_vihealthqa_data(vihealthqa_dir):
     """
     Load the vihealthqa dataset from vihealthqa_dev.jsonl and extract content.
@@ -310,8 +336,7 @@ def load_vihealthqa_data(vihealthqa_dir):
 for target_task_name in args.target_task_names:
     for train_file_name in args.train_file_names:
         print(
-            f"Processing random scores for training file {
-                train_file_name} and target task {target_task_name}"
+            f"Processing random scores for training file {train_file_name} and target task {target_task_name}"
         )
 
         # Load validation data the same way as matching_bm25.py
@@ -328,6 +353,8 @@ for target_task_name in args.target_task_names:
             validation_data = load_nfcorpus_data(validation_path)
         elif target_task_name == "scifact":
             validation_data = load_scifact_data(validation_path)
+        elif target_task_name == "scidocs":
+            validation_data = load_scidocs_data(validation_path)
         elif target_task_name == "vihealthqa":
             validation_data = load_vihealthqa_data(validation_path)
         else:
@@ -347,8 +374,7 @@ for target_task_name in args.target_task_names:
                     validation_data = load_json(validation_path)
                 else:
                     print(
-                        f"Unsupported file format for validation data: {
-                            validation_path}"
+                        f"Unsupported file format for validation data: {validation_path}"
                     )
                     continue
 
@@ -364,8 +390,7 @@ for target_task_name in args.target_task_names:
 
         if num_validation_samples % n_subtasks != 0:
             print(
-                f"Error: Number of validation samples ({num_validation_samples}) not divisible by {
-                    n_subtasks}."
+                f"Error: Number of validation samples ({num_validation_samples}) not divisible by {n_subtasks}."
             )
             continue
 

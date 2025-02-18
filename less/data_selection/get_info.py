@@ -15,6 +15,10 @@ from less.data_selection.collect_grad_reps import collect_grads, collect_reps, g
 from less.data_selection.get_training_dataset import get_training_dataset
 from less.data_selection.get_validation_dataset import get_dataloader, get_dataset
 
+# HF login
+from huggingface_hub import login
+login("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")
+
 
 def load_model(model_name_or_path: str, torch_dtype: Any = torch.bfloat16) -> Any:
     """

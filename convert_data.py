@@ -1,5 +1,6 @@
 import json
 import random
+import os
 from datasets import load_dataset
 from tqdm import tqdm
 
@@ -79,6 +80,11 @@ dataset = load_dataset("ms_marco", "v2.1", split="train")
 # Convert dataset to pointwise format
 formatted_data = convert_msmarco_to_pointwise(dataset)
 
-# Save the formatted data to a JSON file
-with open('/home/scur2847/ir2-less-data/data/train/processed/msmarco/msmarco_data.jsonl', 'w', encoding='utf-8') as f:
+# Define the relative path
+relative_path = 'data/train/processed/msmarco'
+os.makedirs(relative_path, exist_ok=True)  # Create the folder if it doesn't exist
+
+# Save the formatted data to a JSONL file
+jsonl_path = os.path.join(relative_path, 'msmarco_data.jsonl')
+with open(jsonl_path, 'w', encoding='utf-8') as f:
     json.dump(formatted_data, f, indent=4)

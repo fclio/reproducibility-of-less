@@ -25,13 +25,13 @@ CKPTS=""
 if [[ "$2" == "llama2-7b" ]]; then
     for (( i=0; i<${#foo}; i++ )); do
         if [[ "${foo:$i:1}" == "1" ]]; then
-            CKPTS+=" 31"
+            CKPTS+=" 1048"
         elif [[ "${foo:$i:1}" == "2" ]]; then
-            CKPTS+=" 62"
+            CKPTS+=" 2096"
         elif [[ "${foo:$i:1}" == "3" ]]; then
-            CKPTS+=" 93"
+            CKPTS+=" 3144"
         elif [[ "${foo:$i:1}" == "4" ]]; then
-            CKPTS+=" 124"
+            CKPTS+=" 4192"
         else
             echo "Unknown checkpoint idx."
         fi
@@ -76,7 +76,7 @@ echo ${CHECKPOINT_WEIGHTS}
 
 DIM=8192 # decide which dimension to use
 TRAIN_FILE_NAMES=msmarco
-TRAIN_FILES="data/train/processed/msmarco/msmarco_data.jsonl"
+TRAIN_FILES="data/train/processed/msmarco/msmarco_data_formatted.jsonl"
 PERCENTAGE=0.05
 
 JOB_NAME="${MODEL}-p${PERCENTAGE}-lora-seed${DATA_SEED}-msmarco"
@@ -93,5 +93,7 @@ if [[ ! -d $SELECTED_DATA_OUTPUT_PATH ]]; then
 fi
 
 bash less/scripts/data_selection/matching.sh "$GRADIENT_PATH" "$TRAIN_FILE_NAMES" "$CKPTS" "$CHECKPOINT_WEIGHTS" "$VALIDATION_GRADIENT_PATH" "$TARGET_TASK_NAMES" "$SELECTED_DATA_OUTPUT_PATH"
+
+echo 'yo'
 
 python3 -m less.data_selection.write_selected_data --target_task_names ${TARGET_TASK_NAMES} --train_file_names ${TRAIN_FILE_NAMES} --train_files ${TRAIN_FILES} --output_path $SELECTED_DATA_OUTPUT_PATH --percentage ${PERCENTAGE}

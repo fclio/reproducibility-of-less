@@ -1,5 +1,5 @@
 # repository & output directory locations. change if not running on Snellius
-export REPODIR="/home/scur2847/ir2-less-data"
+export REPODIR="/home/rvblanken/reproducibility-of-less"
 export OUTDIR="/scratch-shared/ir2-less"
 
 # arguments
@@ -75,7 +75,7 @@ elif [[ "$1" == "datastore" ]]; then
     fi
 elif [[ "$1" == "datastore_ir" ]]; then
     if [[ "$MODEL" == "llama2-7b" ]]; then
-        for task in "msmarco" "nfcorpus" "scifact" "vihealthqa" "fiqa"
+        for task in "msmarco" "nfcorpus" "scidocs" "vihealthqa" "fiqa"
         do
             for checkpoint in "1048" "2096" "3144" "4192"
             do 
@@ -83,7 +83,7 @@ elif [[ "$1" == "datastore_ir" ]]; then
             done
         done
     elif [[ "$MODEL" == "llama2-13b" ]]; then
-        for task in "msmarco" "nfcorpus" "scifact" "vihealthqa" "fiqa"
+        for task in "msmarco" "nfcorpus" "scidocs" "vihealthqa" "fiqa"
         do
             for checkpoint in "1048" "2096" "3144"
             do 
@@ -97,7 +97,7 @@ elif [[ "$1" == "matching" ]]; then
         ${CMD} experiment_scripts/matching.sh $task ${MODEL} ${SEED} 1234 $REPODIR $OUTDIR
     done
 elif [[ "$1" == "matching_ir" ]]; then
-    for task in "nfcorpus" "scifact" "vihealthqa" "fiqa"
+    for task in "nfcorpus" "scidocs" "vihealthqa" "fiqa"
     do
         ${CMD} experiment_scripts/matching_ir.sh $task ${MODEL} ${SEED} 1234 $REPODIR $OUTDIR
     done
@@ -109,7 +109,7 @@ elif [[ "$1" == "matching_baseline" ]]; then
     done
 elif [[ "$1" == "matching_baseline_ir" ]]; then
     #TODO
-    for task in "nfcorpus" "scifact" "vihealthqa" "fiqa"
+    for task in "nfcorpus" "scidocs" "vihealthqa" "fiqa"
     do
         ${CMD} experiment_scripts/matching_random.sh $task ${MODEL} ${SEED} IR $REPODIR $OUTDIR
         ${CMD} experiment_scripts/matching_bm25.sh $task ${MODEL} ${SEED} IR $REPODIR $OUTDIR
@@ -128,7 +128,7 @@ elif [[ "$1" == "finetune" ]]; then
         ${CMD} experiment_scripts/training.sh $task ${MODEL} ${SEED} 1234 - $REPODIR $OUTDIR
     done
 elif [[ "$1" == "finetune_ir" ]]; then
-    for task in "scifact" "vihealthqa" "fiqa" "nfcorpus"
+    for task in "scidocs" "vihealthqa" "fiqa" "nfcorpus"
     do
         ${CMD} experiment_scripts/training.sh $task ${MODEL} ${SEED} 1234 IR $REPODIR $OUTDIR
     done
@@ -144,7 +144,7 @@ elif [[ "$1" == "finetune_baseline" ]]; then
         ${CMD} experiment_scripts/training.sh $task ${MODEL} ${SEED} 1234 random $REPODIR $OUTDIR
     done
 elif [[ "$1" == "finetune_baseline_ir" ]]; then
-    for task in "nfcorpus" "scifact" "vihealthqa" "fiqa"
+    for task in "nfcorpus" "scidocs" "vihealthqa" "fiqa"
     do
         ${CMD} experiment_scripts/training.sh $task ${MODEL} ${SEED} 1234 IR_BM25 $REPODIR $OUTDIR
         ${CMD} experiment_scripts/training.sh $task ${MODEL} ${SEED} 1234 IR_random $REPODIR $OUTDIR
@@ -164,8 +164,7 @@ elif [[ "$1" == "eval" ]]; then
     ${CMD} eval_tydiqa_after_finetuning.sh ${MODEL}-less-p${PERCENTAGE}-lora-seed${SEED}-tydiqa-1234 $REPODIR $OUTDIR
 elif [[ "$1" == "eval_ir" ]]; then
     cd evaluation
-    # for task in "nfcorpus" "scifact" "vihealthqa" "fiqa"
-    for task in "nfcorpus"
+    for task in "nfcorpus" "scidocs" "fiqa" "vihealthqa"
     do
         ${CMD} eval_ranking_after_finetuning.sh ${MODEL}-less-p${PERCENTAGE}-lora-seed${SEED}-$task-1234 $task $REPODIR $OUTDIR
     done
@@ -184,7 +183,7 @@ elif [[ "$1" == "eval_baseline" ]]; then
     ${CMD} eval_tydiqa_after_finetuning.sh ${MODEL}-less-p${PERCENTAGE}-lora-seed${SEED}-tydiqa-random $REPODIR $OUTDIR
 elif [[ "$1" == "eval_baseline_ir" ]]; then
     cd evaluation
-    for task in "nfcorpus" "scifact" "vihealthqa" "fiqa"
+    for task in "nfcorpus" "scidocs" "fiqa" "vihealthqa"
     do
         ${CMD} eval_ranking_after_finetuning.sh ${MODEL}-less-p${PERCENTAGE}-lora-seed${SEED}-$task-random $task $REPODIR $OUTDIR
         ${CMD} eval_ranking_after_finetuning.sh ${MODEL}-less-p${PERCENTAGE}-lora-seed${SEED}-$task-BM25 $task $REPODIR $OUTDIR
